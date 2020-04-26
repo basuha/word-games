@@ -1,0 +1,60 @@
+package Words;
+
+public class Word {
+    protected Integer IID;
+    protected String word;
+    protected Integer code;
+    protected String type;
+    protected Integer codeParent;
+
+    public Integer getIID() {
+        return IID;
+    }
+
+    public void setIID(Integer IID) {
+        this.IID = IID;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Integer getCodeParent() {
+        return codeParent;
+    }
+
+    public void setCodeParent(Integer codeParent) {
+        this.codeParent = codeParent;
+    }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "IID=" + IID +
+                ", word='" + word + '\'' +
+                ", code=" + code +
+                ", type='" + type + '\'' +
+                ", codeParent=" + codeParent +
+                '}';
+    }
+}

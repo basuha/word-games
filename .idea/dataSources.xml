@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="hibernate.xml/Hibernate" uuid="5439e928-a438-4b97-8a7e-a94a842fe5b3">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+D:/!java/FirstHibernate/src/main/resources/hibernate.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/first_lesson?serverTimezone=UTC</jdbc-url>
+    </data-source>
+  </component>
+</project>
