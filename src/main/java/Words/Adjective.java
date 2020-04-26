@@ -36,7 +36,7 @@ public class Adjective extends Word {
         super.type = Type.ADJECTIVE;
     }
 
-    public Boolean isShortF() {
+    public Boolean getShortF() {
         return shortF;
     }
 
@@ -44,7 +44,7 @@ public class Adjective extends Word {
         this.shortF = shortF;
     }
 
-    public Boolean isPlural() {
+    public Boolean getPlural() {
         return plural;
     }
 
@@ -86,18 +86,6 @@ public class Adjective extends Word {
 
     @Override
     public String toString() {
-        return "Adjective{" +
-                "shortF=" + shortF +
-                ", plural=" + plural +
-                ", gender='" + gender + '\'' +
-                ", subType='" + subType + '\'' +
-                ", wCase='" + wCase + '\'' +
-                ", comp='" + comp + '\'' +
-                ", IID=" + IID +
-                ", word='" + word + '\'' +
-                ", code=" + code +
-                ", type='" + type + '\'' +
-                ", codeParent=" + codeParent +
-                '}';
+        return getWord();
     }
 }
