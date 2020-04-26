@@ -42,7 +42,7 @@ public class Main {
         System.out.println(word3);
 
 
-//        word3.setGender(Adjective.Gender.FEMALE);
+        word3.setGender(Adjective.Gender.FEMALE);
         word3.reload();
 
         System.out.println(word3);

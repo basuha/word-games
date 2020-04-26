@@ -1,5 +1,7 @@
 package Words;
 
+import com.sun.istack.Nullable;
+import net.bytebuddy.implementation.bind.annotation.Default;
 import org.hibernate.Session;
 
 import javax.persistence.*;
@@ -30,23 +32,34 @@ public class Adjective extends Word {
 
     public void reload() {
         Session session = getSessionFactory().openSession();
-
-        String hql = "FROM Adjective WHERE shortF = :s " +
-                "AND plural = :p " +
-                "AND gender = :g " +
-                "AND subType = :st " +
-                "AND wCase = :w " +
-                "AND comp = :co";
+        String hql;
+//        if (subType == null && comp == null) {
+            hql = "FROM Adjective WHERE shortF = :s " +
+                    "AND plural = :p " +
+                    "AND gender = :g " +
+                    "AND subType IS NULL " +
+                    "AND wCase = :w " +
+                    "AND comp IS NULL";
+//        } else {
+//            hql = "FROM Adjective WHERE shortF = :s " +
+//                    "AND plural = :p " +
+//                    "AND gender = :g " +
+//                    "AND subType = :s " +
+//                    "AND wCase = :w " +
+//                    "AND comp = :co";
+//        }
 
         Query query = session.createQuery(hql);
         query.setParameter("s", this.shortF);
         query.setParameter("p", this.plural);
         query.setParameter("g", this.gender);
-        query.setParameter("st", this.subType);
+//        query.setParameter("s", this.subType);
         query.setParameter("w", this.wCase);
-        query.setParameter("co", this.comp);
+//        query.setParameter("co", this.comp);
 
-        Adjective adjective = (Adjective) query.getSingleResult();
+        List<Adjective> adj = query.getResultList();
+        Adjective adjective = adj.get(0);
+        System.out.println(adj.size());
         session.close();
 
         setWord(adjective.getWord());
