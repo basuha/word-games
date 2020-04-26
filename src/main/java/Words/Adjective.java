@@ -1,11 +1,29 @@
 package Words;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(Type.ADJECTIVE)
 public class Adjective extends Word {
+
+    @Column(name = "short")
     private Boolean shortF;
+
+    @Column
     private Boolean plural;
+
+    @Column
     private String gender;
+
+    @Column(name = "type_sub")
     private String subType;
+
+    @Column
     private String wCase;
+
+    @Column
     private String comp;
 
     public static class SubType {
@@ -30,10 +48,6 @@ public class Adjective extends Word {
     public static class Comp {
         public static final String COMPARATIVE = "сравн";
         public static final String SUPER = "прев";
-    }
-
-    public Adjective() {
-        super.type = Type.ADJECTIVE;
     }
 
     public Boolean getShortF() {

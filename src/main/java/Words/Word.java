@@ -1,10 +1,28 @@
 package Words;
 
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "words_test")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type")
 public class Word {
+
+    @Id
     protected Integer IID;
+
+    @Column
     protected String word;
+
+    @Column
     protected Integer code;
+
+    @Column(name = "type", insertable = false, updatable = false)
     protected String type;
+
+    @Column(name = "code_parent")
     protected Integer codeParent;
 
     public Integer getIID() {

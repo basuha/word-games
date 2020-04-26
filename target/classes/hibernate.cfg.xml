@@ -36,7 +36,10 @@
     <property name="show_sql">
         true
     </property>
-    <mapping resource="word.hbm.xml"/>
+        <mapping class="Words.Word"/>
+        <mapping class="Words.Adjective"/>
+
+<!--    <mapping resource="word.hbm.xml"/>-->
     <!--<mapping class="com.itvdn.hibernate_first.Flower" />-->
 </session-factory>
 

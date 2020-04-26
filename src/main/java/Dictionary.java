@@ -47,15 +47,16 @@ public class Dictionary {
        return word;
     }
 
-    public Word getRandomWord(String type) {
+    public Word getRandomAdj(String wCase) {
         Session session = sessionFactory.openSession();
         Word word;
         Query query;
-        String hql = "FROM Adjective WHERE type = :type";
+        String hql = "FROM Adjective WHERE codeParent = 0";
         query = session.createQuery(hql);
-        query.setParameter("type", type);
+//        query.setParameter("wCase",wCase);
         List<Word> results = query.getResultList();
         session.close();
+        System.out.println(results.size());
         return results.get(random.nextInt(results.size()));
     }
 
