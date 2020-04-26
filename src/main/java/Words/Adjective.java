@@ -1,11 +1,13 @@
 package Words;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import org.hibernate.Session;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue(Type.ADJECTIVE)
+@Table(name = "words_test")
 public class Adjective extends Word {
 
     @Column(name = "short")
@@ -25,6 +27,33 @@ public class Adjective extends Word {
 
     @Column(name = "comp")
     private String comp;
+
+    public void reload() {
+        Session session = getSessionFactory().openSession();
+
+        String hql = "FROM Adjective WHERE shortF = :s " +
+                "AND plural = :p " +
+                "AND gender = :g " +
+                "AND subType = :st " +
+                "AND wCase = :w " +
+                "AND comp = :co";
+
+        Query query = session.createQuery(hql);
+        query.setParameter("s", this.shortF);
+        query.setParameter("p", this.plural);
+        query.setParameter("g", this.gender);
+        query.setParameter("st", this.subType);
+        query.setParameter("w", this.wCase);
+        query.setParameter("co", this.comp);
+
+        Adjective adjective = (Adjective) query.getSingleResult();
+        session.close();
+
+        setWord(adjective.getWord());
+        setIID(adjective.getIID());
+        setCode(adjective.getCodeParent());
+        setCodeParent(adjective.getCodeParent());
+    }
 
     public static class SubType {
         public static final String IMMUTABLE = "неизм";
@@ -100,6 +129,18 @@ public class Adjective extends Word {
 
     @Override
     public String toString() {
-        return getWord();
+        return "Adjective{" +
+                "shortF=" + shortF +
+                ", plural=" + plural +
+                ", gender='" + gender + '\'' +
+                ", subType='" + subType + '\'' +
+                ", wCase='" + wCase + '\'' +
+                ", comp='" + comp + '\'' +
+                ", IID=" + IID +
+                ", word='" + word + '\'' +
+                ", code=" + code +
+                ", type='" + type + '\'' +
+                ", codeParent=" + codeParent +
+                '}';
     }
 }

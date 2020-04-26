@@ -1,7 +1,4 @@
-import Words.Adjective;
-import Words.Particle;
-import Words.Type;
-import Words.Word;
+import Words.*;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
@@ -41,14 +38,18 @@ public class Main {
 //        System.out.println(word2 instanceof Adjective);
 //        System.out.println(word2);
 
-        Word word3 = dictionary.getRandomAdj(Adjective.WCase.NOMINATIVE);
+        Adjective word3 = (Adjective) dictionary.getRandomAdj();
         System.out.println(word3);
 
-        ((Adjective) word3).setGender(Adjective.Gender.FEMALE);
+
+//        word3.setGender(Adjective.Gender.FEMALE);
+        word3.reload();
 
         System.out.println(word3);
 
-//        Session session = HibernateUtil.getSessionFactory().openSession();
+
+
+//        Session session = Words.HibernateUtil.getSessionFactory().openSession();
 //        session.beginTransaction();
 //        session.save(word1);
 //        session.getTransaction().commit();

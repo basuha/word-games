@@ -1,3 +1,5 @@
+package Words;
+
 import Words.Adjective;
 import Words.Type;
 import Words.Word;
@@ -11,17 +13,12 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Random;
 
-public class Dictionary {
+public class Dictionary extends HibernateUtil {
 
-    private SessionFactory sessionFactory;
     private Random random = new Random();
 
-    public Dictionary() {
-        sessionFactory = HibernateUtil.getSessionFactory();
-    }
-
     public List<Word> getWordList() {
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
 
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery cq = cb.createQuery(Word.class);
@@ -40,14 +37,14 @@ public class Dictionary {
     }
 
     public Word getWordById(int iid) {
-       Session session = sessionFactory.openSession();
+       Session session = getSessionFactory().openSession();
        Word word = session.get(Word.class, iid);
        session.close();
        return word;
     }
 
-    public Word getRandomAdj(String wCase) {
-        Session session = sessionFactory.openSession();
+    public Word getRandomAdj() {
+        Session session = getSessionFactory().openSession();
         String hql = "FROM Adjective WHERE codeParent = 0";
         Query query = session.createQuery(hql);
 //        query.setParameter("wCase",wCase);
@@ -59,7 +56,7 @@ public class Dictionary {
 
 
     public Word getWord(String word) {
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
         Word w = session.get(Word.class, word);
         session.close();
         return w;
@@ -67,7 +64,7 @@ public class Dictionary {
 
 
     public Word addWord(Word word) {
-        Session session = sessionFactory.openSession();
+        Session session = getSessionFactory().openSession();
         session.beginTransaction();
         session.save(word);
         session.getTransaction().commit();

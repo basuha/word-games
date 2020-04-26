@@ -1,14 +1,16 @@
 package Words;
 
+import org.hibernate.Session;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "words_test")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
-public class Word {
+public class Word extends HibernateUtil {
 
     @Id
     protected Integer IID;
@@ -25,6 +27,16 @@ public class Word {
     @Column(name = "code_parent")
     protected Integer codeParent;
 
+//    public void reload() {
+//        Session session = getSessionFactory().openSession();
+//        String hql = "FROM Word WHERE code = :c and codeParent = :cp";
+//        Query query = session.createQuery(hql);
+//        query.setParameter("c", this.code);
+//        query.setParameter("cp", this.codeParent);
+//        Word word = (Word) query.getSingleResult();
+//        this.word = word.getWord();
+//        session.close();
+//    }
 
     public Integer getIID() {
         return IID;
