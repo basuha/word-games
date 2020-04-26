@@ -44,6 +44,10 @@ public class Main {
         Word word3 = dictionary.getRandomAdj(Adjective.WCase.NOMINATIVE);
         System.out.println(word3);
 
+        ((Adjective) word3).setGender(Adjective.Gender.FEMALE);
+
+        System.out.println(word3);
+
 //        Session session = HibernateUtil.getSessionFactory().openSession();
 //        session.beginTransaction();
 //        session.save(word1);

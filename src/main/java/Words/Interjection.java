@@ -1,13 +1,10 @@
 package Words;
 
-public class Interjection extends Word{
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
-    public Interjection(){}
+@Entity
+@DiscriminatorValue(Type.INTERJECTION)
+public class Interjection extends Word {
 
-    public Interjection(String word, Integer code) {
-        super.word = word;
-        super.codeParent = 0;
-        super.code = code;
-        super.type = Type.INTERJECTION;
-    }
 }

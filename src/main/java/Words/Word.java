@@ -13,10 +13,10 @@ public class Word {
     @Id
     protected Integer IID;
 
-    @Column
+    @Column(name = "word")
     protected String word;
 
-    @Column
+    @Column(name = "code")
     protected Integer code;
 
     @Column(name = "type", insertable = false, updatable = false)
@@ -24,6 +24,7 @@ public class Word {
 
     @Column(name = "code_parent")
     protected Integer codeParent;
+
 
     public Integer getIID() {
         return IID;

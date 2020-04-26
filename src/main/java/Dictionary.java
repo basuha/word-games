@@ -15,7 +15,6 @@ public class Dictionary {
 
     private SessionFactory sessionFactory;
     private Random random = new Random();
-    private static final String TABLE = "words_test";
 
     public Dictionary() {
         sessionFactory = HibernateUtil.getSessionFactory();
@@ -49,10 +48,8 @@ public class Dictionary {
 
     public Word getRandomAdj(String wCase) {
         Session session = sessionFactory.openSession();
-        Word word;
-        Query query;
         String hql = "FROM Adjective WHERE codeParent = 0";
-        query = session.createQuery(hql);
+        Query query = session.createQuery(hql);
 //        query.setParameter("wCase",wCase);
         List<Word> results = query.getResultList();
         session.close();

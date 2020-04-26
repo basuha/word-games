@@ -11,19 +11,19 @@ public class Adjective extends Word {
     @Column(name = "short")
     private Boolean shortF;
 
-    @Column
+    @Column(name = "plural")
     private Boolean plural;
 
-    @Column
+    @Column(name = "gender")
     private String gender;
 
     @Column(name = "type_sub")
     private String subType;
 
-    @Column
+    @Column(name = "wcase")
     private String wCase;
 
-    @Column
+    @Column(name = "comp")
     private String comp;
 
     public static class SubType {
