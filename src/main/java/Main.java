@@ -38,21 +38,13 @@ public class Main {
 //        System.out.println(word2 instanceof Adjective);
 //        System.out.println(word2);
 
-        Adjective word3 = (Adjective) dictionary.getRandomAdj();
+        Word word3 = dictionary.getRandomWord(Type.ADJECTIVE);
         System.out.println(word3);
-
-
-        word3.setGender(Adjective.Gender.FEMALE);
-        word3.reload();
-
-        System.out.println(word3);
-
-
-
-//        Session session = Words.HibernateUtil.getSessionFactory().openSession();
-//        session.beginTransaction();
-//        session.save(word1);
-//        session.getTransaction().commit();
-//        session.close();
+        System.out.println(word3.getInfo());
+//        word3.setGender(Adjective.Gender.FEMALE);
+//        word3.reload();
+        for (Word a : word3.getCognates()) {
+            System.out.println(a);
+        }
     }
 }

@@ -1,10 +1,10 @@
 package Words;
 
 import com.sun.istack.Nullable;
-import net.bytebuddy.implementation.bind.annotation.Default;
 import org.hibernate.Session;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,7 +32,7 @@ public class Adjective extends Word {
     private String comp;
 
     public void reload() {
-        Session session = getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery("FROM Adjective AS a " +
                 "WHERE (:subType IS NULL OR a.subType = :subType) " +
                 "AND (:comp IS NULL OR a.comp = :comp) " +
@@ -58,6 +58,16 @@ public class Adjective extends Word {
         setIID(adjective.getIID());
         setCode(adjective.getCodeParent());
         setCodeParent(adjective.getCodeParent());
+    }
+
+    @Override
+    public void addCognate(Word cognate) {
+        this.cognates.add(cognate);
+    }
+
+    @Override
+    public List<Word> getCognates() {
+        return cognates;
     }
 
     public static class SubType {
@@ -133,19 +143,15 @@ public class Adjective extends Word {
     }
 
     @Override
-    public String toString() {
-        return "Adjective{" +
+    public String getInfo() {
+        return super.getInfo() +
+                "{" +
                 "shortF=" + shortF +
                 ", plural=" + plural +
                 ", gender='" + gender + '\'' +
                 ", subType='" + subType + '\'' +
                 ", wCase='" + wCase + '\'' +
                 ", comp='" + comp + '\'' +
-                ", IID=" + IID +
-                ", word='" + word + '\'' +
-                ", code=" + code +
-                ", type='" + type + '\'' +
-                ", codeParent=" + codeParent +
                 '}';
     }
 }

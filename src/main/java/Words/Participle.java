@@ -3,6 +3,7 @@ package Words;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue(Type.PARTICIPLE)
@@ -116,5 +117,20 @@ public class Participle extends Word {
 
     public void setShortF(String shortF) {
         this.shortF = shortF;
+    }
+
+    @Override
+    public void reload() {
+
+    }
+
+    @Override
+    public void addCognate(Word cognate) {
+
+    }
+
+    @Override
+    public List<Word> getCognates() {
+        return null;
     }
 }

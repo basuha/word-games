@@ -5,13 +5,14 @@ import org.hibernate.Session;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "words_test")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
-public class Word extends HibernateUtil {
+public abstract class Word {
 
     @NotNull
     @Id
@@ -33,7 +34,12 @@ public class Word extends HibernateUtil {
     @Column(name = "code_parent")
     protected Integer codeParent;
 
-//    public void reload() {
+    @Transient
+    List<Word> cognates = new ArrayList<>();
+    public abstract void reload();
+    public abstract void addCognate(Word cognate);
+    public abstract List<Word> getCognates();
+
 //        Session session = getSessionFactory().openSession();
 //        String hql = "FROM Word WHERE code = :c and codeParent = :cp";
 //        Query query = session.createQuery(hql);
@@ -42,7 +48,6 @@ public class Word extends HibernateUtil {
 //        Word word = (Word) query.getSingleResult();
 //        this.word = word.getWord();
 //        session.close();
-//    }
 
     public Integer getIID() {
         return IID;
@@ -84,8 +89,8 @@ public class Word extends HibernateUtil {
         this.codeParent = codeParent;
     }
 
-    @Override
-    public String toString() {
+
+    public String getInfo() {
         return "Word{" +
                 "IID=" + IID +
                 ", word='" + word + '\'' +
@@ -93,5 +98,10 @@ public class Word extends HibernateUtil {
                 ", type='" + type + '\'' +
                 ", codeParent=" + codeParent +
                 '}';
+    }
+
+    @Override
+    public String toString() {
+        return this.word;
     }
 }
