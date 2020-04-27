@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue(Type.ADJECTIVE)
-@Table(name = "words_test")
 public class Adjective extends Word {
 
     @Column(name = "short")
@@ -21,41 +20,34 @@ public class Adjective extends Word {
     @Column(name = "gender")
     private String gender;
 
+    @Nullable
     @Column(name = "type_sub")
     private String subType;
 
     @Column(name = "wcase")
     private String wCase;
 
+    @Nullable
     @Column(name = "comp")
     private String comp;
 
     public void reload() {
         Session session = getSessionFactory().openSession();
-        String hql;
-//        if (subType == null && comp == null) {
-            hql = "FROM Adjective WHERE shortF = :s " +
-                    "AND plural = :p " +
-                    "AND gender = :g " +
-                    "AND subType IS NULL " +
-                    "AND wCase = :w " +
-                    "AND comp IS NULL";
-//        } else {
-//            hql = "FROM Adjective WHERE shortF = :s " +
-//                    "AND plural = :p " +
-//                    "AND gender = :g " +
-//                    "AND subType = :s " +
-//                    "AND wCase = :w " +
-//                    "AND comp = :co";
-//        }
+        Query query = session.createQuery("FROM Adjective AS a " +
+                "WHERE (:subType IS NULL OR a.subType = :subType) " +
+                "AND (:comp IS NULL OR a.comp = :comp) " +
+                "AND a.shortF = :shortF " +
+                "AND a.plural = :plural " +
+                "AND a.gender = :gender " +
+                "AND a.wCase = :wCase ");
 
-        Query query = session.createQuery(hql);
-        query.setParameter("s", this.shortF);
-        query.setParameter("p", this.plural);
-        query.setParameter("g", this.gender);
-//        query.setParameter("s", this.subType);
-        query.setParameter("w", this.wCase);
-//        query.setParameter("co", this.comp);
+        query.setParameter("subType", this.subType);
+        query.setParameter("comp", this.comp);
+        query.setParameter("shortF", this.shortF);
+        query.setParameter("plural", this.plural);
+        query.setParameter("gender", this.gender);
+        query.setParameter("wCase", this.wCase);
+
 
         List<Adjective> adj = query.getResultList();
         Adjective adjective = adj.get(0);

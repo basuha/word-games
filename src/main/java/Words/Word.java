@@ -1,5 +1,6 @@
 package Words;
 
+import com.sun.istack.NotNull;
 import org.hibernate.Session;
 import org.hibernate.annotations.GeneratorType;
 
@@ -12,18 +13,23 @@ import java.util.List;
 @DiscriminatorColumn(name = "type")
 public class Word extends HibernateUtil {
 
+    @NotNull
     @Id
     protected Integer IID;
 
+    @NotNull
     @Column(name = "word")
     protected String word;
 
+    @NotNull
     @Column(name = "code")
     protected Integer code;
 
+    @NotNull
     @Column(name = "type", insertable = false, updatable = false)
     protected String type;
 
+    @NotNull
     @Column(name = "code_parent")
     protected Integer codeParent;
 
