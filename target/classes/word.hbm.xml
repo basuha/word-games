@@ -3,51 +3,51 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="Words.Word" table="words_test">
-        <id name="IID" type="int" column="IID">
-            <generator class="native"/>
-        </id>
-        <discriminator column="type"/>
-        <property name="word" type="java.lang.String" column="word"/>
-        <property name="code" type="java.lang.Integer" column="code"/>
-        <property name="type" type="java.lang.String" column="type"/>
-        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>
-    </class>
+<!--    <class name="Words.Word" table="words_test">-->
+<!--        <id name="IID" type="int" column="IID">-->
+<!--            <generator class="native"/>-->
+<!--        </id>-->
+<!--        <discriminator column="type"/>-->
+<!--        <property name="word" type="java.lang.String" column="word"/>-->
+<!--        <property name="code" type="java.lang.Integer" column="code"/>-->
+<!--        <property name="type" type="java.lang.String" column="type"/>-->
+<!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
+<!--    </class>-->
 
-    <class name="Words.Adjective" table="words_test">
-        <id name="IID" type="int" column="IID">
-            <generator class="native"/>
-        </id>
-        <property name="word" type="java.lang.String" column="word"/>
-        <property name="code" type="java.lang.Integer" column="code"/>
-        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>
-        <property name="type" type="java.lang.String" column="type"/>
-        <property name="subType" type="java.lang.String" column="type_sub"/>
-        <property name="plural" type ="java.lang.Boolean" column="plural"/>
-        <property name="gender" type ="java.lang.String" column="gender"/>
-        <property name="wCase" type="java.lang.String" column="wcase"/>
-        <property name="comp" type="java.lang.String" column="comp"/>
-        <property name="shortF" type="java.lang.Boolean" column="short"/>
-    </class>
+<!--    <class name="Words.Adjective" table="words_test">-->
+<!--        <id name="IID" type="int" column="IID">-->
+<!--            <generator class="native"/>-->
+<!--        </id>-->
+<!--        <property name="word" type="java.lang.String" column="word"/>-->
+<!--        <property name="code" type="java.lang.Integer" column="code"/>-->
+<!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
+<!--        <property name="type" type="java.lang.String" column="type"/>-->
+<!--        <property name="subType" type="java.lang.String" column="type_sub"/>-->
+<!--        <property name="plural" type ="java.lang.Boolean" column="plural"/>-->
+<!--        <property name="gender" type ="java.lang.String" column="gender"/>-->
+<!--        <property name="wCase" type="java.lang.String" column="wcase"/>-->
+<!--        <property name="comp" type="java.lang.String" column="comp"/>-->
+<!--        <property name="shortF" type="java.lang.Boolean" column="short"/>-->
+<!--    </class>-->
 
-    <class name="Words.Particle" table="words_test">
-        <id name="IID" type="int" column="IID">
-            <generator class="native"/>
-        </id>
-        <property name="word" type="java.lang.String" column="word"/>
-        <property name="code" type="java.lang.Integer" column="code"/>
-        <property name="type" type="java.lang.String" column="type"/>
-        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>
-    </class>
+<!--    <class name="Words.Particle" table="words_test">-->
+<!--        <id name="IID" type="int" column="IID">-->
+<!--            <generator class="native"/>-->
+<!--        </id>-->
+<!--        <property name="word" type="java.lang.String" column="word"/>-->
+<!--        <property name="code" type="java.lang.Integer" column="code"/>-->
+<!--        <property name="type" type="java.lang.String" column="type"/>-->
+<!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
+<!--    </class>-->
 
-    <class name="Words.Interjection" table="words_test">
-        <id name="IID" type="int" column="IID">
-            <generator class="native"/>
-        </id>
-        <property name="word" type="java.lang.String" column="word"/>
-        <property name="code" type="java.lang.Integer" column="code"/>
-        <property name="type" type="java.lang.String" column="type"/>
-        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>
-    </class>
+<!--    <class name="Words.Interjection" table="words_test">-->
+<!--        <id name="IID" type="int" column="IID">-->
+<!--            <generator class="native"/>-->
+<!--        </id>-->
+<!--        <property name="word" type="java.lang.String" column="word"/>-->
+<!--        <property name="code" type="java.lang.Integer" column="code"/>-->
+<!--        <property name="type" type="java.lang.String" column="type"/>-->
+<!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
+<!--    </class>-->
 
 </hibernate-mapping>

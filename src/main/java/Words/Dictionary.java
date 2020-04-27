@@ -44,21 +44,24 @@ public class Dictionary extends HibernateUtil {
     }
 
     public Word getRandomWord(String type) {
-        Session session = getSessionFactory().openSession();
-        String hql = "FROM Word WHERE codeParent = 0" +
-                "and type = :type";
-        Query query = session.createQuery(hql);
-        query.setParameter("type", type);
+        Word word;
+        do {
+            Session session = getSessionFactory().openSession();
+            String hql = "FROM Word WHERE " +
+                    "IID = :rand ";
+            Query query = session.createQuery(hql);
+            query.setParameter("rand", random.nextInt(4159394));
+            word = (Word) query.getSingleResult();
+            session.close();
+        } while (!word.getType().equals(type));
 
-        List<Adjective> results = query.getResultList();
-        session.close();
-        Word word = results.get(random.nextInt(results.size()));
-        for (Adjective a : results) {
-            if (word.getCode().equals(a.getCodeParent())) {
-                word.addCognate(a);
-            }
-        }
-        System.out.println(results.size());
+//        for (Word a : results) {
+//            if (word.getCode().equals(a.getCodeParent())) {
+//                word.addCognate(a);
+//            }
+//        }
+//
+//        System.out.println(results.size());
         return word;
     }
 

@@ -78,6 +78,7 @@ public class Adjective extends Word {
         public static final String MALE = "муж";
         public static final String FEMALE = "жен";
         public static final String NEUTER = "ср";
+        public static final String NULL = "null";
     }
 
     public static class WCase {

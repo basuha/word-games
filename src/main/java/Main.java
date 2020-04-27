@@ -38,13 +38,14 @@ public class Main {
 //        System.out.println(word2 instanceof Adjective);
 //        System.out.println(word2);
 
-        Word word3 = dictionary.getRandomWord(Type.ADJECTIVE);
-        System.out.println(word3);
+        Word word3 = dictionary.getRandomWord(Type.PARTICIPLE);
+
         System.out.println(word3.getInfo());
 //        word3.setGender(Adjective.Gender.FEMALE);
 //        word3.reload();
-        for (Word a : word3.getCognates()) {
-            System.out.println(a);
-        }
+//        for (Word a : word3.getCognates()) {
+//            System.out.println(a);
+//        }
+
     }
 }

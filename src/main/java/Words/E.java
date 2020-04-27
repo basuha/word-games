@@ -38,6 +38,7 @@ public class E {
         public static final String VOCATIVE = "зват";
         public static final String PARTITIVE = "парт";
         public static final String LOCATIVE = "мест";
+        public static final String COUNTING = "счет";
     }
     private static class Comp {
         public static final String COMPARATIVE = "сравн";

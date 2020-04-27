@@ -41,6 +41,7 @@
         <mapping class="Words.Participle"/>
         <mapping class="Words.Particle"/>
         <mapping class="Words.Interjection"/>
+        <mapping class="Words.Noun"/>
 
 <!--    <mapping resource="word.hbm.xml"/>-->
     <!--<mapping class="com.itvdn.hibernate_first.Flower" />-->
