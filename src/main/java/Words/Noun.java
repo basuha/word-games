@@ -56,11 +56,6 @@ public class Noun extends Word{
         public static final String COUNTING = "счет";
     }
 
-    public static class Comp {
-        public static final String COMPARATIVE = "сравн";
-        public static final String SUPER = "прев";
-    }
-
     public Boolean getPlural() {
         return plural;
     }
