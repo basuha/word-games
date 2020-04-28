@@ -41,8 +41,22 @@ public class Adjective extends Word {
         return cognates;
     }
 
-    public static class SubType {
-        public static final String IMMUTABLE = "неизм";
+    public enum SubType {
+
+        IMMUTABLE ("неизм"),
+        MUTABLE ("null");
+
+        private final String value;
+
+        SubType (String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+
     }
 
     public enum Gender {
@@ -50,7 +64,7 @@ public class Adjective extends Word {
         MALE ("муж"),
         FEMALE ("жен"),
         NEUTER ("ср"),
-        NULL ("null");
+        PLURAL_FORM ("null");
 
         private final String value;
 
@@ -130,8 +144,8 @@ public class Adjective extends Word {
         return subType;
     }
 
-    public void setSubType(String subType) {
-        this.subType = subType;
+    public void setSubType(SubType subType) {
+        this.subType = subType.toString();
     }
 
     public String getwCase() {
