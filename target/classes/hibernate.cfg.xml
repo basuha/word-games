@@ -43,6 +43,13 @@
         <mapping class="words.Interjection"/>
         <mapping class="words.Noun"/>
         <mapping class="words.Verb"/>
+        <mapping class="words.ExtraParticiple"/>
+        <mapping class="words.Conjunction"/>
+        <mapping class="words.Predicate"/>
+        <mapping class="words.Pretext"/>
+        <mapping class="words.Parenthesis"/>
+        <mapping class="words.Pronoun"/>
+        <mapping class="words.Numeral"/>
 
 <!--    <mapping resource="word.hbm.xml"/>-->
     <!--<mapping class="com.itvdn.hibernate_first.Flower" />-->
