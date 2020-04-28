@@ -2,9 +2,7 @@ package words;
 
 import utilities.Type;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -83,5 +81,16 @@ public class Noun extends Word{
 
     public void setSoul(Boolean soul) {
         this.soul = soul;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo() +
+                " Noun{" +
+                "plural=" + plural +
+                ", gender=" + gender +
+                ", wCase='" + wCase + '\'' +
+                ", soul=" + soul +
+                '}';
     }
 }

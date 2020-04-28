@@ -38,15 +38,6 @@ public abstract class Word {
     public abstract void addCognate(Word cognate);
     public abstract List<Word> getCognates();
 
-//        Session session = getSessionFactory().openSession();
-//        String hql = "FROM Word WHERE code = :c and codeParent = :cp";
-//        Query query = session.createQuery(hql);
-//        query.setParameter("c", this.code);
-//        query.setParameter("cp", this.codeParent);
-//        Word word = (Word) query.getSingleResult();
-//        this.word = word.getWord();
-//        session.close();
-
     public Integer getIID() {
         return IID;
     }
@@ -87,13 +78,11 @@ public abstract class Word {
         this.codeParent = codeParent;
     }
 
-
     public String getInfo() {
         return "Word{" +
                 "IID=" + IID +
                 ", word='" + word + '\'' +
                 ", code=" + code +
-                ", type='" + type + '\'' +
                 ", codeParent=" + codeParent +
                 '}';
     }

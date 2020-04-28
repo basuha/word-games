@@ -45,25 +45,61 @@ public class Adjective extends Word {
         public static final String IMMUTABLE = "неизм";
     }
 
-    public static class Gender {
-        public static final String MALE = "муж";
-        public static final String FEMALE = "жен";
-        public static final String NEUTER = "ср";
-        public static final String NULL = "null";
+    public enum Gender {
+
+        MALE ("муж"),
+        FEMALE ("жен"),
+        NEUTER ("ср"),
+        NULL ("null");
+
+        private final String value;
+
+        Gender(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
-    public static class WCase {
-        public static final String NOMINATIVE = "им";
-        public static final String GENITIVE = "род";
-        public static final String DATIVE = "дат";
-        public static final String ACCUSATIVE = "вин";
-        public static final String INSTRUMENTAL = "тв";
-        public static final String PREPOSITIONAL = "пр";
+    public enum WCase {
+
+        NOMINATIVE ("им"),
+        GENITIVE ("род"),
+        DATIVE ("дат"),
+        ACCUSATIVE ("вин"),
+        INSTRUMENTAL ("тв"),
+        PREPOSITIONAL ("пр");
+
+        private final String value;
+
+        WCase (String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
-    public static class Comp {
-        public static final String COMPARATIVE = "сравн";
-        public static final String SUPER = "прев";
+    public enum Comp {
+
+        COMPARATIVE ("сравн"),
+        SUPER ("прев");
+
+        private final String value;
+
+        Comp (String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
     public Boolean getShortF() {
@@ -86,8 +122,8 @@ public class Adjective extends Word {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(Gender gender) {
+        this.gender = gender.toString();
     }
 
     public String getSubType() {
@@ -102,16 +138,16 @@ public class Adjective extends Word {
         return wCase;
     }
 
-    public void setwCase(String wCase) {
-        this.wCase = wCase;
+    public void setwCase(WCase wCase) {
+        this.wCase = wCase.toString();
     }
 
     public String getComp() {
         return comp;
     }
 
-    public void setComp(String comp) {
-        this.comp = comp;
+    public void setComp(Comp comp) {
+        this.comp = comp.toString();
     }
 
     @Override

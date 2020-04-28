@@ -38,6 +38,7 @@
     </property>
         <mapping class="words.Word"/>
         <mapping class="words.Adjective"/>
+        <mapping class="words.Adverb"/>
         <mapping class="words.Participle"/>
         <mapping class="words.Particle"/>
         <mapping class="words.Interjection"/>
