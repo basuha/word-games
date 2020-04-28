@@ -1,4 +1,6 @@
-package Words;
+package words;
+
+import utilities.Type;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -20,11 +22,6 @@ public class Noun extends Word{
 
     @Column (name = "soul")
     private Boolean soul;
-
-    @Override
-    public void reload() {
-
-    }
 
     @Override
     public void addCognate(Word cognate) {

@@ -1,4 +1,4 @@
-package Words;
+package utilities;
 
 public class Type {
     public static final String PARTICLE = "част";

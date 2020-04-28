@@ -1,10 +1,9 @@
-package Words;
+package words;
 
 import com.sun.istack.Nullable;
-import org.hibernate.Session;
+import utilities.Type;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,6 +16,7 @@ public class Adjective extends Word {
     @Column(name = "plural")
     private Boolean plural;
 
+    @Nullable
     @Column(name = "gender")
     private String gender;
 
@@ -30,35 +30,6 @@ public class Adjective extends Word {
     @Nullable
     @Column(name = "comp")
     private String comp;
-
-    public void reload() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("FROM Adjective AS a " +
-                "WHERE (:subType IS NULL OR a.subType = :subType) " +
-                "AND (:comp IS NULL OR a.comp = :comp) " +
-                "AND a.shortF = :shortF " +
-                "AND a.plural = :plural " +
-                "AND a.gender = :gender " +
-                "AND a.wCase = :wCase ");
-
-        query.setParameter("subType", this.subType);
-        query.setParameter("comp", this.comp);
-        query.setParameter("shortF", this.shortF);
-        query.setParameter("plural", this.plural);
-        query.setParameter("gender", this.gender);
-        query.setParameter("wCase", this.wCase);
-
-
-        List<Adjective> adj = query.getResultList();
-        Adjective adjective = adj.get(0);
-        System.out.println(adj.size());
-        session.close();
-
-        setWord(adjective.getWord());
-        setIID(adjective.getIID());
-        setCode(adjective.getCodeParent());
-        setCodeParent(adjective.getCodeParent());
-    }
 
     @Override
     public void addCognate(Word cognate) {

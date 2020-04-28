@@ -1,4 +1,6 @@
-package Words;
+package words;
+
+import utilities.Type;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -39,37 +41,36 @@ public class Verb extends Word{
     @Column (name = "nakl")
     private String voice;
 
-    private static class Gender {
+    public static class Gender {
         public static final String MALE = "муж";
         public static final String FEMALE = "жен";
         public static final String NEUTER = "ср";
     }
 
-    private static class Transit {
+    public static class Transit {
         public static final String TRANSITIVE = "перех";
         public static final String INTRANSITIVE = "непер";
         public static final String TRANS_INTRANS = "пер/не";
     }
 
-    private static class Face {
+    public static class Face {
         public static final String FIRST = "1-е";
         public static final String SECOND = "2-е";
         public static final String THIRD = "3-е";
         public static final String ANONYMOUS = "безл";
     }
 
-    private static class Kind {
+    public static class Kind {
         public static final String FIRST = "1вид";
         public static final String SECOND = "2вид";
     }
 
-    private static class Time {
+    public static class Time {
         public static final String PAST = "прош";
         public static final String PRESENT = "наст";
-        public static final String FUTURE = "буд";
-    }
+        public static final String FUTURE = "буд";    }
 
-    private static class Voice {
+    public static class Voice {
         public static final String ACTIVE = "пов";
         public static final String PASSIVE = "страд";
     }
@@ -154,10 +155,6 @@ public class Verb extends Word{
         this.voice = voice;
     }
 
-    @Override
-    public void reload() {
-
-    }
 
     @Override
     public void addCognate(Word cognate) {

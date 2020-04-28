@@ -1,8 +1,6 @@
-package Words;
+package words;
 
 import com.sun.istack.NotNull;
-import org.hibernate.Session;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -36,7 +34,7 @@ public abstract class Word {
 
     @Transient
     List<Word> cognates = new ArrayList<>();
-    public abstract void reload();
+
     public abstract void addCognate(Word cognate);
     public abstract List<Word> getCognates();
 

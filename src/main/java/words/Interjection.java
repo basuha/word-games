@@ -1,17 +1,14 @@
-package Words;
+package words;
+
+import utilities.Type;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue(Type.PARTICLE)
-public class Particle extends Word {
-
-    @Override
-    public void reload() {
-
-    }
+@DiscriminatorValue(Type.INTERJECTION)
+public class Interjection extends Word {
 
     @Override
     public void addCognate(Word cognate) {

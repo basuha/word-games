@@ -1,4 +1,4 @@
-package Words;
+package utilities;
 
 public class E {
     private static class SubType {

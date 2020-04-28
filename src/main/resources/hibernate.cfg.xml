@@ -36,13 +36,13 @@
     <property name="show_sql">
         true
     </property>
-        <mapping class="Words.Word"/>
-        <mapping class="Words.Adjective"/>
-        <mapping class="Words.Participle"/>
-        <mapping class="Words.Particle"/>
-        <mapping class="Words.Interjection"/>
-        <mapping class="Words.Noun"/>
-        <mapping class="Words.Verb"/>
+        <mapping class="words.Word"/>
+        <mapping class="words.Adjective"/>
+        <mapping class="words.Participle"/>
+        <mapping class="words.Particle"/>
+        <mapping class="words.Interjection"/>
+        <mapping class="words.Noun"/>
+        <mapping class="words.Verb"/>
 
 <!--    <mapping resource="word.hbm.xml"/>-->
     <!--<mapping class="com.itvdn.hibernate_first.Flower" />-->

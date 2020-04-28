@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<!--    <class name="Words.Word" table="words_test">-->
+<!--    <class name="words.Word" table="words_test">-->
 <!--        <id name="IID" type="int" column="IID">-->
 <!--            <generator class="native"/>-->
 <!--        </id>-->
@@ -14,7 +14,7 @@
 <!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
 <!--    </class>-->
 
-<!--    <class name="Words.Adjective" table="words_test">-->
+<!--    <class name="words.Adjective" table="words_test">-->
 <!--        <id name="IID" type="int" column="IID">-->
 <!--            <generator class="native"/>-->
 <!--        </id>-->
@@ -30,7 +30,7 @@
 <!--        <property name="shortF" type="java.lang.Boolean" column="short"/>-->
 <!--    </class>-->
 
-<!--    <class name="Words.Particle" table="words_test">-->
+<!--    <class name="words.Particle" table="words_test">-->
 <!--        <id name="IID" type="int" column="IID">-->
 <!--            <generator class="native"/>-->
 <!--        </id>-->
@@ -40,7 +40,7 @@
 <!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
 <!--    </class>-->
 
-<!--    <class name="Words.Interjection" table="words_test">-->
+<!--    <class name="words.Interjection" table="words_test">-->
 <!--        <id name="IID" type="int" column="IID">-->
 <!--            <generator class="native"/>-->
 <!--        </id>-->

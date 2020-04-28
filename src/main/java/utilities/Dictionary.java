@@ -1,10 +1,7 @@
-package Words;
+package utilities;
 
-import Words.Adjective;
-import Words.Type;
-import Words.Word;
+import words.Word;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;

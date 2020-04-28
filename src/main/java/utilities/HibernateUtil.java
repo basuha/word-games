@@ -1,4 +1,4 @@
-package Words;
+package utilities;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;

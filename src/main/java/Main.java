@@ -1,4 +1,6 @@
-import Words.*;
+import words.*;
+import utilities.Dictionary;
+import utilities.Type;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
@@ -39,6 +41,7 @@ public class Main {
 //        System.out.println(word2);
 
         Word word3 = dictionary.getRandomWord(Type.PARTICIPLE);
+        Verb verb = new Verb();
 
         System.out.println(word3.getInfo());
 //        word3.setGender(Adjective.Gender.FEMALE);
