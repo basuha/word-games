@@ -2,6 +2,8 @@ import words.*;
 import utilities.Dictionary;
 import utilities.Type;
 
+import java.util.ArrayList;
+
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
@@ -40,10 +42,28 @@ public class Main {
 //        System.out.println(word2 instanceof Adjective);
 //        System.out.println(word2);
 
-        Word word3 = dictionary.getRandomWord(Type.PARTICIPLE);
+        Word word3 = dictionary.getRandomWord(Type.NOUN);
+        ArrayList<Word> list = new ArrayList<>();
+        list.add(dictionary.getRandomWord(Type.NOUN));
+        list.add(dictionary.getRandomWord(Type.ADJECTIVE));
+        list.add(dictionary.getRandomWord(Type.ADVERB));
+        list.add(dictionary.getRandomWord(Type.CONJUNCTION));
+        list.add(dictionary.getRandomWord(Type.EXTRA_PARTICIPLE));
+        list.add(dictionary.getRandomWord(Type.INTERJECTION));
+        list.add(dictionary.getRandomWord(Type.NUMERAL));
+        list.add(dictionary.getRandomWord(Type.PARENTHESIS));
+        list.add(dictionary.getRandomWord(Type.PARTICIPLE));
+        list.add(dictionary.getRandomWord(Type.PARTICLE));
+        list.add(dictionary.getRandomWord(Type.PREDICATE));
+        list.add(dictionary.getRandomWord(Type.PRETEXT));
+        list.add(dictionary.getRandomWord(Type.VERB));
         Verb verb = new Verb();
 
-        System.out.println(word3.getInfo());
+        for (Word w : list) {
+            System.out.println(w);
+        }
+
+        System.out.println(word3);
 //        word3.setGender(Adjective.Gender.FEMALE);
 //        word3.reload();
 //        for (Word a : word3.getCognates()) {

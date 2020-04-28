@@ -11,5 +11,15 @@ D:/!java/FirstHibernate/src/main/resources/hibernate.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://192.168.43.77:3306/first_lesson?serverTimezone=UTC</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="3fbf1d79-fb3d-4329-b546-07172fe07cdd">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/Users/kermit/IdeaProjects/word-games/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://192.168.43.77:3306/first_lesson?serverTimezone=UTC</jdbc-url>
+    </data-source>
   </component>
 </project>
