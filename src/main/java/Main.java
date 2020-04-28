@@ -55,17 +55,15 @@ public class Main {
 //        list.add(dictionary.getRandomWord(Type.PREDICATE));
 //        list.add(dictionary.getRandomWord(Type.PRETEXT));
 //        list.add(dictionary.getRandomWord(Type.VERB));
-        Adjective adjective;
-        adjective = (Adjective) dictionary.getRandomWord(Type.ADJECTIVE);
+        Adverb adjective;
+        adjective = (Adverb) dictionary.getRandomWord(Type.ADVERB);
 
         System.out.println(adjective.getInfo());
-        adjective.setGender(Adjective.Gender.MALE);
-        adjective.setGender(Adjective.Gender.FEMALE);
-        adjective.setGender(Adjective.Gender.MALE);
-        System.out.println(adjective.getGender());
         for (Word w : list) {
             System.out.println(w.getInfo());
         }
+        Adverb adverb = new Adverb();
+
 //        word3.setGender(Adjective.Gender.FEMALE);
 //        word3.reload();
 //        for (Word a : word3.getCognates()) {

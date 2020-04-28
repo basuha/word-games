@@ -1,11 +1,13 @@
 package words;
 
 import com.sun.istack.Nullable;
+import org.antlr.v4.runtime.misc.NotNull;
 import utilities.Type;
 
 import javax.persistence.*;
 import java.util.List;
 
+//прилагательное
 @Entity
 @DiscriminatorValue(Type.ADJECTIVE)
 public class Adjective extends Word {
@@ -128,16 +130,18 @@ public class Adjective extends Word {
         return plural;
     }
 
-    public void setPlural(Boolean plural) {
-        this.plural = plural;
-    }
-
     public String getGender() {
         return gender;
     }
 
+    /**
+     * Род прилагательного (мужской, женский, средний)
+     * либо множественное число (без рода)
+     * @param gender род прилагательного
+     */
     public void setGender(Gender gender) {
         this.gender = gender.toString();
+        this.plural = gender == Gender.PLURAL_FORM;
     }
 
     public String getSubType() {
