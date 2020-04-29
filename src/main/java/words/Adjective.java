@@ -12,6 +12,8 @@ import java.util.List;
 @DiscriminatorValue(Type.ADJECTIVE)
 public class Adjective extends Word {
 
+//TODO: статический блок с зависимостями
+
     @Column(name = "short")
     private Boolean shortF;
 
@@ -43,10 +45,19 @@ public class Adjective extends Word {
         return cognates;
     }
 
+
+    /**
+     * Подтип прилагательного:
+     * <li>{@link #IMMUTABLE} - неизменяемое</li>
+     * <li>{@link #MUTABLE} - изменяемое</li>
+     */
     public enum SubType {
 
+        /** неизменяемое */
         IMMUTABLE ("неизм"),
-        MUTABLE ("null");
+
+        /** изменяемое */
+        MUTABLE (null);
 
         private final String value;
 
@@ -61,12 +72,26 @@ public class Adjective extends Word {
 
     }
 
+    /**
+     * Род прилагательного
+     * <li>{@link #MALE} - мужской</li>
+     * <li>{@link #FEMALE} - женский</li>
+     * <li>{@link #NEUTER} - средний</li>
+     * <li>{@link #PLURAL_FORM} - множественная форма (без рода)</li>
+     */
     public enum Gender {
 
+        /** мужской */
         MALE ("муж"),
+
+        /** женский */
         FEMALE ("жен"),
+
+        /** средний */
         NEUTER ("ср"),
-        PLURAL_FORM ("null");
+
+        /** множественная форма (без рода) */
+        PLURAL_FORM (null);
 
         private final String value;
 
@@ -80,13 +105,33 @@ public class Adjective extends Word {
         }
     }
 
+    /**
+     * Падеж прилагательного:
+     * <li>{@link #NOMINATIVE} - именитильный (кто?, что?)</li>
+     * <li>{@link #GENITIVE} - родительный (кого?, чего?)</li>
+     * <li>{@link #DATIVE} - дательный (кому?, чему?)</li>
+     * <li>{@link #ACCUSATIVE} - винительный (кого?, что?)</li>
+     * <li>{@link #INSTRUMENTAL} - творительный (кем?, чем?)</li>
+     * <li>{@link #PREPOSITIONAL} - предложный (о ком?, о чем?)</li>
+     */
     public enum WCase {
 
+        /** именитильный (кто?, что?) */
         NOMINATIVE ("им"),
+
+        /** родительный (кого?, чего?) */
         GENITIVE ("род"),
+
+        /** дательный (кому?, чему?) */
         DATIVE ("дат"),
+
+        /** винительный (кого?, что?) */
         ACCUSATIVE ("вин"),
+
+        /** творительный (кем?, чем?) */
         INSTRUMENTAL ("тв"),
+
+        /** предложный (о ком?, о чем?) */
         PREPOSITIONAL ("пр");
 
         private final String value;
@@ -101,9 +146,16 @@ public class Adjective extends Word {
         }
     }
 
+    /** Сравнительные формы прилагательного:
+     * <li>{@link #COMPARATIVE} - сравнительная форма</li>
+     * <li>{@link #SUPER} - превосходная форма</li>
+     */
     public enum Comp {
 
+        /** сравнительная форма */
         COMPARATIVE ("сравн"),
+
+        /** превосходная форма*/
         SUPER ("прев");
 
         private final String value;
@@ -134,14 +186,14 @@ public class Adjective extends Word {
         return gender;
     }
 
-    /**
-     * Род прилагательного (мужской, женский, средний)
-     * либо множественное число (без рода)
-     * @param gender род прилагательного
-     */
     public void setGender(Gender gender) {
-        this.gender = gender.toString();
-        this.plural = gender == Gender.PLURAL_FORM;
+        if (gender == Gender.PLURAL_FORM) {
+            this.gender = null;
+            this.plural = true;
+        } else {
+            this.gender = gender.toString();
+            this.plural = false;
+        }
     }
 
     public String getSubType() {
@@ -149,7 +201,15 @@ public class Adjective extends Word {
     }
 
     public void setSubType(SubType subType) {
-        this.subType = subType.toString();
+        if (subType == SubType.IMMUTABLE) {
+            this.gender = null;
+            this.plural = null;
+            this.wCase = null;
+            this.comp = null;
+            this.shortF = false;
+        } else {
+            this.subType = subType.toString();
+        }
     }
 
     public String getwCase() {

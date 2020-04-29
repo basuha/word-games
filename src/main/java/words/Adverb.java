@@ -28,7 +28,7 @@ public class Adverb extends Word {
     private String comp;
 
     /**
-     * Классификация по значению:
+     * Классификация наречия по значению:
      * <li>{@link #EXTENSIVE} - обстоятельственные</li>
      * <li>{@link #DEFINITE} - определительные</li>
      * <li>{@link #QUESTION} - вопросительные</li>
@@ -57,7 +57,7 @@ public class Adverb extends Word {
     }
 
     /**
-     * Подтипы:
+     * Подтипы наречия:
      * <li>{@link #QUALITATIVE} - качественные</li>
      * <li>{@link #METHOD} - способа и образа действия</li>
      * <li>{@link #EXTENT} - степени действия</li>
@@ -96,7 +96,7 @@ public class Adverb extends Word {
         /** причины действия */
         REASON("причин"),
 
-        /** сравнительная степен */
+        /** сравнительная степень */
         COMPARATIVE("сравн"),
 
         /** превосходная степень */
@@ -128,7 +128,14 @@ public class Adverb extends Word {
     }
 
     public void setSubType(SubType subType) {
-        this.subType = subType.toString();
+        if (subType == SubType.COMPARATIVE
+            || subType == SubType.SUPER) {
+            this.comp = subType.toString();
+            this.subType = null;
+        } else {
+            this.subType = subType.toString();
+            this.comp = null;
+        }
     }
 
     public String getComp() {

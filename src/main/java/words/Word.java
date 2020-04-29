@@ -8,7 +8,20 @@ import java.util.List;
 
 /**
  * Родительский класс всех частей речи
- * @see utilities.HibernateUtil
+ * @see Adjective
+ * @see Verb
+ * @see Noun
+ * @see Adverb
+ * @see Participle
+ * @see Particle
+ * @see Parenthesis
+ * @see Numeral
+ * @see Interjection
+ * @see ExtraParticiple
+ * @see Pronoun
+ * @see Pretext
+ * @see Predicate
+ * @see Conjunction
  */
 @Entity
 @Table(name = "words_test")

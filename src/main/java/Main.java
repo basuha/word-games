@@ -35,14 +35,14 @@ public class Main {
 //        Word word1 = new Particle("хуй",123);
 //
 //
-        Dictionary dictionary = new Dictionary();
+//        Dictionary dictionary = new Dictionary();
 //        dictionary.addWord(word1);
 //        Word word2 = dictionary.getWordById(29662);
 //
 //        System.out.println(word2 instanceof Adjective);
 //        System.out.println(word2);
 
-        ArrayList<Word> list = new ArrayList<>();
+//        ArrayList<Word> list = new ArrayList<>();
 //        list.add(dictionary.getRandomWord(Type.ADJECTIVE));
 //        list.add(dictionary.getRandomWord(Type.ADVERB));
 //        list.add(dictionary.getRandomWord(Type.CONJUNCTION));
@@ -55,15 +55,17 @@ public class Main {
 //        list.add(dictionary.getRandomWord(Type.PREDICATE));
 //        list.add(dictionary.getRandomWord(Type.PRETEXT));
 //        list.add(dictionary.getRandomWord(Type.VERB));
-        Adverb adjective;
-        adjective = (Adverb) dictionary.getRandomWord(Type.ADVERB);
+//        Adverb adjective;
+//        adjective = (Adverb) dictionary.getRandomWord(Type.ADVERB);
+//
+//        System.out.println(adjective.getInfo());
+//        for (Word w : list) {
+//            System.out.println(w.getInfo());
+//        }
 
-        System.out.println(adjective.getInfo());
-        for (Word w : list) {
-            System.out.println(w.getInfo());
-        }
         Adverb adverb = new Adverb();
-        adverb.setSubType(Adverb.SubType.QUALITATIVE);
+        adverb.setSubType(Adverb.SubType.COMPARATIVE);
+        System.out.println(adverb.getSubType());
 
 //        word3.setGender(Adjective.Gender.FEMALE);
 //        word3.reload();
