@@ -1,23 +1,30 @@
 package words;
 
+import com.sun.istack.Nullable;
 import utilities.Type;
 
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Существительное
+ */
 @Entity
 @DiscriminatorValue(Type.NOUN)
 public class Noun extends Word{
 
-    @Column (name = "plural")
+    @Column (name = "plural", nullable = false)
     private Boolean plural;
 
+    @Nullable
     @Column (name = "gender")
     private String gender;
 
+    @Nullable
     @Column (name = "wcase")
     private String wCase;
 
+    @Nullable
     @Column (name = "soul")
     private Boolean soul;
 
@@ -31,24 +38,99 @@ public class Noun extends Word{
         return null;
     }
 
-    public static class Gender {
-        public static final String MALE = "муж";
-        public static final String FEMALE = "жен";
-        public static final String NEUTER = "ср";
-        public static final String COMMON = "общ";
+    /**
+     * Род существительного
+     * <li>{@link #MALE} - мужской</li>
+     * <li>{@link #FEMALE} - женский</li>
+     * <li>{@link #NEUTER} - средний</li>
+     * <li>{@link #COMMON} - общий</li>
+     * <li>{@link #PLURAL_FORM} - множественная форма (без рода)</li>
+     */
+    public enum Gender {
+
+        /** мужской */
+        MALE ("муж"),
+
+        /** женский */
+        FEMALE ("жен"),
+
+        /** средний */
+        NEUTER ("ср"),
+
+        /** общий */
+        COMMON ("общ"),
+
+        /** множественная форма (без рода) */
+        PLURAL_FORM (null);
+
+        private final String value;
+
+        Gender(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
-    private static class Wcase {
-        public static final String NOMINATIVE = "им";
-        public static final String GENITIVE = "род";
-        public static final String DATIVE = "дат";
-        public static final String ACCUSATIVE = "вин";
-        public static final String INSTRUMENTAL = "тв";
-        public static final String PREPOSITIONAL = "пр";
-        public static final String VOCATIVE = "зват";
-        public static final String PARTITIVE = "парт";
-        public static final String LOCATIVE = "мест";
-        public static final String COUNTING = "счет";
+    /**
+     * Падеж существительного:
+     * <li>{@link #NOMINATIVE} - именитильный (кто?, что?)</li>
+     * <li>{@link #GENITIVE} - родительный (кого?, чего?)</li>
+     * <li>{@link #DATIVE} - дательный (кому?, чему?)</li>
+     * <li>{@link #ACCUSATIVE} - винительный (кого?, что?)</li>
+     * <li>{@link #INSTRUMENTAL} - творительный (кем?, чем?)</li>
+     * <li>{@link #PREPOSITIONAL} - предложный (о ком?, о чем?)</li>
+     * <li>{@link #VOCATIVE} - звательный </li>
+     * <li>{@link #PARTITIVE} - частичный </li>
+     * <li>{@link #LOCATIVE} - локатив </li>
+     * <li>{@link #COUNTING} - счетный </li>
+     */
+
+    public enum WCase {
+
+        /** именитильный (кто?, что?) */
+        NOMINATIVE ("им"),
+
+        /** родительный (кого?, чего?) */
+        GENITIVE ("род"),
+
+        /** дательный (кому?, чему?) */
+        DATIVE ("дат"),
+
+        /** винительный (кого?, что?) */
+        ACCUSATIVE ("вин"),
+
+        /** творительный (кем?, чем?) */
+        INSTRUMENTAL ("тв"),
+
+        /** предложный (о ком?, о чем?) */
+        PREPOSITIONAL ("пр"),
+
+        /** звательный */
+        VOCATIVE ("зват"),
+
+        /** частичный */
+        PARTITIVE ("парт"),
+
+        /** локатив */
+        LOCATIVE ("мест"),
+
+        /** счетный */
+        COUNTING ("счет");
+
+        private final String value;
+
+        WCase (String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
     }
 
     public Boolean getPlural() {
@@ -63,16 +145,22 @@ public class Noun extends Word{
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(Gender gender) {
+        if (gender == Gender.PLURAL_FORM) {
+            this.gender = null;
+            this.plural = true;
+        } else {
+            this.gender = gender.toString();
+            this.plural = false;
+        }
     }
 
     public String getwCase() {
         return wCase;
     }
 
-    public void setwCase(String wCase) {
-        this.wCase = wCase;
+    public void setwCase(WCase wCase) {
+        this.wCase = wCase.toString();
     }
 
     public Boolean getSoul() {
@@ -86,7 +174,7 @@ public class Noun extends Word{
     @Override
     public String getInfo() {
         return super.getInfo() +
-                " Noun{" +
+                " Noun (Существительное) {" +
                 "plural=" + plural +
                 ", gender=" + gender +
                 ", wCase='" + wCase + '\'' +

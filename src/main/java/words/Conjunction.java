@@ -13,6 +13,11 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(Type.CONJUNCTION)
 public class Conjunction extends Word {
+
+    {
+        super.codeParent = 0;
+    }
+
     @Override
     public void addCognate(Word cognate) {
 
@@ -21,5 +26,11 @@ public class Conjunction extends Word {
     @Override
     public List<Word> getCognates() {
         return null;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo()
+                + " Conjunction (Союз)";
     }
 }

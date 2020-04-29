@@ -143,17 +143,6 @@ public class Adverb extends Word {
     }
 
     @Override
-    public String getInfo() {
-        return super.getInfo() +
-                " Adverb{" +
-                "subType='" + meaning + '\'' +
-                ", advSubType='" + subType + '\'' +
-                ", comp='" + comp + '\'' +
-                '}';
-    }
-
-
-    @Override
     public void addCognate(Word cognate) {
     }
 
@@ -161,4 +150,15 @@ public class Adverb extends Word {
     public List<Word> getCognates() {
         return null;
     }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo() +
+                " Adverb (Наречие){" +
+                "subType='" + meaning + '\'' +
+                ", advSubType='" + subType + '\'' +
+                ", comp='" + comp + '\'' +
+                '}';
+    }
 }
+

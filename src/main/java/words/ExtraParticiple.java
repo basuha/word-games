@@ -111,4 +111,15 @@ public class ExtraParticiple extends Word{
     public List<Word> getCognates() {
         return null;
     }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo()
+                + " ExtraParticiple (Деепричастие) {" +
+                "transit='" + transit + '\'' +
+                ", perfect=" + perfect +
+                ", time='" + time + '\'' +
+                ", reflexive=" + reflexive +
+                '}';
+    }
 }

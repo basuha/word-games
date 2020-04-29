@@ -7,14 +7,17 @@ import utilities.Type;
 import javax.persistence.*;
 import java.util.List;
 
-//прилагательное
+/**
+ * Прилагательное
+ */
 @Entity
 @DiscriminatorValue(Type.ADJECTIVE)
 public class Adjective extends Word {
 
-    @Column(name = "short")
+    @Column(name = "short", nullable = false)
     private Boolean shortF;
 
+    @Nullable
     @Column(name = "plural")
     private Boolean plural;
 
@@ -26,6 +29,7 @@ public class Adjective extends Word {
     @Column(name = "type_sub")
     private String subType;
 
+    @Nullable
     @Column(name = "wcase")
     private String wCase;
 
