@@ -1,8 +1,6 @@
 package words;
 
 import com.sun.istack.Nullable;
-import org.antlr.v4.runtime.misc.NotNull;
-import utilities.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.List;
  * Прилагательное
  */
 @Entity
-@DiscriminatorValue(Type.ADJECTIVE)
+@DiscriminatorValue(utilities.Type.ADJECTIVE)
 public class Adjective extends Word {
 
     @Column(name = "short", nullable = false)
@@ -27,7 +25,7 @@ public class Adjective extends Word {
 
     @Nullable
     @Column(name = "type_sub")
-    private String subType;
+    private String type;
 
     @Nullable
     @Column(name = "wcase")
@@ -53,7 +51,7 @@ public class Adjective extends Word {
      * <li>{@link #IMMUTABLE} - неизменяемое</li>
      * <li>{@link #MUTABLE} - изменяемое</li>
      */
-    public enum SubType {
+    public enum Type {
 
         /** неизменяемое */
         IMMUTABLE ("неизм"),
@@ -63,7 +61,7 @@ public class Adjective extends Word {
 
         private final String value;
 
-        SubType (String value) {
+        Type(String value) {
             this.value = value;
         }
 
@@ -184,6 +182,10 @@ public class Adjective extends Word {
         return plural;
     }
 
+    public void setPlural(Boolean plural) {
+        this.plural = plural;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -193,24 +195,24 @@ public class Adjective extends Word {
             this.gender = null;
             this.plural = true;
         } else {
-            this.gender = gender.toString();
+            this.gender = gender.value;
             this.plural = false;
         }
     }
 
-    public String getSubType() {
-        return subType;
+    public String getType() {
+        return type;
     }
 
-    public void setSubType(SubType subType) {
-        if (subType == SubType.IMMUTABLE) {
+    public void setType(Type type) {
+        if (type == Type.IMMUTABLE) {
             this.gender = null;
             this.plural = null;
             this.wCase = null;
             this.comp = null;
             this.shortF = false;
         } else {
-            this.subType = subType.toString();
+            this.type = type.value;
         }
     }
 
@@ -237,7 +239,7 @@ public class Adjective extends Word {
                 "shortF=" + shortF +
                 ", plural=" + plural +
                 ", gender='" + gender + '\'' +
-                ", subType='" + subType + '\'' +
+                ", subType='" + type + '\'' +
                 ", wCase='" + wCase + '\'' +
                 ", comp='" + comp + '\'' +
                 '}';

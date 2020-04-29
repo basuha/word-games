@@ -22,7 +22,7 @@
 <!--        <property name="code" type="java.lang.Integer" column="code"/>-->
 <!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
 <!--        <property name="type" type="java.lang.String" column="type"/>-->
-<!--        <property name="subType" type="java.lang.String" column="type_sub"/>-->
+<!--        <property name="type" type="java.lang.String" column="type_sub"/>-->
 <!--        <property name="plural" type ="java.lang.Boolean" column="plural"/>-->
 <!--        <property name="gender" type ="java.lang.String" column="gender"/>-->
 <!--        <property name="wCase" type="java.lang.String" column="wcase"/>-->

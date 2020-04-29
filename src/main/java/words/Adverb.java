@@ -1,7 +1,6 @@
 package words;
 
 import com.sun.istack.Nullable;
-import utilities.Type;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -12,12 +11,12 @@ import java.util.List;
  * Наречие
  */
 @Entity
-@DiscriminatorValue(Type.ADVERB)
+@DiscriminatorValue(utilities.Type.ADVERB)
 public class Adverb extends Word {
 
     @Nullable
     @Column(name = "type_sub")
-    private String meaning;
+    private String type;
 
     @Nullable
     @Column(name = "type_ssub")
@@ -33,7 +32,7 @@ public class Adverb extends Word {
      * <li>{@link #DEFINITE} - определительные</li>
      * <li>{@link #QUESTION} - вопросительные</li>
      */
-    public enum Meaning {
+    public enum Type {
 
         /** обстоятельственные */
         EXTENSIVE("обст"),
@@ -46,7 +45,7 @@ public class Adverb extends Word {
 
         private final String value;
 
-        Meaning(String value) {
+        Type(String value) {
             this.value = value;
         }
 
@@ -115,12 +114,12 @@ public class Adverb extends Word {
     }
 
 
-    public String getMeaning() {
-        return meaning;
+    public String getType() {
+        return type;
     }
 
-    public void setMeaning(Meaning meaning) {
-        this.meaning = subType.toString();
+    public void setType(Type type) {
+        this.type = subType.toString();
     }
 
     public String getSubType() {
@@ -155,7 +154,7 @@ public class Adverb extends Word {
     public String getInfo() {
         return super.getInfo() +
                 " Adverb (Наречие){" +
-                "subType='" + meaning + '\'' +
+                "subType='" + type + '\'' +
                 ", advSubType='" + subType + '\'' +
                 ", comp='" + comp + '\'' +
                 '}';
