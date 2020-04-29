@@ -37,20 +37,23 @@
         true
     </property>
         <mapping class="words.Word"/>
-        <mapping class="words.Adjective"/>
-        <mapping class="words.Adverb"/>
-        <mapping class="words.Participle"/>
-        <mapping class="words.Particle"/>
-        <mapping class="words.Interjection"/>
-        <mapping class="words.Noun"/>
-        <mapping class="words.Verb"/>
-        <mapping class="words.ExtraParticiple"/>
-        <mapping class="words.Conjunction"/>
-        <mapping class="words.Predicate"/>
-        <mapping class="words.Pretext"/>
-        <mapping class="words.Parenthesis"/>
-        <mapping class="words.Pronoun"/>
-        <mapping class="words.Numeral"/>
+        <mapping class="words.primary.Adjective"/>
+        <mapping class="words.primary.Adverb"/>
+        <mapping class="words.primary.Participle"/>
+        <mapping class="words.secondary.Particle"/>
+        <mapping class="words.secondary.Interjection"/>
+        <mapping class="words.primary.Noun"/>
+        <mapping class="words.primary.Verb"/>
+        <mapping class="words.primary.ExtraParticiple"/>
+        <mapping class="words.secondary.Conjunction"/>
+        <mapping class="words.secondary.Predicate"/>
+        <mapping class="words.secondary.Pretext"/>
+        <mapping class="words.secondary.Parenthesis"/>
+        <mapping class="words.primary.Numeral"/>
+        <mapping class="words.secondary.Pronoun"/>
+        <mapping class="words.secondary.Pronoun$Noun"/>
+        <mapping class="words.secondary.Pronoun$Adjective"/>
+        <mapping class="words.secondary.Pronoun$Adverb"/>
 
 <!--    <mapping resource="word.hbm.xml"/>-->
     <!--<mapping class="com.itvdn.hibernate_first.Flower" />-->

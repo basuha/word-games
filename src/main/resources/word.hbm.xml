@@ -14,7 +14,7 @@
 <!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
 <!--    </class>-->
 
-<!--    <class name="words.Adjective" table="words_test">-->
+<!--    <class name="words.primary.Adjective" table="words_test">-->
 <!--        <id name="IID" type="int" column="IID">-->
 <!--            <generator class="native"/>-->
 <!--        </id>-->
@@ -30,7 +30,7 @@
 <!--        <property name="shortF" type="java.lang.Boolean" column="short"/>-->
 <!--    </class>-->
 
-<!--    <class name="words.Particle" table="words_test">-->
+<!--    <class name="words.secondary.Particle" table="words_test">-->
 <!--        <id name="IID" type="int" column="IID">-->
 <!--            <generator class="native"/>-->
 <!--        </id>-->
@@ -40,7 +40,7 @@
 <!--        <property name="codeParent" type="java.lang.Integer" column="code_parent"/>-->
 <!--    </class>-->
 
-<!--    <class name="words.Interjection" table="words_test">-->
+<!--    <class name="words.secondary.Interjection" table="words_test">-->
 <!--        <id name="IID" type="int" column="IID">-->
 <!--            <generator class="native"/>-->
 <!--        </id>-->

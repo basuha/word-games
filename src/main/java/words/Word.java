@@ -1,6 +1,7 @@
 package words;
 
-import com.sun.istack.NotNull;
+import words.primary.*;
+import words.secondary.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public abstract class Word {
     protected Integer codeParent;
 
     @Transient
-    List<Word> cognates = new ArrayList<>();
+    protected List<Word> cognates = new ArrayList<>();
 
     public abstract void addCognate(Word cognate);
     public abstract List<Word> getCognates();

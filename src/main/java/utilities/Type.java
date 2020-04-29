@@ -13,6 +13,10 @@ public class Type {
     public static final String PREDICATE = "предик";
     public static final String PRETEXT = "предл";
     public static final String PARENTHESIS = "ввод";
-    public static final String PRONOUN = "мест";
     public static final String NUMERAL = "числ";
+    public static final String PRONOUN = "мест";
+    public static final String PRONOUN_NOUN = "сущ,мест";
+    public static final String PRONOUN_ADJECTIVE = "прл,мест";
+    public static final String PRONOUN_ADVERB = "нар,мест";
+
 }

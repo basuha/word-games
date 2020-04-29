@@ -1,18 +1,19 @@
-package words;
+package words.secondary;
 
 import utilities.Type;
+import words.Word;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
 /**
- * Союз
- * Примеры: а, и, но, или, также
+ * Междометия
+ * Примеры: ах, о, прочь, цыц, ура, ой
  */
 @Entity
-@DiscriminatorValue(Type.CONJUNCTION)
-public class Conjunction extends Word {
+@DiscriminatorValue(Type.INTERJECTION)
+public class Interjection extends Word {
 
     {
         super.codeParent = 0;
@@ -31,6 +32,6 @@ public class Conjunction extends Word {
     @Override
     public String getInfo() {
         return super.getInfo()
-                + " Conjunction (Союз)";
+                + " Interjection (Междометие)";
     }
 }

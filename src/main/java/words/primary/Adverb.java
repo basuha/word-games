@@ -1,6 +1,7 @@
-package words;
+package words.primary;
 
 import com.sun.istack.Nullable;
+import words.Word;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;

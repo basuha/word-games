@@ -1,8 +1,7 @@
 import utilities.Type;
-import words.*;
 import utilities.Dictionary;
-
-import java.util.ArrayList;
+import words.primary.Participle;
+import words.secondary.Pronoun;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
@@ -62,10 +61,12 @@ public class Main {
 //        for (Word w : list) {
 //            System.out.println(w.getInfo());
 //        }
+        Dictionary dictionary = new Dictionary();
+        Pronoun.Adjective adjective = (Pronoun.Adjective) dictionary.getRandomWord(Type.PRONOUN_ADJECTIVE);
+        System.out.println(adjective.getInfo());
+        Participle participle = new Participle();
 
-        Adverb adverb = new Adverb();
-        adverb.setSubType(Adverb.SubType.COMPARATIVE);
-        System.out.println(adverb.getSubType());
+
 
 //        word3.setGender(Adjective.Gender.FEMALE);
 //        word3.reload();

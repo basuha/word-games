@@ -1,8 +1,9 @@
-package words;
+package words.primary;
 
-import com.sun.istack.NotNull;
-import com.sun.istack.Nullable;
 import utilities.Type;
+import words.Word;
+import words.attributes.Time;
+import words.attributes.Transit;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 @Entity
 @DiscriminatorValue(Type.EXTRA_PARTICIPLE)
-public class ExtraParticiple extends Word{
+public class ExtraParticiple extends Word {
 
     @Column(name = "transit", nullable = false)
     private String transit;
@@ -28,47 +29,6 @@ public class ExtraParticiple extends Word{
 
     @Column(name = "vozv", nullable = false)
     private Boolean reflexive;
-
-    /**
-     * Признак переходности деепричастия
-     */
-    public enum Transit {
-
-        TRANSITIVE ("перех"),
-        INTRANSITIVE ("непер"),
-        TRANS_INTRANS ("пер/не");
-
-        private final String value;
-
-        Transit(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
-
-    /**
-     * Признак времени деепричастия
-     */
-    public enum Time {
-
-        PAST("прош"),
-        PRESENT("наст");
-
-        private final String value;
-
-        Time(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
 
     public String getTransit() {
         return transit;
@@ -90,7 +50,7 @@ public class ExtraParticiple extends Word{
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Time.Participle time) {
         this.time = time.toString();
     }
 

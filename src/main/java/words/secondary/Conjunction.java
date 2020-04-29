@@ -1,18 +1,19 @@
-package words;
+package words.secondary;
 
 import utilities.Type;
+import words.Word;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
 /**
- * Вводное слово
- * Примеры: безусловно, видно, наверное, конечно, к удивлению
+ * Союз
+ * Примеры: а, и, но, или, также
  */
 @Entity
-@DiscriminatorValue(Type.PARENTHESIS)
-public class Parenthesis extends Word{
+@DiscriminatorValue(Type.CONJUNCTION)
+public class Conjunction extends Word {
 
     {
         super.codeParent = 0;
@@ -30,7 +31,7 @@ public class Parenthesis extends Word{
 
     @Override
     public String getInfo() {
-        return super.getInfo() +
-                " Parenthesis (Вводное слово)";
+        return super.getInfo()
+                + " Conjunction (Союз)";
     }
 }

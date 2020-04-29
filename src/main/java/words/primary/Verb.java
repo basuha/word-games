@@ -1,6 +1,9 @@
-package words;
+package words.primary;
 
+import com.sun.istack.Nullable;
 import utilities.Type;
+import words.Word;
+import words.attributes.*;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -9,71 +12,44 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue(Type.VERB)
-public class Verb extends Word{
+public class Verb extends Word {
 
+    @Column (name = "inf", nullable = false)
+    private Boolean inf;
+
+    @Column (name = "vozv", nullable = false)
+    private Boolean refl;
+
+    @Column (name = "transit", nullable = false)
+    private String transit;
+
+    @Nullable
     @Column (name = "plural")
     private Boolean plural;
 
+    @Nullable
     @Column (name = "gender")
     private String gender;
 
-    @Column (name = "transit")
-    private String transit;
-
+    @Nullable
     @Column (name = "perfect")
     private Boolean perfect;
 
+    @Nullable
     @Column (name = "face")
     private String face;
 
+    @Nullable
     @Column (name = "kind")
     private String kind;
 
+    @Nullable
     @Column (name = "time")
     private String time;
 
-    @Column (name = "inf")
-    private Boolean inf;
-
-    @Column (name = "vozv")
-    private Boolean refl;
-
+    @Nullable
     @Column (name = "nakl")
     private String voice;
-
-    public static class Gender {
-        public static final String MALE = "муж";
-        public static final String FEMALE = "жен";
-        public static final String NEUTER = "ср";
-    }
-
-    public static class Transit {
-        public static final String TRANSITIVE = "перех";
-        public static final String INTRANSITIVE = "непер";
-        public static final String TRANS_INTRANS = "пер/не";
-    }
-
-    public static class Face {
-        public static final String FIRST = "1-е";
-        public static final String SECOND = "2-е";
-        public static final String THIRD = "3-е";
-        public static final String ANONYMOUS = "безл";
-    }
-
-    public static class Kind {
-        public static final String FIRST = "1вид";
-        public static final String SECOND = "2вид";
-    }
-
-    public static class Time {
-        public static final String PAST = "прош";
-        public static final String PRESENT = "наст";
-        public static final String FUTURE = "буд";    }
-
-    public static class Voice {
-        public static final String ACTIVE = "пов";
-        public static final String PASSIVE = "страд";
-    }
 
     public Boolean getPlural() {
         return plural;
@@ -87,16 +63,16 @@ public class Verb extends Word{
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(Gender gender) {
+        this.gender = gender.toString();
     }
 
     public String getTransit() {
         return transit;
     }
 
-    public void setTransit(String transit) {
-        this.transit = transit;
+    public void setTransit(Transit transit) {
+        this.transit = transit.toString();
     }
 
     public Boolean getPerfect() {
@@ -119,16 +95,16 @@ public class Verb extends Word{
         return kind;
     }
 
-    public void setKind(String kind) {
-        this.kind = kind;
+    public void setKind(Kind kind) {
+        this.kind = kind.toString();
     }
 
     public String getTime() {
         return time;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTime(Time time) {
+        this.time = time.toString();
     }
 
     public Boolean getInf() {
@@ -151,8 +127,8 @@ public class Verb extends Word{
         return voice;
     }
 
-    public void setVoice(String voice) {
-        this.voice = voice;
+    public void setVoice(Voice voice) {
+        this.voice = voice.toString();
     }
 
 

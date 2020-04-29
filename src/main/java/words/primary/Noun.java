@@ -1,7 +1,8 @@
-package words;
+package words.primary;
 
 import com.sun.istack.Nullable;
 import utilities.Type;
+import words.Word;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  */
 @Entity
 @DiscriminatorValue(Type.NOUN)
-public class Noun extends Word{
+public class Noun extends Word {
 
     @Column (name = "plural", nullable = false)
     private Boolean plural;
@@ -88,7 +89,6 @@ public class Noun extends Word{
      * <li>{@link #LOCATIVE} - локатив </li>
      * <li>{@link #COUNTING} - счетный </li>
      */
-
     public enum WCase {
 
         /** именитильный (кто?, что?) */

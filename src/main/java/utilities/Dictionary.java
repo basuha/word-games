@@ -1,7 +1,5 @@
 package utilities;
 
-import words.Adjective;
-import words.Noun;
 import words.Word;
 import org.hibernate.Session;
 

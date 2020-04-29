@@ -1,18 +1,19 @@
-package words;
+package words.secondary;
 
 import utilities.Type;
+import words.Word;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
 /**
- * Междометия
- * Примеры: ах, о, прочь, цыц, ура, ой
+ * Вводное слово
+ * Примеры: безусловно, видно, наверное, конечно, к удивлению
  */
 @Entity
-@DiscriminatorValue(Type.INTERJECTION)
-public class Interjection extends Word {
+@DiscriminatorValue(Type.PARENTHESIS)
+public class Parenthesis extends Word {
 
     {
         super.codeParent = 0;
@@ -30,7 +31,7 @@ public class Interjection extends Word {
 
     @Override
     public String getInfo() {
-        return super.getInfo()
-                + " Interjection (Междометие)";
+        return super.getInfo() +
+                " Parenthesis (Вводное слово)";
     }
 }

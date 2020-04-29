@@ -1,14 +1,22 @@
-package words;
+package words.secondary;
 
 import utilities.Type;
+import words.Word;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
+/**
+ * Частица
+ */
 @Entity
 @DiscriminatorValue(Type.PARTICLE)
 public class Particle extends Word {
+
+    {
+        super.codeParent = 0;
+    }
 
     @Override
     public void addCognate(Word cognate) {
@@ -18,5 +26,11 @@ public class Particle extends Word {
     @Override
     public List<Word> getCognates() {
         return null;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo() +
+                " Particle (Частица)";
     }
 }
