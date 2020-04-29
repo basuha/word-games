@@ -6,6 +6,10 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
+/**
+ * Союз
+ * Примеры: а, и, но, или, также
+ */
 @Entity
 @DiscriminatorValue(Type.CONJUNCTION)
 public class Conjunction extends Word {

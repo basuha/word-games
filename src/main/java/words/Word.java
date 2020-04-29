@@ -29,24 +29,20 @@ import java.util.List;
 @DiscriminatorColumn(name = "type")
 public abstract class Word {
 
-    @NotNull
     @Id
+    @Column(name = "IID", nullable = false)
     protected Integer IID;
 
-    @NotNull
-    @Column(name = "word")
+    @Column(name = "word", nullable = false)
     protected String word;
 
-    @NotNull
-    @Column(name = "code")
+    @Column(name = "code", nullable = false)
     protected Integer code;
 
-    @NotNull
-    @Column(name = "type", insertable = false, updatable = false)
+    @Column(name = "type", insertable = false, updatable = false, nullable = false)
     protected String type;
 
-    @NotNull
-    @Column(name = "code_parent")
+    @Column(name = "code_parent", nullable = false)
     protected Integer codeParent;
 
     @Transient

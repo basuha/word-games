@@ -12,8 +12,6 @@ import java.util.List;
 @DiscriminatorValue(Type.ADJECTIVE)
 public class Adjective extends Word {
 
-//TODO: статический блок с зависимостями
-
     @Column(name = "short")
     private Boolean shortF;
 
