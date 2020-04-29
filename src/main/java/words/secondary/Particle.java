@@ -1,11 +1,13 @@
 package words.secondary;
 
+import org.hibernate.Session;
+import utilities.HibernateUtil;
 import utilities.Type;
 import words.Word;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Частица
@@ -17,6 +19,16 @@ public class Particle extends Word {
     {
         super.codeParent = 0;
     }
+
+    static {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createSQLQuery("SELECT MAX(IID) FROM particle_ids");
+        IDS_COUNT = (Integer) query.getSingleResult();
+        session.close();
+    }
+
+    @Transient
+    public static final Integer IDS_COUNT;
 
     @Override
     public void addCognate(Word cognate) {

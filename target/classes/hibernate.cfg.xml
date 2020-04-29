@@ -36,7 +36,9 @@
     <property name="show_sql">
         true
     </property>
+
         <mapping class="words.Word"/>
+
         <mapping class="words.primary.Adjective"/>
         <mapping class="words.primary.Adverb"/>
         <mapping class="words.primary.Participle"/>

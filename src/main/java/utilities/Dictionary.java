@@ -2,6 +2,7 @@ package utilities;
 
 import words.Word;
 import org.hibernate.Session;
+import words.secondary.Particle;
 
 import javax.persistence.Query;
 import java.util.Random;
@@ -37,51 +38,14 @@ public class Dictionary extends HibernateUtil {
     }
 
     public Word getRandomWord(String type) {
-        String hql = null;
-//        switch (type) {
-//            case Type.NOUN: hql = "FROM Noun order by rand(2)"; break;
-//            case Type.ADJECTIVE: hql = "FROM Adjective WHERE IID = :rand "; break;
-//            case Type.ADVERB: hql = "FROM Adverb WHERE IID = :rand "; break;
-//            case Type.CONJUNCTION: hql = "FROM Conjunction WHERE IID = :rand "; break;
-//            case Type.EXTRA_PARTICIPLE: hql = "FROM ExtraParticiple WHERE IID = :rand "; break;
-//            case Type.INTERJECTION: hql = "FROM Interjection WHERE IID = :rand "; break;
-//            case Type.NUMERAL: hql = "FROM Numeral WHERE IID = :rand "; break;
-//            case Type.PARENTHESIS: hql = "FROM Parenthesis WHERE IID = :rand "; break;
-//            case Type.PARTICIPLE: hql = "FROM Participle WHERE IID = :rand "; break;
-//            case Type.PARTICLE: hql = "FROM Particle WHERE IID = :rand "; break;
-//            case Type.PREDICATE: hql = "FROM Predicate WHERE IID = :rand "; break;
-//            case Type.PRETEXT: hql = "FROM Pretext WHERE IID = :rand "; break;
-//            case Type.VERB: hql = "FROM Verb WHERE IID = :rand "; break;
-//            case Type.PRONOUN: hql = "FROM Pronoun WHERE IID = :rand "; break;
-//        }
-
-        Word word = null;
-//        Session session = getSessionFactory().openSession();
-//        Criteria criteria = session.createCriteria(Word.class);
-//        criteria.add(Restrictions.eq("type", type));
-//        criteria.add(Restrictions.sqlRestriction("1=1 order by rand()"));
-//        criteria.setMaxResults(1);
-//        word = (Word) criteria.uniqueResult();
-//        session.close();
-
-//        hql = "SELECT COUNT(IID) as count FROM Word WHERE type = :type";
-        do {
-            hql = "from Word where IID = :rand";
-            Session session = getSessionFactory().openSession();
-            Query query = session.createQuery(hql);
-            query.setParameter("rand", random.nextInt(4000000));
-//        query.setParameter("type", type);
-            word = (Word) query.getSingleResult();
-            session.close();
-        } while (!word.getType().equals(type));
-
-//        for (Word a : results) {
-//            if (word.getCode().equals(a.getCodeParent())) {
-//                word.addCognate(a);
-//            }
-//        }
-//
-//        System.out.println(results.size());
+        Random random = new Random();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createSQLQuery("SELECT id_of_source FROM particle_ids WHERE IID = ?");
+        Query query1 = session.createSQLQuery("SELECT * FROM words_test WHERE IID = ?");
+        query.setParameter(1, random.nextInt(Particle.IDS_COUNT));
+        query1.setParameter(1, query.getFirstResult());
+        Word word = (Word) query1.getSingleResult();
+        session.close();
         return word;
     }
 

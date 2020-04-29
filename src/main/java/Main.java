@@ -1,7 +1,12 @@
 import utilities.Type;
 import utilities.Dictionary;
+import words.Word;
 import words.primary.Participle;
+import words.secondary.Particle;
 import words.secondary.Pronoun;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
@@ -34,13 +39,13 @@ public class Main {
 //        Word word1 = new Particle("хуй",123);
 //
 //
-//        Dictionary dictionary = new Dictionary();
+//
 //        dictionary.addWord(word1);
 //        Word word2 = dictionary.getWordById(29662);
 //
 //        System.out.println(word2 instanceof Adjective);
 //        System.out.println(word2);
-
+//        Dictionary dictionary = new Dictionary();
 //        ArrayList<Word> list = new ArrayList<>();
 //        list.add(dictionary.getRandomWord(Type.ADJECTIVE));
 //        list.add(dictionary.getRandomWord(Type.ADVERB));
@@ -51,21 +56,18 @@ public class Main {
 //        list.add(dictionary.getRandomWord(Type.PARENTHESIS));
 //        list.add(dictionary.getRandomWord(Type.PARTICIPLE));
 //        list.add(dictionary.getRandomWord(Type.PARTICLE));
+//        list.add(dictionary.getRandomWord(Type.PARTICLE));
+//        list.add(dictionary.getRandomWord(Type.PARTICLE));
+//        list.add(dictionary.getRandomWord(Type.PARTICLE));
 //        list.add(dictionary.getRandomWord(Type.PREDICATE));
 //        list.add(dictionary.getRandomWord(Type.PRETEXT));
 //        list.add(dictionary.getRandomWord(Type.VERB));
-//        Adverb adjective;
-//        adjective = (Adverb) dictionary.getRandomWord(Type.ADVERB);
-//
-//        System.out.println(adjective.getInfo());
+
 //        for (Word w : list) {
 //            System.out.println(w.getInfo());
 //        }
         Dictionary dictionary = new Dictionary();
-        Pronoun.Adjective adjective = (Pronoun.Adjective) dictionary.getRandomWord(Type.PRONOUN_ADJECTIVE);
-        System.out.println(adjective.getInfo());
-        Participle participle = new Participle();
-
+        System.out.println(dictionary.getRandomWord(Type.PARTICLE));
 
 
 //        word3.setGender(Adjective.Gender.FEMALE);

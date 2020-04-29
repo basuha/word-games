@@ -5,10 +5,10 @@ public class Type {
     public static final String INTERJECTION = "межд";
     public static final String ADJECTIVE = "прл";
     public static final String PARTICIPLE = "прч";
+    public static final String EXTRA_PARTICIPLE = "дееп";
     public static final String NOUN = "сущ";
     public static final String ADVERB = "нар";
     public static final String VERB = "гл";
-    public static final String EXTRA_PARTICIPLE = "дееп";
     public static final String CONJUNCTION = "союз";
     public static final String PREDICATE = "предик";
     public static final String PRETEXT = "предл";
