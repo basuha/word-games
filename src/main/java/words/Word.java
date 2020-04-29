@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Родительский класс всех частей речи
+ * @see utilities.HibernateUtil
+ */
 @Entity
 @Table(name = "words_test")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

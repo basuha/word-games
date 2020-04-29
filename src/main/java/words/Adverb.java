@@ -17,11 +17,11 @@ public class Adverb extends Word {
 
     @Nullable
     @Column(name = "type_sub")
-    private String subType;
+    private String meaning;
 
     @Nullable
     @Column(name = "type_ssub")
-    private String advSubType;
+    private String subType;
 
     @Nullable
     @Column(name = "comp")
@@ -29,28 +29,24 @@ public class Adverb extends Word {
 
     /**
      * Классификация по значению:
-     * обстоятельственные, определительные и вопросительные.
+     * <li>{@link #EXTENSIVE} - обстоятельственные</li>
+     * <li>{@link #DEFINITE} - определительные</li>
+     * <li>{@link #QUESTION} - вопросительные</li>
      */
-    public enum SubType {
+    public enum Meaning {
 
-        /**
-         * обстоятельственные
-         */
+        /** обстоятельственные */
         EXTENSIVE("обст"),
 
-        /**
-         * определительные
-         */
+        /** определительные */
         DEFINITE("опред"),
 
-        /**
-         * вопросительные
-         */
+        /** вопросительные */
         QUESTION("вопр");
 
         private final String value;
 
-        SubType (String value) {
+        Meaning(String value) {
             this.value = value;
         }
 
@@ -61,84 +57,54 @@ public class Adverb extends Word {
     }
 
     /**
-     * Подтипы: качественные, способ и образ действия,
-     * степени действия, места действия, направления действия,
-     * времени действия, цели действия, причины действия.
+     * Подтипы:
+     * <li>{@link #QUALITATIVE} - качественные</li>
+     * <li>{@link #METHOD} - способа и образа действия</li>
+     * <li>{@link #EXTENT} - степени действия</li>
+     * <li>{@link #PLACE} - места действия</li>
+     * <li>{@link #DIRECTION} - направление действия</li>
+     * <li>{@link #TIMING} - времени действия</li>
+     * <li>{@link #PURPOSE} - цели действия</li>
+     * <li>{@link #REASON} - причины действия</li>
+     * Степень сравнения:
+     * <li>{@link #COMPARATIVE} - сравнительная степень</li>
+     * <li>{@link #SUPER} - превосходная степень</li>
      */
-    public enum AdvSubType {
+    public enum SubType {
 
-        /**
-         * качественные
-         */
-        QUALITATIVE ("кач"),
+        /** качественные */
+        QUALITATIVE("кач"),
 
-        /**
-         * способа и образа действия
-         */
-        METHOD ("спос"),
+        /** способа и образа действия */
+        METHOD("спос"),
 
-        /**
-         * степени действия
-         */
-        EXTENT ("степ"),
+        /** степени действия */
+        EXTENT("степ"),
 
-        /**
-         * места действия
-         */
-        PLACE ("места"),
+        /** места действия */
+        PLACE("места"),
 
-        /**
-         * направление действия
-         */
-        DIRECTION ("напр"),
+        /** направление действия */
+        DIRECTION("напр"),
 
-        /**
-         * времени действия
-         */
-        TIMING ("врем"),
+        /** времени действия */
+        TIMING("врем"),
 
-        /**
-         * цели действия
-         */
-        PURPOSE ("цель"),
+        /** цели действия */
+        PURPOSE("цель"),
 
-        /**
-         * причины действия
-         */
-        REASON ("причин");
+        /** причины действия */
+        REASON("причин"),
 
-        private final String value;
-
-        AdvSubType(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
-
-    /**
-     * Классификация по степени сравнения:
-     * сравнительная и превосходная
-     */
-
-    public enum Comp {
-
-        /**
-         * сравнительная степень
-         */
+        /** сравнительная степен */
         COMPARATIVE("сравн"),
 
-        /**
-         * превосходная степень
-         */
+        /** превосходная степень */
         SUPER("прев");
 
         private final String value;
 
-        Comp (String value) {
+        SubType(String value) {
             this.value = value;
         }
 
@@ -146,6 +112,15 @@ public class Adverb extends Word {
         public String toString() {
             return value;
         }
+    }
+
+
+    public String getMeaning() {
+        return meaning;
+    }
+
+    public void setMeaning(Meaning meaning) {
+        this.meaning = subType.toString();
     }
 
     public String getSubType() {
@@ -156,28 +131,16 @@ public class Adverb extends Word {
         this.subType = subType.toString();
     }
 
-    public String getAdvSubType() {
-        return advSubType;
-    }
-
-    public void setAdvSubType(AdvSubType advSubType) {
-        this.advSubType = advSubType.toString();
-    }
-
     public String getComp() {
         return comp;
-    }
-
-    public void setComp(Comp comp) {
-        this.comp = comp.toString();
     }
 
     @Override
     public String getInfo() {
         return super.getInfo() +
                 " Adverb{" +
-                "subType='" + subType + '\'' +
-                ", advSubType='" + advSubType + '\'' +
+                "subType='" + meaning + '\'' +
+                ", advSubType='" + subType + '\'' +
                 ", comp='" + comp + '\'' +
                 '}';
     }

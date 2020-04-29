@@ -63,6 +63,7 @@ public class Main {
             System.out.println(w.getInfo());
         }
         Adverb adverb = new Adverb();
+        adverb.setSubType(Adverb.SubType.QUALITATIVE);
 
 //        word3.setGender(Adjective.Gender.FEMALE);
 //        word3.reload();
