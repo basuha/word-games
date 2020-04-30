@@ -20,16 +20,6 @@ public class Particle extends Word {
         super.codeParent = 0;
     }
 
-    static {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("SELECT MAX(IID) FROM particle_ids");
-        IDS_COUNT = (Integer) query.getSingleResult();
-        session.close();
-    }
-
-    @Transient
-    public static final Integer IDS_COUNT;
-
     @Override
     public void addCognate(Word cognate) {
 

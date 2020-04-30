@@ -68,6 +68,10 @@ public class Main {
 //        }
         Dictionary dictionary = new Dictionary();
         System.out.println(dictionary.getRandomWord(Type.PARTICLE));
+        System.out.println(dictionary.getRandomWord(Type.ADJECTIVE));
+        System.out.println(dictionary.getRandomWord(Type.ADVERB));
+        System.out.println(dictionary.getRandomWord(Type.PARTICIPLE));
+        System.out.println(dictionary.getRandomWord(Type.NOUN));
 
 
 //        word3.setGender(Adjective.Gender.FEMALE);
