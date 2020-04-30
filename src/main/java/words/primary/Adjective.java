@@ -1,10 +1,10 @@
 package words.primary;
 
-import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
 import utilities.Type;
 import words.Word;
 import words.attributes.*;
+import words.attributes.Short;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,26 +16,21 @@ import java.util.List;
 @DiscriminatorValue(Type.ADJECTIVE)
 public class Adjective extends Word {
 
-    @Column(name = "short", nullable = false)
-    private Boolean shortF;
+    @Column(name = "short")
+    private String shortF;
 
-    @Nullable
     @Column(name = "plural")
-    private Boolean plural;
+    private String plural;
 
-    @Nullable
     @Column(name = "gender")
     private String gender;
 
-    @Nullable
     @Column(name = "type_sub")
     private String type;
 
-    @Nullable
     @Column(name = "wcase")
     private String wCase;
 
-    @Nullable
     @Column(name = "comp")
     private String comp;
 
@@ -61,7 +56,7 @@ public class Adjective extends Word {
         IMMUTABLE ("неизм"),
 
         /** изменяемое */
-        MUTABLE (null);
+        MUTABLE ("изм");
 
         private final String value;
 
@@ -76,11 +71,11 @@ public class Adjective extends Word {
 
     }
 
-    public Boolean getShortF() {
+    public String getShortF() {
         return shortF;
     }
 
-    public Boolean getPlural() {
+    public String getPlural() {
         return plural;
     }
 
@@ -100,41 +95,33 @@ public class Adjective extends Word {
         return comp;
     }
 
-    public void setParam(IsShort shortF) {
-        if (shortF == IsShort.SHORT) {
-            this.shortF = true;
-        } else {
-            this.shortF = false;
-        }
+    public void setParam(Short shortF) {
+        this.shortF = shortF.toString();
     }
 
-    public void setParam(IsPlural plural) {
-        if (plural == IsPlural.PLURAL) {
-            this.plural = true;
-        } else {
-            this.plural = false;
-        }
+    public void setParam(Plural plural) {
+        this.plural = plural.toString();
     }
 
     public void setParam(Gender gender) {
-        if (gender == Gender.PLURAL_FORM) {
-            this.gender = null;
-            this.plural = true;
+        if (gender == Gender.N_A) {
+            this.gender = null; //TODO:this
+            this.plural = "plural";
         } else {
             this.gender = gender.toString();
-            this.plural = false;
+            this.plural = "singular";
         }
     }
 
     public void setParam(Type type) {
         if (type == Type.IMMUTABLE) {
-            this.gender = null;
-            this.plural = null;
-            this.wCase = null;
-            this.comp = null;
-            this.shortF = false;
+            this.gender = "n/a";
+            this.plural = "n/a";
+            this.wCase = "n/a";
+            this.comp = "n/a";
+            this.shortF = "not_short";
         } else {
-            this.type = type.value;
+            this.type = type.toString();
         }
     }
 

@@ -1,25 +1,29 @@
 package words.attributes;
 
 /**
- * Род прилагательного
+ * Род
  * <li>{@link #MALE} - мужской</li>
  * <li>{@link #FEMALE} - женский</li>
  * <li>{@link #NEUTER} - средний</li>
- * <li>{@link #PLURAL_FORM} - множественная форма (без рода)</li>
+ * <li>{@link #COMMON} - общий</li>
+ * <li>{@link #N_A} - множественная форма (без рода)</li>
  */
 public enum Gender {
 
     /** мужской */
-    MALE ("муж"),
+    MALE ("male"),
 
     /** женский */
-    FEMALE ("жен"),
+    FEMALE ("female"),
 
     /** средний */
-    NEUTER ("ср"),
+    NEUTER ("neuter"),
 
-    /** множественная форма (без рода) */
-    PLURAL_FORM (null);
+    /** общий */
+    COMMON ("common"),
+
+    /** без рода */
+    N_A ("n/a");
 
     private final String value;
 

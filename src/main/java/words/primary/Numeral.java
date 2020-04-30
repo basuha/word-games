@@ -87,7 +87,7 @@ public class Numeral extends Word {
     }
 
     public void setGender(Gender gender) {
-        if (gender == Gender.PLURAL_FORM) {
+        if (gender == Gender.N_A) {
             this.gender = null;
             this.plural = true;
         } else {

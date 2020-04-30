@@ -7,10 +7,13 @@ package words.attributes;
 public enum Comp {
 
     /** сравнительная форма */
-    COMPARATIVE ("сравн"),
+    COMPARATIVE ("comparative"),
 
-    /** превосходная форма*/
-    SUPER ("прев");
+    /** превосходная форма */
+    SUPER ("super"),
+
+    /** без признака сравнения */
+    N_A ("n/a");
 
     private final String value;
 
