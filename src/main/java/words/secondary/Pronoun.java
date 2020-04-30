@@ -35,7 +35,7 @@ public class Pronoun extends Word {
      */
     @Entity
     @DiscriminatorValue(Type.PRONOUN_NOUN)
-    public static class Noun extends Pronoun {
+    public static class PronNoun extends Pronoun {
         @Override
         public String getInfo() {
             return super.getInfo() +
@@ -48,7 +48,7 @@ public class Pronoun extends Word {
      */
     @Entity
     @DiscriminatorValue(Type.PRONOUN_ADJECTIVE)
-    public static class Adjective extends Pronoun {
+    public static class PronAdj extends Pronoun {
         @Override
         public String getInfo() {
             return super.getInfo() +
@@ -61,7 +61,7 @@ public class Pronoun extends Word {
      */
     @Entity
     @DiscriminatorValue(Type.PRONOUN_ADVERB)
-    public static class Adverb extends Pronoun {
+    public static class PronAdv extends Pronoun {
         @Override
         public String getInfo() {
             return super.getInfo() +

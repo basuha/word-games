@@ -72,32 +72,24 @@ public class Dictionary extends HibernateUtil {
 
     @SuppressWarnings("unchecked assignment")
     public List<Adjective> getWordsByAttrib (Adjective source) {
-        List<Word> wordsList;
+        List<Adjective> wordsList = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("SELECT * FROM words_test WHERE plural = ? AND short = ?");
-        query.setParameter(1, source.);
-        wordsList = query.getResultList();
+        Query query = session.createQuery("FROM Adjective " +
+                "WHERE shortF = :shortF " +
+                "AND plural = :plural " +
+                "AND gender = :gender " +
+                "AND type = :type " +
+                "AND wCase = :wcase " +
+                "AND comp = :comp");
+        query.setParameter("shortF", source.getShortF());
+        query.setParameter("plural", source.getPlural());
+        query.setParameter("gender", source.getGender());
+        query.setParameter("type", source.getType());
+        query.setParameter("wcase", source.getwCase());
+        query.setParameter("comp", source.getComp());
+            wordsList = query.getResultList();
         session.close();
-    }
-
-    @SuppressWarnings("unchecked assignment")
-    public List<Adverb> getWordsByAttrib (Adverb source) {
-        List<Word> wordsList;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("SELECT * FROM words_test WHERE plural = ? AND short = ?");
-        query.setParameter(1, source.);
-        wordsList = query.getResultList();
-        session.close();
-    }
-
-    @SuppressWarnings("unchecked assignment")
-    public List<ExtraParticiple> getWordsByAttrib (ExtraParticiple source) {
-        List<Word> wordsList;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("SELECT * FROM words_test WHERE plural = ? AND short = ?");
-        query.setParameter(1, source.);
-        wordsList = query.getResultList();
-        session.close();
+        return wordsList;
     }
 
 

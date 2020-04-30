@@ -1,9 +1,10 @@
 package words.primary;
 
+import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
+import utilities.Type;
 import words.Word;
-import words.attributes.Gender;
-import words.attributes.WCase;
+import words.attributes.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * Прилагательное
  */
 @Entity
-@DiscriminatorValue(utilities.Type.ADJECTIVE)
+@DiscriminatorValue(Type.ADJECTIVE)
 public class Adjective extends Word {
 
     @Column(name = "short", nullable = false)
@@ -75,51 +76,47 @@ public class Adjective extends Word {
 
     }
 
-    /** Сравнительные формы прилагательного:
-     * <li>{@link #COMPARATIVE} - сравнительная форма</li>
-     * <li>{@link #SUPER} - превосходная форма</li>
-     */
-    public enum Comp {
-
-        /** сравнительная форма */
-        COMPARATIVE ("сравн"),
-
-        /** превосходная форма*/
-        SUPER ("прев");
-
-        private final String value;
-
-        Comp (String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
-
     public Boolean getShortF() {
         return shortF;
-    }
-
-    public void setShortF(Boolean shortF) {
-        this.shortF = shortF;
     }
 
     public Boolean getPlural() {
         return plural;
     }
 
-    public void setPlural(Boolean plural) {
-        this.plural = plural;
-    }
-
     public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public String getType() {
+        return type;
+    }
+
+    public String getwCase() {
+        return wCase;
+    }
+
+    public String getComp() {
+        return comp;
+    }
+
+    public void setParam(IsShort shortF) {
+        if (shortF == IsShort.SHORT) {
+            this.shortF = true;
+        } else {
+            this.shortF = false;
+        }
+    }
+
+    public void setParam(IsPlural plural) {
+        if (plural == IsPlural.PLURAL) {
+            this.plural = true;
+        } else {
+            this.plural = false;
+        }
+    }
+
+    public void setParam(Gender gender) {
         if (gender == Gender.PLURAL_FORM) {
             this.gender = null;
             this.plural = true;
@@ -129,11 +126,7 @@ public class Adjective extends Word {
         }
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
+    public void setParam(Type type) {
         if (type == Type.IMMUTABLE) {
             this.gender = null;
             this.plural = null;
@@ -145,19 +138,11 @@ public class Adjective extends Word {
         }
     }
 
-    public String getwCase() {
-        return wCase;
-    }
-
-    public void setwCase(WCase wCase) {
+    public void setParam(WCase wCase) {
         this.wCase = wCase.toString();
     }
 
-    public String getComp() {
-        return comp;
-    }
-
-    public void setComp(Comp comp) {
+    public void setParam(Comp comp) {
         this.comp = comp.toString();
     }
 

@@ -34,7 +34,7 @@
     </property>
 
     <property name="show_sql">
-        false
+        true
     </property>
 
         <mapping class="words.Word"/>
@@ -54,9 +54,9 @@
         <mapping class="words.secondary.Pretext"/>
         <mapping class="words.secondary.Parenthesis"/>
         <mapping class="words.secondary.Pronoun"/>
-        <mapping class="words.secondary.Pronoun$Noun"/>
-        <mapping class="words.secondary.Pronoun$Adjective"/>
-        <mapping class="words.secondary.Pronoun$Adverb"/>
+        <mapping class="words.secondary.Pronoun$PronNoun"/>
+        <mapping class="words.secondary.Pronoun$PronAdj"/>
+        <mapping class="words.secondary.Pronoun$PronAdv"/>
 
 <!--    <mapping resource="word.hbm.xml"/>-->
     <!--<mapping class="com.itvdn.hibernate_first.Flower" />-->
