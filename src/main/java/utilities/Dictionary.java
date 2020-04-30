@@ -2,9 +2,14 @@ package utilities;
 
 import words.Word;
 import org.hibernate.Session;
+import words.primary.Adjective;
+import words.primary.Adverb;
+import words.primary.ExtraParticiple;
 import words.secondary.Particle;
 
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Dictionary extends HibernateUtil {
@@ -45,7 +50,7 @@ public class Dictionary extends HibernateUtil {
         session.close();
         return maxId;
     }
-    
+
     private Integer getRandId (String type) {
         Integer randId;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -63,6 +68,36 @@ public class Dictionary extends HibernateUtil {
         Word word = (Word) query1.getSingleResult();
         session.close();
         return word;
+    }
+
+    @SuppressWarnings("unchecked assignment")
+    public List<Adjective> getWordsByAttrib (Adjective source) {
+        List<Word> wordsList;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createSQLQuery("SELECT * FROM words_test WHERE plural = ? AND short = ?");
+        query.setParameter(1, source.);
+        wordsList = query.getResultList();
+        session.close();
+    }
+
+    @SuppressWarnings("unchecked assignment")
+    public List<Adverb> getWordsByAttrib (Adverb source) {
+        List<Word> wordsList;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createSQLQuery("SELECT * FROM words_test WHERE plural = ? AND short = ?");
+        query.setParameter(1, source.);
+        wordsList = query.getResultList();
+        session.close();
+    }
+
+    @SuppressWarnings("unchecked assignment")
+    public List<ExtraParticiple> getWordsByAttrib (ExtraParticiple source) {
+        List<Word> wordsList;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createSQLQuery("SELECT * FROM words_test WHERE plural = ? AND short = ?");
+        query.setParameter(1, source.);
+        wordsList = query.getResultList();
+        session.close();
     }
 
 
