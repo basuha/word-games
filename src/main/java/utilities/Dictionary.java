@@ -59,33 +59,33 @@ public class Dictionary extends HibernateUtil {
 //
 
 
-    private Integer getMaxId (String type) {
-        Integer maxId;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("SELECT max(IID) FROM " + type + "_ids");
-        maxId = (Integer) query.getSingleResult();
-        session.close();
-        return maxId;
-    }
-
-    private Integer getRandId (String type) {
-        Integer randId;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("SELECT id_of_source FROM " + type + "_ids WHERE IID = ?");
-        query.setParameter(1, random.nextInt(getMaxId(type)));
-        randId = (Integer) query.getSingleResult();
-        session.close();
-        return randId;
-    }
-
-    public Word getRandomWord(String type) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query1 = session.createQuery("FROM Word WHERE IID = :id");
-        query1.setParameter("id", getRandId(type));
-        Word word = (Word) query1.getSingleResult();
-        session.close();
-        return word;
-    }
+//    private Integer getMaxId (String type) {
+//        Integer maxId;
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Query query = session.createSQLQuery("SELECT max(IID) FROM " + type + "_ids");
+//        maxId = (Integer) query.getSingleResult();
+//        session.close();
+//        return maxId;
+//    }
+//
+//    private Integer getRandId (String type) {
+//        Integer randId;
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Query query = session.createSQLQuery("SELECT id_of_source FROM " + type + "_ids WHERE IID = ?");
+//        query.setParameter(1, random.nextInt(getMaxId(type)));
+//        randId = (Integer) query.getSingleResult();
+//        session.close();
+//        return randId;
+//    }
+//
+//    public Word getRandomWord(String type) {
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Query query1 = session.createQuery("FROM Word WHERE IID = :id");
+//        query1.setParameter("id", getRandId(type));
+//        Word word = (Word) query1.getSingleResult();
+//        session.close();
+//        return word;
+//    }
 
 
 }

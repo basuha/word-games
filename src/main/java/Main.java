@@ -6,26 +6,37 @@ import words.attributes.Plural;
 import words.attributes.WordCase;
 import words.primary.Adjective;
 import words.primary.ExtraParticiple;
+import words.primary.Noun;
+
+import java.util.Random;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
         Adjective adjective = new Adjective();
-        System.out.println(adjective.getInfo());
+        Noun noun = new Noun();
 
-        adjective.setParam(Plural.SINGULAR);
-        adjective.setParam(Gender.MALE);
+        adjective.setParam(Gender.FEMALE);
         adjective.setParam(WordCase.NOMINATIVE);
-        System.out.println(adjective.getInfo());
 
-        Dictionary dictionary = new Dictionary();
+        noun.setParam(Gender.FEMALE);
+        noun.setParam(WordCase.Noun.NOMINATIVE);
 
         RandomWord randomWord = new RandomWord(adjective);
+        RandomWord randomWord2 = new RandomWord(noun);
 
-        for(Word a : randomWord.getRandomWords()) {
-            System.out.println(a);
-        }
-
-        ExtraParticiple participle = new ExtraParticiple();
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
+        System.out.println(randomWord.get() + " " + randomWord2.get());
     }
 }
