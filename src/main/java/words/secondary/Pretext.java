@@ -1,8 +1,8 @@
 package words.secondary;
 
-import utilities.Type;
+import utilities.PartOfSpeech;
 import words.Word;
-import words.attributes.WCase;
+import words.attributes.WordCase;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -13,18 +13,18 @@ import java.util.List;
  * Предлог
  */
 @Entity
-@DiscriminatorValue(Type.PRETEXT)
+@DiscriminatorValue(PartOfSpeech.PRETEXT)
 public class Pretext extends Word {
 
-    @Column(name = "wcase", nullable = false)
-    private String wCase;
+    @Column(name = "word_case")
+    private String wordCase;
 
-    public String getwCase() {
-        return wCase;
+    public String getWordCase() {
+        return wordCase;
     }
 
-    public void setwCase(WCase wCase) {
-        this.wCase = wCase.toString();
+    public void setWordCase(WordCase wordCase) {
+        this.wordCase = wordCase.toString();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Pretext extends Word {
     @Override
     public String getInfo() {
         return super.getInfo() + " Pretext (Предлог){" +
-                "wCase='" + wCase + '\'' +
+                "wCase='" + wordCase + '\'' +
                 '}';
     }
 }

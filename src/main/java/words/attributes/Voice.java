@@ -18,5 +18,25 @@ public enum Voice {
     public String toString() {
         return value;
     }
+
+
+
+    public enum Participle {
+
+        PASSIVE ("страд"),
+        N_A ("n/a");
+
+        private final String value;
+
+        Participle(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+    }
+
 }
 

@@ -27,7 +27,7 @@ import java.util.List;
 @Entity
 @Table(name = "words_test")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type")
+@DiscriminatorColumn(name = "part_of_speech")
 public abstract class Word {
 
     @Id
@@ -40,8 +40,8 @@ public abstract class Word {
     @Column(name = "code", nullable = false)
     protected Integer code;
 
-    @Column(name = "type", insertable = false, updatable = false, nullable = false)
-    protected String type;
+    @Column(name = "part_of_speech", insertable = false, updatable = false, nullable = false)
+    protected String partOfSpeech;
 
     @Column(name = "code_parent", nullable = false)
     protected Integer codeParent;
@@ -76,12 +76,12 @@ public abstract class Word {
         this.code = code;
     }
 
-    public String getType() {
-        return type;
+    public String getPartOfSpeech() {
+        return partOfSpeech;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setPartOfSpeech(String partOfSpeech) {
+        this.partOfSpeech = partOfSpeech;
     }
 
     public Integer getCodeParent() {

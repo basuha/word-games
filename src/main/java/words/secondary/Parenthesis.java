@@ -1,6 +1,6 @@
 package words.secondary;
 
-import utilities.Type;
+import utilities.PartOfSpeech;
 import words.Word;
 
 import javax.persistence.DiscriminatorValue;
@@ -12,7 +12,7 @@ import java.util.List;
  * Примеры: безусловно, видно, наверное, конечно, к удивлению
  */
 @Entity
-@DiscriminatorValue(Type.PARENTHESIS)
+@DiscriminatorValue(PartOfSpeech.PARENTHESIS)
 public class Parenthesis extends Word {
 
     {

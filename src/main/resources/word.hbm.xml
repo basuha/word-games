@@ -25,8 +25,8 @@
 <!--        <property name="type" type="java.lang.String" column="type_sub"/>-->
 <!--        <property name="plural" type ="java.lang.Boolean" column="plural"/>-->
 <!--        <property name="gender" type ="java.lang.String" column="gender"/>-->
-<!--        <property name="wCase" type="java.lang.String" column="wcase"/>-->
-<!--        <property name="comp" type="java.lang.String" column="comp"/>-->
+<!--        <property name="wordCase" type="java.lang.String" column="wcase"/>-->
+<!--        <property name="comparative" type="java.lang.String" column="comparative"/>-->
 <!--        <property name="shortF" type="java.lang.Boolean" column="short"/>-->
 <!--    </class>-->
 

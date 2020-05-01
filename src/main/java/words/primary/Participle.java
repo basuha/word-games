@@ -1,165 +1,140 @@
 package words.primary;
 
-import utilities.Type;
+import utilities.PartOfSpeech;
 import words.Word;
-import words.attributes.Gender;
-import words.attributes.Time;
-import words.attributes.Transit;
-import words.attributes.WCase;
+import words.attributes.*;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import java.lang.Short;
 import java.util.List;
 
 /**
  * Причастие
  */
 @Entity
-@DiscriminatorValue(Type.PARTICIPLE)
+@DiscriminatorValue(PartOfSpeech.PARTICIPLE)
 public class Participle extends Word {
 
-    @Column (name = "plural", nullable = false)
-    private Boolean plural;
+    @Column (name = "plural")
+    private String plural;
 
-    @Column (name = "transit", nullable = false)
-    private String transit;
+    @Column (name = "transitive")
+    private String transitive;
 
-    @Column (name = "time", nullable = false)
+    @Column (name = "time")
     private String time;
 
-    @Column (name = "vozv", nullable = false)
-    private Boolean reflexive;
+    @Column (name = "reflexive")
+    private String reflexive;
 
     @Column (name = "gender")
     private String gender;
 
-    @Column (name = "wcase")
-    private String wCase;
+    @Column (name = "word_case")
+    private String wordCase;
 
     @Column (name = "perfect")
-    private Boolean perfect;
+    private String perfect;
 
     @Column (name = "kind")
     private String kind;
 
-    @Column (name = "nakl")
-    private String passiveVoice;
+    @Column (name = "voice")
+    private String voice;
 
     @Column (name = "short")
-    private Boolean shortF;
+    private String shortF;
 
-    /**
-     * Вид причастия
-     * Второй или NULL
-     */
-    public enum Kind {
 
-        SECOND ("2вид"),
-        NULL(null); //TODO уточнить название
-
-        private final String value;
-
-        Kind (String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
-
-    public Boolean getPlural() {
+    public String getPlural() {
         return plural;
     }
 
-    public void setPlural(Boolean plural) {
-        this.plural = plural;
-    }
-
-    public String getTransit() {
-        return transit;
-    }
-
-    public void setTransit(Transit transit) {
-        this.transit = transit.toString();
+    public String getTransitive() {
+        return transitive;
     }
 
     public String getTime() {
         return time;
     }
 
-    public void setTime(Time.Participle time) {
-        this.time = time.toString();
-    }
-
-    public Boolean getReflexive() {
+    public String getReflexive() {
         return reflexive;
-    }
-
-    public void setReflexive(Boolean reflexive) {
-        this.reflexive = reflexive;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
-        if (gender == Gender.N_A) {
-            this.gender = null;
-            this.plural = true;
-        } else {
-            this.gender = gender.toString();
-            this.plural = false;
-        }
+    public String getWordCase() {
+        return wordCase;
     }
 
-
-    public String getwCase() {
-        return wCase;
-    }
-
-    public void setwCase(WCase wCase) {
-        this.wCase = wCase.toString();
-    }
-
-    public Boolean getPerfect() {
+    public String getPerfect() {
         return perfect;
-    }
-
-    public void setPerfect(Boolean perfect) {
-        this.perfect = perfect;
     }
 
     public String getKind() {
         return kind;
     }
 
-    public void setKind(Kind kind) {
-        this.kind = kind.value;
+    public String getVoice() {
+        return voice;
     }
 
-    public Boolean getPassiveVoice() {
-        return passiveVoice.equals("страд");
-    }
-
-    public void setPassiveVoice(Boolean passiveVoice) {
-        if (passiveVoice) {
-            this.passiveVoice = "страд";
-        } else {
-            this.passiveVoice = null;
-        }
-    }
-
-    public Boolean getShortF() {
+    public String getShortF() {
         return shortF;
     }
 
-    public void setShortF(Boolean shortF) {
-        this.shortF = shortF;
+
+    public void setParam(Plural plural) {
+        this.plural = plural.toString();
     }
+
+    public void setParam(Transitive transitive) {
+        this.transitive = transitive.toString();
+    }
+
+    public void setParam(Time.Participle time) {
+        this.time = time.toString();
+    }
+
+    public void setParam(Reflexive reflexive) {
+        this.reflexive = reflexive.toString();
+    }
+
+    public void setParam(Gender gender) {
+        if (gender == Gender.N_A) {
+            this.gender = gender.toString();
+            this.plural = Plural.PLURAL.toString();
+        } else {
+            this.gender = gender.toString();
+            this.plural = Plural.SINGULAR.toString();
+        }
+    }
+
+    public void setParam(WordCase wordCase) {
+        this.wordCase = wordCase.toString();
+    }
+
+    public void setParam(Boolean perfect) {
+        this.perfect = perfect.toString();
+    }
+
+    public void setParam(Kind.Participle kind) {
+        this.kind = kind.toString();
+    }
+
+    public void setParam(Voice.Participle voice) {
+        this.voice = voice.toString();
+    }
+
+    public void setParam(Short shortF) {
+        this.shortF = shortF.toString();
+    }
+
 
     @Override
     public void addCognate(Word cognate) {

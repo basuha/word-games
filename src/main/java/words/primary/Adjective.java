@@ -1,7 +1,6 @@
 package words.primary;
 
-import com.sun.istack.Nullable;
-import utilities.Type;
+import utilities.PartOfSpeech;
 import words.Word;
 import words.attributes.*;
 import words.attributes.Short;
@@ -13,7 +12,7 @@ import java.util.List;
  * Прилагательное
  */
 @Entity
-@DiscriminatorValue(Type.ADJECTIVE)
+@DiscriminatorValue(PartOfSpeech.ADJECTIVE)
 public class Adjective extends Word {
 
     @Column(name = "short")
@@ -25,14 +24,14 @@ public class Adjective extends Word {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "type_sub")
+    @Column(name = "type")
     private String type;
 
-    @Column(name = "wcase")
-    private String wCase;
+    @Column(name = "word_case")
+    private String wordCase;
 
-    @Column(name = "comp")
-    private String comp;
+    @Column(name = "comparative")
+    private String comparative;
 
     @Override
     public void addCognate(Word cognate) {
@@ -42,33 +41,6 @@ public class Adjective extends Word {
     @Override
     public List<Word> getCognates() {
         return cognates;
-    }
-
-
-    /**
-     * Подтип прилагательного:
-     * <li>{@link #IMMUTABLE} - неизменяемое</li>
-     * <li>{@link #MUTABLE} - изменяемое</li>
-     */
-    public enum Type {
-
-        /** неизменяемое */
-        IMMUTABLE ("неизм"),
-
-        /** изменяемое */
-        MUTABLE ("изм");
-
-        private final String value;
-
-        Type(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-
     }
 
     public String getShortF() {
@@ -87,12 +59,12 @@ public class Adjective extends Word {
         return type;
     }
 
-    public String getwCase() {
-        return wCase;
+    public String getWordCase() {
+        return wordCase;
     }
 
-    public String getComp() {
-        return comp;
+    public String getComparative() {
+        return comparative;
     }
 
     public void setParam(Short shortF) {
@@ -105,32 +77,32 @@ public class Adjective extends Word {
 
     public void setParam(Gender gender) {
         if (gender == Gender.N_A) {
-            this.gender = null; //TODO:this
-            this.plural = "plural";
+            this.gender = gender.toString();
+            this.plural = Plural.PLURAL.toString();
         } else {
             this.gender = gender.toString();
-            this.plural = "singular";
+            this.plural = Plural.SINGULAR.toString();
         }
     }
 
-    public void setParam(Type type) {
-        if (type == Type.IMMUTABLE) {
+    public void setParam(Type.Adjective type) {
+        if (type == Type.Adjective.IMMUTABLE) {
             this.gender = "n/a";
             this.plural = "n/a";
-            this.wCase = "n/a";
-            this.comp = "n/a";
+            this.wordCase = "n/a";
+            this.comparative = "n/a";
             this.shortF = "not_short";
         } else {
             this.type = type.toString();
         }
     }
 
-    public void setParam(WCase wCase) {
-        this.wCase = wCase.toString();
+    public void setParam(WordCase wordCase) {
+        this.wordCase = wordCase.toString();
     }
 
-    public void setParam(Comp comp) {
-        this.comp = comp.toString();
+    public void setParam(Comparative comparative) {
+        this.comparative = comparative.toString();
     }
 
     @Override
@@ -141,8 +113,8 @@ public class Adjective extends Word {
                 ", plural=" + plural +
                 ", gender='" + gender + '\'' +
                 ", subType='" + type + '\'' +
-                ", wCase='" + wCase + '\'' +
-                ", comp='" + comp + '\'' +
+                ", wCase='" + wordCase + '\'' +
+                ", comp='" + comparative + '\'' +
                 '}';
     }
 }

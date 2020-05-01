@@ -4,7 +4,7 @@ package words.attributes;
  * <li>{@link #COMPARATIVE} - сравнительная форма</li>
  * <li>{@link #SUPER} - превосходная форма</li>
  */
-public enum Comp {
+public enum Comparative {
 
     /** сравнительная форма */
     COMPARATIVE ("comparative"),
@@ -17,7 +17,7 @@ public enum Comp {
 
     private final String value;
 
-    Comp (String value) {
+    Comparative(String value) {
         this.value = value;
     }
 

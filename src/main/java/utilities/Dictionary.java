@@ -3,12 +3,8 @@ package utilities;
 import words.Word;
 import org.hibernate.Session;
 import words.primary.Adjective;
-import words.primary.Adverb;
-import words.primary.ExtraParticiple;
-import words.secondary.Particle;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -71,22 +67,24 @@ public class Dictionary extends HibernateUtil {
     }
 
     @SuppressWarnings("unchecked assignment")
-    public List<Adjective> getWordsByAttrib (Adjective source) {
+    public List<?> getWordsByAttrib (Word source) {
         List<Adjective> wordsList = null;
+        StringBuilder hql = new StringBuilder();
+        hql.append()
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery("FROM Adjective " +
                 "WHERE shortF = :shortF " +
                 "AND plural = :plural " +
                 "AND gender = :gender " +
-                "AND type = :type " +
-                "AND wCase = :wcase " +
-                "AND comp = :comp");
+                "AND partOfSpeech = :type " +
+                "AND wordCase = :wcase " +
+                "AND comparative = :comp");
         query.setParameter("shortF", source.getShortF());
         query.setParameter("plural", source.getPlural());
         query.setParameter("gender", source.getGender());
-        query.setParameter("type", source.getType());
-        query.setParameter("wcase", source.getwCase());
-        query.setParameter("comp", source.getComp());
+        query.setParameter("type", source.getPartOfSpeech());
+        query.setParameter("wcase", source.getWordCase());
+        query.setParameter("comp", source.getComparative());
             wordsList = query.getResultList();
         session.close();
         return wordsList;

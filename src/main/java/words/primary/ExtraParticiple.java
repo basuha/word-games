@@ -1,9 +1,11 @@
 package words.primary;
 
-import utilities.Type;
+import utilities.PartOfSpeech;
 import words.Word;
+import words.attributes.Perfect;
+import words.attributes.Reflexive;
 import words.attributes.Time;
-import words.attributes.Transit;
+import words.attributes.Transitive;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -15,51 +17,51 @@ import java.util.List;
  * Примеры: решив, передав, прочитав
  */
 @Entity
-@DiscriminatorValue(Type.EXTRA_PARTICIPLE)
+@DiscriminatorValue(PartOfSpeech.EXTRA_PARTICIPLE)
 public class ExtraParticiple extends Word {
 
-    @Column(name = "transit", nullable = false)
-    private String transit;
+    @Column(name = "transitive")
+    private String transitive;
 
-    @Column(name = "perfect", nullable = false)
-    private Boolean perfect;
+    @Column(name = "perfect")
+    private String perfect;
 
-    @Column(name = "time", nullable = false)
+    @Column(name = "time")
     private String time;
 
-    @Column(name = "vozv", nullable = false)
-    private Boolean reflexive;
+    @Column(name = "reflexive")
+    private String reflexive;
 
-    public String getTransit() {
-        return transit;
+    public String getTransitive() {
+        return transitive;
     }
 
-    public void setTransit(Transit transit) {
-        this.transit = transit.toString();
-    }
-
-    public Boolean getPerfect() {
+    public String getPerfect() {
         return perfect;
-    }
-
-    public void setPerfect(Boolean perfect) {
-        this.perfect = perfect;
     }
 
     public String getTime() {
         return time;
     }
 
-    public void setTime(Time.Participle time) {
-        this.time = time.toString();
-    }
-
-    public Boolean getReflexive() {
+    public String getReflexive() {
         return reflexive;
     }
 
-    public void setReflexive(Boolean reflexive) {
-        this.reflexive = reflexive;
+    public void setParam(Transitive transitive) {
+        this.transitive = transitive.toString();
+    }
+
+    public void setParam(Perfect perfect) {
+        this.perfect = perfect.toString();
+    }
+
+    public void setParam(Time.Participle time) {
+        this.time = time.toString();
+    }
+
+    public void setParam(Reflexive reflexive) {
+        this.reflexive = reflexive.toString();
     }
 
     @Override
@@ -76,7 +78,7 @@ public class ExtraParticiple extends Word {
     public String getInfo() {
         return super.getInfo()
                 + " ExtraParticiple (Деепричастие) {" +
-                "transit='" + transit + '\'' +
+                "transit='" + transitive + '\'' +
                 ", perfect=" + perfect +
                 ", time='" + time + '\'' +
                 ", reflexive=" + reflexive +

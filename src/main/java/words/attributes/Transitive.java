@@ -3,7 +3,7 @@ package words.attributes;
 /**
  * Признак переходности глагола/причастия/деепричастия
  */
-public enum Transit {
+public enum Transitive {
 
     TRANSITIVE ("перех"),
     INTRANSITIVE ("непер"),
@@ -11,7 +11,7 @@ public enum Transit {
 
     private final String value;
 
-    Transit(String value) {
+    Transitive(String value) {
         this.value = value;
     }
 

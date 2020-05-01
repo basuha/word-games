@@ -1,19 +1,16 @@
 package words.secondary;
 
-import org.hibernate.Session;
-import utilities.HibernateUtil;
-import utilities.Type;
+import utilities.PartOfSpeech;
 import words.Word;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Частица
  */
 @Entity
-@DiscriminatorValue(Type.PARTICLE)
+@DiscriminatorValue(PartOfSpeech.PARTICLE)
 public class Particle extends Word {
 
     {

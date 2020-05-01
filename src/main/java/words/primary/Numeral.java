@@ -1,10 +1,11 @@
 package words.primary;
 
-import com.sun.istack.Nullable;
-import utilities.Type;
+import utilities.PartOfSpeech;
 import words.Word;
 import words.attributes.Gender;
-import words.attributes.WCase;
+import words.attributes.Plural;
+import words.attributes.Type;
+import words.attributes.WordCase;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -15,93 +16,60 @@ import java.util.List;
  * Числительные
  */
 @Entity
-@DiscriminatorValue(Type.NUMERAL)
+@DiscriminatorValue(PartOfSpeech.NUMERAL)
 public class Numeral extends Word {
 
-    @Column(name = "type_sub", nullable = false)
+    @Column(name = "type")
     private String type;
 
-    @Nullable
     @Column(name = "plural")
-    private Boolean plural;
+    private String plural;
 
-    @Nullable
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "wcase", nullable = false)
-    private String wCase;
+    @Column(name = "word_case")
+    private String wordCase;
 
-    /**
-     * Подтип числительного:
-     * <li>{@link #ORDINAL} - неизменяемое</li>
-     * <li>{@link #QUANTITATIVE} - количественное</li>
-     * <li>{@link #COLLECTIVE} - собирательное</li>
-     * <li>{@link #INDEFINITE} - неопределенное</li>
-     */
-    public enum Type {
 
-        /** порядковое */
-        ORDINAL ("поряд"),
 
-        /** количественное */
-        QUANTITATIVE ("кол"),
-
-        /** собирательное */
-        COLLECTIVE ("собир"),
-
-        /** неопределенное */
-        INDEFINITE ("неопр");
-
-        private final String value;
-
-        Type(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
-
-    @Override
     public String getType() {
         return type;
     }
 
-    public void setType(Type type) {
-        this.type = type.toString();
+    public String getWordCase() {
+        return wordCase;
     }
 
-    public Boolean getPlural() {
+    public String getPlural() {
         return plural;
-    }
-
-    public void setPlural(Boolean plural) {
-        this.plural = plural;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+
+    public void setParam(Type.Numeral type) {
+        this.type = type.toString();
+    }
+
+    public void setParam(Plural plural) {
+        this.plural = plural.toString();
+    }
+
+    public void setParam(Gender gender) {
         if (gender == Gender.N_A) {
-            this.gender = null;
-            this.plural = true;
+            this.gender = gender.toString();
+            this.plural = Plural.PLURAL.toString();
         } else {
             this.gender = gender.toString();
-            this.plural = false;
+            this.plural = Plural.SINGULAR.toString();
         }
     }
 
-    public String getwCase() {
-        return wCase;
-    }
-
-    public void setwCase(WCase wCase) {
-        this.wCase = wCase.toString();
+    public void setParam(WordCase wordCase) {
+        this.wordCase = wordCase.toString();
     }
 
     @Override
@@ -121,7 +89,7 @@ public class Numeral extends Word {
                 "type='" + type + '\'' +
                 ", plural=" + plural +
                 ", gender='" + gender + '\'' +
-                ", wCase='" + wCase + '\'' +
+                ", wCase='" + wordCase + '\'' +
                 '}';
     }
 }

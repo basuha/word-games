@@ -1,7 +1,8 @@
 import utilities.Dictionary;
 import words.attributes.Plural;
-import words.attributes.WCase;
+import words.attributes.WordCase;
 import words.primary.Adjective;
+import words.primary.ExtraParticiple;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
@@ -10,7 +11,7 @@ public class Main {
         System.out.println(adjective.getInfo());
 
         adjective.setParam(Plural.PLURAL);
-        adjective.setParam(WCase.DATIVE);
+        adjective.setParam(WordCase.DATIVE);
         System.out.println(adjective.getInfo());
 
         Dictionary dictionary = new Dictionary();
@@ -18,5 +19,6 @@ public class Main {
         for(Adjective a : dictionary.getWordsByAttrib(adjective)) {
             System.out.println(a);
         }
+        ExtraParticiple participle = new ExtraParticiple();
     }
 }
