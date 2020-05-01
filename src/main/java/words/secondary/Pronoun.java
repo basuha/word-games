@@ -19,6 +19,10 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PRONOUN)
 public class Pronoun extends Word {
 
+    {
+        partOfSpeech = PartOfSpeech.PRONOUN;
+    }
+
     @Nullable
     @Column(name = "plural")
     private String plural;
@@ -42,7 +46,6 @@ public class Pronoun extends Word {
     public String getGender() {
         return gender;
     }
-
 
     public void setParam(Plural plural) {
         this.plural = plural.toString();

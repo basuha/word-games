@@ -1,4 +1,7 @@
 import utilities.Dictionary;
+import utilities.RandomWord;
+import words.Word;
+import words.attributes.Gender;
 import words.attributes.Plural;
 import words.attributes.WordCase;
 import words.primary.Adjective;
@@ -10,15 +13,19 @@ public class Main {
         Adjective adjective = new Adjective();
         System.out.println(adjective.getInfo());
 
-        adjective.setParam(Plural.PLURAL);
-        adjective.setParam(WordCase.DATIVE);
+        adjective.setParam(Plural.SINGULAR);
+        adjective.setParam(Gender.MALE);
+        adjective.setParam(WordCase.NOMINATIVE);
         System.out.println(adjective.getInfo());
 
         Dictionary dictionary = new Dictionary();
 
-        for(Adjective a : dictionary.getWordsByAttrib(adjective)) {
+        RandomWord randomWord = new RandomWord(adjective);
+
+        for(Word a : randomWord.getRandomWords()) {
             System.out.println(a);
         }
+
         ExtraParticiple participle = new ExtraParticiple();
     }
 }

@@ -16,6 +16,10 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PRETEXT)
 public class Pretext extends Word {
 
+    {
+        partOfSpeech = PartOfSpeech.PRETEXT;
+    }
+
     @Column(name = "word_case")
     private String wordCase;
 

@@ -20,6 +20,10 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.EXTRA_PARTICIPLE)
 public class ExtraParticiple extends Word {
 
+    {
+        partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
+    }
+
     @Column(name = "transitive")
     private String transitive;
 

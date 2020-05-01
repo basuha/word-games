@@ -18,6 +18,10 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.NOUN)
 public class Noun extends Word {
 
+    {
+        partOfSpeech = PartOfSpeech.NOUN;
+    }
+
     @Column (name = "plural")
     private String plural;
 

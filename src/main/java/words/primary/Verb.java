@@ -13,6 +13,10 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.VERB)
 public class Verb extends Word {
 
+    {
+        partOfSpeech = PartOfSpeech.VERB;
+    }
+
     @Column (name = "infinitive")
     private String infinitive;
 

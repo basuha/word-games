@@ -12,6 +12,10 @@ import javax.persistence.Entity;
 @DiscriminatorValue(PartOfSpeech.PRON_ADJ)
 public class PronAdj extends Pronoun {
 
+    {
+        partOfSpeech = PartOfSpeech.PRON_ADJ;
+    }
+
     @Override
     public String getInfo() {
         return super.getInfo() +

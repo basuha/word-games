@@ -19,6 +19,10 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.ADVERB)
 public class Adverb extends Word {
 
+    {
+        partOfSpeech = PartOfSpeech.ADVERB;
+    }
+
     @Nullable
     @Column(name = "type")
     private String type;

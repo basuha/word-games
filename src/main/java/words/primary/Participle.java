@@ -17,6 +17,10 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PARTICIPLE)
 public class Participle extends Word {
 
+    {
+        partOfSpeech = PartOfSpeech.PARTICIPLE;
+    }
+
     @Column (name = "plural")
     private String plural;
 

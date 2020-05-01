@@ -3,6 +3,7 @@ package utilities;
 import words.Word;
 import org.hibernate.Session;
 import words.primary.Adjective;
+import words.primary.Adverb;
 
 import javax.persistence.Column;
 import javax.persistence.Query;
@@ -31,13 +32,32 @@ public class Dictionary extends HibernateUtil {
 //
 //        return wordList;
 //    }
+//
+//    public Word getWordById(int iid) {
+//       Session session = getSessionFactory().openSession();
+//       Word word = session.get(Word.class, iid);
+//       session.close();
+//       return word;
+//    }
+//
+//    public Word getWord(String word) {
+//        Session session = getSessionFactory().openSession();
+//        Word w = session.get(Word.class, word);
+//        session.close();
+//        return w;
+//    }
+//
+//
+//    public Word addWord(Word word) {
+//        Session session = getSessionFactory().openSession();
+//        session.beginTransaction();
+//        session.save(word);
+//        session.getTransaction().commit();
+//        session.close();
+//        return word;
+//    }
+//
 
-    public Word getWordById(int iid) {
-       Session session = getSessionFactory().openSession();
-       Word word = session.get(Word.class, iid);
-       session.close();
-       return word;
-    }
 
     private Integer getMaxId (String type) {
         Integer maxId;
@@ -67,55 +87,5 @@ public class Dictionary extends HibernateUtil {
         return word;
     }
 
-    @SuppressWarnings("unchecked assignment")
-    public List<?> getWordsByAttrib (Adjective source) {
-        List<?> wordsList;
-        StringBuilder hql = new StringBuilder();
 
-        String shortF = source.getShortF();
-        String plural = source.getPlural();
-        String gender = source.getGender();
-        String type = source.getType();
-        String wordCase = source.getWordCase();
-        String comparative = source.getComparative();
-
-        hql.append("FROM Adjective WHERE ");
-        if (shortF != null) hql.append("wordCase = ").append(shortF);
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createQuery("FROM Adjective " +
-                "WHERE shortF = :shortF " +
-                "AND plural = :plural " +
-                "AND gender = :gender " +
-                "AND partOfSpeech = :type " +
-                "AND wordCase = :wcase " +
-                "AND comparative = :comp");
-        query.setParameter("shortF", source.getShortF());
-        query.setParameter("plural", source.getPlural());
-        query.setParameter("gender", source.getGender());
-        query.setParameter("type", source.getPartOfSpeech());
-        query.setParameter("wcase", source.getWordCase());
-        query.setParameter("comp", source.getComparative());
-            wordsList = query.getResultList();
-        session.close();
-        return wordsList;
-    }
-
-
-    public Word getWord(String word) {
-        Session session = getSessionFactory().openSession();
-        Word w = session.get(Word.class, word);
-        session.close();
-        return w;
-    }
-
-
-    public Word addWord(Word word) {
-        Session session = getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(word);
-        session.getTransaction().commit();
-        session.close();
-        return word;
-    }
 }

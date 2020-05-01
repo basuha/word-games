@@ -14,6 +14,7 @@ import java.util.List;
 public class Particle extends Word {
 
     {
+        partOfSpeech = PartOfSpeech.PARTICLE;
         super.codeParent = 0;
     }
 

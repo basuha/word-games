@@ -15,6 +15,7 @@ import java.util.List;
 public class Predicate extends Word {
 
     {
+        partOfSpeech = PartOfSpeech.PREDICATE;
         super.codeParent = 0;
     }
 

@@ -15,6 +15,10 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.ADJECTIVE)
 public class Adjective extends Word {
 
+    {
+        partOfSpeech = PartOfSpeech.ADJECTIVE;
+    }
+
     @Column(name = "short")
     private String shortF;
 

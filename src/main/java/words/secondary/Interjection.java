@@ -16,6 +16,7 @@ import java.util.List;
 public class Interjection extends Word {
 
     {
+        partOfSpeech = PartOfSpeech.INTERJECTION;
         super.codeParent = 0;
     }
 

@@ -16,6 +16,7 @@ import java.util.List;
 public class Parenthesis extends Word {
 
     {
+        partOfSpeech = PartOfSpeech.PARENTHESIS;
         super.codeParent = 0;
     }
 

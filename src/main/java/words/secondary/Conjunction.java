@@ -16,6 +16,7 @@ import java.util.List;
 public class Conjunction extends Word {
 
     {
+        partOfSpeech = PartOfSpeech.CONJUNCTION;
         super.codeParent = 0;
     }
 
