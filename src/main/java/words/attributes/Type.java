@@ -10,10 +10,10 @@ public enum Type {
     public enum Adjective {
 
         /** неизменяемое */
-        IMMUTABLE ("неизм"),
+        IMMUTABLE ("immutable"),
 
         /** изменяемое */
-        MUTABLE ("изм");
+        MUTABLE ("mutable");
 
         private final String value;
 
@@ -37,13 +37,13 @@ public enum Type {
     public enum Adverb {
 
         /** обстоятельственные */
-        EXTENSIVE("обст"),
+        EXTENSIVE("extensive"),
 
         /** определительные */
-        DEFINITE("опред"),
+        DEFINITE("definite"),
 
         /** вопросительные */
-        QUESTION("вопр");
+        QUESTION("question");
 
         private final String value;
 
@@ -67,16 +67,16 @@ public enum Type {
     public enum Numeral {
 
         /** порядковое */
-        ORDINAL ("поряд"),
+        ORDINAL ("ordinal"),
 
         /** количественное */
-        QUANTITATIVE ("кол"),
+        QUANTITATIVE ("quantitative"),
 
         /** собирательное */
-        COLLECTIVE ("собир"),
+        COLLECTIVE ("collective"),
 
         /** неопределенное */
-        INDEFINITE ("неопр");
+        INDEFINITE ("indefinite");
 
         private final String value;
 

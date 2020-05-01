@@ -5,8 +5,8 @@ package words.attributes;
  */
 public enum Voice {
 
-    ACTIVE ("пов"),
-    PASSIVE ("страд");
+    ACTIVE ("active"),
+    PASSIVE ("passive");
 
     private final String value;
 
@@ -23,7 +23,7 @@ public enum Voice {
 
     public enum Participle {
 
-        PASSIVE ("страд"),
+        PASSIVE ("passive"),
         N_A ("n/a");
 
         private final String value;

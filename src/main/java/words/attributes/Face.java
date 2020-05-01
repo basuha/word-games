@@ -5,10 +5,10 @@ package words.attributes;
  */
 public enum Face {
 
-    FIRST ("1-е"),
-    SECOND ("2-е"),
-    THIRD ("3-е"),
-    ANONYMOUS ("безл");
+    FIRST ("first"),
+    SECOND ("second"),
+    THIRD ("third"),
+    ANONYMOUS ("anonymous");
 
     private final String value;
 

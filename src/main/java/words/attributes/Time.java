@@ -5,9 +5,9 @@ package words.attributes;
  */
 public enum Time {
 
-    PAST ("прош"),
-    PRESENT ("наст"),
-    FUTURE ("буд");
+    PAST ("past"),
+    PRESENT ("present"),
+    FUTURE ("future");
 
 
     private final String value;
@@ -27,8 +27,8 @@ public enum Time {
      */
     public enum Participle {
 
-        PAST ("прош"),
-        PRESENT ("наст");
+        PAST ("past"),
+        PRESENT ("present");
 
         private final String value;
 

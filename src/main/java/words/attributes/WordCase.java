@@ -12,22 +12,23 @@ package words.attributes;
 public enum WordCase {
 
     /** именитильный (кто?, что?) */
-    NOMINATIVE ("им"),
+    NOMINATIVE ("nominative"),
 
     /** родительный (кого?, чего?) */
-    GENITIVE ("род"),
+    GENITIVE ("genitive"),
 
     /** дательный (кому?, чему?) */
-    DATIVE ("дат"),
+    DATIVE ("dative"),
 
     /** винительный (кого?, что?) */
-    ACCUSATIVE ("вин"),
+    ACCUSATIVE ("accusative"),
 
     /** творительный (кем?, чем?) */
-    INSTRUMENTAL ("тв"),
+    INSTRUMENTAL ("instrumental"),
 
     /** предложный (о ком?, о чем?) */
-    PREPOSITIONAL ("пр");
+    PREPOSITIONAL ("prepositional");
+
 
     private final String value;
 
@@ -56,34 +57,34 @@ public enum WordCase {
     public enum Noun {
 
         /** именитильный (кто?, что?) */
-        NOMINATIVE ("им"),
+        NOMINATIVE ("nominative"),
 
         /** родительный (кого?, чего?) */
-        GENITIVE ("род"),
+        GENITIVE ("genitive"),
 
         /** дательный (кому?, чему?) */
-        DATIVE ("дат"),
+        DATIVE ("dative"),
 
         /** винительный (кого?, что?) */
-        ACCUSATIVE ("вин"),
+        ACCUSATIVE ("accusative"),
 
         /** творительный (кем?, чем?) */
-        INSTRUMENTAL ("тв"),
+        INSTRUMENTAL ("instrumental"),
 
         /** предложный (о ком?, о чем?) */
-        PREPOSITIONAL ("пр"),
+        PREPOSITIONAL ("prepositional"),
 
         /** звательный */
-        VOCATIVE ("зват"),
+        VOCATIVE ("vocative"),
 
         /** частичный */
-        PARTITIVE ("парт"),
+        PARTITIVE ("partitive"),
 
         /** локатив */
-        LOCATIVE ("мест"),
+        LOCATIVE ("locative"),
 
         /** счетный */
-        COUNTING ("счет");
+        COUNTING ("counting");
 
         private final String value;
 

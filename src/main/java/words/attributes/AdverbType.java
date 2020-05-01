@@ -14,28 +14,28 @@ package words.attributes;
 public enum AdverbType {
 
     /** качественные */
-    QUALITATIVE("кач"),
+    QUALITATIVE("qualitative"),
 
     /** способа и образа действия */
-    METHOD("спос"),
+    METHOD("method"),
 
     /** степени действия */
-    EXTENT("степ"),
+    EXTENT("extent"),
 
     /** места действия */
-    PLACE("места"),
+    PLACE("place"),
 
     /** направление действия */
-    DIRECTION("напр"),
+    DIRECTION("direction"),
 
     /** времени действия */
-    TIMING("врем"),
+    TIMING("timing"),
 
     /** цели действия */
-    PURPOSE("цель"),
+    PURPOSE("purpose"),
 
     /** причины действия */
-    REASON("причин");
+    REASON("reason");
 
     private final String value;
 

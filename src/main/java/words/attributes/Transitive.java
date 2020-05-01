@@ -5,9 +5,9 @@ package words.attributes;
  */
 public enum Transitive {
 
-    TRANSITIVE ("перех"),
-    INTRANSITIVE ("непер"),
-    TRANS_INTRANS ("пер/не");
+    TRANSITIVE ("transitive"),
+    INTRANSITIVE ("intransitive"),
+    TRANS_INTRANS ("trans/intrans");
 
     private final String value;
 

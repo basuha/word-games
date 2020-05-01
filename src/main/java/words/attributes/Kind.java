@@ -5,8 +5,8 @@ package words.attributes;
  */
 public enum Kind {
 
-    FIRST ("1вид"),
-    SECOND ("2вид");
+    FIRST ("first"),
+    SECOND ("second");
 
     private final String value;
 
@@ -25,7 +25,7 @@ public enum Kind {
      */
     public enum Participle {
 
-        SECOND ("2вид"),
+        SECOND ("second"),
         N_A("n/a");
 
         private final String value;

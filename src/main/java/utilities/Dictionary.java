@@ -4,6 +4,7 @@ import words.Word;
 import org.hibernate.Session;
 import words.primary.Adjective;
 
+import javax.persistence.Column;
 import javax.persistence.Query;
 import java.util.List;
 import java.util.Random;
@@ -67,10 +68,20 @@ public class Dictionary extends HibernateUtil {
     }
 
     @SuppressWarnings("unchecked assignment")
-    public List<?> getWordsByAttrib (Word source) {
-        List<Adjective> wordsList = null;
+    public List<?> getWordsByAttrib (Adjective source) {
+        List<?> wordsList;
         StringBuilder hql = new StringBuilder();
-        hql.append()
+
+        String shortF = source.getShortF();
+        String plural = source.getPlural();
+        String gender = source.getGender();
+        String type = source.getType();
+        String wordCase = source.getWordCase();
+        String comparative = source.getComparative();
+
+        hql.append("FROM Adjective WHERE ");
+        if (shortF != null) hql.append("wordCase = ").append(shortF);
+
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery("FROM Adjective " +
                 "WHERE shortF = :shortF " +
