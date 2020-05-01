@@ -44,8 +44,8 @@ public class RandomWord {
 
     /**
      * коэфицент определения корня слова (>1.0)
-     * 1.0 = все слово корень
-     * 2.0 = половина слова корень
+     * 1.0 = все слово - корень
+     * 2.0 = половина слова - корень
      */
     private final double ROOT_DETECT_COEF = 1.1;
 
@@ -68,9 +68,10 @@ public class RandomWord {
     /** имя основной таблицы */
     private static final String TABLE = "words_test";
 
-    private boolean IS_PRIMARY;
+    private boolean isPrimary;
 
     static {
+
         //определение максимального ID в базе словаря
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createSQLQuery("SELECT max(IID) FROM " + TABLE);
@@ -98,13 +99,13 @@ public class RandomWord {
             case PartOfSpeech.ADJECTIVE:
 
                 Adjective adjective = (Adjective) word;
-                this.comparative = adjective.getComparative();
-                this.gender = adjective.getGender();
-                this.plural = adjective.getPlural();
-                this.shortF = adjective.getShortF();
-                this.type = adjective.getType();
-                this.wordCase = adjective.getWordCase();
-                IS_PRIMARY = true;
+                this.comparative = adjective.getComparative().toString();
+                this.gender = adjective.getGender().toString();
+                this.plural = adjective.getPlural().toString();
+                this.shortF = adjective.getShortF().toString();
+                this.type = adjective.getType().toString();
+                this.wordCase = adjective.getWordCase().toString();
+                isPrimary = true;
                 break;
 
             case PartOfSpeech.ADVERB:
@@ -113,7 +114,7 @@ public class RandomWord {
                 this.type = adverb.getType();
                 this.adverbType = adverb.getAdverbType();
                 this.comparative = adverb.getComparative();
-                IS_PRIMARY = true;
+                isPrimary = true;
                 break;
 
             case PartOfSpeech.EXTRA_PARTICIPLE:
@@ -123,7 +124,7 @@ public class RandomWord {
                 this.perfect = extraParticiple.getPerfect();
                 this.time = extraParticiple.getTime();
                 this.reflexive = extraParticiple.getReflexive();
-                IS_PRIMARY = true;
+                isPrimary = true;
                 break;
 
             case PartOfSpeech.NOUN:
@@ -133,7 +134,7 @@ public class RandomWord {
                 this.gender = noun.getGender();
                 this.wordCase = noun.getWordCase();
                 this.animate = noun.getAnimate();
-                IS_PRIMARY = true;
+                isPrimary = true;
                 break;
 
             case PartOfSpeech.NUMERAL:
@@ -143,7 +144,7 @@ public class RandomWord {
                 this.gender = numeral.getGender();
                 this.wordCase = numeral.getWordCase();
                 this.type = numeral.getType();
-                IS_PRIMARY = false;
+                isPrimary = false;
                 break;
 
             case PartOfSpeech.PARTICIPLE:
@@ -158,7 +159,7 @@ public class RandomWord {
                 this.transitive = participle.getTransitive();
                 this.voice = participle.getVoice();
                 this.wordCase = participle.getWordCase();
-                IS_PRIMARY = true;
+                isPrimary = true;
                 break;
 
             case PartOfSpeech.VERB:
@@ -174,14 +175,14 @@ public class RandomWord {
                 this.time = verb.getTime();
                 this.transitive = verb.getTransitive();
                 this.voice = verb.getVoice();
-                IS_PRIMARY = true;
+                isPrimary = true;
                 break;
 
             case PartOfSpeech.PRETEXT:
 
                 Pretext pretext = (Pretext) word;
                 this.wordCase = pretext.getWordCase();
-                IS_PRIMARY = false;
+                isPrimary = false;
                 break;
 
             case PartOfSpeech.PRONOUN:
@@ -193,7 +194,7 @@ public class RandomWord {
                 this.wordCase = pronoun.getWordCase();
                 this.gender = pronoun.getGender();
                 this.plural = pronoun.getPlural();
-                IS_PRIMARY = false;
+                isPrimary = false;
                 break;
         }
         this.wordsList = getRandomWords();
@@ -208,123 +209,140 @@ public class RandomWord {
                 .append(word.getPartOfSpeech())
                 .append(" WHERE")
                 .append(" IID > ")
-                .append(random.nextInt(MAX_ID))
-                .append(" AND ");
+                .append(random.nextInt(MAX_ID));
 
         if (shortF != null) {
-            hql.append(" short = ")
-                    .append("'").append(shortF).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" short = ")
+                    .append("'")
+                    .append(shortF)
+                    .append("'");
         }
 
         if (plural != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" plural = ").append("'").append(plural).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" plural = ")
+                    .append("'")
+                    .append(plural)
+                    .append("'");
         }
 
         if (gender != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" gender = ").append("'").append(gender).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" gender = ")
+                    .append("'")
+                    .append(gender)
+                    .append("'");
         }
 
         if (type != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" type = ").append("'").append(type).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" type = ")
+                    .append("'")
+                    .append(type)
+                    .append("'");
         }
 
         if (wordCase != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" word_case = ").append("'").append(wordCase).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" word_case = ")
+                    .append("'")
+                    .append(wordCase)
+                    .append("'");
         }
 
         if (comparative != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" comparative = ").append("'").append(comparative).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" comparative = ")
+                    .append("'")
+                    .append(comparative)
+                    .append("'");
         }
 
         if (animate != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" animate = ").append("'").append(animate).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" animate = ")
+                    .append("'")
+                    .append(animate)
+                    .append("'");
         }
 
         if (adverbType != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" adverb_type = ").append("'").append(adverbType).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" adverb_type = ")
+                    .append("'")
+                    .append(adverbType)
+                    .append("'");
         }
 
         if (face != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" face = ").append("'").append(face).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" face = ")
+                    .append("'")
+                    .append(face)
+                    .append("'");
         }
 
         if (infinitive != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" infinitive = ").append("'").append(infinitive).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" infinitive = ")
+                    .append("'")
+                    .append(infinitive)
+                    .append("'");
         }
 
         if (kind != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" kind = ").append("'").append(kind).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" kind = ")
+                    .append("'")
+                    .append(kind)
+                    .append("'");
         }
 
         if (perfect != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" perfect = ").append("'").append(perfect).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" perfect = ")
+                    .append("'")
+                    .append(perfect)
+                    .append("'");
         }
 
         if (reflexive != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" reflexive = ").append("'").append(reflexive).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" reflexive = ")
+                    .append("'")
+                    .append(reflexive)
+                    .append("'");
         }
 
         if (time != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" time = ").append("'").append(time).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" time = ")
+                    .append("'")
+                    .append(time)
+                    .append("'");
         }
 
         if (transitive != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" transitive = ").append("'").append(transitive).append("'");
-            attribCount++;
+            hql.append(" AND")
+                    .append(" transitive = ")
+                    .append("'")
+                    .append(transitive)
+                    .append("'");
         }
 
         if (voice != null) {
-            if (attribCount > 0)
-                hql.append(" AND");
-            hql.append(" voice = ").append("'").append(voice).append("'");
+            hql.append(" AND")
+                    .append(" voice = ")
+                    .append("'")
+                    .append(voice)
+                    .append("'");
         }
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         wordsList = session
                 .createQuery(hql.toString())
-//                .setMaxResults(MAX_RESULTS)
+                .setMaxResults(MAX_RESULTS)
                 .getResultList();
         session.close();
 

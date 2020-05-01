@@ -71,15 +71,17 @@ public class Adjective extends Word {
         return comparative;
     }
 
-    public void setParam(Short shortF) {
+    public Adjective setParam(Short shortF) {
         this.shortF = shortF.toString();
+        return this;
     }
 
-    public void setParam(Plural plural) {
+    public Adjective setParam(Plural plural) {
         this.plural = plural.toString();
+        return this;
     }
 
-    public void setParam(Gender gender) {
+    public Adjective setParam(Gender gender) {
         if (gender == Gender.N_A) {
             this.gender = gender.toString();
             this.plural = Plural.PLURAL.toString();
@@ -87,9 +89,10 @@ public class Adjective extends Word {
             this.gender = gender.toString();
             this.plural = Plural.SINGULAR.toString();
         }
+        return this;
     }
 
-    public void setParam(Type.Adjective type) {
+    public Adjective setParam(Type.Adjective type) {
         if (type == Type.Adjective.IMMUTABLE) {
             this.gender = "n/a";
             this.plural = "n/a";
@@ -99,20 +102,23 @@ public class Adjective extends Word {
         } else {
             this.type = type.toString();
         }
+        return this;
     }
 
-    public void setParam(WordCase wordCase) {
+    public Adjective setParam(WordCase wordCase) {
         this.wordCase = wordCase.toString();
+        return this;
     }
 
-    public void setParam(Comparative comparative) {
+    public Adjective setParam(Comparative comparative) {
         this.comparative = comparative.toString();
+        return this;
     }
 
     @Override
     public String getInfo() {
         return super.getInfo() +
-                "{" +
+                " Adjective (прилагательное) {" +
                 "shortF=" + shortF +
                 ", plural=" + plural +
                 ", gender='" + gender + '\'' +

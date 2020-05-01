@@ -27,7 +27,9 @@ public enum WordCase {
     INSTRUMENTAL ("instrumental"),
 
     /** предложный (о ком?, о чем?) */
-    PREPOSITIONAL ("prepositional");
+    PREPOSITIONAL ("prepositional"),
+
+    N_A ("n/a");
 
 
     private final String value;

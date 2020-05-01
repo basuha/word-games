@@ -1,5 +1,6 @@
 package utilities;
 
+import words.Word;
 import words.primary.*;
 import words.secondary.*;
 
@@ -26,4 +27,7 @@ public class RandomSentenceBuilder {
     private List<PronNoun> pronNouns;
     private List<Pronoun> pronouns;
 
+    public RandomSentenceBuilder append(Word word) {
+        return null;
+    }
 }
