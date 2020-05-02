@@ -54,15 +54,17 @@ public class Numeral extends Word {
     }
 
 
-    public void setParam(Type.Numeral type) {
+    public Numeral setParam(Type.Numeral type) {
         this.type = type.toString();
+        return this;
     }
 
-    public void setParam(Plural plural) {
+    public Numeral setParam(Plural plural) {
         this.plural = plural.toString();
+        return this;
     }
 
-    public void setParam(Gender gender) {
+    public Numeral setParam(Gender gender) {
         if (gender == Gender.N_A) {
             this.gender = gender.toString();
             this.plural = Plural.PLURAL.toString();
@@ -70,10 +72,12 @@ public class Numeral extends Word {
             this.gender = gender.toString();
             this.plural = Plural.SINGULAR.toString();
         }
+        return this;
     }
 
-    public void setParam(WordCase wordCase) {
+    public Numeral setParam(WordCase wordCase) {
         this.wordCase = wordCase.toString();
+        return this;
     }
 
     @Override

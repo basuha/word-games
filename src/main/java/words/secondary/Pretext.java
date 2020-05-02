@@ -27,8 +27,9 @@ public class Pretext extends Word {
         return wordCase;
     }
 
-    public void setWordCase(WordCase wordCase) {
+    public Pretext setWordCase(WordCase wordCase) {
         this.wordCase = wordCase.toString();
+        return this;
     }
 
     @Override

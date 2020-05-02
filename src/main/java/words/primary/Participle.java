@@ -93,23 +93,27 @@ public class Participle extends Word {
     }
 
 
-    public void setParam(Plural plural) {
+    public Participle setParam(Plural plural) {
         this.plural = plural.toString();
+        return this;
     }
 
-    public void setParam(Transitive transitive) {
+    public Participle setParam(Transitive transitive) {
         this.transitive = transitive.toString();
+        return this;
     }
 
-    public void setParam(Time.Participle time) {
+    public Participle setParam(Time.Participle time) {
         this.time = time.toString();
+        return this;
     }
 
-    public void setParam(Reflexive reflexive) {
+    public Participle setParam(Reflexive reflexive) {
         this.reflexive = reflexive.toString();
+        return this;
     }
 
-    public void setParam(Gender gender) {
+    public Participle setParam(Gender gender) {
         if (gender == Gender.N_A) {
             this.gender = gender.toString();
             this.plural = Plural.PLURAL.toString();
@@ -117,26 +121,32 @@ public class Participle extends Word {
             this.gender = gender.toString();
             this.plural = Plural.SINGULAR.toString();
         }
+        return this;
     }
 
-    public void setParam(WordCase wordCase) {
+    public Participle setParam(WordCase wordCase) {
         this.wordCase = wordCase.toString();
+        return this;
     }
 
-    public void setParam(Boolean perfect) {
+    public Participle setParam(Boolean perfect) {
         this.perfect = perfect.toString();
+        return this;
     }
 
-    public void setParam(Kind.Participle kind) {
+    public Participle setParam(Kind.Participle kind) {
         this.kind = kind.toString();
+        return this;
     }
 
-    public void setParam(Voice.Participle voice) {
+    public Participle setParam(Voice.Participle voice) {
         this.voice = voice.toString();
+        return this;
     }
 
-    public void setParam(Short shortF) {
+    public Participle setParam(Short shortF) {
         this.shortF = shortF.toString();
+        return this;
     }
 
 

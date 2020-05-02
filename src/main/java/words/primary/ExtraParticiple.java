@@ -52,20 +52,24 @@ public class ExtraParticiple extends Word {
         return reflexive;
     }
 
-    public void setParam(Transitive transitive) {
+    public ExtraParticiple setParam(Transitive transitive) {
         this.transitive = transitive.toString();
+        return this;
     }
 
-    public void setParam(Perfect perfect) {
+    public ExtraParticiple setParam(Perfect perfect) {
         this.perfect = perfect.toString();
+        return this;
     }
 
-    public void setParam(Time.Participle time) {
+    public ExtraParticiple setParam(Time.Participle time) {
         this.time = time.toString();
+        return this;
     }
 
-    public void setParam(Reflexive reflexive) {
+    public ExtraParticiple setParam(Reflexive reflexive) {
         this.reflexive = reflexive.toString();
+        return this;
     }
 
     @Override

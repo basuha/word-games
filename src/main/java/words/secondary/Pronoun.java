@@ -47,16 +47,19 @@ public class Pronoun extends Word {
         return gender;
     }
 
-    public void setParam(Plural plural) {
+    public Pronoun setParam(Plural plural) {
         this.plural = plural.toString();
+        return this;
     }
 
-    public void setParam(Gender gender) {
+    public Pronoun setParam(Gender gender) {
         this.gender = gender.toString();
+        return this;
     }
 
-    public void setParam(WordCase wordCase) {
+    public Pronoun setParam(WordCase wordCase) {
         this.wordCase = wordCase.toString();
+        return this;
     }
 
     @Override

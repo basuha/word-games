@@ -89,44 +89,54 @@ public class Verb extends Word {
     }
 
 
-    public void setParam(Plural plural) {
+    public Verb setParam(Plural plural) {
         this.plural = plural.toString();
+        return this;
     }
 
-    public void setParam(Gender gender) {
+    public Verb setParam(Gender gender) {
         this.gender = gender.toString();
+        return this;
     }
 
-    public void setParam(Transitive transitive) {
+    public Verb setParam(Transitive transitive) {
         this.transitive = transitive.toString();
+        return this;
     }
 
-    public void setParam(Perfect perfect) {
+    public Verb setParam(Perfect perfect) {
         this.perfect = perfect.toString();
+        return this;
     }
 
-    public void setParam(String face) {
+    public Verb setParam(String face) {
         this.face = face;
+        return this;
     }
 
-    public void setParam(Kind kind) {
+    public Verb setParam(Kind kind) {
         this.kind = kind.toString();
+        return this;
     }
 
-    public void setParam(Time time) {
+    public Verb setParam(Time time) {
         this.time = time.toString();
+        return this;
     }
 
-    public void setParam(Infinitive infinitive) {
+    public Verb setParam(Infinitive infinitive) {
         this.infinitive = infinitive.toString();
+        return this;
     }
 
-    public void setParam(Reflexive reflexive) {
+    public Verb setParam(Reflexive reflexive) {
         this.reflexive = reflexive.toString();
+        return this;
     }
 
-    public void setParam(Voice voice) {
+    public Verb setParam(Voice voice) {
         this.voice = voice.toString();
+        return this;
     }
 
 

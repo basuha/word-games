@@ -47,16 +47,19 @@ public class Adverb extends Word {
         return comparative;
     }
 
-    public void setParam(Type.Adverb type) {
+    public Adverb setParam(Type.Adverb type) {
         this.type = type.toString();
+        return this;
     }
 
-    public void setParam(Comparative comparative) {
+    public Adverb setParam(Comparative comparative) {
         this.comparative = comparative.toString();
+        return this;
     }
 
-    public void setParam(AdverbType adverbType) {
+    public Adverb setParam(AdverbType adverbType) {
         this.adverbType = adverbType.toString();
+        return this;
     }
 
     @Override

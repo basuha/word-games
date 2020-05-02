@@ -67,11 +67,12 @@ public class Noun extends Word {
     }
 
 
-    public void setParam(Plural plural) {
+    public Noun setParam(Plural plural) {
         this.plural = plural.toString();
+        return this;
     }
 
-    public void setParam(Gender gender) {
+    public Noun setParam(Gender gender) {
         if (gender == Gender.N_A) {
             this.gender = gender.toString();
             this.plural = Plural.PLURAL.toString();
@@ -79,14 +80,17 @@ public class Noun extends Word {
             this.gender = gender.toString();
             this.plural = Plural.SINGULAR.toString();
         }
+        return this;
     }
 
-    public void setParam(WordCase.Noun wordCase) {
+    public Noun setParam(WordCase.Noun wordCase) {
         this.wordCase = wordCase.toString();
+        return this;
     }
 
-    public void setParam(Animate animate) {
+    public Noun setParam(Animate animate) {
         this.animate = animate.toString();
+        return this;
     }
 
     @Override
