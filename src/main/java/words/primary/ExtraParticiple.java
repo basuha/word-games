@@ -22,6 +22,7 @@ public class ExtraParticiple extends Word {
 
     {
         partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
+        changeable = true;
     }
 
     @Column(name = "transitive")

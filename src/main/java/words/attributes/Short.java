@@ -3,8 +3,7 @@ package words.attributes;
 public enum Short {
 
     SHORT ("short"),
-    NOT_SHORT ("not_short"),
-    N_A ("n/a");
+    NOT_SHORT ("n/a");
 
     private final String value;
 

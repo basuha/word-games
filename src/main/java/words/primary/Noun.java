@@ -20,6 +20,7 @@ public class Noun extends Word {
 
     {
         partOfSpeech = PartOfSpeech.NOUN;
+        changeable = true;
     }
 
     @Column (name = "plural")

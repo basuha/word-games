@@ -14,6 +14,7 @@ public class PronNoun extends Pronoun {
 
     {
         partOfSpeech = PartOfSpeech.PRON_NOUN;
+        changeable = false;
     }
 
     @Override

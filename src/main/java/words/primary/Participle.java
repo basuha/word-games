@@ -19,6 +19,7 @@ public class Participle extends Word {
 
     {
         partOfSpeech = PartOfSpeech.PARTICIPLE;
+        changeable = true;
     }
 
     @Column (name = "plural")

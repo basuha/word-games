@@ -30,6 +30,9 @@ import java.util.List;
 @DiscriminatorColumn(name = "part_of_speech")
 public abstract class Word {
 
+    @Transient
+    protected boolean changeable;
+
     @Id
     @Column(name = "IID", nullable = false)
     protected Integer IID;
@@ -92,6 +95,10 @@ public abstract class Word {
         this.codeParent = codeParent;
     }
 
+    public boolean isChangeable() {
+        return changeable;
+    }
+
     public String getInfo() {
         return "Word{" +
                 "IID=" + IID +
@@ -103,6 +110,6 @@ public abstract class Word {
 
     @Override
     public String toString() {
-        return this.word;
+         return this.word;
     }
 }

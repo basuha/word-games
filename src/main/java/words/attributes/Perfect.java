@@ -3,7 +3,7 @@ package words.attributes;
 public enum Perfect {
 
     PERFECT ("perfect"),
-    SECOND ("imperfect"),
+    NOT_PERFECT ("imperfect"),
     N_A ("n/a");
 
     private final String value;

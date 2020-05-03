@@ -15,6 +15,7 @@ public class Verb extends Word {
 
     {
         partOfSpeech = PartOfSpeech.VERB;
+        changeable = true;
     }
 
     @Column (name = "infinitive")
@@ -148,5 +149,22 @@ public class Verb extends Word {
     @Override
     public List<Word> getCognates() {
         return null;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo()
+                + " Verb(Глагол){" +
+                "infinitive='" + infinitive + '\'' +
+                ", reflexive='" + reflexive + '\'' +
+                ", transitive='" + transitive + '\'' +
+                ", plural='" + plural + '\'' +
+                ", gender='" + gender + '\'' +
+                ", perfect='" + perfect + '\'' +
+                ", face='" + face + '\'' +
+                ", kind='" + kind + '\'' +
+                ", time='" + time + '\'' +
+                ", voice='" + voice + '\'' +
+                '}';
     }
 }

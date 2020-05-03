@@ -40,12 +40,6 @@ public class Dictionary extends HibernateUtil {
 //       return word;
 //    }
 //
-//    public Word getWord(String word) {
-//        Session session = getSessionFactory().openSession();
-//        Word w = session.get(Word.class, word);
-//        session.close();
-//        return w;
-//    }
 //
 //
 //    public Word addWord(Word word) {

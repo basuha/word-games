@@ -99,12 +99,12 @@ public class RandomWord {
             case PartOfSpeech.ADJECTIVE:
 
                 Adjective adjective = (Adjective) word;
-                this.comparative = adjective.getComparative().toString();
-                this.gender = adjective.getGender().toString();
-                this.plural = adjective.getPlural().toString();
-                this.shortF = adjective.getShortF().toString();
-                this.type = adjective.getType().toString();
-                this.wordCase = adjective.getWordCase().toString();
+                this.comparative = adjective.getComparative();
+                this.gender = adjective.getGender();
+                this.plural = adjective.getPlural();
+                this.shortF = adjective.getShortF();
+                this.type = adjective.getType();
+                this.wordCase = adjective.getWordCase();
                 isPrimary = true;
                 break;
 
@@ -204,12 +204,11 @@ public class RandomWord {
     private List<Word> getRandomWords() {
 
         StringBuilder hql = new StringBuilder();
-        int attribCount = 0;
         hql.append("FROM ")
                 .append(word.getPartOfSpeech())
                 .append(" WHERE")
                 .append(" IID > ")
-                .append(random.nextInt(MAX_ID));
+                .append(0);
 
         if (shortF != null) {
             hql.append(" AND")
@@ -342,7 +341,7 @@ public class RandomWord {
         Session session = HibernateUtil.getSessionFactory().openSession();
         wordsList = session
                 .createQuery(hql.toString())
-                .setMaxResults(MAX_RESULTS)
+//                .setMaxResults(MAX_RESULTS)
                 .getResultList();
         session.close();
 
@@ -372,7 +371,10 @@ public class RandomWord {
     }
 
     public Word get() {
-        return resultSet.get(random.nextInt(resultSet.size() - 1));
+        if (resultSet.size() > -1) {
+            return resultSet.get(random.nextInt(resultSet.size() - 1));
+        }
+        return null;
     }
 
     public List<Word> getList() {

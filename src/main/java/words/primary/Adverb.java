@@ -21,6 +21,7 @@ public class Adverb extends Word {
 
     {
         partOfSpeech = PartOfSpeech.ADVERB;
+        changeable = true;
     }
 
     @Nullable

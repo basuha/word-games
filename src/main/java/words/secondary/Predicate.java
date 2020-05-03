@@ -16,6 +16,7 @@ public class Predicate extends Word {
 
     {
         partOfSpeech = PartOfSpeech.PREDICATE;
+        changeable = false;
         super.codeParent = 0;
     }
 

@@ -21,6 +21,7 @@ public class Pronoun extends Word {
 
     {
         partOfSpeech = PartOfSpeech.PRONOUN;
+        changeable = false;
     }
 
     @Nullable

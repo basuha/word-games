@@ -17,6 +17,7 @@ public class Interjection extends Word {
 
     {
         partOfSpeech = PartOfSpeech.INTERJECTION;
+        changeable = false;
         super.codeParent = 0;
     }
 

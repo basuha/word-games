@@ -3,7 +3,7 @@ package words.attributes;
 public enum Reflexive {
 
     REFLEXIVE ("reflexive"),
-    NOT ("not"),
+    NOT_REFLEXIVE ("not"),
     N_A ("n_a");
 
     private final String value;

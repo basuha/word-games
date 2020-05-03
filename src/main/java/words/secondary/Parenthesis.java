@@ -17,6 +17,7 @@ public class Parenthesis extends Word {
 
     {
         partOfSpeech = PartOfSpeech.PARENTHESIS;
+        changeable = false;
         super.codeParent = 0;
     }
 

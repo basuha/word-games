@@ -21,6 +21,7 @@ public class Numeral extends Word {
 
     {
         partOfSpeech = PartOfSpeech.NUMERAL;
+        changeable = true;
     }
 
     @Column(name = "type")

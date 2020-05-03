@@ -18,6 +18,7 @@ public class Pretext extends Word {
 
     {
         partOfSpeech = PartOfSpeech.PRETEXT;
+        changeable = false;
     }
 
     @Column(name = "word_case")

@@ -15,6 +15,7 @@ public class Particle extends Word {
 
     {
         partOfSpeech = PartOfSpeech.PARTICLE;
+        changeable = false;
         super.codeParent = 0;
     }
 

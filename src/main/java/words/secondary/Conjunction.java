@@ -17,6 +17,7 @@ public class Conjunction extends Word {
 
     {
         partOfSpeech = PartOfSpeech.CONJUNCTION;
+        changeable = false;
         super.codeParent = 0;
     }
 
