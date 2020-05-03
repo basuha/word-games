@@ -4,11 +4,17 @@ import words.Word;
 
 import java.util.List;
 
+
+/**
+ * Класс-обертка для StringBuilder
+ */
 public class Sentence {
     private int counter = 0;
     StringBuilder sentence = new StringBuilder();
 
-    public Sentence(){}
+    public Sentence(){
+
+    }
 
     public Sentence(List<Word> word) {
         add(word);

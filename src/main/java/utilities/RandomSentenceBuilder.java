@@ -24,7 +24,7 @@ public class RandomSentenceBuilder {
 
     public String getSingleResult() {
         for (int i = 0; i < wordsList.size(); i++) {
-            sentence.add(new RandomWord(wordsList.get(i)).get().getWord());
+            sentence.add(new RandomWord(wordsList.get(i)).getSingleWord().toString());
             sentence.add(" ");
         }
         return sentence.toString();

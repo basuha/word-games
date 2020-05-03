@@ -30,7 +30,7 @@ public class SentenceGenerator {
         find();
         for (List<Word> l : resultSet) {
 //            for (Word w : l) {
-                output.add(new RandomWord(l.get(0)).get());
+                output.add(new RandomWord(l.get(0)).getSingleWord());
 //            }
         }
         for (Word w : output) {

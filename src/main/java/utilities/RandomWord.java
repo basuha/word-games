@@ -370,7 +370,7 @@ public class RandomWord {
         }
     }
 
-    public Word get() {
+    public Word getSingleWord() {
         if (resultSet.size() > 0) {
             return resultSet.get(random.nextInt(resultSet.size() - 1));
         }
