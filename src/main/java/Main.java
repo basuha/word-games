@@ -1,7 +1,4 @@
-import utilities.Dictionary;
-import utilities.RandomSentenceBuilder;
-import utilities.RandomWord;
-import utilities.SentenceGenerator;
+import utilities.*;
 import words.Word;
 import words.attributes.*;
 import words.attributes.Short;
@@ -31,23 +28,26 @@ public class Main {
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
-//        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
-//        System.out.println(randomSentenceBuilder
-//                .append(new Adjective()
-//                        .setParam(Gender.MALE)
-//                        .setParam(WordCase.NOMINATIVE))
-//                .append(new Noun()
-//                        .setParam(Gender.MALE)
-//                        .setParam(Plural.SINGULAR)
-//                        .setParam(WordCase.Noun.NOMINATIVE))
-//                .append(new Adverb())
-//                .append(new Verb()
-//                        .setParam(Gender.MALE)
-//                        .setParam(Plural.SINGULAR)
-//                        .setParam(Kind.SECOND))
-//                .build());
+        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
+        randomSentenceBuilder
+                            .append(new Adjective()
+                                    .setParam(Gender.MALE)
+                                    .setParam(WordCase.NOMINATIVE))
+                            .append(new Noun()
+                                    .setParam(Gender.MALE)
+                                    .setParam(Plural.SINGULAR)
+                                    .setParam(WordCase.Noun.NOMINATIVE))
+                            .append(new Adverb())
+                            .append(new Verb()
+                                    .setParam(Gender.MALE)
+                                    .setParam(Plural.SINGULAR)
+                                    .setParam(Kind.SECOND));
 
-        SentenceGenerator sentenceGenerator = new SentenceGenerator();
-        sentenceGenerator.init();
+        for (Sentence s : randomSentenceBuilder.getResultList()) {
+            System.out.println(s);
+        }
+
+//        SentenceGenerator sentenceGenerator = new SentenceGenerator();
+//        sentenceGenerator.init();
     }
 }

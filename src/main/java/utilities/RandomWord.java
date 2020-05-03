@@ -54,7 +54,7 @@ public class RandomWord {
      * 0.0 = все слова редкие
      * 1.0 = все слова частые
      */
-    private final double COMMON_WORDS_COEF = 1;
+    private final double COMMON_WORDS_COEF = 0;
 
     /** частоупотребимые слова из файла */
     private static ArrayList<String> commonWords = new ArrayList<>();
@@ -371,7 +371,7 @@ public class RandomWord {
     }
 
     public Word get() {
-        if (resultSet.size() > -1) {
+        if (resultSet.size() > 0) {
             return resultSet.get(random.nextInt(resultSet.size() - 1));
         }
         return null;

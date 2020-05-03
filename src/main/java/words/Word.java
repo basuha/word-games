@@ -28,7 +28,7 @@ import java.util.List;
 @Table(name = "words_test")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "part_of_speech")
-public abstract class Word {
+public class Word {
 
     @Transient
     protected boolean changeable;
@@ -52,9 +52,6 @@ public abstract class Word {
     @Transient
     protected List<Word> cognates = new ArrayList<>();
 
-    public abstract void addCognate(Word cognate);
-    public abstract List<Word> getCognates();
-
     public Integer getIID() {
         return IID;
     }
@@ -67,8 +64,9 @@ public abstract class Word {
         return word;
     }
 
-    public void setWord(String word) {
+    public Word setWord(String word) {
         this.word = word;
+        return this;
     }
 
     public Integer getCode() {

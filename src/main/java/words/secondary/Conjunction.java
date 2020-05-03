@@ -22,16 +22,6 @@ public class Conjunction extends Word {
     }
 
     @Override
-    public void addCognate(Word cognate) {
-
-    }
-
-    @Override
-    public List<Word> getCognates() {
-        return null;
-    }
-
-    @Override
     public String getInfo() {
         return super.getInfo()
                 + " Conjunction (Союз)";

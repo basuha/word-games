@@ -34,16 +34,6 @@ public class Pretext extends Word {
     }
 
     @Override
-    public void addCognate(Word cognate) {
-
-    }
-
-    @Override
-    public List<Word> getCognates() {
-        return null;
-    }
-
-    @Override
     public String getInfo() {
         return super.getInfo() + " Pretext (Предлог){" +
                 "wCase='" + wordCase + '\'' +

@@ -150,14 +150,20 @@ public class Participle extends Word {
         return this;
     }
 
-
     @Override
-    public void addCognate(Word cognate) {
-
-    }
-
-    @Override
-    public List<Word> getCognates() {
-        return null;
+    public String getInfo() {
+        return super.getInfo() +
+                " Participle (Причастие){" +
+                "plural='" + plural + '\'' +
+                ", transitive='" + transitive + '\'' +
+                ", time='" + time + '\'' +
+                ", reflexive='" + reflexive + '\'' +
+                ", gender='" + gender + '\'' +
+                ", wordCase='" + wordCase + '\'' +
+                ", perfect='" + perfect + '\'' +
+                ", kind='" + kind + '\'' +
+                ", voice='" + voice + '\'' +
+                ", shortF='" + shortF + '\'' +
+                '}';
     }
 }

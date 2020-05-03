@@ -38,18 +38,6 @@ public class Noun extends Word {
     @Column (name = "animate")
     private String animate;
 
-    @Override
-    public void addCognate(Word cognate) {
-
-    }
-
-    @Override
-    public List<Word> getCognates() {
-        return null;
-    }
-
-
-
 
     public String getPlural() {
         return plural;

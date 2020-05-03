@@ -37,15 +37,6 @@ public class Adjective extends Word {
     @Column(name = "comparative")
     private String comparative;
 
-    @Override
-    public void addCognate(Word cognate) {
-        this.cognates.add(cognate);
-    }
-
-    @Override
-    public List<Word> getCognates() {
-        return cognates;
-    }
 
     public String getShortF() {
         return shortF;
