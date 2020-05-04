@@ -28,20 +28,40 @@ public class Main {
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
+//
+//        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
+//        randomSentenceBuilder
+//                            .append(new Adjective()
+//                                    .setParam(Gender.MALE)
+//                                    .setParam(WordCase.NOMINATIVE))
+//                            .append(new Noun()
+//                                    .setParam(Gender.MALE)
+//                                    .setParam(Plural.SINGULAR)
+//                                    .setParam(WordCase.Noun.NOMINATIVE))
+//                            .append(new Adverb())
+//                            .append(new Verb()
+//                                    .setParam(Gender.MALE)
+//                                    .setParam(Plural.SINGULAR)
+//                                    .setParam(Kind.SECOND));
+
         RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
         randomSentenceBuilder
-                            .append(new Adjective()
-                                    .setParam(Gender.MALE)
-                                    .setParam(WordCase.NOMINATIVE))
-                            .append(new Noun()
-                                    .setParam(Gender.MALE)
-                                    .setParam(Plural.SINGULAR)
-                                    .setParam(WordCase.Noun.NOMINATIVE))
-                            .append(new Adverb())
-                            .append(new Verb()
-                                    .setParam(Gender.MALE)
-                                    .setParam(Plural.SINGULAR)
-                                    .setParam(Kind.SECOND));
+                .append(new Adjective()
+                        .setParam(Gender.MALE)
+                        .setParam(WordCase.NOMINATIVE))
+                .append(new Noun()
+                        .setParam(Gender.MALE)
+                        .setParam(Plural.SINGULAR)
+                        .setParam(WordCase.Noun.NOMINATIVE))
+                .append(new Verb()
+                        .setParam(Gender.MALE)
+                        .setParam(Plural.SINGULAR)
+                        .setParam(Kind.SECOND)
+                        .setParam(Reflexive.NOT_REFLEXIVE))
+                .append(new Noun()
+                        .setParam(WordCase.Noun.ACCUSATIVE)
+                        .setParam(Plural.SINGULAR));
+
 
         for (Sentence s : randomSentenceBuilder.getResultList()) {
             System.out.println(s);

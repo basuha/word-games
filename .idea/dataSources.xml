@@ -21,5 +21,11 @@ C:/Users/kermit/IdeaProjects/word-games/src/main/resources/hibernate.cfg.xml</re
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://192.168.43.77:3306/first_lesson?serverTimezone=UTC</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="word-games-db-sqlite.db" uuid="3739761b-dda1-43e9-96f8-96249b8993a2">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../word-games-db-sqlite.db</jdbc-url>
+    </data-source>
   </component>
 </project>

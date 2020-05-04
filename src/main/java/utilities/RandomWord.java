@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomWord {
+public class RandomWord extends Thread {
 
     private String adverbType;
     private String animate;
@@ -47,7 +47,7 @@ public class RandomWord {
      * 1.0 = все слово - корень
      * 2.0 = половина слова - корень
      */
-    private final double ROOT_DETECT_COEF = 1.1;
+    private final double ROOT_DETECT_COEF = 1.0;
 
     /**
      * коэфицент подмешивания редких слов (0.0 - 1.0)
@@ -380,4 +380,5 @@ public class RandomWord {
     public List<Word> getList() {
         return resultSet;
     }
+
 }

@@ -5,30 +5,17 @@
     <session-factory>
 
     <property name="hibernate.dialect">
-        org.hibernate.dialect.MySQL5Dialect
+        utilities.SQLiteDialect
     </property>
 
     <property name="hibernate.connection.driver_class">
-        com.mysql.cj.jdbc.Driver
+        org.sqlite.JDBC
     </property>
 
     <property name="hibernate.connection.url">
-        jdbc:mysql://192.168.43.77:3306/first_lesson?serverTimezone=UTC
+        jdbc:sqlite:D:/!java/word-games-db-sqlite.db
     </property>
 
-    <property name="hibernate.connection.username">
-        admin
-    </property>
-
-    <property name="hibernate.connection.password">
-        admin
-    </property>
-
-    <property name="connection.pool_size">
-        1
-    </property>
-
-    <!--<property name="cache.provider_class">org.hibernate.cache.NoCacheRegionFactoryAvailableException</property>-->
     <property name="hbm2ddl.auto">
         update
     </property>
@@ -58,8 +45,6 @@
         <mapping class="words.secondary.PronAdj"/>
         <mapping class="words.secondary.PronAdv"/>
 
-<!--    <mapping resource="word.hbm.xml"/>-->
-    <!--<mapping class="com.itvdn.hibernate_first.Flower" />-->
 </session-factory>
 
 </hibernate-configuration>
