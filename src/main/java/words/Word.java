@@ -1,9 +1,14 @@
 package words;
 
+import org.hibernate.Session;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import utilities.HibernateUtil;
 import words.primary.*;
 import words.secondary.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +33,7 @@ import java.util.List;
 @Table(name = "words_test")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "part_of_speech")
-public class Word {
+public class Word implements Serializable {
 
     @Transient
     protected boolean changeable;
@@ -106,8 +111,48 @@ public class Word {
                 '}';
     }
 
-    private void findCognates() {
 
+    public List<Word> getCognates() {
+        if (cognates.isEmpty()) {
+            findCognates();
+        }
+        return cognates;
+    }
+
+    private void findCognates() {
+        for (int i = 1;;i++) {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Query query = session.createQuery("FROM Word WHERE IID = :IID");
+            query.setParameter("IID", this.IID + i);
+            Word word = (Word) query.getSingleResult();
+            session.close();
+            if (word.getCodeParent() == 0) {
+                break;
+            }
+            cognates.add(word);
+        }
+
+        if (this.codeParent != 0) {
+            for (int j = 1;;j++) {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                Query query = session.createQuery("FROM Word WHERE IID = :IID");
+                query.setParameter("IID", this.IID - j);
+                Word word = (Word) query.getSingleResult();
+                session.close();
+                if (word.getCodeParent() == 0) {
+                    cognates.add(word);
+                    break;
+                }
+                cognates.add(word);
+            }
+        }
+    }
+
+    public static Word findById(Integer id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Word word = session.get(Word.class, id);
+        session.close();
+        return word;
     }
 
     @Override

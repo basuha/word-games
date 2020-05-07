@@ -43,30 +43,40 @@ public class Main {
 //                                    .setParam(Gender.MALE)
 //                                    .setParam(Plural.SINGULAR)
 //                                    .setParam(Kind.SECOND));
+//
+//        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
+//        randomSentenceBuilder
+//                .append(new Adjective()
+//                        .setParam(Gender.MALE)
+//                        .setParam(WordCase.NOMINATIVE))
+//                .append(new Noun()
+//                        .setParam(Gender.MALE)
+//                        .setParam(Plural.SINGULAR)
+//                        .setParam(WordCase.Noun.NOMINATIVE))
+//                .append(new Verb()
+//                        .setParam(Gender.MALE)
+//                        .setParam(Plural.SINGULAR)
+//                        .setParam(Kind.SECOND)
+//                        .setParam(Reflexive.NOT_REFLEXIVE))
+//                .append(new Noun()
+//                        .setParam(WordCase.Noun.ACCUSATIVE)
+//                        .setParam(Plural.SINGULAR));
+//
+//
+//        for (Sentence s : randomSentenceBuilder.getResultList()) {
+//            System.out.println(s);
+//        }
 
-        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
-        randomSentenceBuilder
-                .append(new Adjective()
-                        .setParam(Gender.MALE)
-                        .setParam(WordCase.NOMINATIVE))
-                .append(new Noun()
-                        .setParam(Gender.MALE)
-                        .setParam(Plural.SINGULAR)
-                        .setParam(WordCase.Noun.NOMINATIVE))
-                .append(new Verb()
-                        .setParam(Gender.MALE)
-                        .setParam(Plural.SINGULAR)
-                        .setParam(Kind.SECOND)
-                        .setParam(Reflexive.NOT_REFLEXIVE))
-                .append(new Noun()
-                        .setParam(WordCase.Noun.ACCUSATIVE)
-                        .setParam(Plural.SINGULAR));
+        System.out.println(Zodiac.CANCER);
 
-
-        for (Sentence s : randomSentenceBuilder.getResultList()) {
-            System.out.println(s);
-        }
-
+//        Word word = Word.findById(3635743);
+//        System.out.println(word.getInfo());
+//
+//        long a = System.currentTimeMillis();
+//        for (Word w : word.getCognates()) {
+//            System.out.println(w.getInfo());
+//        }
+//        System.out.println(System.currentTimeMillis() - a);
 
 //        SentenceGenerator sentenceGenerator = new SentenceGenerator();
 //        sentenceGenerator.init();
