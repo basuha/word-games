@@ -106,6 +106,10 @@ public class Word {
                 '}';
     }
 
+    private void findCognates() {
+
+    }
+
     @Override
     public String toString() {
          return this.word;

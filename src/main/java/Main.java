@@ -67,6 +67,7 @@ public class Main {
             System.out.println(s);
         }
 
+
 //        SentenceGenerator sentenceGenerator = new SentenceGenerator();
 //        sentenceGenerator.init();
     }
