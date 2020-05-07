@@ -16,7 +16,7 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PRETEXT)
 public class Pretext extends Word {
 
-    {
+    public Pretext() {
         partOfSpeech = PartOfSpeech.PRETEXT;
         changeable = false;
     }

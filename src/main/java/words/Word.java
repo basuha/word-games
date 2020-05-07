@@ -33,7 +33,7 @@ import java.util.List;
 @Table(name = "words_test")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "part_of_speech")
-public class Word implements Serializable {
+public class Word {
 
     @Transient
     protected boolean changeable;
@@ -57,6 +57,10 @@ public class Word implements Serializable {
     @Transient
     protected List<Word> cognates = new ArrayList<>();
 
+    public Word() {
+        findCognates();
+    }
+    
     public Integer getIID() {
         return IID;
     }
@@ -111,39 +115,28 @@ public class Word implements Serializable {
                 '}';
     }
 
-
     public List<Word> getCognates() {
-        if (cognates.isEmpty()) {
-            findCognates();
-        }
         return cognates;
     }
 
     private void findCognates() {
-        for (int i = 1;;i++) {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            Query query = session.createQuery("FROM Word WHERE IID = :IID");
-            query.setParameter("IID", this.IID + i);
-            Word word = (Word) query.getSingleResult();
-            session.close();
-            if (word.getCodeParent() == 0) {
-                break;
-            }
-            cognates.add(word);
-        }
-
-        if (this.codeParent != 0) {
-            for (int j = 1;;j++) {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                Query query = session.createQuery("FROM Word WHERE IID = :IID");
-                query.setParameter("IID", this.IID - j);
-                Word word = (Word) query.getSingleResult();
-                session.close();
+        if (IID != null) {
+            for (int i = 1; ; i++) {
+                Word word = Word.findById(this.IID + i);
                 if (word.getCodeParent() == 0) {
-                    cognates.add(word);
                     break;
                 }
                 cognates.add(word);
+            }
+
+            if (this.codeParent != 0) {
+                for (int j = 1; ; j++) {
+                    Word word = Word.findById(this.IID - j);
+                    cognates.add(word);
+                    if (word.getCodeParent() == 0) {
+                        break;
+                    }
+                }
             }
         }
     }

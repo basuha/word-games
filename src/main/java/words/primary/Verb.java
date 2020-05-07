@@ -13,11 +13,6 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.VERB)
 public class Verb extends Word {
 
-    {
-        partOfSpeech = PartOfSpeech.VERB;
-        changeable = true;
-    }
-
     @Column (name = "infinitive")
     private String infinitive;
 
@@ -48,6 +43,10 @@ public class Verb extends Word {
     @Column (name = "voice")
     private String voice;
 
+    public Verb() {
+        partOfSpeech = PartOfSpeech.PARTICIPLE;
+        changeable = true;
+    }
 
     public String getPlural() {
         return plural;
@@ -90,52 +89,52 @@ public class Verb extends Word {
     }
 
 
-    public Verb setParam(Plural plural) {
+    public Verb setPlural(Plural plural) {
         this.plural = plural.toString();
         return this;
     }
 
-    public Verb setParam(Gender gender) {
+    public Verb setGender(Gender gender) {
         this.gender = gender.toString();
         return this;
     }
 
-    public Verb setParam(Transitive transitive) {
+    public Verb setTransitive(Transitive transitive) {
         this.transitive = transitive.toString();
         return this;
     }
 
-    public Verb setParam(Perfect perfect) {
+    public Verb setPerfect(Perfect perfect) {
         this.perfect = perfect.toString();
         return this;
     }
 
-    public Verb setParam(String face) {
-        this.face = face;
+    public Verb setFace(Face face) {
+        this.face = face.toString();
         return this;
     }
 
-    public Verb setParam(Kind kind) {
+    public Verb setKind(Kind kind) {
         this.kind = kind.toString();
         return this;
     }
 
-    public Verb setParam(Time time) {
+    public Verb setTime(Time time) {
         this.time = time.toString();
         return this;
     }
 
-    public Verb setParam(Infinitive infinitive) {
+    public Verb setInfinitive(Infinitive infinitive) {
         this.infinitive = infinitive.toString();
         return this;
     }
 
-    public Verb setParam(Reflexive reflexive) {
+    public Verb setReflexive(Reflexive reflexive) {
         this.reflexive = reflexive.toString();
         return this;
     }
 
-    public Verb setParam(Voice voice) {
+    public Verb setVoice(Voice voice) {
         this.voice = voice.toString();
         return this;
     }

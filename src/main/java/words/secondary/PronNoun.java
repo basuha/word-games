@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue(PartOfSpeech.PRON_NOUN)
 public class PronNoun extends Pronoun {
 
-    {
+    public PronNoun() {
         partOfSpeech = PartOfSpeech.PRON_NOUN;
         changeable = false;
     }

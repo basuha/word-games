@@ -19,11 +19,6 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PRONOUN)
 public class Pronoun extends Word {
 
-    {
-        partOfSpeech = PartOfSpeech.PRONOUN;
-        changeable = false;
-    }
-
     @Nullable
     @Column(name = "plural")
     private String plural;
@@ -35,6 +30,11 @@ public class Pronoun extends Word {
     @Nullable
     @Column(name = "word_case")
     private String wordCase;
+
+    public Pronoun() {
+        partOfSpeech = PartOfSpeech.PRONOUN;
+        changeable = false;
+    }
 
     public String getWordCase() {
         return wordCase;
@@ -48,17 +48,17 @@ public class Pronoun extends Word {
         return gender;
     }
 
-    public Pronoun setParam(Plural plural) {
+    public Pronoun setPlural(Plural plural) {
         this.plural = plural.toString();
         return this;
     }
 
-    public Pronoun setParam(Gender gender) {
+    public Pronoun setGender(Gender gender) {
         this.gender = gender.toString();
         return this;
     }
 
-    public Pronoun setParam(WordCase wordCase) {
+    public Pronoun setWordCase(WordCase wordCase) {
         this.wordCase = wordCase.toString();
         return this;
     }

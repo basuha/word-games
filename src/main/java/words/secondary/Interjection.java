@@ -15,7 +15,7 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.INTERJECTION)
 public class Interjection extends Word {
 
-    {
+    public Interjection() {
         partOfSpeech = PartOfSpeech.INTERJECTION;
         changeable = false;
         super.codeParent = 0;

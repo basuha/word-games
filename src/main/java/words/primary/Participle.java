@@ -17,11 +17,6 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PARTICIPLE)
 public class Participle extends Word {
 
-    {
-        partOfSpeech = PartOfSpeech.PARTICIPLE;
-        changeable = true;
-    }
-
     @Column (name = "plural")
     private String plural;
 
@@ -52,6 +47,10 @@ public class Participle extends Word {
     @Column (name = "short")
     private String shortF;
 
+    public Participle() {
+        partOfSpeech = PartOfSpeech.PARTICIPLE;
+        changeable = true;
+    }
 
     public String getPlural() {
         return plural;
@@ -94,27 +93,27 @@ public class Participle extends Word {
     }
 
 
-    public Participle setParam(Plural plural) {
+    public Participle setPlural(Plural plural) {
         this.plural = plural.toString();
         return this;
     }
 
-    public Participle setParam(Transitive transitive) {
+    public Participle setTransitive(Transitive transitive) {
         this.transitive = transitive.toString();
         return this;
     }
 
-    public Participle setParam(Time.Participle time) {
+    public Participle setTime(Time.Participle time) {
         this.time = time.toString();
         return this;
     }
 
-    public Participle setParam(Reflexive reflexive) {
+    public Participle setReflexive(Reflexive reflexive) {
         this.reflexive = reflexive.toString();
         return this;
     }
 
-    public Participle setParam(Gender gender) {
+    public Participle setGender(Gender gender) {
         if (gender == Gender.N_A) {
             this.gender = gender.toString();
             this.plural = Plural.PLURAL.toString();
@@ -125,27 +124,27 @@ public class Participle extends Word {
         return this;
     }
 
-    public Participle setParam(WordCase wordCase) {
+    public Participle setWordCase(WordCase wordCase) {
         this.wordCase = wordCase.toString();
         return this;
     }
 
-    public Participle setParam(Boolean perfect) {
+    public Participle setPerfect(Perfect perfect) {
         this.perfect = perfect.toString();
         return this;
     }
 
-    public Participle setParam(Kind.Participle kind) {
+    public Participle setKind(Kind.Participle kind) {
         this.kind = kind.toString();
         return this;
     }
 
-    public Participle setParam(Voice.Participle voice) {
+    public Participle setVoice(Voice.Participle voice) {
         this.voice = voice.toString();
         return this;
     }
 
-    public Participle setParam(Short shortF) {
+    public Participle setShort(Short shortF) {
         this.shortF = shortF.toString();
         return this;
     }

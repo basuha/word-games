@@ -15,7 +15,7 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.CONJUNCTION)
 public class Conjunction extends Word {
 
-    {
+    public Conjunction() {
         partOfSpeech = PartOfSpeech.CONJUNCTION;
         changeable = false;
         super.codeParent = 0;

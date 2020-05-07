@@ -19,11 +19,6 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.ADVERB)
 public class Adverb extends Word {
 
-    {
-        partOfSpeech = PartOfSpeech.ADVERB;
-        changeable = true;
-    }
-
     @Nullable
     @Column(name = "type")
     private String type;
@@ -35,6 +30,11 @@ public class Adverb extends Word {
     @Nullable
     @Column(name = "comparative")
     private String comparative;
+
+    public Adverb() {
+        partOfSpeech = PartOfSpeech.ADVERB;
+        changeable = true;
+    }
 
     public String getType() {
         return type;
@@ -48,17 +48,17 @@ public class Adverb extends Word {
         return comparative;
     }
 
-    public Adverb setParam(Type.Adverb type) {
+    public Adverb setType(Type.Adverb type) {
         this.type = type.toString();
         return this;
     }
 
-    public Adverb setParam(Comparative comparative) {
+    public Adverb setComparative(Comparative comparative) {
         this.comparative = comparative.toString();
         return this;
     }
 
-    public Adverb setParam(AdverbType adverbType) {
+    public Adverb setAdverbType(AdverbType adverbType) {
         this.adverbType = adverbType.toString();
         return this;
     }

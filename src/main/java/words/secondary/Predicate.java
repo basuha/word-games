@@ -14,12 +14,11 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PREDICATE)
 public class Predicate extends Word {
 
-    {
+    public Predicate() {
         partOfSpeech = PartOfSpeech.PREDICATE;
         changeable = false;
         super.codeParent = 0;
     }
-
 
     @Override
     public String getInfo() {

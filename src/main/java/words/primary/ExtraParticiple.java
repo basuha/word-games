@@ -20,11 +20,6 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.EXTRA_PARTICIPLE)
 public class ExtraParticiple extends Word {
 
-    {
-        partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
-        changeable = true;
-    }
-
     @Column(name = "transitive")
     private String transitive;
 
@@ -36,6 +31,11 @@ public class ExtraParticiple extends Word {
 
     @Column(name = "reflexive")
     private String reflexive;
+
+    public ExtraParticiple() {
+        partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
+        changeable = true;
+    }
 
     public String getTransitive() {
         return transitive;
@@ -53,22 +53,22 @@ public class ExtraParticiple extends Word {
         return reflexive;
     }
 
-    public ExtraParticiple setParam(Transitive transitive) {
+    public ExtraParticiple setTransitive(Transitive transitive) {
         this.transitive = transitive.toString();
         return this;
     }
 
-    public ExtraParticiple setParam(Perfect perfect) {
+    public ExtraParticiple setPerfect(Perfect perfect) {
         this.perfect = perfect.toString();
         return this;
     }
 
-    public ExtraParticiple setParam(Time.Participle time) {
+    public ExtraParticiple setTime(Time.Participle time) {
         this.time = time.toString();
         return this;
     }
 
-    public ExtraParticiple setParam(Reflexive reflexive) {
+    public ExtraParticiple setReflexive(Reflexive reflexive) {
         this.reflexive = reflexive.toString();
         return this;
     }

@@ -18,11 +18,6 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.NOUN)
 public class Noun extends Word {
 
-    {
-        partOfSpeech = PartOfSpeech.NOUN;
-        changeable = true;
-    }
-
     @Column (name = "plural")
     private String plural;
 
@@ -38,6 +33,10 @@ public class Noun extends Word {
     @Column (name = "animate")
     private String animate;
 
+    public Noun() {
+        partOfSpeech = PartOfSpeech.NOUN;
+        changeable = true;
+    }
 
     public String getPlural() {
         return plural;
@@ -56,12 +55,12 @@ public class Noun extends Word {
     }
 
 
-    public Noun setParam(Plural plural) {
+    public Noun setPlural(Plural plural) {
         this.plural = plural.toString();
         return this;
     }
 
-    public Noun setParam(Gender gender) {
+    public Noun setGender(Gender gender) {
         if (gender == Gender.N_A) {
             this.gender = gender.toString();
             this.plural = Plural.PLURAL.toString();
@@ -72,12 +71,12 @@ public class Noun extends Word {
         return this;
     }
 
-    public Noun setParam(WordCase.Noun wordCase) {
+    public Noun setWordCase(WordCase.Noun wordCase) {
         this.wordCase = wordCase.toString();
         return this;
     }
 
-    public Noun setParam(Animate animate) {
+    public Noun setAnimate(Animate animate) {
         this.animate = animate.toString();
         return this;
     }

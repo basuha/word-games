@@ -15,10 +15,6 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.ADJECTIVE)
 public class Adjective extends Word {
 
-    {
-        partOfSpeech = PartOfSpeech.ADJECTIVE;
-    }
-
     @Column(name = "short")
     private String shortF;
 
@@ -37,6 +33,9 @@ public class Adjective extends Word {
     @Column(name = "comparative")
     private String comparative;
 
+    public Adjective() {
+        partOfSpeech = PartOfSpeech.ADJECTIVE;
+    }
 
     public String getShortF() {
         return shortF;
@@ -62,17 +61,17 @@ public class Adjective extends Word {
         return comparative;
     }
 
-    public Adjective setParam(Short shortF) {
+    public Adjective setShortF(Short shortF) {
         this.shortF = shortF.toString();
         return this;
     }
 
-    public Adjective setParam(Plural plural) {
+    public Adjective setPlural(Plural plural) {
         this.plural = plural.toString();
         return this;
     }
 
-    public Adjective setParam(Gender gender) {
+    public Adjective setGender(Gender gender) {
         if (gender == Gender.N_A) {
             this.gender = gender.toString();
             this.plural = Plural.PLURAL.toString();
@@ -83,7 +82,7 @@ public class Adjective extends Word {
         return this;
     }
 
-    public Adjective setParam(Type.Adjective type) {
+    public Adjective setType(Type.Adjective type) {
         if (type == Type.Adjective.IMMUTABLE) {
             this.gender = "n/a";
             this.plural = "n/a";
@@ -96,12 +95,12 @@ public class Adjective extends Word {
         return this;
     }
 
-    public Adjective setParam(WordCase wordCase) {
+    public Adjective setWordCase(WordCase wordCase) {
         this.wordCase = wordCase.toString();
         return this;
     }
 
-    public Adjective setParam(Comparative comparative) {
+    public Adjective setComparative(Comparative comparative) {
         this.comparative = comparative.toString();
         return this;
     }

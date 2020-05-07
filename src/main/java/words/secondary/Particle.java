@@ -13,7 +13,7 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PARTICLE)
 public class Particle extends Word {
 
-    {
+    public Particle() {
         partOfSpeech = PartOfSpeech.PARTICLE;
         changeable = false;
         super.codeParent = 0;

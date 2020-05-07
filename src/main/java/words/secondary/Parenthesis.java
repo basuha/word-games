@@ -15,7 +15,7 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.PARENTHESIS)
 public class Parenthesis extends Word {
 
-    {
+    public Parenthesis() {
         partOfSpeech = PartOfSpeech.PARENTHESIS;
         changeable = false;
         super.codeParent = 0;

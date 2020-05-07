@@ -68,8 +68,10 @@ public class Main {
 //        }
 
         System.out.println(Zodiac.CANCER);
+        System.out.println(Zodiac.GEMINI);
+        System.out.println(Zodiac.AQUARIUS);
 
-//        Word word = Word.findById(3635743);
+//        Word word = Word.findById(67);
 //        System.out.println(word.getInfo());
 //
 //        long a = System.currentTimeMillis();
