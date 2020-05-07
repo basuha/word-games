@@ -4,6 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import utilities.HibernateUtil;
+import words.attributes.Gender;
+import words.attributes.Plural;
+import words.attributes.WordCase;
 import words.primary.*;
 import words.secondary.*;
 
@@ -34,6 +37,11 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "part_of_speech")
 public class Word {
+    {
+        if (this.IID != null) {
+            findCognates();
+        }
+    }
 
     @Transient
     protected boolean changeable;
@@ -60,7 +68,7 @@ public class Word {
     public Word() {
         findCognates();
     }
-    
+
     public Integer getIID() {
         return IID;
     }
@@ -117,6 +125,13 @@ public class Word {
 
     public List<Word> getCognates() {
         return cognates;
+    }
+
+    public Word getSingleCognate(Word word) {
+        if (cognates.contains(word)) {
+            return cognates.get(cognates.lastIndexOf(word));
+        }
+        return new Word().setWord("Не найдено");
     }
 
     private void findCognates() {

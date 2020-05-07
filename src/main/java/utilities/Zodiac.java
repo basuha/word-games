@@ -55,7 +55,7 @@ public enum Zodiac {
         return word.toString();
     }
 
-    public Word getWord() {
+    public Word toWord() {
         return word;
     }
 }

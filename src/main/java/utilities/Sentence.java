@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Sentence {
     private int counter = 0;
-    StringBuilder sentence = new StringBuilder();
+    private StringBuilder sentence = new StringBuilder();
 
     public Sentence(){
 
