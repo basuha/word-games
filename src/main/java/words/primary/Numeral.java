@@ -19,10 +19,6 @@ import java.util.List;
 @DiscriminatorValue(PartOfSpeech.NUMERAL)
 public class Numeral extends Word {
 
-    {
-
-    }
-
     @Column(name = "type")
     private String type;
 

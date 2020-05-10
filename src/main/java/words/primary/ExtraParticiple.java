@@ -18,7 +18,9 @@ import java.util.List;
  */
 @Entity
 @DiscriminatorValue(PartOfSpeech.EXTRA_PARTICIPLE)
-public class ExtraParticiple extends Word {
+public class
+
+ExtraParticiple extends Word {
 
     @Column(name = "transitive")
     private String transitive;

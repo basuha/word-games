@@ -11,7 +11,12 @@ import words.primary.*;
 import words.secondary.*;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +42,6 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "part_of_speech")
 public class Word {
-    {
-        if (this.IID != null) {
-            findCognates();
-        }
-    }
 
     @Transient
     protected boolean changeable;
@@ -63,11 +63,8 @@ public class Word {
     protected Integer codeParent;
 
     @Transient
+    @OneToMany(targetEntity = Word.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     protected List<Word> cognates = new ArrayList<>();
-
-    public Word() {
-        findCognates();
-    }
 
     public Integer getIID() {
         return IID;
@@ -124,18 +121,16 @@ public class Word {
     }
 
     public List<Word> getCognates() {
+        findCognates();
         return cognates;
     }
 
-    public Word getSingleCognate(Word word) {
-        if (cognates.contains(word)) {
-            return cognates.get(cognates.lastIndexOf(word));
-        }
-        return new Word().setWord("Не найдено");
-    }
-
     private void findCognates() {
-        if (IID != null) {
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Word w = session.createQuery("FROM ")
+//        session.close();
+
+        if (cognates.isEmpty() && IID != null) {
             for (int i = 1; ; i++) {
                 Word word = Word.findById(this.IID + i);
                 if (word.getCodeParent() == 0) {
@@ -161,6 +156,20 @@ public class Word {
         Word word = session.get(Word.class, id);
         session.close();
         return word;
+    }
+
+    public static List<Word> find(String word) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(Word.class);
+        Root<Word> root = cq.from(Word.class);
+        cq.select(root).where(cb.like(root.get("word"), word));
+        Query query = session.createQuery(cq);
+        List<Word> wordList = query.getResultList();
+
+        session.close();
+        return wordList;
     }
 
     @Override

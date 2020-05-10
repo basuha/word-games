@@ -6,7 +6,7 @@ import words.primary.*;
 import words.secondary.Pretext;
 import words.secondary.Pronoun;
 
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomWord extends Thread {
+public class RandomWord {
 
     private String adverbType;
     private String animate;
@@ -47,14 +47,14 @@ public class RandomWord extends Thread {
      * 1.0 = все слово - корень
      * 2.0 = половина слова - корень
      */
-    private final double ROOT_DETECT_COEF = 1.0;
+    private final double ROOT_DETECT_COEF = 1.5;
 
     /**
      * коэфицент подмешивания редких слов (0.0 - 1.0)
      * 0.0 = все слова редкие
      * 1.0 = все слова частые
      */
-    private final double COMMON_WORDS_COEF = 0;
+    private final double COMMON_WORDS_COEF = 0.1;
 
     /** частоупотребимые слова из файла */
     private static ArrayList<String> commonWords = new ArrayList<>();
@@ -90,6 +90,9 @@ public class RandomWord extends Thread {
         } catch (IOException e) {
             System.out.println("файл не найден");
         }
+    }
+
+    public RandomWord() {
     }
 
     public RandomWord(Word word) {

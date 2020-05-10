@@ -21,14 +21,25 @@
 <!--    </property>-->
 
     <property name="show_sql">
-        true
+        false
     </property>
 
-<!--    <property name="hibernate.current_session_context_class">-->
-<!--        thread-->
-<!--    </property>-->
+    <property name="connection.pool_size">
+        1
+    </property>
+
+    <property name="hibernate.default_schema">
+        main
+    </property>
+
+        <property name="hibernate.connection.release_mode">auto</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="hibernate.connection.autoReconnect">true</property>
+
 
         <mapping class="words.Word"/>
+
+<!--        <mapping class="utilities.Cognate"/>-->
 
         <mapping class="words.primary.Adjective"/>
         <mapping class="words.primary.Adverb"/>

@@ -3,6 +3,8 @@ import words.Word;
 import words.attributes.WordCase;
 import words.primary.Noun;
 
+import java.util.List;
+
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
@@ -67,9 +69,13 @@ public class Main {
         System.out.println(Zodiac.CANCER);
         System.out.println(Zodiac.GEMINI);
 
-        Word word = Word.findById(67);
+        Word word = Word.findById(4159183);
         System.out.println(word.getInfo());
-        System.out.println(word.getSingleCognate(((Noun) word).setWordCase(WordCase.Noun.NOMINATIVE)).getInfo());
+
+        for (Word w : word.getCognates()) {
+            System.out.println(w.getInfo());
+        }
+
 
 //        long a = System.currentTimeMillis();
 //        for (Word w : word.getCognates()) {
