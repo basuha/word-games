@@ -93,6 +93,7 @@ public class RandomWord {
     }
 
     public RandomWord() {
+        word = Word.findById(random.nextInt(MAX_ID));
     }
 
     public RandomWord(Word word) {

@@ -14,6 +14,9 @@ public class MainDialog extends JDialog {
     private JButton buttonOK;
     private JButton buttonCancel;
     private JButton button1;
+    private JTextField textField1;
+    private JTextArea textArea1;
+    private JCheckBox randomCheckBox;
 
     public MainDialog() {
         setContentPane(contentPane);
@@ -23,7 +26,7 @@ public class MainDialog extends JDialog {
         buttonOK.addActionListener(e -> onOK());
         buttonCancel.addActionListener(e -> onCancel());
         button1.addActionListener(e -> testListener());
-
+        randomCheckBox.addActionListener(e -> checkBox());
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -38,9 +41,33 @@ public class MainDialog extends JDialog {
                 JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
+    HibernateThread hibernateThread;
+
     private void onOK() {
-        HibernateThread hibernateThread = new HibernateThread();
+
+        if (textField1.isEnabled()) {
+            hibernateThread = new HibernateThread(Integer.parseInt(textField1.getText()));
+        } else {
+            hibernateThread = new HibernateThread(new Random().nextInt(4000000));
+        }
+
         hibernateThread.start();
+        synchronized (hibernateThread) {
+            try {
+                hibernateThread.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            textArea1.setText(hibernateThread.word.getWord());
+        }
+    }
+
+    private void checkBox() {
+        if (textField1.isEnabled()) {
+            textField1.setEnabled(false);
+        } else {
+            textField1.setEnabled(true);
+        }
     }
 
     private void testListener() {
@@ -59,4 +86,5 @@ public class MainDialog extends JDialog {
         dialog.setVisible(true);
         System.exit(0);
     }
+
 }
