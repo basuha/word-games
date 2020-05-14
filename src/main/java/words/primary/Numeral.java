@@ -18,17 +18,9 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(PartOfSpeech.NUMERAL)
 public class Numeral extends Word {
-
-    @Column(name = "type")
     private String type;
-
-    @Column(name = "plural")
     private String plural;
-
-    @Column(name = "gender")
     private String gender;
-
-    @Column(name = "word_case")
     private String wordCase;
 
     public Numeral() {

@@ -18,17 +18,8 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(PartOfSpeech.ADVERB)
 public class Adverb extends Word {
-
-    @Nullable
-    @Column(name = "type")
     private String type;
-
-    @Nullable
-    @Column(name = "adverb_type")
     private String adverbType;
-
-    @Nullable
-    @Column(name = "comparative")
     private String comparative;
 
     public Adverb() {

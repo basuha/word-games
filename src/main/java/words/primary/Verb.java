@@ -12,35 +12,15 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(PartOfSpeech.VERB)
 public class Verb extends Word {
-
-    @Column (name = "infinitive")
     private String infinitive;
-
-    @Column (name = "reflexive")
     private String reflexive;
-
-    @Column (name = "transitive")
     private String transitive;
-
-    @Column (name = "plural")
     private String plural;
-
-    @Column (name = "gender")
     private String gender;
-
-    @Column (name = "perfect")
     private String perfect;
-
-    @Column (name = "face")
     private String face;
-
-    @Column (name = "kind")
     private String kind;
-
-    @Column (name = "time")
     private String time;
-
-    @Column (name = "voice")
     private String voice;
 
     public Verb() {

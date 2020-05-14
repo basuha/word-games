@@ -16,35 +16,15 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(PartOfSpeech.PARTICIPLE)
 public class Participle extends Word {
-
-    @Column (name = "plural")
     private String plural;
-
-    @Column (name = "transitive")
     private String transitive;
-
-    @Column (name = "time")
     private String time;
-
-    @Column (name = "reflexive")
     private String reflexive;
-
-    @Column (name = "gender")
     private String gender;
-
-    @Column (name = "word_case")
     private String wordCase;
-
-    @Column (name = "perfect")
     private String perfect;
-
-    @Column (name = "kind")
     private String kind;
-
-    @Column (name = "voice")
     private String voice;
-
-    @Column (name = "short")
     private String shortF;
 
     public Participle() {

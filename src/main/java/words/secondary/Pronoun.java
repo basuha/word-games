@@ -18,17 +18,8 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(PartOfSpeech.PRONOUN)
 public class Pronoun extends Word {
-
-    @Nullable
-    @Column(name = "plural")
     private String plural;
-
-    @Nullable
-    @Column(name = "gender")
     private String gender;
-
-    @Nullable
-    @Column(name = "word_case")
     private String wordCase;
 
     public Pronoun() {

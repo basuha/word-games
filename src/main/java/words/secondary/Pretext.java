@@ -21,7 +21,6 @@ public class Pretext extends Word {
         changeable = false;
     }
 
-    @Column(name = "word_case")
     private String wordCase;
 
     public String getWordCase() {

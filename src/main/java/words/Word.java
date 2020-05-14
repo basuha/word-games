@@ -40,27 +40,21 @@ import java.util.List;
 @Entity
 @Table(name = "words_test")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "part_of_speech")
+@DiscriminatorColumn(name = "partOfSpeech")
 public class Word {
+
+    @Id
+    protected Integer IID;
+
+    protected String word;
+    protected Integer code;
+    protected Integer codeParent;
+
+    @Column(insertable = false, updatable = false, nullable = false)
+    protected String partOfSpeech;
 
     @Transient
     protected boolean changeable;
-
-    @Id
-    @Column(name = "IID", nullable = false)
-    protected Integer IID;
-
-    @Column(name = "word", nullable = false)
-    protected String word;
-
-    @Column(name = "code", nullable = false)
-    protected Integer code;
-
-    @Column(name = "part_of_speech", insertable = false, updatable = false, nullable = false)
-    protected String partOfSpeech;
-
-    @Column(name = "code_parent", nullable = false)
-    protected Integer codeParent;
 
     @Transient
     @OneToMany(targetEntity = Word.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)

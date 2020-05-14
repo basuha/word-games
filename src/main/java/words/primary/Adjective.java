@@ -14,23 +14,11 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(PartOfSpeech.ADJECTIVE)
 public class Adjective extends Word {
-
-    @Column(name = "short")
     private String shortF;
-
-    @Column(name = "plural")
     private String plural;
-
-    @Column(name = "gender")
     private String gender;
-
-    @Column(name = "type")
     private String type;
-
-    @Column(name = "word_case")
     private String wordCase;
-
-    @Column(name = "comparative")
     private String comparative;
 
     public Adjective() {

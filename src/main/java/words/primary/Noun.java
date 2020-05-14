@@ -17,20 +17,9 @@ import java.util.List;
 @Entity
 @DiscriminatorValue(PartOfSpeech.NOUN)
 public class Noun extends Word {
-
-    @Column (name = "plural")
     private String plural;
-
-    @Nullable
-    @Column (name = "gender")
     private String gender;
-
-    @Nullable
-    @Column (name = "word_case")
     private String wordCase;
-
-    @Nullable
-    @Column (name = "animate")
     private String animate;
 
     public Noun() {

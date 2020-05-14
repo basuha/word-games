@@ -21,17 +21,9 @@ import java.util.List;
 public class
 
 ExtraParticiple extends Word {
-
-    @Column(name = "transitive")
     private String transitive;
-
-    @Column(name = "perfect")
     private String perfect;
-
-    @Column(name = "time")
     private String time;
-
-    @Column(name = "reflexive")
     private String reflexive;
 
     public ExtraParticiple() {
