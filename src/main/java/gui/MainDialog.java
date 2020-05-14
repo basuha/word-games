@@ -1,11 +1,6 @@
 package gui;
 
-import utilities.RandomWord;
-import utilities.Zodiac;
-import words.Word;
-
 import javax.swing.*;
-import javax.swing.table.TableColumn;
 import java.awt.event.*;
 import java.util.Random;
 
@@ -41,24 +36,24 @@ public class MainDialog extends JDialog {
                 JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    HibernateThread hibernateThread;
+    WordByID wordByID;
 
     private void onOK() {
 
         if (textField1.isEnabled()) {
-            hibernateThread = new HibernateThread(Integer.parseInt(textField1.getText()));
+            wordByID = new WordByID(Integer.parseInt(textField1.getText()));
         } else {
-            hibernateThread = new HibernateThread(new Random().nextInt(4000000));
+            wordByID = new WordByID(new Random().nextInt(4000000));
         }
 
-        hibernateThread.start();
-        synchronized (hibernateThread) {
+        wordByID.start();
+        synchronized (wordByID) {
             try {
-                hibernateThread.wait();
+                wordByID.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            textArea1.setText(hibernateThread.word.getWord());
+            textArea1.setText(wordByID.word.getWord());
         }
     }
 

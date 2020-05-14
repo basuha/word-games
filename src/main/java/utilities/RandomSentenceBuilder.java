@@ -35,7 +35,7 @@ public class RandomSentenceBuilder {
             List<Word> list = new RandomWord(wordsList.get(i)).getList();
             if (list.size() != 0) {
                 words.add(list);
-            } else { //если не слов по запросу не найдено
+            } else { //если слов по запросу не найдено
                 List<Word> list2 = new ArrayList<>();
                 list2.add(new Word().setWord(wordsList.get(i).getPartOfSpeech() + " не найдено"));
                 words.add(list2);

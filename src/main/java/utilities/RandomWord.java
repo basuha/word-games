@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomWord {
+public class RandomWord extends Thread {
 
     private String adverbType;
     private String animate;
@@ -201,12 +201,9 @@ public class RandomWord {
                 isPrimary = false;
                 break;
         }
-        this.wordsList = getRandomWords();
     }
 
-    @SuppressWarnings("unchecked assignment")
-    private List<Word> getRandomWords() {
-
+    private String buildQuery() {
         StringBuilder hql = new StringBuilder();
         hql.append("FROM ")
                 .append(word.getPartOfSpeech())
@@ -216,7 +213,7 @@ public class RandomWord {
 
         if (shortF != null) {
             hql.append(" AND")
-                    .append(" short = ")
+                    .append(" shortF = ")
                     .append("'")
                     .append(shortF)
                     .append("'");
@@ -248,7 +245,7 @@ public class RandomWord {
 
         if (wordCase != null) {
             hql.append(" AND")
-                    .append(" word_case = ")
+                    .append(" wordCase = ")
                     .append("'")
                     .append(wordCase)
                     .append("'");
@@ -272,7 +269,7 @@ public class RandomWord {
 
         if (adverbType != null) {
             hql.append(" AND")
-                    .append(" adverb_type = ")
+                    .append(" adverbType = ")
                     .append("'")
                     .append(adverbType)
                     .append("'");
@@ -341,16 +338,19 @@ public class RandomWord {
                     .append(voice)
                     .append("'");
         }
+        return hql.toString();
+    }
 
+    @SuppressWarnings("unchecked assignment")
+    public synchronized void run() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         wordsList = session
-                .createQuery(hql.toString())
+                .createQuery(buildQuery())
 //                .setMaxResults(MAX_RESULTS)
                 .getResultList();
         session.close();
-
         getResultSet();
-        return wordsList;
+        notify();
     }
 
     private boolean isCommon(Word word) {

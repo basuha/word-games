@@ -2,12 +2,12 @@ package gui;
 
 import words.Word;
 
-public class HibernateThread extends Thread {
+public class WordByID extends Thread {
 
     private int IID;
     Word word;
 
-    public HibernateThread(int IID) {
+    public WordByID(int IID) {
         this.IID = IID;
     }
 
