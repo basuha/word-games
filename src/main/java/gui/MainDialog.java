@@ -39,6 +39,8 @@ public class MainDialog extends JDialog {
     }
 
     private void onOK() {
+        HibernateThread hibernateThread = new HibernateThread();
+        hibernateThread.start();
     }
 
     private void testListener() {
