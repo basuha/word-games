@@ -6,7 +6,7 @@ import words.primary.Noun;
 import java.util.List;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
-public class Main extends Thread{
+public class Main {
     public static void main(String[] args) {
 //        RandomWord randomWord = new RandomWord(new Adjective()
 //                .addParam(WordCase.NOMINATIVE)
