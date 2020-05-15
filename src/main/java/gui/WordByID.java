@@ -20,8 +20,7 @@ public class WordByID extends Thread {
     }
 
     @Override
-    public synchronized void run() {
+    public void run() {
         word = Word.findById(IID);
-        notify();
     }
 }

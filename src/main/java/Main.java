@@ -17,14 +17,13 @@ public class Main {
         RandomWord randomWord2 = new RandomWord(new Noun());
         randomWord.start();
         randomWord2.start();
-        synchronized (randomWord2) {
-            try {
-                randomWord2.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(randomWord.getSingleWord() + " " + randomWord2.getSingleWord());
+        try {
+            randomWord.join();
+            randomWord2.join();
+        } catch (InterruptedException e) {
+            System.out.println(e);
         }
+            System.out.println(randomWord.getSingleWord() + " " + randomWord2.getSingleWord());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
@@ -76,8 +75,8 @@ public class Main {
 //            System.out.println(s);
 //        }
 //
-//        System.out.println(Zodiac.CANCER);
-//        System.out.println(Zodiac.GEMINI);
+        System.out.println(Zodiac.CANCER);
+        System.out.println(Zodiac.GEMINI);
 //
 //        Word word = Word.findById(4159183);
 //        System.out.println(word.getInfo());

@@ -62,22 +62,12 @@ public class RandomWord extends Thread {
     /** имя файла с частыми словами */
     private static final String COMMON_WORDS_FILE = "rusCommonWords.txt";
 
-    /** максимальный ID в базе */
-    private static final int MAX_ID;
-
     /** имя основной таблицы */
     private static final String TABLE = "words_test";
 
     private boolean isPrimary;
 
     static {
-
-        //определение максимального ID в базе словаря
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Query query = session.createSQLQuery("SELECT max(IID) FROM " + TABLE);
-        MAX_ID = (Integer) query.getSingleResult();
-        session.close();
-
         //парсинг частоупотребляемых слов из txt файла
         try {
             BufferedReader reader = Files.newBufferedReader(Paths.get(COMMON_WORDS_FILE));
@@ -90,10 +80,6 @@ public class RandomWord extends Thread {
         } catch (IOException e) {
             System.out.println("файл не найден");
         }
-    }
-
-    public RandomWord() {
-        word = Word.findById(random.nextInt(MAX_ID));
     }
 
     public RandomWord(Word word) {
@@ -203,13 +189,14 @@ public class RandomWord extends Thread {
         }
     }
 
-    private String buildQuery() {
+    private String buildQuery(int lowID, int hiID) {
         StringBuilder hql = new StringBuilder();
         hql.append("FROM ")
                 .append(word.getPartOfSpeech())
                 .append(" WHERE")
-                .append(" IID > ")
-                .append(0);
+                .append(" IID > ").append(lowID)
+                .append(" AND")
+                .append(" IID < ").append(hiID);
 
         if (shortF != null) {
             hql.append(" AND")
@@ -343,12 +330,29 @@ public class RandomWord extends Thread {
 
     @SuppressWarnings("unchecked assignment")
     public synchronized void run() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        wordsList = session
-                .createQuery(buildQuery())
-//                .setMaxResults(MAX_RESULTS)
-                .getResultList();
-        session.close();
+        List<WordQueryThread> threads = new ArrayList<>();
+
+        final int NUMBER_OF_THREADS = 10;
+        final int ONE_THREAD_INTERVAL = Word.getMaxID() / NUMBER_OF_THREADS;
+
+        for (int i = 0, j = 0; i < NUMBER_OF_THREADS; i++) {
+            threads.add(i, new WordQueryThread(
+                    buildQuery(j,j + ONE_THREAD_INTERVAL)));
+            threads.get(i).start();
+        }
+
+        for (WordQueryThread t : threads) {
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        for (WordQueryThread t : threads) {
+            wordsList.addAll(t.getWordsList());
+        }
+
         getResultSet();
         notify();
     }
@@ -372,6 +376,10 @@ public class RandomWord extends Thread {
                 resultSet.add(w);
             }
         }
+    }
+
+    public static Word get() {
+        return Word.findById(new Random().nextInt(Word.getMaxID()));
     }
 
     public Word getSingleWord() {

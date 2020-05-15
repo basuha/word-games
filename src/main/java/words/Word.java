@@ -57,8 +57,34 @@ public class Word {
     protected boolean changeable;
 
     @Transient
+    protected static int MAX_ID;
+
+    @Transient
     @OneToMany(targetEntity = Word.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     protected List<Word> cognates = new ArrayList<>();
+
+    public static int getMaxID() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //определение максимального ID в базе словаря
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                Query query = session.createQuery("SELECT max(IID) FROM Word");
+                MAX_ID = (Integer) query.getSingleResult();
+                session.close();
+            }
+        });
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return MAX_ID;
+    }
 
     public Integer getIID() {
         return IID;
@@ -146,10 +172,27 @@ public class Word {
     }
 
     public static Word findById(Integer id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Word word = session.get(Word.class, id);
-        session.close();
-        return word;
+        final Word[] word = {new Word()};
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                word[0] = session.get(Word.class, id);
+                session.close();
+
+            }
+        });
+
+        thread.start();
+
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return word[0];
     }
 
     public static List<Word> find(String word) {

@@ -1,5 +1,9 @@
 package gui;
 
+import utilities.RandomWord;
+import utilities.Zodiac;
+import words.Word;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.Random;
@@ -12,6 +16,7 @@ public class MainDialog extends JDialog {
     private JTextField textField1;
     private JTextArea textArea1;
     private JCheckBox randomCheckBox;
+    private Word word;
 
     public MainDialog() {
         setContentPane(contentPane);
@@ -39,22 +44,12 @@ public class MainDialog extends JDialog {
     WordByID wordByID;
 
     private void onOK() {
-
         if (textField1.isEnabled()) {
-            wordByID = new WordByID(Integer.parseInt(textField1.getText()));
+           word = Word.findById(Integer.parseInt(textField1.getText()));
         } else {
-            wordByID = new WordByID(new Random().nextInt(4000000));
+           word = RandomWord.get();
         }
-
-        wordByID.start();
-        synchronized (wordByID) {
-            try {
-                wordByID.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            textArea1.setText(wordByID.word.getWord());
-        }
+        textArea1.setText(word.getIID().toString());
     }
 
     private void checkBox() {
