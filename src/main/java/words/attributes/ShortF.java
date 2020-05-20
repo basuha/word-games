@@ -1,13 +1,13 @@
 package words.attributes;
 
-public enum Short {
+public enum ShortF {
 
     SHORT ("short"),
     NOT_SHORT ("n/a");
 
     private final String value;
 
-    Short(String value) {
+    ShortF(String value) {
         this.value = value;
     }
 

@@ -3,10 +3,9 @@ package words.primary;
 import utilities.PartOfSpeech;
 import words.Word;
 import words.attributes.*;
-import words.attributes.Short;
+import words.attributes.ShortF;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Прилагательное
@@ -49,7 +48,7 @@ public class Adjective extends Word {
         return comparative;
     }
 
-    public Adjective setShortF(Short shortF) {
+    public Adjective setShortF(ShortF shortF) {
         this.shortF = shortF.toString();
         return this;
     }

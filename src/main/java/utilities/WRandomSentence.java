@@ -1,15 +1,13 @@
 package utilities;
 
 import words.Word;
-import words.primary.*;
-import words.secondary.*;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomSentenceBuilder {
+public class WRandomSentence {
 
     private List<Word> wordsList = new ArrayList<>();
     private Sentence sentence = new Sentence();
@@ -17,14 +15,14 @@ public class RandomSentenceBuilder {
     private List<List<Word>> words = new ArrayList<>();
     private Random random = new Random();
 
-    public RandomSentenceBuilder append(Word word) {
+    public WRandomSentence append(Word word) {
         wordsList.add(word);
         return this;
     }
 
     public String getSingleResult() {
         for (int i = 0; i < wordsList.size(); i++) {
-            sentence.add(new RandomWord(wordsList.get(i)).getSingleWord().toString());
+            sentence.add(new WRandom(wordsList.get(i)).getSingleWord().toString());
             sentence.add(" ");
         }
         return sentence.toString();
@@ -32,7 +30,7 @@ public class RandomSentenceBuilder {
 
     public List<Sentence> getResultList() {
         for (int i = 0; i < wordsList.size(); i++) {
-            List<Word> list = new RandomWord(wordsList.get(i)).getList();
+            List<Word> list = new WRandom(wordsList.get(i)).getList();
             if (list.size() != 0) {
                 words.add(list);
             } else { //если слов по запросу не найдено

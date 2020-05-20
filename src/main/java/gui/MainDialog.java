@@ -1,12 +1,10 @@
 package gui;
 
-import utilities.RandomWord;
-import utilities.Zodiac;
+import utilities.WRandom;
 import words.Word;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.Random;
 
 public class MainDialog extends JDialog {
     private JPanel contentPane;
@@ -47,7 +45,7 @@ public class MainDialog extends JDialog {
         if (textField1.isEnabled()) {
            word = Word.findById(Integer.parseInt(textField1.getText()));
         } else {
-           word = RandomWord.get();
+           word = WRandom.get();
         }
         textArea1.setText(word.getIID().toString());
     }

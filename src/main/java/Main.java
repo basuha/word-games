@@ -1,27 +1,21 @@
-import org.hibernate.c3p0.internal.C3P0ConnectionProvider;
 import utilities.*;
-import words.Word;
-import words.attributes.Plural;
-import words.attributes.WordCase;
-import words.primary.Adjective;
 import words.primary.Noun;
-
-import java.util.List;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
         long a = System.currentTimeMillis();
-        RandomWord randomWord1 = new RandomWord(new Noun());
+        WRandom WRandom1 = new WRandom(new Noun());
 
         long b = System.currentTimeMillis();
-        RandomWord randomWord2 = new RandomWord(new Noun());
+        WRandom WRandom2 = new WRandom(new Noun());
 
-        System.out.println(randomWord1.getSingleWord() + " " + randomWord2.getSingleWord());
+        System.out.println(WRandom1.getSingleWord() + " " + WRandom2.getSingleWord());
         long c = System.currentTimeMillis();
 
         System.out.println(b - a);
         System.out.println(c - a);
+
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
