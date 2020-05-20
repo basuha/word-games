@@ -67,7 +67,8 @@ public class WRandom extends WDummy {
         }
     }
 
-    public WRandom() {}
+    public WRandom() {
+    }
 
     public WRandom(Word word) {
         this.word = word;

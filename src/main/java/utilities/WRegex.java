@@ -1,6 +1,7 @@
 package utilities;
 
 import words.attributes.*;
+import words.primary.Participle;
 import words.primary.Verb;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -27,6 +28,7 @@ public class WRegex extends WRandom {
         }
         init();
         System.out.println(this.hexCode);
+        run();
     }
 
     private byte toDigit(char hexChar) {
@@ -165,44 +167,46 @@ public class WRegex extends WRandom {
                 type = null;
                 break;
         }
-        if (partOfSpeech.equals(ADJECTIVE)) {
-            switch (hexCode.get(4)) {
-                case 1:
-                    setType(Type.Adjective.IMMUTABLE);
-                    break;
-                case 2:
-                    setType(Type.Adjective.MUTABLE);
-                    break;
-            }
-        }
-        if (partOfSpeech.equals(ADVERB)) {
-            switch (hexCode.get(4)) {
-                case 1:
-                    setType(Type.Adverb.EXTENSIVE);
-                    break;
-                case 2:
-                    setType(Type.Adverb.DEFINITE);
-                    break;
-                case 3:
-                    setType(Type.Adverb.QUESTION);
-                    break;
-            }
-        }
-        if (partOfSpeech.equals(NUMERAL)) {
-            switch (hexCode.get(4)) {
-                case 1:
-                    setType(Type.Numeral.ORDINAL);
-                    break;
-                case 2:
-                    setType(Type.Numeral.QUANTITATIVE);
-                    break;
-                case 3:
-                    setType(Type.Numeral.COLLECTIVE);
-                    break;
-                case 4:
-                    setType(Type.Numeral.INDEFINITE);
-                    break;
-            }
+        switch (partOfSpeech) {
+            case ADJECTIVE:
+                switch (hexCode.get(4)) {
+                    case 1:
+                        setType(Type.Adjective.IMMUTABLE);
+                        break;
+                    case 2:
+                        setType(Type.Adjective.MUTABLE);
+                        break;
+                }
+                break;
+            case ADVERB:
+                switch (hexCode.get(4)) {
+                    case 1:
+                        setType(Type.Adverb.EXTENSIVE);
+                        break;
+                    case 2:
+                        setType(Type.Adverb.DEFINITE);
+                        break;
+                    case 3:
+                        setType(Type.Adverb.QUESTION);
+                        break;
+                }
+                break;
+            case NUMERAL:
+                switch (hexCode.get(4)) {
+                    case 1:
+                        setType(Type.Numeral.ORDINAL);
+                        break;
+                    case 2:
+                        setType(Type.Numeral.QUANTITATIVE);
+                        break;
+                    case 3:
+                        setType(Type.Numeral.COLLECTIVE);
+                        break;
+                    case 4:
+                        setType(Type.Numeral.INDEFINITE);
+                        break;
+                }
+                break;
         }
         switch (hexCode.get(5)){
             case 0:
@@ -218,13 +222,132 @@ public class WRegex extends WRandom {
                 setTime(Time.FUTURE);
                 break;
         }
-        switch (hexCode.get(6)){}
-        switch (hexCode.get(7)){}
-        switch (hexCode.get(8)){}
-        switch (hexCode.get(9)){}
-        switch (hexCode.get(10)){}
-        switch (hexCode.get(11)){}
-        switch (hexCode.get(12)){}
-        switch (hexCode.get(13)){}
+        switch (hexCode.get(6)){
+            case 0:
+                adverbType = null;
+                break;
+            case 1:
+                setAdverbType(AdverbType.QUALITATIVE);
+                break;
+            case 2:
+                setAdverbType(AdverbType.METHOD);
+                break;
+            case 3:
+                setAdverbType(AdverbType.EXTENT);
+                break;
+            case 4:
+                setAdverbType(AdverbType.PLACE);
+                break;
+            case 5:
+                setAdverbType(AdverbType.DIRECTION);
+                break;
+            case 6:
+                setAdverbType(AdverbType.TIMING);
+                break;
+            case 7:
+                setAdverbType(AdverbType.PURPOSE);
+                break;
+            case 8:
+                setAdverbType(AdverbType.REASON);
+                break;
+        }
+        switch (hexCode.get(7)){
+            case 0:
+                transitive = null;
+                break;
+            case 1:
+                setTransitive(Transitive.TRANSITIVE);
+                break;
+            case 2:
+                setTransitive(Transitive.INTRANSITIVE);
+                break;
+            case 3:
+                setTransitive(Transitive.TRANS_INTRANS);
+                break;
+        }
+        switch (hexCode.get(8)){
+            case 0:
+                animate = null;
+                break;
+            case 1:
+                setAnimate(Animate.ANIMATE);
+                break;
+            case 2:
+                setAnimate(Animate.INANIMATE);
+                break;
+            case 0xF:
+                setAnimate(Animate.N_A);
+                break;
+        }
+        switch (hexCode.get(9)){
+            case 0:
+                voice = null;
+                break;
+            case 1:
+                setVoice(Voice.ACTIVE);
+                break;
+            case 2:
+                setVoice(Voice.PASSIVE);
+                break;
+            case 0xF:
+                voice = "n/a";
+                break;
+        }
+        switch (hexCode.get(10)){
+            case 0:
+                perfect = null;
+                break;
+            case 1:
+                setPerfect(Perfect.PERFECT);
+                break;
+            case 2:
+                setPerfect(Perfect.NOT_PERFECT);
+                break;
+            case 3:
+                setPerfect(Perfect.N_A);
+                break;
+        }
+        switch (hexCode.get(11)){
+            case 0:
+                kind = null;
+                break;
+            case 1:
+                setKind(Kind.FIRST);
+                break;
+            case 2:
+                setKind(Kind.SECOND);
+                break;
+            case 0xF:
+                kind = "n/a";
+                break;
+        }
+        switch (hexCode.get(12)){
+            case 0:
+                comparative = null;
+                break;
+            case 1:
+                setComparative(Comparative.COMPARATIVE);
+                break;
+            case 2:
+                setComparative(Comparative.SUPER);
+                break;
+            case 0xF:
+                setComparative(Comparative.N_A);
+                break;
+        }
+        switch (hexCode.get(13)){
+            case 0:
+                infinitive = null;
+                break;
+            case 1:
+                setInfinitive(Infinitive.INFINITIVE);
+                break;
+            case 2:
+                setInfinitive(Infinitive.NOT);
+                break;
+            case 0xF:
+                setInfinitive(Infinitive.N_A);
+                break;
+        }
     }
 }
