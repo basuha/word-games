@@ -43,7 +43,9 @@ public enum WordCase {
     LOCATIVE ("locative"),
 
     /** счетный */
-    COUNTING ("counting");
+    COUNTING ("counting"),
+
+    N_A ("n/a");
 
     private final String value;
 

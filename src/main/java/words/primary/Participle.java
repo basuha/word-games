@@ -81,7 +81,7 @@ public class Participle extends Word {
         return this;
     }
 
-    public Participle setTime(Time.Participle time) {
+    public Participle setTime(Time time) {
         this.time = time.toString();
         return this;
     }

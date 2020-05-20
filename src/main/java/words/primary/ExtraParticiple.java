@@ -55,7 +55,7 @@ ExtraParticiple extends Word {
         return this;
     }
 
-    public ExtraParticiple setTime(Time.Participle time) {
+    public ExtraParticiple setTime(Time time) {
         this.time = time.toString();
         return this;
     }

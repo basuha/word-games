@@ -20,25 +20,4 @@ public enum Time {
     public String toString() {
         return value;
     }
-
-
-    /**
-     * Признак времени причастия, деепричастия
-     */
-    public enum Participle {
-
-        PAST ("past"),
-        PRESENT ("present");
-
-        private final String value;
-
-        Participle(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return value;
-        }
-    }
 }

@@ -58,7 +58,7 @@ public class Noun extends Word {
         return this;
     }
 
-    public Noun setWordCase(WordCase.Noun wordCase) {
+    public Noun setWordCase(WordCase wordCase) {
         this.wordCase = wordCase.toString();
         return this;
     }

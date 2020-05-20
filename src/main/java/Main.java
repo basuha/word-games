@@ -18,7 +18,7 @@ public class Main {
 //        System.out.println(b - a);
 //        System.out.println(c - a);
 
-        Word word = new WRandom(new WRegex("C08abcd")).getSingleWord();
+        Word word = new WRandom(new WRegex("C0")).getSingleWord();
         System.out.println(word);
 
 //        System.out.println(randomWord.get() + " " + randomWord2.get());

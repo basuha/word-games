@@ -129,7 +129,13 @@ public class WDummy extends Word {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(Type.Adjective type) {
+        this.type = type.toString();
+    }
+    public void setType(Type.Adverb type) {
+        this.type = type.toString();
+    }
+    public void setType(Type.Numeral type) {
         this.type = type.toString();
     }
 
