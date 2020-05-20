@@ -67,14 +67,13 @@ public class WRandom extends WDummy {
         }
     }
 
-    public WRandom() {
-    }
+    public WRandom() {}
 
     public WRandom(Word word) {
         this.word = word;
         switch (word.getPartOfSpeech()) {
 
-            case PartOfSpeech.ADJECTIVE:
+            case ADJECTIVE:
 
                 Adjective adjective = (Adjective) word;
                 this.comparative = adjective.getComparative();
@@ -86,7 +85,7 @@ public class WRandom extends WDummy {
                 isPrimary = true;
                 break;
 
-            case PartOfSpeech.ADVERB:
+            case ADVERB:
 
                 Adverb adverb = (Adverb) word;
                 this.type = adverb.getType();
@@ -95,7 +94,7 @@ public class WRandom extends WDummy {
                 isPrimary = true;
                 break;
 
-            case PartOfSpeech.EXTRA_PARTICIPLE:
+            case EXTRA_PARTICIPLE:
 
                 ExtraParticiple extraParticiple = (ExtraParticiple) word;
                 this.transitive = extraParticiple.getTransitive();
@@ -105,7 +104,7 @@ public class WRandom extends WDummy {
                 isPrimary = true;
                 break;
 
-            case PartOfSpeech.NOUN:
+            case NOUN:
 
                 Noun noun = (Noun) word;
                 this.plural = noun.getPlural();
@@ -115,7 +114,7 @@ public class WRandom extends WDummy {
                 isPrimary = true;
                 break;
 
-            case PartOfSpeech.NUMERAL:
+            case NUMERAL:
 
                 Numeral numeral = (Numeral) word;
                 this.plural = numeral.getPlural();
@@ -125,7 +124,7 @@ public class WRandom extends WDummy {
                 isPrimary = false;
                 break;
 
-            case PartOfSpeech.PARTICIPLE:
+            case PARTICIPLE:
 
                 Participle participle = (Participle) word;
                 this.gender = participle.getGender();
@@ -140,7 +139,7 @@ public class WRandom extends WDummy {
                 isPrimary = true;
                 break;
 
-            case PartOfSpeech.VERB:
+            case VERB:
 
                 Verb verb = (Verb) word;
                 this.face = verb.getFace();
@@ -156,17 +155,17 @@ public class WRandom extends WDummy {
                 isPrimary = true;
                 break;
 
-            case PartOfSpeech.PRETEXT:
+            case PRETEXT:
 
                 Pretext pretext = (Pretext) word;
                 this.wordCase = pretext.getWordCase();
                 isPrimary = false;
                 break;
 
-            case PartOfSpeech.PRONOUN:
-            case PartOfSpeech.PRON_ADJ:
-            case PartOfSpeech.PRON_ADV:
-            case PartOfSpeech.PRON_NOUN:
+            case PRONOUN:
+            case PRON_ADJ:
+            case PRON_ADV:
+            case PRON_NOUN:
 
                 Pronoun pronoun = (Pronoun) word;
                 this.wordCase = pronoun.getWordCase();

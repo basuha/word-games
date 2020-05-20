@@ -1,6 +1,8 @@
 import utilities.*;
 import words.primary.Noun;
 
+import java.util.Random;
+
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
@@ -15,8 +17,10 @@ public class Main {
 //
 //        System.out.println(b - a);
 //        System.out.println(c - a);
-        WRegex wRegex = new WRegex("C08abcd");
-        System.out.println(wRegex.getPartOfSpeech());
+
+        Word word = new WRandom(new WRegex("C08abcd")).getSingleWord();
+        System.out.println(word);
+
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());

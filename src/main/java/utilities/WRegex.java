@@ -21,8 +21,8 @@ public class WRegex extends WRandom {
         for (int i = 0; i < hexCode.length(); i++) {
             this.hexCode.add(toDigit(hexCode.charAt(i)));
         }
-//        init();
-//        System.out.println(this.hexCode);
+        init();
+        System.out.println(this.hexCode);
     }
 
     private byte toDigit(char hexChar) {
@@ -80,6 +80,14 @@ public class WRegex extends WRandom {
                 break;
             case 0xE:
                 setPartOfSpeech(PRONOUN);
+                break;
+        }
+        switch (hexCode.get(1)){
+            case 0:
+                setWordCase(null);
+                break;
+            case 1:
+                setWordCase(null);
                 break;
         }
     }

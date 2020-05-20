@@ -51,7 +51,6 @@ public class Word extends PartOfSpeech {
     protected static int MAX_ID;
 
     @Transient
-    @OneToMany(targetEntity = Word.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     protected List<Word> cognates = new ArrayList<>();
 
     public static int getMaxID() {

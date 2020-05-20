@@ -17,6 +17,7 @@ public class WordGames extends JDialog {
     private JRadioButton всеСловаRadioButton;
     private JRadioButton radioButton3;
     private JRadioButton radioButton4;
+    private JList list1;
 
     public WordGames() {
         setTitle("WordGames alpha");
