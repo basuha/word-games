@@ -1,5 +1,6 @@
 package words;
 
+import com.mchange.v2.c3p0.impl.C3P0PooledConnection;
 import org.hibernate.Session;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -38,7 +39,7 @@ import java.util.List;
  * @see Conjunction
  */
 @Entity
-@Table(name = "words_test")
+@Table(name = "words")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "partOfSpeech")
 public class Word {
@@ -62,6 +63,7 @@ public class Word {
     @Transient
     @OneToMany(targetEntity = Word.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     protected List<Word> cognates = new ArrayList<>();
+
 
     public static int getMaxID() {
         Thread thread = new Thread(new Runnable() {

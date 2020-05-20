@@ -13,12 +13,10 @@
     </property>
 
     <property name="hibernate.connection.url">
-        jdbc:sqlite:D:/words.db
+        jdbc:sqlite:E:\dictionary-wg.db
     </property>
 
-<!--    <property name="hbm2ddl.auto">-->
-<!--        update-->
-<!--    </property>-->
+    <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
 
     <property name="show_sql">
         true
@@ -28,13 +26,13 @@
         200
     </property>
 
-    <property name="hibernate.default_schema">
-        main
-    </property>
+<!--    <property name="hibernate.default_schema">-->
+<!--        main-->
+<!--    </property>-->
 
-        <property name="hibernate.connection.release_mode">auto</property>
+<!--        <property name="hibernate.connection.release_mode">auto</property>-->
         <property name="current_session_context_class">thread</property>
-        <property name="hibernate.connection.autoReconnect">true</property>
+<!--        <property name="hibernate.connection.autoReconnect">true</property>-->
 
 
         <mapping class="words.Word"/>

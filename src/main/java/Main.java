@@ -10,20 +10,17 @@ import java.util.List;
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
-        RandomWord randomWord = new RandomWord(new Adjective()
-                .setWordCase(WordCase.NOMINATIVE)
-                .setPlural(Plural.PLURAL));
+        long a = System.currentTimeMillis();
+        RandomWord randomWord1 = new RandomWord(new Noun());
 
+        long b = System.currentTimeMillis();
         RandomWord randomWord2 = new RandomWord(new Noun());
-        randomWord.start();
-        randomWord2.start();
-        try {
-            randomWord.join();
-            randomWord2.join();
-        } catch (InterruptedException e) {
-            System.out.println(e);
-        }
-            System.out.println(randomWord.getSingleWord() + " " + randomWord2.getSingleWord());
+
+        System.out.println(randomWord1.getSingleWord() + " " + randomWord2.getSingleWord());
+        long c = System.currentTimeMillis();
+
+        System.out.println(b - a);
+        System.out.println(c - a);
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
@@ -75,8 +72,8 @@ public class Main {
 //            System.out.println(s);
 //        }
 //
-        System.out.println(Zodiac.CANCER);
-        System.out.println(Zodiac.GEMINI);
+//        System.out.println(Zodiac.CANCER);
+//        System.out.println(Zodiac.GEMINI);
 //
 //        Word word = Word.findById(4159183);
 //        System.out.println(word.getInfo());

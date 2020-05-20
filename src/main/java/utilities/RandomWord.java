@@ -14,8 +14,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
-public class RandomWord extends Thread {
+public class RandomWord {
 
     private String adverbType;
     private String animate;
@@ -187,6 +190,7 @@ public class RandomWord extends Thread {
                 isPrimary = false;
                 break;
         }
+        run();
     }
 
     private String buildQuery(int lowID, int hiID) {
@@ -329,32 +333,33 @@ public class RandomWord extends Thread {
     }
 
     @SuppressWarnings("unchecked assignment")
-    public synchronized void run() {
-        List<WordQueryThread> threads = new ArrayList<>();
+    public void run() {
 
-        final int NUMBER_OF_THREADS = 10;
+        final int NUMBER_OF_THREADS = 4;
         final int ONE_THREAD_INTERVAL = Word.getMaxID() / NUMBER_OF_THREADS;
 
-        for (int i = 0, j = 0; i < NUMBER_OF_THREADS; i++) {
-            threads.add(i, new WordQueryThread(
-                    buildQuery(j,j + ONE_THREAD_INTERVAL)));
-            threads.get(i).start();
-        }
+        ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+        for (int i = 0, interval = 0, nextInterval = interval + ONE_THREAD_INTERVAL;
+             i < NUMBER_OF_THREADS;
+             i++, interval = nextInterval, nextInterval += ONE_THREAD_INTERVAL) {
 
-        for (WordQueryThread t : threads) {
-            try {
-                t.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+            int finalInterval = interval;
+            int finalNextInterval = nextInterval;
 
-        for (WordQueryThread t : threads) {
-            wordsList.addAll(t.getWordsList());
+            executorService.submit(() -> {
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                Query query = session.createQuery(buildQuery(finalInterval, finalNextInterval));
+                wordsList.addAll(query.getResultList());
+                session.close();
+            });
         }
-
+        executorService.shutdown();
+        try {
+            executorService.awaitTermination(1, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         getResultSet();
-        notify();
     }
 
     private boolean isCommon(Word word) {
