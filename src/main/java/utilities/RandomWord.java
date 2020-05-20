@@ -335,7 +335,7 @@ public class RandomWord {
     @SuppressWarnings("unchecked assignment")
     public void run() {
 
-        final int NUMBER_OF_THREADS = 4;
+        final int NUMBER_OF_THREADS = 5;
         final int ONE_THREAD_INTERVAL = Word.getMaxID() / NUMBER_OF_THREADS;
 
         ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);

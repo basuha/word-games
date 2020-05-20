@@ -13,26 +13,33 @@
     </property>
 
     <property name="hibernate.connection.url">
-        jdbc:sqlite:E:\dictionary-wg.db
+        jdbc:sqlite:D:\dictionary-wg.db
     </property>
 
     <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+
+
+        <property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">20</property>
+        <property name="c3p0.timeout">300</property>
+        <property name="c3p0.max_statements">50</property>
+        <property name="c3p0.idle_test_period">3000</property>
 
     <property name="show_sql">
         true
     </property>
 
     <property name="connection.pool_size">
-        200
+        20
     </property>
 
-<!--    <property name="hibernate.default_schema">-->
-<!--        main-->
-<!--    </property>-->
+    <property name="hibernate.default_schema">
+        main
+    </property>
 
-<!--        <property name="hibernate.connection.release_mode">auto</property>-->
+        <property name="hibernate.connection.release_mode">auto</property>
         <property name="current_session_context_class">thread</property>
-<!--        <property name="hibernate.connection.autoReconnect">true</property>-->
+        <property name="hibernate.connection.autoReconnect">true</property>
 
 
         <mapping class="words.Word"/>

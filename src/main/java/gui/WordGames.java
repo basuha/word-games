@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class WordGames extends JDialog {
@@ -10,6 +11,12 @@ public class WordGames extends JDialog {
     private JTabbedPane tabbedPane1;
     private JTable table1;
     private JTextField textField1;
+    private JPanel settings;
+    private JComboBox<String> comboBox1;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
+    private JRadioButton radioButton3;
+    private JRadioButton radioButton4;
 
     public WordGames() {
         setTitle("WordGames alpha");

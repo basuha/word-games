@@ -1,3 +1,4 @@
+import org.hibernate.c3p0.internal.C3P0ConnectionProvider;
 import utilities.*;
 import words.Word;
 import words.attributes.Plural;
