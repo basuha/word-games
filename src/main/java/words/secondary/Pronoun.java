@@ -1,16 +1,13 @@
 package words.secondary;
 
-import com.sun.istack.Nullable;
 import utilities.PartOfSpeech;
-import words.Word;
+import utilities.Word;
 import words.attributes.Gender;
 import words.attributes.Plural;
 import words.attributes.WordCase;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.util.List;
 
 /**
  * Местоимение

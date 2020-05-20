@@ -1,7 +1,7 @@
 package gui;
 
 import utilities.WRandom;
-import words.Word;
+import utilities.Word;
 
 import javax.swing.*;
 import java.awt.event.*;

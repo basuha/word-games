@@ -1,7 +1,7 @@
 package words.primary;
 
 import utilities.PartOfSpeech;
-import words.Word;
+import utilities.Word;
 import words.attributes.*;
 import words.attributes.ShortF;
 

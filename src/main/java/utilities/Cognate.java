@@ -1,13 +1,5 @@
 package utilities;
 
-import org.hibernate.annotations.DynamicUpdate;
-import words.Word;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.QueryHint;
-import javax.persistence.Table;
-
 //@Entity
 //public class Cognate {
 //

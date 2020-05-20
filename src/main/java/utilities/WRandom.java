@@ -1,7 +1,6 @@
 package utilities;
 
 import org.hibernate.Session;
-import words.Word;
 import words.primary.*;
 import words.secondary.Pretext;
 import words.secondary.Pronoun;

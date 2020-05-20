@@ -1,15 +1,13 @@
 package words.primary;
 
-import com.sun.istack.Nullable;
 import utilities.PartOfSpeech;
-import words.Word;
+import utilities.Word;
 import words.attributes.Animate;
 import words.attributes.Gender;
 import words.attributes.Plural;
 import words.attributes.WordCase;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Существительное

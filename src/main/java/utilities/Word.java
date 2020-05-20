@@ -1,13 +1,6 @@
-package words;
+package utilities;
 
-import com.mchange.v2.c3p0.impl.C3P0PooledConnection;
 import org.hibernate.Session;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import utilities.HibernateUtil;
-import words.attributes.Gender;
-import words.attributes.Plural;
-import words.attributes.WordCase;
 import words.primary.*;
 import words.secondary.*;
 
@@ -15,9 +8,6 @@ import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
-import java.io.Serializable;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +32,7 @@ import java.util.List;
 @Table(name = "words")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "partOfSpeech")
-public class Word {
+public class Word extends PartOfSpeech {
 
     @Id
     protected Integer IID;
@@ -63,7 +53,6 @@ public class Word {
     @Transient
     @OneToMany(targetEntity = Word.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     protected List<Word> cognates = new ArrayList<>();
-
 
     public static int getMaxID() {
         Thread thread = new Thread(new Runnable() {

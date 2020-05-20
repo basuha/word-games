@@ -42,7 +42,7 @@
         <property name="hibernate.connection.autoReconnect">true</property>
 
 
-        <mapping class="words.Word"/>
+        <mapping class="utilities.Word"/>
 
 <!--        <mapping class="utilities.Cognate"/>-->
 

@@ -1,16 +1,14 @@
 package words.primary;
 
 import utilities.PartOfSpeech;
-import words.Word;
+import utilities.Word;
 import words.attributes.Perfect;
 import words.attributes.Reflexive;
 import words.attributes.Time;
 import words.attributes.Transitive;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.util.List;
 
 /**
  * Деепричастие

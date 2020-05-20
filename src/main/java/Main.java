@@ -4,18 +4,19 @@ import words.primary.Noun;
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
-        long a = System.currentTimeMillis();
-        WRandom WRandom1 = new WRandom(new Noun());
-
-        long b = System.currentTimeMillis();
-        WRandom WRandom2 = new WRandom(new Noun());
-
-        System.out.println(WRandom1.getSingleWord() + " " + WRandom2.getSingleWord());
-        long c = System.currentTimeMillis();
-
-        System.out.println(b - a);
-        System.out.println(c - a);
-
+//        long a = System.currentTimeMillis();
+//        WRandom WRandom1 = new WRandom(new Noun());
+//
+//        long b = System.currentTimeMillis();
+//        WRandom WRandom2 = new WRandom(new Noun());
+//
+//        System.out.println(WRandom1.getSingleWord() + " " + WRandom2.getSingleWord());
+//        long c = System.currentTimeMillis();
+//
+//        System.out.println(b - a);
+//        System.out.println(c - a);
+        WRegex wRegex = new WRegex("C08abcd");
+        System.out.println(wRegex.getPartOfSpeech());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());

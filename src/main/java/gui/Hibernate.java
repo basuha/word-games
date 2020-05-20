@@ -2,7 +2,7 @@ package gui;
 
 import org.hibernate.Session;
 import utilities.HibernateUtil;
-import words.Word;
+import utilities.Word;
 
 import javax.persistence.Query;
 import java.util.List;

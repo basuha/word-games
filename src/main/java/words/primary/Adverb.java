@@ -1,16 +1,13 @@
 package words.primary;
 
-import com.sun.istack.Nullable;
 import utilities.PartOfSpeech;
-import words.Word;
+import utilities.Word;
 import words.attributes.AdverbType;
 import words.attributes.Comparative;
 import words.attributes.Type;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.util.List;
 
 /**
  * Наречие

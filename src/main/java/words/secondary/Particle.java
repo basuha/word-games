@@ -1,10 +1,9 @@
 package words.secondary;
 
 import utilities.PartOfSpeech;
-import words.Word;
+import utilities.Word;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Частица

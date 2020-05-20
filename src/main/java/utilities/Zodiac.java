@@ -1,7 +1,5 @@
 package utilities;
 
-import words.Word;
-
 
 /**
  * Знаки зодиака

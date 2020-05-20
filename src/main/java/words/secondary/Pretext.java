@@ -1,13 +1,11 @@
 package words.secondary;
 
 import utilities.PartOfSpeech;
-import words.Word;
+import utilities.Word;
 import words.attributes.WordCase;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.util.List;
 
 /**
  * Предлог

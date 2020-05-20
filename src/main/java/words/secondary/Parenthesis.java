@@ -1,11 +1,10 @@
 package words.secondary;
 
 import utilities.PartOfSpeech;
-import words.Word;
+import utilities.Word;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.util.List;
 
 /**
  * Вводное слово

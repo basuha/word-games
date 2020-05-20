@@ -1,13 +1,5 @@
 package utilities;
 
-import words.Word;
-import org.hibernate.Session;
-import words.primary.Adjective;
-import words.primary.Adverb;
-
-import javax.persistence.Column;
-import javax.persistence.Query;
-import java.util.List;
 import java.util.Random;
 
 public class Dictionary extends HibernateUtil {

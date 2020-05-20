@@ -1,7 +1,6 @@
 package utilities;
 
 import org.hibernate.Session;
-import words.Word;
 
 import javax.persistence.Query;
 import java.util.ArrayList;

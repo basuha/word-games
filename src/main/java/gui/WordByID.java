@@ -1,6 +1,6 @@
 package gui;
 
-import words.Word;
+import utilities.Word;
 
 public class WordByID extends Thread {
 

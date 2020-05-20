@@ -1,10 +1,6 @@
 package utilities;
 
-import words.Word;
 import words.attributes.*;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import java.lang.Short;
 
 public class WDummy extends Word {
 
