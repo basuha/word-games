@@ -21,6 +21,13 @@ public class WDummy extends Word {
     protected String voice;
     protected String wordCase;
 
+    public WDummy() {
+    }
+
+    public WDummy(String word) {
+        this.word = word;
+    }
+
     public String getAdverbType() {
         return adverbType;
     }

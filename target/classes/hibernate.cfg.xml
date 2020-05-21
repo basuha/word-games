@@ -43,6 +43,7 @@
 
 
         <mapping class="utilities.Word"/>
+        <mapping class="utilities.WAstro"/>
 
 <!--        <mapping class="utilities.Cognate"/>-->
 

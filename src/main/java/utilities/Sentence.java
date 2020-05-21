@@ -20,7 +20,7 @@ public class Sentence {
     }
 
     public Sentence(String word) {
-        add(new WDummy().setWord(word));
+        add(new WDummy(word));
     }
 
     public Sentence add(Word word) {
@@ -41,7 +41,8 @@ public class Sentence {
     }
 
     private static String firstUpperCase(String word){
-        if (word == null || word.isEmpty()) return word;
+        if (word == null || word.isEmpty())
+            return word;
         return word.substring(0, 1).toUpperCase() + word.substring(1);
     }
 
