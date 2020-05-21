@@ -14,7 +14,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="word-games" value="3739761b-dda1-43e9-96f8-96249b8993a2" />
+          <factory-entry name="word-games" value="0e397d6b-88e8-4fb8-aff3-8299cc226745" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

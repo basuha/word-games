@@ -17,6 +17,7 @@ public class Main {
 //
 //        System.out.println(b - a);
 //        System.out.println(c - a);
+
         WRandom wRandom = new WRandom("1325");
         System.out.println(wRandom.getSingleWord());
 
