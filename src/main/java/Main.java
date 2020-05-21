@@ -18,8 +18,8 @@ public class Main {
 //        System.out.println(b - a);
 //        System.out.println(c - a);
 
-        WRandom wRandom = new WRandom("1325");
-        System.out.println(wRandom.getSingleWord());
+        Sentence sentence = new WParser(WAstro.getByID(2).toString());
+        System.out.println(sentence);
 
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());

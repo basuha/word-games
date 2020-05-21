@@ -20,8 +20,7 @@ public class WRandomSentence {
 
     public String getSingleResult() {
         for (int i = 0; i < wordsList.size(); i++) {
-            sentence.add(new WRandom(wordsList.get(i)).getSingleWord().toString());
-            sentence.add(" ");
+            sentence.add(new WRandom(wordsList.get(i)).getSingleWord());
         }
         return sentence.toString();
     }
@@ -66,7 +65,7 @@ public class WRandomSentence {
             for (int i = 0; i < minSize; i++) {
                 Sentence sentence = new Sentence();
                 for (int j = 0; j < 4; j++) {
-                    sentence.add(words.get(j).get(random.nextInt(listSizesNotSorted.get(j))).toString());
+                    sentence.add(words.get(j).get(random.nextInt(listSizesNotSorted.get(j))));
                 }
                 sentences.add(sentence);
             }

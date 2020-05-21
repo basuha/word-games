@@ -44,15 +44,28 @@ public class WAstro {
     public static WAstro getRandom(int position) {
         StringBuilder hql = new StringBuilder();
         WAstro wAstro;
-        hql.append("FROM WAStro WHERE IID = ")
+        hql.append("FROM WAstro WHERE IID = ")
                 .append(new Random().nextInt(getMaxID()))
                 .append(" AND position = ")
                 .append(position);
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery(hql.toString());
-        MAX_ID = (Integer) query.getSingleResult();
+        wAstro = (WAstro) query.getSingleResult();
         session.close();
+        return wAstro;
+    }
+
+    public static WAstro getByID(int id) {
+        StringBuilder hql = new StringBuilder();
+        WAstro wAstro;
+        hql.append("FROM WAstro WHERE IID = ")
+                .append(id);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query query = session.createQuery(hql.toString());
+        wAstro = (WAstro) query.getSingleResult();
+        session.close();
+        return wAstro;
     }
 
     public int getIID() {
@@ -85,5 +98,10 @@ public class WAstro {
 
     public void setPositive(boolean positive) {
         isPositive = positive;
+    }
+
+    @Override
+    public String toString() {
+        return sentence;
     }
 }

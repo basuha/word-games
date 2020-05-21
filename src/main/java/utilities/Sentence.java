@@ -1,14 +1,11 @@
 package utilities;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * Класс-обертка для StringBuilder
- */
 public class Sentence {
     private int counter = 0;
-    private StringBuilder sentence = new StringBuilder();
+    protected List<Word> sentence = new ArrayList<>();
 
     public Sentence(){
 
@@ -19,27 +16,26 @@ public class Sentence {
     }
 
     public Sentence(Word word) {
-        add(word.toString());
-    }
-
-    public Sentence(String word) {
         add(word);
     }
 
-    public Sentence add(String word) {
+    public Sentence(String word) {
+        add(new WDummy().setWord(word));
+    }
+
+    public Sentence add(Word word) {
         if (counter == 0) {
-            sentence.append(firstUpperCase(word));
+            sentence.add(word.setWord(firstUpperCase(word.getWord())));
         } else {
-            sentence.append(" ")
-                    .append(word);
+            sentence.add(word);
         }
         counter++;
         return this;
     }
 
     public Sentence add(List<Word> word) {
-        for (Word s : word) {
-            add(s.toString());
+        for (Word w : word) {
+            add(w);
         }
         return this;
     }
@@ -51,6 +47,13 @@ public class Sentence {
 
     @Override
     public String toString() {
+        StringBuilder sentence = new StringBuilder();
+        for (int i = 0; i < this.sentence.size(); i++) {
+            sentence.append(this.sentence.get(i));
+            if (i != this.sentence.size()) {
+                sentence.append(" ");
+            }
+        }
         return sentence.toString() + ".";
     }
 }
