@@ -17,8 +17,8 @@ public class Main {
 //
 //        System.out.println(b - a);
 //        System.out.println(c - a);
-
-        System.out.println(new WRandom(new WRegex("20000000000000")));
+        WRandom wRandom = new WRandom("1325");
+        System.out.println(wRandom.getSingleWord());
 
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
