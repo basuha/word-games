@@ -1,22 +1,29 @@
 package gui;
 
+import org.codehaus.plexus.util.StringUtils;
+import utilities.WRandom;
 import utilities.Word;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.*;
 
 public class WordSearch extends WordGames {
-    private JPanel contentPane;
-    private JButton buttonSearch;
-    private JButton buttonAdd;
-    private JTabbedPane tabbedPane1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JCheckBox checkBox1;
-    private JTextArea textArea1;
-    private JProgressBar progressBar1;
+    protected JPanel contentPane;
+    protected JButton buttonSearch;
+    protected JButton buttonAdd;
+    protected JTabbedPane tabbedPane1;
+    protected JTextField textField1;
+    protected JCheckBox checkBox1;
+    protected JTextArea textArea1;
+    protected JProgressBar progressBar1;
+    protected JRadioButton idRadioButton;
+    protected JRadioButton hexRadioButton;
+    protected JCheckBox autoSearchCheckBox;
+    protected JLabel idHexLabel;
 
     public WordSearch() {
         setTitle("Поиск слов");
@@ -26,18 +33,22 @@ public class WordSearch extends WordGames {
         setModal(true);
         getRootPane().setDefaultButton(buttonSearch);
 
+        idRadioButton.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                idHexButtons();
+            }
+        });
+
         textField1.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 textFieldAction();
-                onSearch();
             }
             public void removeUpdate(DocumentEvent e) {
                 textFieldAction();
-                onSearch();
             }
             public void insertUpdate(DocumentEvent e) {
                 textFieldAction();
-                onSearch();
             }
         });
 
@@ -60,6 +71,14 @@ public class WordSearch extends WordGames {
             }
         });
 
+        textField1.registerKeyboardAction(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (textField1.getCaret().isVisible()) {
+                    onSearch();
+                }
+            }
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -73,22 +92,24 @@ public class WordSearch extends WordGames {
                 dispose();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+    }
 
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (textField1.getCaret().isVisible()) {
-                    onSearch();
-                }
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-
+    private void idHexButtons() {
+        if (idRadioButton.isSelected()) {
+            idHexLabel.setText("ID:");
+            autoSearchCheckBox.setSelected(true);
+        } else {
+            idHexLabel.setText("HEX:");
+            autoSearchCheckBox.setSelected(false);
+        }
     }
 
     private void textFieldAction() {
-        if(!textField1.getText().isEmpty()) {
-            buttonSearch.setEnabled(true);
-        } else {
-            buttonSearch.setEnabled(false);
+        if(StringUtils.isNumeric(textField1.getText())) {
+            buttonSearch.setEnabled(!textField1.getText().isEmpty());
+            if (autoSearchCheckBox.isSelected()) {
+                onSearch();
+            }
         }
     }
 
@@ -96,11 +117,20 @@ public class WordSearch extends WordGames {
     private void onSearch() {
         progressBar1.setValue(34);
         if (!textField1.getText().isEmpty()) {
-            word = Word.findById(Integer.parseInt(textField1.getText()));
-            if (word == null) {
-                textArea1.setText("Слово не найдено");
+            if(idRadioButton.isSelected()) {
+                word = Word.findById(Integer.parseInt(textField1.getText()));
+                if (word == null) {
+                    textArea1.setText("Слово не найдено");
+                } else {
+                    checkBox1();
+                }
             } else {
-                checkBox1();
+                word = new WRandom(textField1.getText()).getSingleWord();
+                if (word == null) {
+                    textArea1.setText("Слово не найдено");
+                } else {
+                    checkBox1();
+                }
             }
         }
     }

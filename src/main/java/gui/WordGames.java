@@ -3,7 +3,6 @@ package gui;
 import utilities.Word;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class WordGames extends JDialog {

@@ -6,20 +6,21 @@ import java.util.Random;
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
-//        long a = System.currentTimeMillis();
-//        WRandom WRandom1 = new WRandom(new Noun());
-//
-//        long b = System.currentTimeMillis();
-//        WRandom WRandom2 = new WRandom(new Noun());
-//
-//        System.out.println(WRandom1.getSingleWord() + " " + WRandom2.getSingleWord());
-//        long c = System.currentTimeMillis();
-//
-//        System.out.println(b - a);
-//        System.out.println(c - a);
+        long a = System.currentTimeMillis();
+        WRandom wRandom = new WRandom("9");
 
-        Sentence sentence = new WParser(WAstro.getByID(2).toString());
-        System.out.println(sentence);
+        long b = System.currentTimeMillis();
+        WRandom wRandom1 = new WRandom("9");
+
+        System.out.println(wRandom.getSingleWord() + " " + wRandom1.getSingleWord());
+        long c = System.currentTimeMillis();
+
+        System.out.println(b - a);
+        System.out.println(c - a);
+
+//        Sentence sentence = new WParser(WAstro.getByID(2).toString());
+//        System.out.println(sentence);
+
 
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());

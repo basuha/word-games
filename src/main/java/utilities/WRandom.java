@@ -575,6 +575,7 @@ public class WRandom extends WDummy {
             case ADJECTIVE:
 
                 Adjective adjective = (Adjective) word;
+                this.partOfSpeech = ADJECTIVE;
                 this.comparative = adjective.getComparative();
                 this.gender = adjective.getGender();
                 this.plural = adjective.getPlural();
@@ -587,6 +588,7 @@ public class WRandom extends WDummy {
             case ADVERB:
 
                 Adverb adverb = (Adverb) word;
+                this.partOfSpeech = ADVERB;
                 this.type = adverb.getType();
                 this.adverbType = adverb.getAdverbType();
                 this.comparative = adverb.getComparative();
@@ -596,6 +598,7 @@ public class WRandom extends WDummy {
             case EXTRA_PARTICIPLE:
 
                 ExtraParticiple extraParticiple = (ExtraParticiple) word;
+                this.partOfSpeech = EXTRA_PARTICIPLE;
                 this.transitive = extraParticiple.getTransitive();
                 this.perfect = extraParticiple.getPerfect();
                 this.time = extraParticiple.getTime();
@@ -606,6 +609,7 @@ public class WRandom extends WDummy {
             case NOUN:
 
                 Noun noun = (Noun) word;
+                this.partOfSpeech = NOUN;
                 this.plural = noun.getPlural();
                 this.gender = noun.getGender();
                 this.wordCase = noun.getWordCase();
@@ -616,6 +620,7 @@ public class WRandom extends WDummy {
             case NUMERAL:
 
                 Numeral numeral = (Numeral) word;
+                this.partOfSpeech = NUMERAL;
                 this.plural = numeral.getPlural();
                 this.gender = numeral.getGender();
                 this.wordCase = numeral.getWordCase();
@@ -626,6 +631,7 @@ public class WRandom extends WDummy {
             case PARTICIPLE:
 
                 Participle participle = (Participle) word;
+                this.partOfSpeech = PARTICIPLE;
                 this.gender = participle.getGender();
                 this.kind = participle.getKind();
                 this.plural = participle.getPlural();
@@ -641,6 +647,7 @@ public class WRandom extends WDummy {
             case VERB:
 
                 Verb verb = (Verb) word;
+                this.partOfSpeech = VERB;
                 this.face = verb.getFace();
                 this.gender = verb.getGender();
                 this.infinitive = verb.getInfinitive();
@@ -657,6 +664,7 @@ public class WRandom extends WDummy {
             case PRETEXT:
 
                 Pretext pretext = (Pretext) word;
+                this.partOfSpeech = PRETEXT;
                 this.wordCase = pretext.getWordCase();
                 isPrimary = false;
                 break;
@@ -667,6 +675,7 @@ public class WRandom extends WDummy {
             case PRON_NOUN:
 
                 Pronoun pronoun = (Pronoun) word;
+                this.partOfSpeech = PRONOUN;
                 this.wordCase = pronoun.getWordCase();
                 this.gender = pronoun.getGender();
                 this.plural = pronoun.getPlural();
@@ -678,7 +687,7 @@ public class WRandom extends WDummy {
     @SuppressWarnings("unchecked assignment")
     public void run() {
 
-        final int NUMBER_OF_THREADS = 5;
+        final int NUMBER_OF_THREADS = 10;
         final int ONE_THREAD_INTERVAL = Word.getMaxID() / NUMBER_OF_THREADS;
 
         ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -698,7 +707,7 @@ public class WRandom extends WDummy {
         }
         executorService.shutdown();
         try {
-            executorService.awaitTermination(1, TimeUnit.MINUTES);
+            executorService.awaitTermination(1, TimeUnit.DAYS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
