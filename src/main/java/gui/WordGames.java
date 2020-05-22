@@ -1,5 +1,7 @@
 package gui;
 
+import utilities.Word;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -22,6 +24,7 @@ public class WordGames extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        Word.findById(1); //инициализация хибернейта
 
         searchButton.addActionListener(new ActionListener() {
             @Override

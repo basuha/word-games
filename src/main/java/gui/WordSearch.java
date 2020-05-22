@@ -3,9 +3,11 @@ package gui;
 import utilities.Word;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.*;
 
-public class WordSearch extends JDialog {
+public class WordSearch extends WordGames {
     private JPanel contentPane;
     private JButton buttonSearch;
     private JButton buttonAdd;
@@ -14,6 +16,7 @@ public class WordSearch extends JDialog {
     private JTextField textField2;
     private JCheckBox checkBox1;
     private JTextArea textArea1;
+    private JProgressBar progressBar1;
 
     public WordSearch() {
         setTitle("Поиск слов");
@@ -23,13 +26,27 @@ public class WordSearch extends JDialog {
         setModal(true);
         getRootPane().setDefaultButton(buttonSearch);
 
+        textField1.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                textFieldAction();
+                onSearch();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                textFieldAction();
+                onSearch();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                textFieldAction();
+                onSearch();
+            }
+        });
+
         checkBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 checkBox1();
             }
         });
-
 
         buttonSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -53,18 +70,38 @@ public class WordSearch extends JDialog {
         // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onAdd();
+                dispose();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        contentPane.registerKeyboardAction(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (textField1.getCaret().isVisible()) {
+                    onSearch();
+                }
+            }
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+    }
+
+    private void textFieldAction() {
+        if(!textField1.getText().isEmpty()) {
+            buttonSearch.setEnabled(true);
+        } else {
+            buttonSearch.setEnabled(false);
+        }
     }
 
     Word word;
     private void onSearch() {
-        word = Word.findById(Integer.parseInt(textField1.getText()));
-        if (word == null) {
-            textArea1.setText("Слово не найдено");
-        } else {
-            checkBox1();
+        progressBar1.setValue(34);
+        if (!textField1.getText().isEmpty()) {
+            word = Word.findById(Integer.parseInt(textField1.getText()));
+            if (word == null) {
+                textArea1.setText("Слово не найдено");
+            } else {
+                checkBox1();
+            }
         }
     }
 
