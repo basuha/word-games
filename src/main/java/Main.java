@@ -21,11 +21,11 @@ public class Main {
 //        System.out.println(c - a);
 
         Adverb adverb = new Adverb().setAdverbType(AdverbType.PURPOSE);
-        Word word = new WRandom("9").getSingleWord();
+        Word word = Word.findById(new Random().nextInt(Word.getMaxID()));
 
-        WordToHex wordToHex = new WordToHex(adverb);
-        int a = wordToHex.attribToHex(adverb.getAdverbType());
-        System.out.println(a);
+//        WordToHex wordToHex = new WordToHex(adverb);
+//        int a = wordToHex.attribToHex(adverb.getAdverbType());
+        System.out.println(word.getHexCode());
         System.out.println(word.getInfo());
 
 //        Sentence sentence = new WParser(WAstro.getByID(2).toString());

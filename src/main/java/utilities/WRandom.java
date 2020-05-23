@@ -56,23 +56,23 @@ public class WRandom extends WDummy {
     private boolean isPrimary;
 
     /** Индексы аттрибутов для HEX кода */
-    private static final int PART_OF_SPEECH_INDEX = 0;
-    private static final int WORD_CASE_INDEX = 1;
-    private static final int GENDER_INDEX = 2;
-    private static final int PLURAL_INDEX = 3;
-    private static final int TYPE_INDEX = 4;
-    private static final int TIME_INDEX = 5;
-    private static final int ADVERB_TYPE_INDEX = 6;
-    private static final int TRANSITIVE_INDEX = 7;
-    private static final int ANIMATE_INDEX = 8;
-    private static final int VOICE_INDEX = 9;
-    private static final int PERFECT_INDEX = 10;
-    private static final int KIND_INDEX = 11;
-    private static final int COMPARATIVE_INDEX = 12;
-    private static final int INFINITIVE_INDEX = 13;
-    private static final int FACE_INDEX = 14;
-    private static final int REFLEXIVE_INDEX = 15;
-    private static final int SHORT_FORM_INDEX = 16;
+    protected static final int PART_OF_SPEECH_INDEX = 0;
+    protected static final int WORD_CASE_INDEX = 1;
+    protected static final int GENDER_INDEX = 2;
+    protected static final int PLURAL_INDEX = 3;
+    protected static final int TYPE_INDEX = 4;
+    protected static final int TIME_INDEX = 5;
+    protected static final int ADVERB_TYPE_INDEX = 6;
+    protected static final int TRANSITIVE_INDEX = 7;
+    protected static final int ANIMATE_INDEX = 8;
+    protected static final int VOICE_INDEX = 9;
+    protected static final int PERFECT_INDEX = 10;
+    protected static final int KIND_INDEX = 11;
+    protected static final int COMPARATIVE_INDEX = 12;
+    protected static final int INFINITIVE_INDEX = 13;
+    protected static final int FACE_INDEX = 14;
+    protected static final int REFLEXIVE_INDEX = 15;
+    protected static final int SHORT_FORM_INDEX = 16;
 
     static {
         //парсинг частоупотребляемых слов из txt файла
@@ -87,6 +87,9 @@ public class WRandom extends WDummy {
         } catch (IOException e) {
             System.out.println("файл не найден");
         }
+    }
+
+    public WRandom() {
     }
 
     public WRandom(String hexCode) {
@@ -111,7 +114,7 @@ public class WRandom extends WDummy {
         return (byte) digit;
     }
 
-    private void hexInit() {
+    private void hexInit()  {
 
         switch (hexCode[PART_OF_SPEECH_INDEX]){
             case 0 -> partOfSpeech = null;
@@ -437,7 +440,7 @@ public class WRandom extends WDummy {
         return hql.toString();
     }
 
-    private void init(Word word){
+    protected void init(Word word){
         this.word = word;
         switch (word.getPartOfSpeech()) {
 

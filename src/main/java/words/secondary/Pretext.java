@@ -1,6 +1,5 @@
 package words.secondary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.primary.WordCase;
 
@@ -12,7 +11,7 @@ import javax.persistence.Enumerated;
  * Предлог
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.PRETEXT)
+@DiscriminatorValue(Word.PRETEXT)
 public class Pretext extends Word {
 
     @Enumerated

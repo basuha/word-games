@@ -1,6 +1,5 @@
 package words.primary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.primary.Gender;
 import words.attributes.primary.Kind;
@@ -13,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 
 @Entity
-@DiscriminatorValue(PartOfSpeech.VERB)
+@DiscriminatorValue(Word.VERB)
 public class Verb extends Word {
 
     @Enumerated

@@ -1,6 +1,5 @@
 package words.primary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.primary.*;
 import words.attributes.secondary.*;
@@ -8,13 +7,13 @@ import words.attributes.secondary.*;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-import java.lang.Short;
+
 
 /**
  * Причастие
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.PARTICIPLE)
+@DiscriminatorValue(Word.PARTICIPLE)
 public class Participle extends Word {
 
     @Enumerated

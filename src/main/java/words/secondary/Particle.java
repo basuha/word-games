@@ -1,6 +1,5 @@
 package words.secondary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import javax.persistence.*;
  * Частица
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.PARTICLE)
+@DiscriminatorValue(Word.PARTICLE)
 public class Particle extends Word {
 
     public Particle() {

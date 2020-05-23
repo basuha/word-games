@@ -1,6 +1,5 @@
 package words.primary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.primary.AdverbType;
 import words.attributes.secondary.Comparative;
@@ -14,13 +13,15 @@ import javax.persistence.Enumerated;
  * Наречие
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.ADVERB)
+@DiscriminatorValue(Word.ADVERB)
 public class Adverb extends Word {
 
     @Enumerated
     private Type type;
+
     @Enumerated
     private AdverbType adverbType;
+
     @Enumerated
     private Comparative comparative;
 

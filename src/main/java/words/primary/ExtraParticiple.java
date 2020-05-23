@@ -1,6 +1,5 @@
 package words.primary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.secondary.Perfect;
 import words.attributes.secondary.Reflexive;
@@ -16,7 +15,7 @@ import javax.persistence.Enumerated;
  * Примеры: решив, передав, прочитав
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.EXTRA_PARTICIPLE)
+@DiscriminatorValue(Word.EXTRA_PARTICIPLE)
 public class ExtraParticiple extends Word {
 
     @Enumerated

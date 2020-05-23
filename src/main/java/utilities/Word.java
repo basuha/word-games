@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ import java.util.List;
 @Table(name = "words")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "partOfSpeech")
-public class Word extends PartOfSpeech {
+public class Word {
 
     @Id
     protected Integer IID;
@@ -52,6 +53,28 @@ public class Word extends PartOfSpeech {
 
     @Transient
     protected List<Word> cognates = new ArrayList<>();
+
+    @Transient
+    protected int hexCode;
+
+    @Transient public static final String ADJECTIVE = "Adjective";
+    @Transient public static final String ADVERB = "Adverb";
+    @Transient public static final String EXTRA_PARTICIPLE = "ExtraParticiple";
+    @Transient public static final String NOUN = "Noun";
+    @Transient public static final String NUMERAL = "Numeral";
+    @Transient public static final String PARTICIPLE = "Participle";
+    @Transient public static final String VERB = "Verb";
+
+    @Transient public static final String CONJUNCTION = "Conjunction";
+    @Transient public static final String INTERJECTION = "Interjection";
+    @Transient public static final String PARENTHESIS = "Parenthesis";
+    @Transient public static final String PARTICLE = "Particle";
+    @Transient public static final String PREDICATE = "Predicate";
+    @Transient public static final String PRETEXT = "Pretext";
+    @Transient public static final String PRON_ADJ = "PronAdj";
+    @Transient public static final String PRON_ADV = "PronAdv";
+    @Transient public static final String PRON_NOUN = "PronNoun";
+    @Transient public static final String PRONOUN = "Pronoun";
 
     public static int getMaxID() {
         Thread thread = new Thread(new Runnable() {
@@ -199,8 +222,8 @@ public class Word extends PartOfSpeech {
         return wordList;
     }
 
-    public int toHex() {
-        return 0;
+    public BigDecimal getHexCode() {
+        return new WordToHex(this).toHex();
     }
 
     @Override

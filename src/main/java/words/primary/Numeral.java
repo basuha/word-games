@@ -1,6 +1,5 @@
 package words.primary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.primary.Gender;
 import words.attributes.primary.Plural;
@@ -15,7 +14,7 @@ import javax.persistence.Enumerated;
  * Числительные
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.NUMERAL)
+@DiscriminatorValue(Word.NUMERAL)
 public class Numeral extends Word {
 
     @Enumerated

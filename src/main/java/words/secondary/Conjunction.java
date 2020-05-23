@@ -1,6 +1,5 @@
 package words.secondary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 
 import javax.persistence.DiscriminatorValue;
@@ -11,7 +10,7 @@ import javax.persistence.Entity;
  * Примеры: а, и, но, или, также
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.CONJUNCTION)
+@DiscriminatorValue(Word.CONJUNCTION)
 public class Conjunction extends Word {
 
     public Conjunction() {

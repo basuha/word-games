@@ -1,6 +1,5 @@
 package words.primary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.secondary.Comparative;
 import words.attributes.secondary.ShortF;
@@ -15,7 +14,7 @@ import javax.persistence.*;
  * Прилагательное
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.ADJECTIVE)
+@DiscriminatorValue(Word.ADJECTIVE)
 public class Adjective extends Word {
 
     @Enumerated

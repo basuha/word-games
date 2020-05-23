@@ -1,6 +1,5 @@
 package words.secondary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 
 import javax.persistence.DiscriminatorValue;
@@ -11,7 +10,7 @@ import javax.persistence.Entity;
  * Примеры: ах, о, прочь, цыц, ура, ой
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.INTERJECTION)
+@DiscriminatorValue(Word.INTERJECTION)
 public class Interjection extends Word {
 
     public Interjection() {

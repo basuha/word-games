@@ -1,6 +1,5 @@
 package words.primary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.primary.Animate;
 import words.attributes.primary.Gender;
@@ -13,7 +12,7 @@ import javax.persistence.*;
  * Существительное
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.NOUN)
+@DiscriminatorValue(Word.NOUN)
 public class Noun extends Word {
 
     @Enumerated

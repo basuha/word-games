@@ -1,6 +1,5 @@
 package words.secondary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 
 import javax.persistence.DiscriminatorValue;
@@ -10,7 +9,7 @@ import javax.persistence.Entity;
  * Предикатив
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.PREDICATE)
+@DiscriminatorValue(Word.PREDICATE)
 public class Predicate extends Word {
 
     public Predicate() {

@@ -1,6 +1,5 @@
 package words.secondary;
 
-import utilities.PartOfSpeech;
 import utilities.Word;
 import words.attributes.primary.Gender;
 import words.attributes.primary.Plural;
@@ -14,7 +13,7 @@ import javax.persistence.Enumerated;
  * Местоимение
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.PRONOUN)
+@DiscriminatorValue(Word.PRONOUN)
 public class Pronoun extends Word {
 
     @Enumerated

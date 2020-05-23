@@ -1,7 +1,6 @@
 package words.secondary;
 
-
-import utilities.PartOfSpeech;
+import utilities.Word;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -10,7 +9,7 @@ import javax.persistence.Entity;
  * Местоимение-наречие
  */
 @Entity
-@DiscriminatorValue(PartOfSpeech.PRON_ADV)
+@DiscriminatorValue(Word.PRON_ADV)
 public class PronAdv extends Pronoun {
 
     public PronAdv() {
