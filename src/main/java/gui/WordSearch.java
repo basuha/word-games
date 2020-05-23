@@ -12,6 +12,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 
 public class WordSearch extends JDialog {
 
@@ -19,8 +20,6 @@ public class WordSearch extends JDialog {
     protected JButton buttonSearch;
     protected JButton buttonAdd;
     protected JTextField textField1;
-    protected JCheckBox checkBox1;
-    protected JTextArea textArea1;
     protected JProgressBar progressBar1;
     protected JRadioButton idRadioButton;
     protected JRadioButton hexRadioButton;
@@ -41,10 +40,16 @@ public class WordSearch extends JDialog {
     private JComboBox comboBox2;
     private JComboBox comboBox3;
     private JComboBox comboBox4;
+
     private JRadioButton attribRadioButton;
-    private JRadioButton поСловуRadioButton;
+    private JRadioButton wordRadioButton;
     private JList list1;
-    private DefaultListModel<Word> listModel;
+    private JButton minusButton;
+    private JButton plusButton;
+    private JPanel scrollBar;
+    private JScrollPane scrollPane;
+    private ButtonGroup typeChangeRadioGroup;
+    private DefaultListModel<Word> listModel = new DefaultListModel<>();
 
     public WordSearch() {
         setTitle("Поиск слов");
@@ -54,8 +59,29 @@ public class WordSearch extends JDialog {
         setModal(true);
         getRootPane().setDefaultButton(buttonSearch);
         setLocationRelativeTo(null);
+        list1.setModel(listModel);
+        scrollPane.setViewportView(list1);
+
 
         idRadioButton.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                idHexButtons();
+            }
+        });
+        hexRadioButton.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                idHexButtons();
+            }
+        });
+        attribRadioButton.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                idHexButtons();
+            }
+        });
+        wordRadioButton.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 idHexButtons();
@@ -71,13 +97,6 @@ public class WordSearch extends JDialog {
             }
             public void insertUpdate(DocumentEvent e) {
                 textFieldAction();
-            }
-        });
-
-        checkBox1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                checkBox1();
             }
         });
 
@@ -118,12 +137,25 @@ public class WordSearch extends JDialog {
 
     private void idHexButtons() {
         if (idRadioButton.isSelected()) {
+            idHexLabel.setEnabled(true);
+            textField1.setEnabled(true);
             idHexLabel.setText("ID:");
-            autoSearchCheckBox.setSelected(true);
-        } else {
+        } else if (hexRadioButton.isSelected()){
+            idHexLabel.setEnabled(true);
+            textField1.setEnabled(true);
             idHexLabel.setText("HEX:");
-            autoSearchCheckBox.setSelected(false);
+        } else if (attribRadioButton.isSelected()) {
+            idHexLabel.setEnabled(false);
+            textField1.setEnabled(false);
+        } else if (wordRadioButton.isSelected()) {
+            idHexLabel.setText("Слово: ");
+            idHexLabel.setEnabled(true);
+            textField1.setEnabled(true);
         }
+    }
+
+    private void setVisibilityOfComboBoxes(boolean value) {
+
     }
 
     private void textFieldAction() {
@@ -137,34 +169,30 @@ public class WordSearch extends JDialog {
 
 
     Word word;
+    List<Word> wordList;
     private void onSearch() {
-        progressBar1.setValue(34);
-        if (!textField1.getText().isEmpty()) {
-            if(idRadioButton.isSelected()) {
-                word = Word.findById(Integer.parseInt(textField1.getText()));
-                if (word == null) {
-                    list1.add(new Label("Cлово не найдено"));
-                } else {
-                    checkBox1();
-                }
+    progressBar1.setValue(34);
+    if (!textField1.getText().isEmpty()) {
+        if(idRadioButton.isSelected()) {
+            word = Word.findById(Integer.parseInt(textField1.getText()));
+            listModel.clear();
+            if (word == null) {
+                listModel.addElement(new WDummy("Cлово не найдено"));
             } else {
-                word = new WRandom(textField1.getText()).getSingleWord();
-                if (word == null) {
-                    textArea1.setText("Слово не найдено");
-                } else {
-                    checkBox1();
-                }
+                listModel.addElement(word);
             }
+        } else if(hexRadioButton.isSelected()){
+            wordList = new WRandom(textField1.getText()).getList();
+            listModel.clear();
+            if (word == null) {
+                listModel.addElement(new WDummy("Cлово не найдено"));
+            } else {
+                listModel.addAll(wordList);
+            }
+        } else if(attribRadioButton.isSelected()){
         }
-    }
 
-    private void checkBox1() {
-        if (word != null) {
-            if (checkBox1.isSelected()) {
-                textArea1.setText(word.getWord());
-            } else {
-                textArea1.setText(word.getInfo());
-            }
+        } else if(wordRadioButton.isSelected()){
         }
     }
 
@@ -172,5 +200,4 @@ public class WordSearch extends JDialog {
         // add your code here if necessary
         dispose();
     }
-
 }
