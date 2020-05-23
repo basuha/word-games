@@ -19,8 +19,9 @@ public class Main {
 //
 //        System.out.println(b - a);
 //        System.out.println(c - a);
+
         Adverb adverb = new Adverb().setAdverbType(AdverbType.PURPOSE);
-        Word word = new WRandom(new Adverb()).getSingleWord();
+        Word word = new WRandom("9").getSingleWord();
 
         WordToHex wordToHex = new WordToHex(adverb);
         int a = wordToHex.attribToHex(adverb.getAdverbType());
