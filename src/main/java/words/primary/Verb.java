@@ -2,118 +2,143 @@ package words.primary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.*;
+import words.attributes.primary.Gender;
+import words.attributes.primary.Kind;
+import words.attributes.primary.Plural;
+import words.attributes.primary.Time;
+import words.attributes.secondary.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue(PartOfSpeech.VERB)
 public class Verb extends Word {
-    private String infinitive;
-    private String reflexive;
-    private String transitive;
-    private String plural;
-    private String gender;
-    private String perfect;
-    private String face;
-    private String kind;
-    private String time;
-    private String voice;
+
+    @Enumerated
+    private Infinitive infinitive;
+
+    @Enumerated
+    private Reflexive reflexive;
+
+    @Enumerated
+    private Transitive transitive;
+
+    @Enumerated
+    private Plural plural;
+
+    @Enumerated
+    private Gender gender;
+
+    @Enumerated
+    private Perfect perfect;
+
+    @Enumerated
+    private Face face;
+
+    @Enumerated
+    private Kind kind;
+
+    @Enumerated
+    private Time time;
+
+    @Enumerated
+    private Voice voice;
 
     public Verb() {
-        partOfSpeech = PartOfSpeech.PARTICIPLE;
+        partOfSpeech = PARTICIPLE;
         changeable = true;
     }
 
-    public String getPlural() {
+    public Plural getPlural() {
         return plural;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public String getTransitive() {
+    public Transitive getTransitive() {
         return transitive;
     }
 
-    public String getPerfect() {
+    public Perfect getPerfect() {
         return perfect;
     }
 
-    public String getFace() {
+    public Face getFace() {
         return face;
     }
 
-    public String getKind() {
+    public Kind getKind() {
         return kind;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public String getInfinitive() {
+    public Infinitive getInfinitive() {
         return infinitive;
     }
 
-    public String getReflexive() {
+    public Reflexive getReflexive() {
         return reflexive;
     }
 
-    public String getVoice() {
+    public Voice getVoice() {
         return voice;
     }
 
 
     public Verb setPlural(Plural plural) {
-        this.plural = plural.toString();
+        this.plural = plural;
         return this;
     }
 
     public Verb setGender(Gender gender) {
-        this.gender = gender.toString();
+        this.gender = gender;
         return this;
     }
 
     public Verb setTransitive(Transitive transitive) {
-        this.transitive = transitive.toString();
+        this.transitive = transitive;
         return this;
     }
 
     public Verb setPerfect(Perfect perfect) {
-        this.perfect = perfect.toString();
+        this.perfect = perfect;
         return this;
     }
 
     public Verb setFace(Face face) {
-        this.face = face.toString();
+        this.face = face;
         return this;
     }
 
     public Verb setKind(Kind kind) {
-        this.kind = kind.toString();
+        this.kind = kind;
         return this;
     }
 
     public Verb setTime(Time time) {
-        this.time = time.toString();
+        this.time = time;
         return this;
     }
 
     public Verb setInfinitive(Infinitive infinitive) {
-        this.infinitive = infinitive.toString();
+        this.infinitive = infinitive;
         return this;
     }
 
     public Verb setReflexive(Reflexive reflexive) {
-        this.reflexive = reflexive.toString();
+        this.reflexive = reflexive;
         return this;
     }
 
     public Verb setVoice(Voice voice) {
-        this.voice = voice.toString();
+        this.voice = voice;
         return this;
     }
 

@@ -1,25 +1,26 @@
 package utilities;
 
-import words.attributes.*;
+import words.attributes.primary.*;
+import words.attributes.secondary.*;
 
 public class WDummy extends Word {
 
-    protected String adverbType;
-    protected String animate;
-    protected String comparative;
-    protected String face;
-    protected String gender;
-    protected String infinitive;
-    protected String kind;
-    protected String perfect;
-    protected String plural;
-    protected String reflexive;
-    protected String shortF;
-    protected String time;
-    protected String transitive;
-    protected String type;
-    protected String voice;
-    protected String wordCase;
+    protected AdverbType adverbType;
+    protected Animate animate;
+    protected Comparative comparative;
+    protected Face face;
+    protected Gender gender;
+    protected Infinitive infinitive;
+    protected Kind kind;
+    protected Perfect perfect;
+    protected Plural plural;
+    protected Reflexive reflexive;
+    protected ShortF shortF;
+    protected Time time;
+    protected Transitive transitive;
+    protected Type type;
+    protected Voice voice;
+    protected WordCase wordCase;
 
     public WDummy() {
     }
@@ -28,137 +29,131 @@ public class WDummy extends Word {
         this.word = word;
     }
 
-    public String getAdverbType() {
+    public AdverbType getAdverbType() {
         return adverbType;
     }
 
     public void setAdverbType(AdverbType adverbType) {
-        this.adverbType = adverbType.toString();
+        this.adverbType = adverbType;
     }
 
-    public String getAnimate() {
+    public Animate getAnimate() {
         return animate;
     }
 
     public void setAnimate(Animate animate) {
-        this.animate = animate.toString();
+        this.animate = animate;
     }
 
-    public String getComparative() {
+    public Comparative getComparative() {
         return comparative;
     }
 
     public void setComparative(Comparative comparative) {
-        this.comparative = comparative.toString();
+        this.comparative = comparative;
     }
 
-    public String getFace() {
+    public Face getFace() {
         return face;
     }
 
     public void setFace(Face face) {
-        this.face = face.toString();
+        this.face = face;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
     public void setGender(Gender gender) {
-        this.gender = gender.toString();
+        this.gender = gender;
     }
 
-    public String getInfinitive() {
+    public Infinitive getInfinitive() {
         return infinitive;
     }
 
     public void setInfinitive(Infinitive infinitive) {
-        this.infinitive = infinitive.toString();
+        this.infinitive = infinitive;
     }
 
-    public String getKind() {
+    public Kind getKind() {
         return kind;
     }
 
     public void setKind(Kind kind) {
-        this.kind = kind.toString();
+        this.kind = kind;
     }
 
-    public String getPerfect() {
+    public Perfect getPerfect() {
         return perfect;
     }
 
     public void setPerfect(Perfect perfect) {
-        this.perfect = perfect.toString();
+        this.perfect = perfect;
     }
 
-    public String getPlural() {
+    public Plural getPlural() {
         return plural;
     }
 
     public void setPlural(Plural plural) {
-        this.plural = plural.toString();
+        this.plural = plural;
     }
 
-    public String getReflexive() {
+    public Reflexive getReflexive() {
         return reflexive;
     }
 
     public void setReflexive(Reflexive reflexive) {
-        this.reflexive = reflexive.toString();
+        this.reflexive = reflexive;
     }
 
-    public String getShortF() {
+    public ShortF getShortF() {
         return shortF;
     }
 
     public void setShortF(ShortF shortF) {
-        this.shortF = shortF.toString();
+        this.shortF = shortF;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
     public void setTime(Time time) {
-        this.time = time.toString();
+        this.time = time;
     }
 
-    public String getTransitive() {
+    public Transitive getTransitive() {
         return transitive;
     }
 
     public void setTransitive(Transitive transitive) {
-        this.transitive = transitive.toString();
+        this.transitive = transitive;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(Type.Adjective type) {
-        this.type = type.toString();
-    }
-    public void setType(Type.Adverb type) {
-        this.type = type.toString();
-    }
-    public void setType(Type.Numeral type) {
-        this.type = type.toString();
+    public void setType(Type type) {
+        this.type = type;
     }
 
-    public String getVoice() {
+    public Voice getVoice() {
         return voice;
     }
 
     public void setVoice(Voice voice) {
-        this.voice = voice.toString();
+        this.voice = voice;
     }
 
-    public String getWordCase() {
+    public WordCase getWordCase() {
         return wordCase;
     }
 
     public void setWordCase(WordCase wordCase) {
-        this.wordCase = wordCase.toString();
+        this.wordCase = wordCase;
     }
 }

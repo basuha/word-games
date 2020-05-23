@@ -2,10 +2,10 @@ package words.primary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.Animate;
-import words.attributes.Gender;
-import words.attributes.Plural;
-import words.attributes.WordCase;
+import words.attributes.primary.Animate;
+import words.attributes.primary.Gender;
+import words.attributes.primary.Plural;
+import words.attributes.primary.WordCase;
 
 import javax.persistence.*;
 
@@ -15,56 +15,64 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue(PartOfSpeech.NOUN)
 public class Noun extends Word {
-    private String plural;
-    private String gender;
-    private String wordCase;
-    private String animate;
+
+    @Enumerated
+    private Plural plural;
+
+    @Enumerated
+    private Gender gender;
+
+    @Enumerated
+    private WordCase wordCase;
+
+    @Enumerated
+    private Animate animate;
 
     public Noun() {
-        partOfSpeech = PartOfSpeech.NOUN;
+        partOfSpeech = NOUN;
         changeable = true;
     }
 
-    public String getPlural() {
+    public Plural getPlural() {
         return plural;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public String getWordCase() {
+    public WordCase getWordCase() {
         return wordCase;
     }
 
-    public String getAnimate() {
+    public Animate getAnimate() {
         return animate;
     }
 
 
     public Noun setPlural(Plural plural) {
-        this.plural = plural.toString();
+        this.plural = plural;
         return this;
     }
 
     public Noun setGender(Gender gender) {
         if (gender == Gender.N_A) {
-            this.gender = gender.toString();
-            this.plural = Plural.PLURAL.toString();
+            this.gender = gender;
+            this.plural = Plural.PLURAL;
         } else {
-            this.gender = gender.toString();
-            this.plural = Plural.SINGULAR.toString();
+            this.gender = gender;
+            this.plural = Plural.SINGULAR;
         }
         return this;
     }
 
     public Noun setWordCase(WordCase wordCase) {
-        this.wordCase = wordCase.toString();
+        this.wordCase = wordCase;
         return this;
     }
 
     public Noun setAnimate(Animate animate) {
-        this.animate = animate.toString();
+        this.animate = animate;
         return this;
     }
 

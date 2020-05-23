@@ -25,6 +25,21 @@ public class WordSearch extends WordGames {
     protected JCheckBox autoSearchCheckBox;
     protected JLabel idHexLabel;
 
+    private JComboBox attribComboBox1;
+    private JComboBox attribComboBox2;
+    private JComboBox attribComboBox3;
+    private JComboBox attribComboBox4;
+    private JComboBox attribComboBox5;
+    private JComboBox attribComboBox6;
+    private JComboBox attribComboBox7;
+    private JComboBox attribComboBox8;
+    private JComboBox attribComboBox9;
+    private JComboBox attribComboBox10;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JComboBox comboBox3;
+    private JComboBox comboBox4;
+
     public WordSearch() {
         setTitle("Поиск слов");
         setContentPane(contentPane);
@@ -155,5 +170,9 @@ public class WordSearch extends WordGames {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }

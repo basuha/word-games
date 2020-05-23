@@ -199,6 +199,10 @@ public class Word extends PartOfSpeech {
         return wordList;
     }
 
+    public int toHex() {
+        return 0;
+    }
+
     @Override
     public String toString() {
          return this.word;

@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 public class PronAdj extends Pronoun {
 
     public PronAdj() {
-        partOfSpeech = PartOfSpeech.PRON_ADJ;
+        partOfSpeech = PRON_ADJ;
         changeable = false;
     }
 

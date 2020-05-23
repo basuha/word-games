@@ -17,6 +17,8 @@ public class WordGames extends JDialog {
     private JRadioButton radioButton4;
     private JList list1;
     private JButton searchButton;
+    private JComboBox attribComboBox1;
+    private JComboBox attribComboBox2;
 
     public WordGames() {
         setTitle("WordGames alpha");

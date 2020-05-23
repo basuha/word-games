@@ -1,4 +1,4 @@
-package words.attributes;
+package words.attributes.secondary;
 
 /** Сравнительные формы прилагательного:
  * <li>{@link #COMPARATIVE} - сравнительная форма</li>

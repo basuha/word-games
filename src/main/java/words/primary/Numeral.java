@@ -2,13 +2,14 @@ package words.primary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.Gender;
-import words.attributes.Plural;
-import words.attributes.Type;
-import words.attributes.WordCase;
+import words.attributes.primary.Gender;
+import words.attributes.primary.Plural;
+import words.attributes.primary.Type;
+import words.attributes.primary.WordCase;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 /**
  * Числительные
@@ -16,56 +17,64 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(PartOfSpeech.NUMERAL)
 public class Numeral extends Word {
-    private String type;
-    private String plural;
-    private String gender;
-    private String wordCase;
+
+    @Enumerated
+    private Type type;
+
+    @Enumerated
+    private Plural plural;
+
+    @Enumerated
+    private Gender gender;
+
+    @Enumerated
+    private WordCase wordCase;
 
     public Numeral() {
-        partOfSpeech = PartOfSpeech.NUMERAL;
+        partOfSpeech = NUMERAL;
         changeable = true;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public String getWordCase() {
+    public WordCase getWordCase() {
         return wordCase;
     }
 
-    public String getPlural() {
+    public Plural getPlural() {
         return plural;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
 
-    public Numeral setType(Type.Numeral type) {
-        this.type = type.toString();
+    public Numeral setType(Type type) {
+        this.type = type;
         return this;
     }
 
     public Numeral setPlural(Plural plural) {
-        this.plural = plural.toString();
+        this.plural = plural;
         return this;
     }
 
     public Numeral setGender(Gender gender) {
         if (gender == Gender.N_A) {
-            this.gender = gender.toString();
-            this.plural = Plural.PLURAL.toString();
+            this.gender = gender;
+            this.plural = Plural.PLURAL;
         } else {
-            this.gender = gender.toString();
-            this.plural = Plural.SINGULAR.toString();
+            this.gender = gender;
+            this.plural = Plural.SINGULAR;
         }
         return this;
     }
 
     public Numeral setWordCase(WordCase wordCase) {
-        this.wordCase = wordCase.toString();
+        this.wordCase = wordCase;
         return this;
     }
 

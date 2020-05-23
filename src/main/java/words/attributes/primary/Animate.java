@@ -1,4 +1,4 @@
-package words.attributes;
+package words.attributes.primary;
 
 public enum Animate {
 

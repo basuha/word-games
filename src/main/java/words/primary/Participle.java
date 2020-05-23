@@ -2,10 +2,12 @@ package words.primary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.*;
+import words.attributes.primary.*;
+import words.attributes.secondary.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import java.lang.Short;
 
 /**
@@ -14,116 +16,136 @@ import java.lang.Short;
 @Entity
 @DiscriminatorValue(PartOfSpeech.PARTICIPLE)
 public class Participle extends Word {
-    private String plural;
-    private String transitive;
-    private String time;
-    private String reflexive;
-    private String gender;
-    private String wordCase;
-    private String perfect;
-    private String kind;
-    private String voice;
-    private String shortF;
+
+    @Enumerated
+    private Plural plural;
+
+    @Enumerated
+    private Transitive transitive;
+
+    @Enumerated
+    private Time time;
+
+    @Enumerated
+    private Reflexive reflexive;
+
+    @Enumerated
+    private Gender gender;
+
+    @Enumerated
+    private WordCase wordCase;
+
+    @Enumerated
+    private Perfect perfect;
+
+    @Enumerated
+    private Kind kind;
+
+    @Enumerated
+    private Voice voice;
+
+    @Enumerated
+    private ShortF shortF;
 
     public Participle() {
-        partOfSpeech = PartOfSpeech.PARTICIPLE;
+        partOfSpeech = PARTICIPLE;
         changeable = true;
     }
 
-    public String getPlural() {
+    public Plural getPlural() {
         return plural;
     }
 
-    public String getTransitive() {
+    public Transitive getTransitive() {
         return transitive;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public String getReflexive() {
+    public Reflexive getReflexive() {
         return reflexive;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public String getWordCase() {
+    public WordCase getWordCase() {
         return wordCase;
     }
 
-    public String getPerfect() {
+    public Perfect getPerfect() {
         return perfect;
     }
 
-    public String getKind() {
+    public Kind getKind() {
         return kind;
     }
 
-    public String getVoice() {
+    public Voice getVoice() {
         return voice;
     }
 
-    public String getShortF() {
+    public ShortF getShortF() {
         return shortF;
     }
 
 
     public Participle setPlural(Plural plural) {
-        this.plural = plural.toString();
+        this.plural = plural;
         return this;
     }
 
     public Participle setTransitive(Transitive transitive) {
-        this.transitive = transitive.toString();
+        this.transitive = transitive;
         return this;
     }
 
     public Participle setTime(Time time) {
-        this.time = time.toString();
+        this.time = time;
         return this;
     }
 
     public Participle setReflexive(Reflexive reflexive) {
-        this.reflexive = reflexive.toString();
+        this.reflexive = reflexive;
         return this;
     }
 
     public Participle setGender(Gender gender) {
         if (gender == Gender.N_A) {
-            this.gender = gender.toString();
-            this.plural = Plural.PLURAL.toString();
+            this.gender = gender;
+            this.plural = Plural.PLURAL;
         } else {
-            this.gender = gender.toString();
-            this.plural = Plural.SINGULAR.toString();
+            this.gender = gender;
+            this.plural = Plural.SINGULAR;
         }
         return this;
     }
 
     public Participle setWordCase(WordCase wordCase) {
-        this.wordCase = wordCase.toString();
+        this.wordCase = wordCase;
         return this;
     }
 
     public Participle setPerfect(Perfect perfect) {
-        this.perfect = perfect.toString();
+        this.perfect = perfect;
         return this;
     }
 
-    public Participle setKind(Kind.Participle kind) {
-        this.kind = kind.toString();
+    public Participle setKind(Kind kind) {
+        this.kind = kind;
         return this;
     }
 
-    public Participle setVoice(Voice.Participle voice) {
-        this.voice = voice.toString();
+    public Participle setVoice(Voice voice) {
+        this.voice = voice;
         return this;
     }
 
-    public Participle setShort(Short shortF) {
-        this.shortF = shortF.toString();
+    public Participle setShort(ShortF shortF) {
+        this.shortF = shortF;
         return this;
     }
 

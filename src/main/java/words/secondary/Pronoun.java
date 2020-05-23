@@ -2,12 +2,13 @@ package words.secondary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.Gender;
-import words.attributes.Plural;
-import words.attributes.WordCase;
+import words.attributes.primary.Gender;
+import words.attributes.primary.Plural;
+import words.attributes.primary.WordCase;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 /**
  * Местоимение
@@ -15,42 +16,47 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(PartOfSpeech.PRONOUN)
 public class Pronoun extends Word {
-    private String plural;
-    private String gender;
-    private String wordCase;
+
+    @Enumerated
+    private Plural plural;
+
+    @Enumerated
+    private Gender gender;
+
+    @Enumerated
+    private WordCase wordCase;
 
     public Pronoun() {
-        partOfSpeech = PartOfSpeech.PRONOUN;
+        partOfSpeech = PRONOUN;
         changeable = false;
     }
 
-    public String getWordCase() {
+    public WordCase getWordCase() {
         return wordCase;
     }
 
-    public String getPlural() {
+    public Plural getPlural() {
         return plural;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
     public Pronoun setPlural(Plural plural) {
-        this.plural = plural.toString();
+        this.plural = plural;
         return this;
     }
 
     public Pronoun setGender(Gender gender) {
-        this.gender = gender.toString();
+        this.gender = gender;
         return this;
     }
 
     public Pronoun setWordCase(WordCase wordCase) {
-        this.wordCase = wordCase.toString();
+        this.wordCase = wordCase;
         return this;
     }
-
 
     @Override
     public String getInfo() {

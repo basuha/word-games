@@ -2,10 +2,11 @@ package words.secondary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.WordCase;
+import words.attributes.primary.WordCase;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 /**
  * Предлог
@@ -14,19 +15,21 @@ import javax.persistence.Entity;
 @DiscriminatorValue(PartOfSpeech.PRETEXT)
 public class Pretext extends Word {
 
+    @Enumerated
+    private WordCase wordCase;
+
     public Pretext() {
-        partOfSpeech = PartOfSpeech.PRETEXT;
+        partOfSpeech = PRETEXT;
         changeable = false;
     }
 
-    private String wordCase;
 
-    public String getWordCase() {
+    public WordCase getWordCase() {
         return wordCase;
     }
 
     public Pretext setWordCase(WordCase wordCase) {
-        this.wordCase = wordCase.toString();
+        this.wordCase = wordCase;
         return this;
     }
 

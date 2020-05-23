@@ -1,4 +1,4 @@
-package words.attributes;
+package words.attributes.secondary;
 
 /**
  * Признак переходности глагола/причастия/деепричастия

@@ -1,4 +1,4 @@
-package words.attributes;
+package words.attributes.primary;
 
 /**
  * Подтипы наречия:

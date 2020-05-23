@@ -1,7 +1,8 @@
 package utilities;
 
 import org.hibernate.Session;
-import words.attributes.*;
+import words.attributes.primary.*;
+import words.attributes.secondary.*;
 import words.primary.*;
 import words.secondary.Pretext;
 import words.secondary.Pronoun;
@@ -93,51 +94,21 @@ public class WRandom extends WDummy {
 
     private void hexInit() {
         switch (hexCode[0]){
-            case 0:
-                setPartOfSpeech(null);
-                break;
-            case 1:
-                setPartOfSpeech(ADJECTIVE);
-                break;
-            case 2:
-                setPartOfSpeech(ADVERB);
-                break;
-            case 3:
-                setPartOfSpeech(EXTRA_PARTICIPLE);
-                break;
-            case 4:
-                setPartOfSpeech(NOUN);
-                break;
-            case 5:
-                setPartOfSpeech(NUMERAL);
-                break;
-            case 6:
-                setPartOfSpeech(PARTICIPLE);
-                break;
-            case 7:
-                setPartOfSpeech(VERB);
-                break;
-            case 8:
-                setPartOfSpeech(CONJUNCTION);
-                break;
-            case 9:
-                setPartOfSpeech(INTERJECTION);
-                break;
-            case 0xA:
-                setPartOfSpeech(PARENTHESIS);
-                break;
-            case 0xB:
-                setPartOfSpeech(PARTICLE);
-                break;
-            case 0xC:
-                setPartOfSpeech(PREDICATE);
-                break;
-            case 0xD:
-                setPartOfSpeech(PRETEXT);
-                break;
-            case 0xE:
-                setPartOfSpeech(PRONOUN);
-                break;
+            case 0 -> partOfSpeech = null;
+            case 1 -> partOfSpeech = ADJECTIVE;
+            case 2 -> partOfSpeech = ADVERB;
+            case 3 -> partOfSpeech = EXTRA_PARTICIPLE;
+            case 4 -> partOfSpeech = NOUN;
+            case 5 -> partOfSpeech = NUMERAL;
+            case 6 -> partOfSpeech = PARTICIPLE;
+            case 7 -> partOfSpeech = VERB;
+            case 8 -> partOfSpeech = CONJUNCTION;
+            case 9 -> partOfSpeech = INTERJECTION;
+            case 0xA -> partOfSpeech = PARENTHESIS;
+            case 0xB -> partOfSpeech = PARTICLE;
+            case 0xC -> partOfSpeech = PREDICATE;
+            case 0xD -> partOfSpeech = PRETEXT;
+            case 0xE -> partOfSpeech = PRONOUN;
         }
 
         if (hexCode[1] != null) {
@@ -230,39 +201,39 @@ public class WRandom extends WDummy {
                 case ADJECTIVE:
                     switch (hexCode[4]) {
                         case 1:
-                            setType(Type.Adjective.IMMUTABLE);
+                            setType(Type.IMMUTABLE_ADJECTIVE);
                             break;
                         case 2:
-                            setType(Type.Adjective.MUTABLE);
+                            setType(Type.MUTABLE_ADJECTIVE);
                             break;
                     }
                     break;
                 case ADVERB:
                     switch (hexCode[4]) {
                         case 1:
-                            setType(Type.Adverb.EXTENSIVE);
+                            setType(Type.EXTENSIVE_ADVERB);
                             break;
                         case 2:
-                            setType(Type.Adverb.DEFINITE);
+                            setType(Type.DEFINITE_ADVERB);
                             break;
                         case 3:
-                            setType(Type.Adverb.QUESTION);
+                            setType(Type.QUESTION_ADVERB);
                             break;
                     }
                     break;
                 case NUMERAL:
                     switch (hexCode[4]) {
                         case 1:
-                            setType(Type.Numeral.ORDINAL);
+                            setType(Type.ORDINAL_NUMERAL);
                             break;
                         case 2:
-                            setType(Type.Numeral.QUANTITATIVE);
+                            setType(Type.QUANTITATIVE_NUMERAL);
                             break;
                         case 3:
-                            setType(Type.Numeral.COLLECTIVE);
+                            setType(Type.COLLECTIVE_NUMERAL);
                             break;
                         case 4:
-                            setType(Type.Numeral.INDEFINITE);
+                            setType(Type.INDEFINITE_NUMERAL);
                             break;
                     }
                     break;
@@ -359,7 +330,7 @@ public class WRandom extends WDummy {
                     setVoice(Voice.PASSIVE);
                     break;
                 case 0xF:
-                    voice = "n/a";
+                    voice = Voice.N_A;
                     break;
             }
         }
@@ -391,7 +362,7 @@ public class WRandom extends WDummy {
                     setKind(Kind.SECOND);
                     break;
                 case 0xF:
-                    kind = "n/a";
+                    kind = Kind.N_A;
                     break;
             }
         }

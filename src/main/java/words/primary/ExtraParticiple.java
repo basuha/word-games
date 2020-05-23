@@ -2,13 +2,14 @@ package words.primary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.Perfect;
-import words.attributes.Reflexive;
-import words.attributes.Time;
-import words.attributes.Transitive;
+import words.attributes.secondary.Perfect;
+import words.attributes.secondary.Reflexive;
+import words.attributes.primary.Time;
+import words.attributes.secondary.Transitive;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 /**
  * Деепричастие
@@ -16,52 +17,58 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue(PartOfSpeech.EXTRA_PARTICIPLE)
-public class
+public class ExtraParticiple extends Word {
 
-ExtraParticiple extends Word {
-    private String transitive;
-    private String perfect;
-    private String time;
-    private String reflexive;
+    @Enumerated
+    private Transitive transitive;
+
+    @Enumerated
+    private Perfect perfect;
+
+    @Enumerated
+    private Time time;
+
+    @Enumerated
+    private Reflexive reflexive;
 
     public ExtraParticiple() {
-        partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
+        partOfSpeech = EXTRA_PARTICIPLE;
         changeable = true;
     }
 
-    public String getTransitive() {
+    public Transitive getTransitive() {
         return transitive;
     }
 
-    public String getPerfect() {
+    public Perfect getPerfect() {
         return perfect;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public String getReflexive() {
+    public Reflexive getReflexive() {
         return reflexive;
     }
 
     public ExtraParticiple setTransitive(Transitive transitive) {
-        this.transitive = transitive.toString();
+        this.transitive = transitive;
         return this;
     }
 
     public ExtraParticiple setPerfect(Perfect perfect) {
-        this.perfect = perfect.toString();
+        this.perfect = perfect;
         return this;
     }
 
     public ExtraParticiple setTime(Time time) {
-        this.time = time.toString();
+        this.time = time;
         return this;
     }
 
     public ExtraParticiple setReflexive(Reflexive reflexive) {
-        this.reflexive = reflexive.toString();
+        this.reflexive = reflexive;
         return this;
     }
 

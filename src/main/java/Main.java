@@ -1,4 +1,6 @@
 import utilities.*;
+import words.attributes.primary.AdverbType;
+import words.primary.Adverb;
 import words.primary.Noun;
 
 import java.util.Random;
@@ -6,17 +8,24 @@ import java.util.Random;
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
 public class Main {
     public static void main(String[] args) {
-        long a = System.currentTimeMillis();
-        WRandom wRandom = new WRandom("9");
+//        long a = System.currentTimeMillis();
+//        WRandom wRandom = new WRandom("9");
+//
+//        long b = System.currentTimeMillis();
+//        WRandom wRandom1 = new WRandom("9");
+//
+//        System.out.println(wRandom.getSingleWord() + " " + wRandom1.getSingleWord());
+//        long c = System.currentTimeMillis();
+//
+//        System.out.println(b - a);
+//        System.out.println(c - a);
+        Adverb adverb = new Adverb().setAdverbType(AdverbType.PURPOSE);
+        Word word = new WRandom(new Adverb()).getSingleWord();
 
-        long b = System.currentTimeMillis();
-        WRandom wRandom1 = new WRandom("9");
-
-        System.out.println(wRandom.getSingleWord() + " " + wRandom1.getSingleWord());
-        long c = System.currentTimeMillis();
-
-        System.out.println(b - a);
-        System.out.println(c - a);
+        WordToHex wordToHex = new WordToHex(adverb);
+        int a = wordToHex.attribToHex(adverb.getAdverbType());
+        System.out.println(a);
+        System.out.println(word.getInfo());
 
 //        Sentence sentence = new WParser(WAstro.getByID(2).toString());
 //        System.out.println(sentence);

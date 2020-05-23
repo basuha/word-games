@@ -1,4 +1,4 @@
-package words.attributes;
+package words.attributes.secondary;
 
 public enum Reflexive {
 

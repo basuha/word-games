@@ -2,8 +2,12 @@ package words.primary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.*;
-import words.attributes.ShortF;
+import words.attributes.secondary.Comparative;
+import words.attributes.secondary.ShortF;
+import words.attributes.primary.Gender;
+import words.attributes.primary.Plural;
+import words.attributes.primary.Type;
+import words.attributes.primary.WordCase;
 
 import javax.persistence.*;
 
@@ -13,82 +17,94 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue(PartOfSpeech.ADJECTIVE)
 public class Adjective extends Word {
-    private String shortF;
-    private String plural;
-    private String gender;
-    private String type;
-    private String wordCase;
-    private String comparative;
+
+    @Enumerated
+    private ShortF shortF;
+
+    @Enumerated
+    private Plural plural;
+
+    @Enumerated
+    private Gender gender;
+
+    @Enumerated
+    private Type type;
+
+    @Enumerated
+    private WordCase wordCase;
+
+    @Enumerated
+    private Comparative comparative;
 
     public Adjective() {
-        partOfSpeech = PartOfSpeech.ADJECTIVE;
+        partOfSpeech = ADJECTIVE;
     }
 
-    public String getShortF() {
+    public ShortF getShortF() {
         return shortF;
     }
 
-    public String getPlural() {
+    public Plural getPlural() {
         return plural;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public String getWordCase() {
+    public WordCase getWordCase() {
         return wordCase;
     }
 
-    public String getComparative() {
+    public Comparative getComparative() {
         return comparative;
     }
 
     public Adjective setShortF(ShortF shortF) {
-        this.shortF = shortF.toString();
+        this.shortF = shortF;
         return this;
     }
 
     public Adjective setPlural(Plural plural) {
-        this.plural = plural.toString();
+        this.plural = plural;
         return this;
     }
 
     public Adjective setGender(Gender gender) {
         if (gender == Gender.N_A) {
-            this.gender = gender.toString();
-            this.plural = Plural.PLURAL.toString();
+            this.gender = gender;
+            this.plural = Plural.PLURAL;
         } else {
-            this.gender = gender.toString();
-            this.plural = Plural.SINGULAR.toString();
+            this.gender = gender;
+            this.plural = Plural.SINGULAR;
         }
         return this;
     }
 
-    public Adjective setType(Type.Adjective type) {
-        if (type == Type.Adjective.IMMUTABLE) {
-            this.gender = "n/a";
-            this.plural = "n/a";
-            this.wordCase = "n/a";
-            this.comparative = "n/a";
-            this.shortF = "not_short";
+    public Adjective setType(Type type) {
+        if (type == Type.IMMUTABLE_ADJECTIVE) {
+            this.gender = Gender.N_A;
+            this.plural = Plural.N_A;
+            this.wordCase = WordCase.N_A;
+            this.comparative = Comparative.N_A;
+            this.shortF = ShortF.NOT_SHORT;
         } else {
-            this.type = type.toString();
+            this.type = type;
         }
         return this;
     }
 
     public Adjective setWordCase(WordCase wordCase) {
-        this.wordCase = wordCase.toString();
+        this.wordCase = wordCase;
         return this;
     }
 
     public Adjective setComparative(Comparative comparative) {
-        this.comparative = comparative.toString();
+        this.comparative = comparative;
         return this;
     }
 

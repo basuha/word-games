@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 public class PronAdv extends Pronoun {
 
     public PronAdv() {
-        partOfSpeech = PartOfSpeech.PRON_ADV;
+        partOfSpeech = PRON_ADV;
         changeable = false;
     }
 

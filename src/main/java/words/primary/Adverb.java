@@ -2,12 +2,13 @@ package words.primary;
 
 import utilities.PartOfSpeech;
 import utilities.Word;
-import words.attributes.AdverbType;
-import words.attributes.Comparative;
-import words.attributes.Type;
+import words.attributes.primary.AdverbType;
+import words.attributes.secondary.Comparative;
+import words.attributes.primary.Type;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 /**
  * Наречие
@@ -15,39 +16,43 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(PartOfSpeech.ADVERB)
 public class Adverb extends Word {
-    private String type;
-    private String adverbType;
-    private String comparative;
+
+    @Enumerated
+    private Type type;
+    @Enumerated
+    private AdverbType adverbType;
+    @Enumerated
+    private Comparative comparative;
 
     public Adverb() {
-        partOfSpeech = PartOfSpeech.ADVERB;
+        partOfSpeech = ADVERB;
         changeable = true;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public String getAdverbType() {
+    public AdverbType getAdverbType() {
         return adverbType;
     }
 
-    public String getComparative() {
+    public Comparative getComparative() {
         return comparative;
     }
 
-    public Adverb setType(Type.Adverb type) {
-        this.type = type.toString();
+    public Adverb setType(Type type) {
+        this.type = type;
         return this;
     }
 
     public Adverb setComparative(Comparative comparative) {
-        this.comparative = comparative.toString();
+        this.comparative = comparative;
         return this;
     }
 
     public Adverb setAdverbType(AdverbType adverbType) {
-        this.adverbType = adverbType.toString();
+        this.adverbType = adverbType;
         return this;
     }
 
@@ -55,8 +60,8 @@ public class Adverb extends Word {
     public String getInfo() {
         return super.getInfo() +
                 " Adverb (Наречие){" +
-                "subType='" + type + '\'' +
-                ", advSubType='" + adverbType + '\'' +
+                "type='" + type + '\'' +
+                ", adverbType='" + adverbType + '\'' +
                 ", comp='" + comparative + '\'' +
                 '}';
     }
