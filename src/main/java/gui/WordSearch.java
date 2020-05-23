@@ -1,6 +1,7 @@
 package gui;
 
 import org.codehaus.plexus.util.StringUtils;
+import utilities.WDummy;
 import utilities.WRandom;
 import utilities.Word;
 
@@ -9,13 +10,14 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.awt.event.*;
 
-public class WordSearch extends WordGames {
+public class WordSearch extends JDialog {
+
     protected JPanel contentPane;
     protected JButton buttonSearch;
     protected JButton buttonAdd;
-    protected JTabbedPane tabbedPane1;
     protected JTextField textField1;
     protected JCheckBox checkBox1;
     protected JTextArea textArea1;
@@ -39,14 +41,19 @@ public class WordSearch extends WordGames {
     private JComboBox comboBox2;
     private JComboBox comboBox3;
     private JComboBox comboBox4;
+    private JRadioButton attribRadioButton;
+    private JRadioButton поСловуRadioButton;
+    private JList list1;
+    private DefaultListModel<Word> listModel;
 
     public WordSearch() {
         setTitle("Поиск слов");
         setContentPane(contentPane);
-        setSize(350,400);
+        pack();
         setResizable(false);
         setModal(true);
         getRootPane().setDefaultButton(buttonSearch);
+        setLocationRelativeTo(null);
 
         idRadioButton.addChangeListener(new ChangeListener() {
             @Override
@@ -128,6 +135,7 @@ public class WordSearch extends WordGames {
         }
     }
 
+
     Word word;
     private void onSearch() {
         progressBar1.setValue(34);
@@ -135,7 +143,7 @@ public class WordSearch extends WordGames {
             if(idRadioButton.isSelected()) {
                 word = Word.findById(Integer.parseInt(textField1.getText()));
                 if (word == null) {
-                    textArea1.setText("Слово не найдено");
+                    list1.add(new Label("Cлово не найдено"));
                 } else {
                     checkBox1();
                 }
@@ -165,14 +173,4 @@ public class WordSearch extends WordGames {
         dispose();
     }
 
-    public static void main(String[] args) {
-        WordSearch dialog = new WordSearch();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }

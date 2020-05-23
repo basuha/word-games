@@ -1,29 +1,30 @@
 package gui;
 
+import gui.lookandfeel.LookAndFeelDemo;
 import utilities.Word;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
-public class WordGames extends JDialog {
-    private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton buttonCancel;
-    private JTabbedPane tabbedPane1;
-    private JPanel settings;
-    private JRadioButton частыеСловаRadioButton;
-    private JRadioButton всеСловаRadioButton;
-    private JRadioButton radioButton3;
-    private JRadioButton radioButton4;
-    private JList list1;
-    private JButton searchButton;
-    private JComboBox attribComboBox1;
-    private JComboBox attribComboBox2;
+public class WordGames extends JFrame {
+    protected JPanel contentPane;
+    protected JButton buttonOK;
+    protected JButton buttonCancel;
+    protected JTabbedPane tabbedPane1;
+    protected JPanel settings;
+    protected JRadioButton частыеСловаRadioButton;
+    protected JRadioButton всеСловаRadioButton;
+    protected JRadioButton radioButton3;
+    protected JRadioButton radioButton4;
+    protected JList list1;
+    protected JButton searchButton;
+    protected JComboBox attribComboBox1;
+    protected JComboBox attribComboBox2;
 
     public WordGames() {
         setTitle("WordGames alpha");
         setContentPane(contentPane);
-        setModal(true);
         getRootPane().setDefaultButton(buttonOK);
         Word.findById(1); //инициализация хибернейта
 
