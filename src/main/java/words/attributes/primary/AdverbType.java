@@ -1,5 +1,7 @@
 package words.attributes.primary;
 
+import words.attributes.Attribute;
+
 /**
  * Подтипы наречия:
  * <li>{@link #QUALITATIVE} - качественные</li>
@@ -11,7 +13,7 @@ package words.attributes.primary;
  * <li>{@link #PURPOSE} - цели действия</li>
  * <li>{@link #REASON} - причины действия</li>
  */
-public enum AdverbType {
+public enum AdverbType implements Attribute {
 
     /** качественные */
     QUALITATIVE("qualitative"),
@@ -46,5 +48,10 @@ public enum AdverbType {
     @Override
     public String toString() {
         return value;
+    }
+
+    @Override
+    public Attribute getEnum() {
+        return this;
     }
 }

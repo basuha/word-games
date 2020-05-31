@@ -1,8 +1,11 @@
 import utilities.*;
-import words.attributes.primary.AdverbType;
+import words.attributes.primary.*;
+import words.primary.Adjective;
 import words.primary.Adverb;
 import words.primary.Noun;
+import words.primary.Verb;
 
+import java.io.IOException;
 import java.util.Random;
 
 //сделать астропрогноз. рандомизатор будет принимать знак зодиака и дату в качестве seed
@@ -20,13 +23,13 @@ public class Main {
 //        System.out.println(b - a);
 //        System.out.println(c - a);
 
-        Adverb adverb = new Adverb().setAdverbType(AdverbType.PURPOSE);
-        Word word = Word.findById(new Random().nextInt(Word.getMaxID()));
+//        Adverb adverb = new Adverb().setAdverbType(AdverbType.PURPOSE);
+//        Word word = Word.findById(new Random().nextInt(Word.getMaxID()));
 
 //        WordToHex wordToHex = new WordToHex(adverb);
 //        int a = wordToHex.attribToHex(adverb.getAdverbType());
-        System.out.println(word.getHexCode());
-        System.out.println(word.getInfo());
+//        System.out.println(word.getHexCode());
+//        System.out.println(word.getInfo());
 
 //        Sentence sentence = new WParser(WAstro.getByID(2).toString());
 //        System.out.println(sentence);
@@ -45,21 +48,43 @@ public class Main {
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //
-//        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
+//        WRandomSentence randomSentenceBuilder = new WRandomSentence();
 //        randomSentenceBuilder
 //                            .append(new Adjective()
-//                                    .setParam(Gender.MALE)
-//                                    .setParam(WordCase.NOMINATIVE))
+//                                    .setGender(Gender.MALE)
+//                                    .setWordCase(WordCase.NOMINATIVE))
 //                            .append(new Noun()
-//                                    .setParam(Gender.MALE)
-//                                    .setParam(Plural.SINGULAR)
-//                                    .setParam(WordCase.Noun.NOMINATIVE))
+//                                    .setGender(Gender.MALE)
+//                                    .setPlural(Plural.SINGULAR)
+//                                    .setWordCase(WordCase.NOMINATIVE))
 //                            .append(new Adverb())
 //                            .append(new Verb()
-//                                    .setParam(Gender.MALE)
-//                                    .setParam(Plural.SINGULAR)
-//                                    .setParam(Kind.SECOND));
+//                                    .setGender(Gender.MALE)
+//                                    .setPlural(Plural.SINGULAR)
+//                                    .setKind(Kind.SECOND));
 //
+//        for (Sentence s : randomSentenceBuilder.getResultList()) {
+//            System.out.println(s);
+//        }
+
+
+//        Credentials credentials = new Credentials("grajdanin233","AgAAAAAjlVJgAAZfbnHU08Ypa07fuEW8hR_0uvc");
+//        TransportClient tc = null;
+//        try {
+//            tc = TransportClient.getInstance(credentials);
+//        } catch (WebdavClientInitException e) {
+//            System.out.println(e);
+//        }
+//        assert tc != null;
+//        try {
+//            tc.uploadFile("D:/dictionary-wg.db", null, null);
+//        } catch (IOException | IntermediateFolderNotExistException | WebdavUserNotInitialized | PreconditionFailedException | WebdavNotAuthorizedException | ServerWebdavException | UnknownServerWebdavException  e) {
+//            e.printStackTrace();
+//        }
+
+        Word wRandom = new WRandom(new Noun()).getSingleWord();
+        System.out.println(wRandom.getWord());
+
 //        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
 //        randomSentenceBuilder
 //                .append(new Adjective()
@@ -79,9 +104,7 @@ public class Main {
 //                        .setParam(Plural.SINGULAR));
 //
 //
-//        for (Sentence s : randomSentenceBuilder.getResultList()) {
-//            System.out.println(s);
-//        }
+
 //
 //        System.out.println(Zodiac.CANCER);
 //        System.out.println(Zodiac.GEMINI);

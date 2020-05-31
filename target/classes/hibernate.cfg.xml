@@ -13,7 +13,7 @@
     </property>
 
     <property name="hibernate.connection.url">
-        jdbc:sqlite:D:\dictionary-wg.db
+        jdbc:sqlite:https://yadi.sk/d/53Aaqn6IAZNfQQ
     </property>
 
     <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>

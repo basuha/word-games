@@ -42,7 +42,7 @@ public class WRandom extends WDummy {
      * 0.0 = все слова редкие
      * 1.0 = все слова частые
      */
-    private final double COMMON_WORDS_COEF = 0.1;
+    private final double COMMON_WORDS_COEF = 0.0;
 
     /** частоупотребимые слова из файла */
     private static ArrayList<String> commonWords = new ArrayList<>();
@@ -443,9 +443,7 @@ public class WRandom extends WDummy {
     protected void init(Word word){
         this.word = word;
         switch (word.getPartOfSpeech()) {
-
-            case ADJECTIVE:
-
+            case ADJECTIVE -> {
                 Adjective adjective = (Adjective) word;
                 this.partOfSpeech = ADJECTIVE;
                 this.comparative = adjective.getComparative();
@@ -455,20 +453,16 @@ public class WRandom extends WDummy {
                 this.type = adjective.getType();
                 this.wordCase = adjective.getWordCase();
                 isPrimary = true;
-                break;
-
-            case ADVERB:
-
+            }
+            case ADVERB -> {
                 Adverb adverb = (Adverb) word;
                 this.partOfSpeech = ADVERB;
                 this.type = adverb.getType();
                 this.adverbType = adverb.getAdverbType();
                 this.comparative = adverb.getComparative();
                 isPrimary = true;
-                break;
-
-            case EXTRA_PARTICIPLE:
-
+            }
+            case EXTRA_PARTICIPLE -> {
                 ExtraParticiple extraParticiple = (ExtraParticiple) word;
                 this.partOfSpeech = EXTRA_PARTICIPLE;
                 this.transitive = extraParticiple.getTransitive();
@@ -476,10 +470,8 @@ public class WRandom extends WDummy {
                 this.time = extraParticiple.getTime();
                 this.reflexive = extraParticiple.getReflexive();
                 isPrimary = true;
-                break;
-
-            case NOUN:
-
+            }
+            case NOUN -> {
                 Noun noun = (Noun) word;
                 this.partOfSpeech = NOUN;
                 this.plural = noun.getPlural();
@@ -487,10 +479,8 @@ public class WRandom extends WDummy {
                 this.wordCase = noun.getWordCase();
                 this.animate = noun.getAnimate();
                 isPrimary = true;
-                break;
-
-            case NUMERAL:
-
+            }
+            case NUMERAL -> {
                 Numeral numeral = (Numeral) word;
                 this.partOfSpeech = NUMERAL;
                 this.plural = numeral.getPlural();
@@ -498,10 +488,8 @@ public class WRandom extends WDummy {
                 this.wordCase = numeral.getWordCase();
                 this.type = numeral.getType();
                 isPrimary = false;
-                break;
-
-            case PARTICIPLE:
-
+            }
+            case PARTICIPLE -> {
                 Participle participle = (Participle) word;
                 this.partOfSpeech = PARTICIPLE;
                 this.gender = participle.getGender();
@@ -514,10 +502,8 @@ public class WRandom extends WDummy {
                 this.voice = participle.getVoice();
                 this.wordCase = participle.getWordCase();
                 isPrimary = true;
-                break;
-
-            case VERB:
-
+            }
+            case VERB -> {
                 Verb verb = (Verb) word;
                 this.partOfSpeech = VERB;
                 this.face = verb.getFace();
@@ -531,28 +517,21 @@ public class WRandom extends WDummy {
                 this.transitive = verb.getTransitive();
                 this.voice = verb.getVoice();
                 isPrimary = true;
-                break;
-
-            case PRETEXT:
-
+            }
+            case PRETEXT -> {
                 Pretext pretext = (Pretext) word;
                 this.partOfSpeech = PRETEXT;
                 this.wordCase = pretext.getWordCase();
                 isPrimary = false;
-                break;
-
-            case PRONOUN:
-            case PRON_ADJ:
-            case PRON_ADV:
-            case PRON_NOUN:
-
+            }
+            case PRONOUN, PRON_ADJ, PRON_ADV, PRON_NOUN -> {
                 Pronoun pronoun = (Pronoun) word;
                 this.partOfSpeech = PRONOUN;
                 this.wordCase = pronoun.getWordCase();
                 this.gender = pronoun.getGender();
                 this.plural = pronoun.getPlural();
                 isPrimary = false;
-                break;
+            }
         }
     }
 
