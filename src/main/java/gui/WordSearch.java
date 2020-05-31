@@ -5,20 +5,22 @@ import utilities.WAsyncTask;
 import utilities.WDummy;
 import utilities.Word;
 import utilities.WAttribute;
-import words.attributes.primary.AdverbType;
+import words.attributes.primary.Gender;
+import words.attributes.primary.WordCase;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
 public class WordSearch extends JDialog {
 
     protected JPanel contentPane;
-    protected JButton buttonSearch;
+    protected JButton searchButton;
     protected JButton buttonAdd;
     protected JTextField textField1;
     protected JProgressBar progressBar1;
@@ -40,22 +42,21 @@ public class WordSearch extends JDialog {
     private DefaultListModel<Word> listModel = new DefaultListModel<>();
     private DefaultComboBoxModel<WAttribute> comboBoxModel = new DefaultComboBoxModel<>();
 
+    private Word selectedWord;
+
     public WordSearch() {
         setTitle("Поиск слов");
         setContentPane(contentPane);
         pack();
         setResizable(false);
         setModal(true);
-        getRootPane().setDefaultButton(buttonSearch);
+        getRootPane().setDefaultButton(searchButton);
         setLocationRelativeTo(null);
         list1.setModel(listModel);
         scrollPane.setViewportView(list1);
+        attributesPanel.setLayout(new GridBagLayout());
 
-
-        comboBoxModel.addElement(AdverbType.DIRECTION);
-
-        attributesPanel.add(new JComboBox<>(comboBoxModel),1);
-
+        attributesPanel.add(new WAttributesAdaptor());
 
 
         idRadioButton.addChangeListener(new ChangeListener() {
@@ -95,7 +96,7 @@ public class WordSearch extends JDialog {
             }
         });
 
-        buttonSearch.addActionListener(new ActionListener() {
+        searchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onSearch();
             }
@@ -128,6 +129,10 @@ public class WordSearch extends JDialog {
                 dispose();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+    }
+
+    private void extractAttributesFromSelectedWord() {
+        attributesPanel.add(new WAttributesAdaptor());
     }
 
     private void idHexButtons() {
@@ -174,20 +179,24 @@ public class WordSearch extends JDialog {
     }
 
     private void textFieldAction() {
-        if(StringUtils.isNumeric(textField1.getText())) {
-            buttonSearch.setEnabled(!textField1.getText().isEmpty());
+        if (!textField1.getText().isEmpty()) {
+            if (StringUtils.isNumeric(textField1.getText())) {
+                searchButton.setEnabled(!textField1.getText().isEmpty());
 
-            if (autoSearchCheckBox.isSelected()) {
-                onSearch();
+                if (autoSearchCheckBox.isSelected()) {
+                    onSearch();
+                }
+
+                if (wordRadioButton.isSelected()) {
+                    searchByIDMode();
+                }
+
+            } else {
+                autoSearchCheckBox.setSelected(false);
+                searchByWordMode();
             }
-
-            if (wordRadioButton.isSelected()) {
-                searchByIDMode();
-            }
-
         } else {
-            autoSearchCheckBox.setSelected(false);
-            searchByWordMode();
+            searchButton.setEnabled(false);
         }
     }
 
