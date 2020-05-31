@@ -1,6 +1,5 @@
 package utilities;
 
-import words.attributes.Attribute;
 import words.attributes.primary.*;
 import words.attributes.secondary.*;
 
@@ -8,9 +7,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static words.attributes.primary.Animate.ANIMATE;
-
-public class WordToHex extends WRandom {
+public class WordToHex extends WSearch {
     private List<Byte> hexCode = new ArrayList<>();
 
     public WordToHex(Word word) {

@@ -20,14 +20,14 @@ public class WRandomSentence {
 
     public String getSingleResult() {
         for (int i = 0; i < wordsList.size(); i++) {
-            sentence.add(new WRandom(wordsList.get(i)).getSingleWord());
+            sentence.add(new WSearch(wordsList.get(i)).getSingleWord());
         }
         return sentence.toString();
     }
 
     public List<Sentence> getResultList() {
         for (int i = 0; i < wordsList.size(); i++) {
-            List<Word> list = new WRandom(wordsList.get(i)).getList();
+            List<Word> list = new WSearch(wordsList.get(i)).getList();
             if (list.size() != 0) {
                 words.add(list);
             } else { //если слов по запросу не найдено

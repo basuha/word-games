@@ -19,11 +19,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class WRandom extends WDummy {
+public class WSearch extends WDummy {
 
     private Word word;
     private Random random = new Random();
-    private List<Word> wordsList = new ArrayList<>();
+    protected List<Word> wordsList = new ArrayList<>();
     private List<Word> resultSet = new ArrayList<>();
     private final Byte[] hexCode = new Byte[17];
 
@@ -89,20 +89,18 @@ public class WRandom extends WDummy {
         }
     }
 
-    public WRandom() {
+    public WSearch() {
     }
 
-    public WRandom(String hexCode) {
+    public WSearch(String hexCode) {
         for (int i = 0; i < hexCode.length(); i++) {
             this.hexCode[i] = toDigit(hexCode.charAt(i));
         }
         hexInit();
-        run();
     }
 
-    public WRandom(Word word) {
+    public WSearch(Word word) {
         init(word);
-        run();
     }
 
     private byte toDigit(char hexChar) {
@@ -301,145 +299,6 @@ public class WRandom extends WDummy {
         }
     }
 
-    private String buildQuery(int lowID, int hiID) {
-        StringBuilder hql = new StringBuilder();
-        hql.append("FROM ")
-                .append(partOfSpeech)
-                .append(" WHERE")
-                .append(" IID > ").append(lowID)
-                .append(" AND")
-                .append(" IID < ").append(hiID);
-
-        if (shortF != null) {
-            hql.append(" AND")
-                    .append(" shortF = ")
-                    .append("'")
-                    .append(shortF)
-                    .append("'");
-        }
-
-        if (plural != null) {
-            hql.append(" AND")
-                    .append(" plural = ")
-                    .append("'")
-                    .append(plural)
-                    .append("'");
-        }
-
-        if (gender != null) {
-            hql.append(" AND")
-                    .append(" gender = ")
-                    .append("'")
-                    .append(gender)
-                    .append("'");
-        }
-
-        if (type != null) {
-            hql.append(" AND")
-                    .append(" type = ")
-                    .append("'")
-                    .append(type)
-                    .append("'");
-        }
-
-        if (wordCase != null) {
-            hql.append(" AND")
-                    .append(" wordCase = ")
-                    .append("'")
-                    .append(wordCase)
-                    .append("'");
-        }
-
-        if (comparative != null) {
-            hql.append(" AND")
-                    .append(" comparative = ")
-                    .append("'")
-                    .append(comparative)
-                    .append("'");
-        }
-
-        if (animate != null) {
-            hql.append(" AND")
-                    .append(" animate = ")
-                    .append("'")
-                    .append(animate)
-                    .append("'");
-        }
-
-        if (adverbType != null) {
-            hql.append(" AND")
-                    .append(" adverbType = ")
-                    .append("'")
-                    .append(adverbType)
-                    .append("'");
-        }
-
-        if (face != null) {
-            hql.append(" AND")
-                    .append(" face = ")
-                    .append("'")
-                    .append(face)
-                    .append("'");
-        }
-
-        if (infinitive != null) {
-            hql.append(" AND")
-                    .append(" infinitive = ")
-                    .append("'")
-                    .append(infinitive)
-                    .append("'");
-        }
-
-        if (kind != null) {
-            hql.append(" AND")
-                    .append(" kind = ")
-                    .append("'")
-                    .append(kind)
-                    .append("'");
-        }
-
-        if (perfect != null) {
-            hql.append(" AND")
-                    .append(" perfect = ")
-                    .append("'")
-                    .append(perfect)
-                    .append("'");
-        }
-
-        if (reflexive != null) {
-            hql.append(" AND")
-                    .append(" reflexive = ")
-                    .append("'")
-                    .append(reflexive)
-                    .append("'");
-        }
-
-        if (time != null) {
-            hql.append(" AND")
-                    .append(" time = ")
-                    .append("'")
-                    .append(time)
-                    .append("'");
-        }
-
-        if (transitive != null) {
-            hql.append(" AND")
-                    .append(" transitive = ")
-                    .append("'")
-                    .append(transitive)
-                    .append("'");
-        }
-
-        if (voice != null) {
-            hql.append(" AND")
-                    .append(" voice = ")
-                    .append("'")
-                    .append(voice)
-                    .append("'");
-        }
-        return hql.toString();
-    }
-
     protected void init(Word word){
         this.word = word;
         switch (word.getPartOfSpeech()) {
@@ -535,36 +394,6 @@ public class WRandom extends WDummy {
         }
     }
 
-    @SuppressWarnings("unchecked assignment")
-    public void run() {
-
-        final int NUMBER_OF_THREADS = 10;
-        final int ONE_THREAD_INTERVAL = Word.getMaxID() / NUMBER_OF_THREADS;
-
-        ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-        for (int i = 0, interval = 0, nextInterval = interval + ONE_THREAD_INTERVAL;
-             i < NUMBER_OF_THREADS;
-             i++, interval = nextInterval, nextInterval += ONE_THREAD_INTERVAL) {
-
-            int finalInterval = interval;
-            int finalNextInterval = nextInterval;
-
-            executorService.submit(() -> {
-                Session session = HibernateUtil.getSessionFactory().openSession();
-                Query query = session.createQuery(buildQuery(finalInterval, finalNextInterval));
-                wordsList.addAll(query.getResultList());
-                session.close();
-            });
-        }
-        executorService.shutdown();
-        try {
-            executorService.awaitTermination(1, TimeUnit.DAYS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        getResultSet();
-    }
-
     private boolean isCommon(Word word) {
         String wordWord = word.getWord();
         int wordLength = wordWord.length();
@@ -578,7 +407,7 @@ public class WRandom extends WDummy {
         return false;
     }
 
-    private void getResultSet() {  //подмешиваем частые слова в выборку для уменьшения "экзотичности" рандомизатора
+    protected void getResultSet() {  //подмешиваем частые слова в выборку для уменьшения "экзотичности" рандомизатора
         for (Word w : wordsList) {
             if (isCommon(w)) {
                 resultSet.add(w);

@@ -1,8 +1,8 @@
 package gui;
 
 import org.codehaus.plexus.util.StringUtils;
+import utilities.WAsyncTask;
 import utilities.WDummy;
-import utilities.WRandom;
 import utilities.Word;
 
 import javax.swing.*;
@@ -10,7 +10,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
@@ -170,8 +169,8 @@ public class WordSearch extends JDialog {
 
     Word word;
     List<Word> wordList;
+
     private void onSearch() {
-    progressBar1.setValue(34);
     if (!textField1.getText().isEmpty()) {
         if(idRadioButton.isSelected()) {
             word = Word.findById(Integer.parseInt(textField1.getText()));
@@ -182,13 +181,25 @@ public class WordSearch extends JDialog {
                 listModel.addElement(word);
             }
         } else if(hexRadioButton.isSelected()){
-            wordList = new WRandom(textField1.getText()).getList();
+            WAsyncTask wAsyncTask = new WAsyncTask(textField1.getText());
+            wAsyncTask.run();
+
             listModel.clear();
-            if (word == null) {
+
+            int progress;
+            do {
+                progress = wAsyncTask.getProgress();
+                progressBar1.setValue(progress);
+            } while (progress != 100);
+
+            wordList = wAsyncTask.getList();
+            if (wordList == null) {
                 listModel.addElement(new WDummy("Cлово не найдено"));
             } else {
                 listModel.addAll(wordList);
             }
+
+
         } else if(attribRadioButton.isSelected()){
         }
 

@@ -159,9 +159,6 @@ public class Word {
     }
 
     private void findCognates() {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        Word w = session.createQuery("FROM ")
-//        session.close();
 
         if (cognates.isEmpty() && IID != null) {
             for (int i = 1; ; i++) {

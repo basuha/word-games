@@ -1,6 +1,6 @@
 package gui;
 
-import utilities.WRandom;
+import utilities.WSearch;
 import utilities.Word;
 
 import javax.swing.*;
@@ -45,7 +45,7 @@ public class MainDialog extends JDialog {
         if (textField1.isEnabled()) {
            word = Word.findById(Integer.parseInt(textField1.getText()));
         } else {
-           word = WRandom.get();
+           word = WSearch.get();
         }
         textArea1.setText(word.getIID().toString());
     }

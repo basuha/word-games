@@ -1,3 +1,4 @@
+import org.hibernate.Session;
 import utilities.*;
 import words.attributes.primary.*;
 import words.primary.Adjective;
@@ -81,9 +82,9 @@ public class Main {
 //        } catch (IOException | IntermediateFolderNotExistException | WebdavUserNotInitialized | PreconditionFailedException | WebdavNotAuthorizedException | ServerWebdavException | UnknownServerWebdavException  e) {
 //            e.printStackTrace();
 //        }
-
-        Word wRandom = new WRandom(new Noun()).getSingleWord();
-        System.out.println(wRandom.getWord());
+//
+//        Word wRandom = new WRandom(new Noun()).getSingleWord();
+//        System.out.println(wRandom.getWord());
 
 //        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
 //        randomSentenceBuilder
