@@ -136,21 +136,41 @@ public class WordSearch extends JDialog {
 
     private void idHexButtons() {
         if (idRadioButton.isSelected()) {
-            idHexLabel.setEnabled(true);
-            textField1.setEnabled(true);
-            idHexLabel.setText("ID:");
+            searchByIDMode();
         } else if (hexRadioButton.isSelected()){
-            idHexLabel.setEnabled(true);
-            textField1.setEnabled(true);
-            idHexLabel.setText("HEX:");
+            searchByHEXMode();
         } else if (attribRadioButton.isSelected()) {
-            idHexLabel.setEnabled(false);
-            textField1.setEnabled(false);
+            searchByAttribMode();
         } else if (wordRadioButton.isSelected()) {
-            idHexLabel.setText("Слово: ");
-            idHexLabel.setEnabled(true);
-            textField1.setEnabled(true);
+            searchByWordMode();
         }
+    }
+
+    private void searchByIDMode() {
+        idRadioButton.setSelected(true);
+        idHexLabel.setEnabled(true);
+        textField1.setEnabled(true);
+        idHexLabel.setText("ID:");
+    }
+
+    private void searchByHEXMode() {
+        hexRadioButton.setSelected(true);
+        idHexLabel.setEnabled(true);
+        textField1.setEnabled(true);
+        idHexLabel.setText("HEX:");
+    }
+
+    private void searchByAttribMode() {
+        attribRadioButton.setSelected(true);
+        idHexLabel.setEnabled(false);
+        textField1.setEnabled(false);
+    }
+
+    private void searchByWordMode() {
+        wordRadioButton.setSelected(true);
+        idHexLabel.setText("Слово: ");
+        idHexLabel.setEnabled(true);
+        textField1.setEnabled(true);
     }
 
     private void setVisibilityOfComboBoxes(boolean value) {
@@ -160,9 +180,18 @@ public class WordSearch extends JDialog {
     private void textFieldAction() {
         if(StringUtils.isNumeric(textField1.getText())) {
             buttonSearch.setEnabled(!textField1.getText().isEmpty());
+
             if (autoSearchCheckBox.isSelected()) {
                 onSearch();
             }
+
+            if (wordRadioButton.isSelected()) {
+                searchByIDMode();
+            }
+
+        } else {
+            autoSearchCheckBox.setSelected(false);
+            searchByWordMode();
         }
     }
 
@@ -180,6 +209,7 @@ public class WordSearch extends JDialog {
             } else {
                 listModel.addElement(word);
             }
+
         } else if(hexRadioButton.isSelected()){
             WAsyncTask wAsyncTask = new WAsyncTask(textField1.getText());
             wAsyncTask.run();
@@ -188,7 +218,7 @@ public class WordSearch extends JDialog {
 
             int progress;
             do {
-                progress = wAsyncTask.getProgress();
+                progress = wAsyncTask.getProgress(); //Должно работать
                 progressBar1.setValue(progress);
             } while (progress != 100);
 
