@@ -1,10 +1,12 @@
 package words.attributes.primary;
 
+import utilities.WAttribute;
+
 /**
  * Вид глагола: первый или второй
  * Вид причастия: второй или NULL
  */
-public enum Kind {
+public enum Kind implements WAttribute {
 
     FIRST ("first"),
     SECOND ("second"),

@@ -1,6 +1,8 @@
 package words.attributes.primary;
 
-public enum Plural {
+import utilities.WAttribute;
+
+public enum Plural implements WAttribute {
 
     PLURAL ("plural"),
     SINGULAR ("singular"),

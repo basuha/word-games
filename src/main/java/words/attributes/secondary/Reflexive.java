@@ -1,6 +1,8 @@
 package words.attributes.secondary;
 
-public enum Reflexive {
+import utilities.WAttribute;
+
+public enum Reflexive implements WAttribute {
 
     REFLEXIVE ("reflexive"),
     NOT_REFLEXIVE ("not"),

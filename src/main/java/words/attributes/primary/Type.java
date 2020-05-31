@@ -1,5 +1,7 @@
 package words.attributes.primary;
 
+import utilities.WAttribute;
+
 /**
  * Подтип прилагательного:
  * <li>{@link #IMMUTABLE_ADJECTIVE} - неизменяемое</li>
@@ -16,7 +18,7 @@ package words.attributes.primary;
  * <li>{@link #COLLECTIVE_NUMERAL} - собирательное</li>
  * <li>{@link #INDEFINITE_NUMERAL} - неопределенное</li>
  */
-public enum Type {
+public enum Type implements WAttribute {
 
     /** неизменяемое */
     IMMUTABLE_ADJECTIVE ("immutable"),

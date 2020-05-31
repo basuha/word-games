@@ -1,9 +1,11 @@
 package words.attributes.primary;
 
+import utilities.WAttribute;
+
 /**
  * Признак времени глагола
  */
-public enum Time {
+public enum Time implements WAttribute {
 
     PAST ("past"),
     PRESENT ("present"),

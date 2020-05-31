@@ -1,6 +1,8 @@
 package words.attributes.secondary;
 
-public enum Infinitive {
+import utilities.WAttribute;
+
+public enum Infinitive implements WAttribute {
 
     /**  */
     INFINITIVE ("infinitive"),

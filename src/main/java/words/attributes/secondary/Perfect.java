@@ -1,6 +1,8 @@
 package words.attributes.secondary;
 
-public enum Perfect {
+import utilities.WAttribute;
+
+public enum Perfect implements WAttribute {
 
     PERFECT ("perfect"),
     NOT_PERFECT ("imperfect"),

@@ -1,5 +1,7 @@
 package words.attributes.primary;
 
+import utilities.WAttribute;
+
 /**
  * Род
  * <li>{@link #MALE} - мужской</li>
@@ -8,7 +10,7 @@ package words.attributes.primary;
  * <li>{@link #COMMON} - общий</li>
  * <li>{@link #N_A} - множественная форма (без рода)</li>
  */
-public enum Gender {
+public enum Gender implements WAttribute {
 
     /** мужской */
     MALE ("male"),

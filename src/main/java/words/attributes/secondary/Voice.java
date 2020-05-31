@@ -1,10 +1,12 @@
 package words.attributes.secondary;
 
+import utilities.WAttribute;
+
 /**
  * Залог глагола: активный, пассивный
  * Залог причастия, деепричастия: второй, null
  */
-public enum Voice {
+public enum Voice implements WAttribute {
 
     ACTIVE ("active"),
     PASSIVE ("passive"),

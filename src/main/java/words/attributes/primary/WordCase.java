@@ -1,5 +1,7 @@
 package words.attributes.primary;
 
+import utilities.WAttribute;
+
 /**
  * Падеж существительного:
  * <li>{@link #NOMINATIVE} - именитильный (кто?, что?)</li>
@@ -13,7 +15,7 @@ package words.attributes.primary;
  * <li>{@link #LOCATIVE} - локатив </li>
  * <li>{@link #COUNTING} - счетный </li>
  */
-public enum WordCase {
+public enum WordCase implements WAttribute {
 
     /** именитильный (кто?, что?) */
     NOMINATIVE ("nominative"),

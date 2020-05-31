@@ -1,9 +1,11 @@
 package words.attributes.secondary;
 
+import utilities.WAttribute;
+
 /**
  * Лицо глагола
  */
-public enum Face {
+public enum Face implements WAttribute {
 
     FIRST ("first"),
     SECOND ("second"),

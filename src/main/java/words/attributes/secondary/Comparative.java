@@ -1,10 +1,12 @@
 package words.attributes.secondary;
 
+import utilities.WAttribute;
+
 /** Сравнительные формы прилагательного:
  * <li>{@link #COMPARATIVE} - сравнительная форма</li>
  * <li>{@link #SUPER} - превосходная форма</li>
  */
-public enum Comparative {
+public enum Comparative implements WAttribute {
 
     /** сравнительная форма */
     COMPARATIVE ("comparative"),

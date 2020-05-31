@@ -1,8 +1,8 @@
 package words.attributes.primary;
 
-import words.attributes.Attribute;
+import utilities.WAttribute;
 
-public enum Animate implements Attribute {
+public enum Animate implements WAttribute {
 
     /** */
     ANIMATE ("animate"),
@@ -24,8 +24,4 @@ public enum Animate implements Attribute {
         return value;
     }
 
-    @Override
-    public Attribute getEnum() {
-        return null;
-    }
 }

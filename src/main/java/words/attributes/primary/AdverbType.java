@@ -1,6 +1,6 @@
 package words.attributes.primary;
 
-import words.attributes.Attribute;
+import utilities.WAttribute;
 
 /**
  * Подтипы наречия:
@@ -13,7 +13,7 @@ import words.attributes.Attribute;
  * <li>{@link #PURPOSE} - цели действия</li>
  * <li>{@link #REASON} - причины действия</li>
  */
-public enum AdverbType implements Attribute {
+public enum AdverbType implements WAttribute {
 
     /** качественные */
     QUALITATIVE("qualitative"),
@@ -50,8 +50,4 @@ public enum AdverbType implements Attribute {
         return value;
     }
 
-    @Override
-    public Attribute getEnum() {
-        return this;
-    }
 }

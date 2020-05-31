@@ -4,6 +4,8 @@ import org.codehaus.plexus.util.StringUtils;
 import utilities.WAsyncTask;
 import utilities.WDummy;
 import utilities.Word;
+import utilities.WAttribute;
+import words.attributes.primary.AdverbType;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -25,21 +27,6 @@ public class WordSearch extends JDialog {
     protected JCheckBox autoSearchCheckBox;
     protected JLabel idHexLabel;
 
-    private JComboBox attribComboBox1;
-    private JComboBox attribComboBox2;
-    private JComboBox attribComboBox3;
-    private JComboBox attribComboBox4;
-    private JComboBox attribComboBox5;
-    private JComboBox attribComboBox6;
-    private JComboBox attribComboBox7;
-    private JComboBox attribComboBox8;
-    private JComboBox attribComboBox9;
-    private JComboBox attribComboBox10;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JComboBox comboBox3;
-    private JComboBox comboBox4;
-
     private JRadioButton attribRadioButton;
     private JRadioButton wordRadioButton;
     private JList list1;
@@ -47,8 +34,11 @@ public class WordSearch extends JDialog {
     private JButton plusButton;
     private JPanel scrollBar;
     private JScrollPane scrollPane;
+    private JPanel attributesPanel;
+    private JComboBox comboBox1;
     private ButtonGroup typeChangeRadioGroup;
     private DefaultListModel<Word> listModel = new DefaultListModel<>();
+    private DefaultComboBoxModel<WAttribute> comboBoxModel = new DefaultComboBoxModel<>();
 
     public WordSearch() {
         setTitle("Поиск слов");
@@ -60,6 +50,12 @@ public class WordSearch extends JDialog {
         setLocationRelativeTo(null);
         list1.setModel(listModel);
         scrollPane.setViewportView(list1);
+
+
+        comboBoxModel.addElement(AdverbType.DIRECTION);
+
+        attributesPanel.add(new JComboBox<>(comboBoxModel),1);
+
 
 
         idRadioButton.addChangeListener(new ChangeListener() {

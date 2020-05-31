@@ -1,9 +1,11 @@
 package words.attributes.secondary;
 
+import utilities.WAttribute;
+
 /**
  * Признак переходности глагола/причастия/деепричастия
  */
-public enum Transitive {
+public enum Transitive implements WAttribute {
 
     TRANSITIVE ("transitive"),
     INTRANSITIVE ("intransitive"),
