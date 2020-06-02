@@ -6,7 +6,7 @@ import utilities.WAttribute;
  * <li>{@link #COMPARATIVE} - сравнительная форма</li>
  * <li>{@link #SUPER} - превосходная форма</li>
  */
-public enum Comparative implements WAttribute {
+public enum Comparative {
 
     /** сравнительная форма */
     COMPARATIVE ("comparative"),

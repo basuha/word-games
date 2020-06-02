@@ -5,7 +5,7 @@ import utilities.WAttribute;
 /**
  * Признак времени глагола
  */
-public enum Time implements WAttribute {
+public enum Time {
 
     PAST ("past"),
     PRESENT ("present"),

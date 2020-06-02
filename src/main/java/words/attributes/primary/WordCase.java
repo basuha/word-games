@@ -15,7 +15,7 @@ import utilities.WAttribute;
  * <li>{@link #LOCATIVE} - локатив </li>
  * <li>{@link #COUNTING} - счетный </li>
  */
-public enum WordCase implements WAttribute {
+public enum WordCase {
 
     /** именитильный (кто?, что?) */
     NOMINATIVE ("nominative"),

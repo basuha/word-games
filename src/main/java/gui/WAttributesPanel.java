@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WAttributesPanel extends JPanel {
-    private WAttribute[] items = {Gender.FEMALE, Gender.MALE, WordCase.COUNTING};
+    private WAttribute[] items = {Gender.FEMALE, Gender.MALE };
     private GridLayout gridLayout = new GridLayout(8,4,10,10);
 
     public WAttributesPanel() {
@@ -22,9 +22,11 @@ public class WAttributesPanel extends JPanel {
 
     public WAttributesPanel(WDummy word) {
         setLayout(gridLayout);
-        add(new WSingleAttributePanel(word.getAdverbType()));
-        add(new WSingleAttributePanel(word.getAnimate()));
-        add(new WSingleAttributePanel(word.getWordCase()));
+        add(new WSingleAttributePanel(word.getGender()));
+        add(new WSingleAttributePanel(word.getGender()));
+        add(new WSingleAttributePanel(word.getGender()));
+        add(new WSingleAttributePanel(word.getGender()));
+        add(new WSingleAttributePanel(word.getGender()));
     }
 
 //    public void addAttribute(WAttribute attribute) {

@@ -18,7 +18,7 @@ import utilities.WAttribute;
  * <li>{@link #COLLECTIVE_NUMERAL} - собирательное</li>
  * <li>{@link #INDEFINITE_NUMERAL} - неопределенное</li>
  */
-public enum Type implements WAttribute {
+public enum Type {
 
     /** неизменяемое */
     IMMUTABLE_ADJECTIVE ("immutable"),

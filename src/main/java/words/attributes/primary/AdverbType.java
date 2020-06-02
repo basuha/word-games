@@ -13,7 +13,7 @@ import utilities.WAttribute;
  * <li>{@link #PURPOSE} - цели действия</li>
  * <li>{@link #REASON} - причины действия</li>
  */
-public enum AdverbType implements WAttribute {
+public enum AdverbType {
 
     /** качественные */
     QUALITATIVE("qualitative"),

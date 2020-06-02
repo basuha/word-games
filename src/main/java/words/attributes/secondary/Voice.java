@@ -6,7 +6,7 @@ import utilities.WAttribute;
  * Залог глагола: активный, пассивный
  * Залог причастия, деепричастия: второй, null
  */
-public enum Voice implements WAttribute {
+public enum Voice {
 
     ACTIVE ("active"),
     PASSIVE ("passive"),

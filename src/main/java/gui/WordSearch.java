@@ -5,15 +5,10 @@ import utilities.WAsyncTask;
 import utilities.WDummy;
 import utilities.Word;
 import utilities.WAttribute;
-import words.attributes.primary.AdverbType;
-import words.attributes.primary.Animate;
-import words.attributes.primary.WordCase;
+import words.attributes.primary.Gender;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
@@ -28,7 +23,7 @@ public class WordSearch extends JDialog {
     protected JRadioButton idRadioButton;
     protected JRadioButton hexRadioButton;
     protected JCheckBox autoSearchCheckBox;
-    protected JLabel idHexLabel;
+    protected JLabel mainLabel;
 
     private JRadioButton attribRadioButton;
     private JRadioButton wordRadioButton;
@@ -62,9 +57,20 @@ public class WordSearch extends JDialog {
         attributesPanel.setLayout(new GridBagLayout());
 
 
-        attributesPanel.add(new WAttributesPanel(new WDummy().setWordCase(WordCase.NOMINATIVE).setAdverbType(AdverbType.PURPOSE).setAnimate(Animate.ANIMATE)));
+        attributesPanel.add(new WAttributesPanel(new WDummy().setGender(Gender.MALE)));
 //        pack();
 
+
+        list1.addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                    selectedWord = (Word) list1.getSelectedValue();
+                    System.out.println(selectedWord.getInfo());
+                }
+            }
+        });
 
         idRadioButton.addChangeListener(new ChangeListener() {
             @Override
@@ -156,28 +162,28 @@ public class WordSearch extends JDialog {
 
     private void searchByIDMode() {
         idRadioButton.setSelected(true);
-        idHexLabel.setEnabled(true);
+        mainLabel.setEnabled(true);
         textField1.setEnabled(true);
-        idHexLabel.setText("ID:");
+        mainLabel.setText("ID:");
     }
 
     private void searchByHEXMode() {
         hexRadioButton.setSelected(true);
-        idHexLabel.setEnabled(true);
+        mainLabel.setEnabled(true);
         textField1.setEnabled(true);
-        idHexLabel.setText("HEX:");
+        mainLabel.setText("HEX:");
     }
 
     private void searchByAttribMode() {
         attribRadioButton.setSelected(true);
-        idHexLabel.setEnabled(false);
+        mainLabel.setEnabled(false);
         textField1.setEnabled(false);
     }
 
     private void searchByWordMode() {
         wordRadioButton.setSelected(true);
-        idHexLabel.setText("Слово: ");
-        idHexLabel.setEnabled(true);
+        mainLabel.setText("Слово: ");
+        mainLabel.setEnabled(true);
         textField1.setEnabled(true);
     }
 

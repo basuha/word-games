@@ -2,7 +2,7 @@ package words.attributes.primary;
 
 import utilities.WAttribute;
 
-public enum Plural implements WAttribute {
+public enum Plural {
 
     PLURAL ("plural"),
     SINGULAR ("singular"),

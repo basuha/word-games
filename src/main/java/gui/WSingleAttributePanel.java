@@ -19,11 +19,13 @@ public class WSingleAttributePanel extends WAttributesPanel {
         setMinimumSize(DEFAULT_SIZE);
         setPreferredSize(DEFAULT_SIZE);
 
-        attribLabel = new JLabel(attribute.getAttributeName() + ":");
+        attribLabel = new JLabel(attribute.getLocalizedAttributeName() + ":");
         attribLabel.setVerticalAlignment(SwingConstants.CENTER);
         add(attribLabel);
 
-        attribComboBoxModel = new DefaultComboBoxModel<>(Gender.values());
+
+
+        attribComboBoxModel = new DefaultComboBoxModel(WAttribute.getLocalizedValueArray(attribute));
         attribComboBox = new JComboBox<>();
         attribComboBox.setModel(attribComboBoxModel);
         attribComboBox.setAlignmentY(TOP_ALIGNMENT);

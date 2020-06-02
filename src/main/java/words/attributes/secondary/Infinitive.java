@@ -2,7 +2,7 @@ package words.attributes.secondary;
 
 import utilities.WAttribute;
 
-public enum Infinitive implements WAttribute {
+public enum Infinitive {
 
     /**  */
     INFINITIVE ("infinitive"),

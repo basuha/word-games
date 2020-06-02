@@ -5,7 +5,7 @@ import utilities.WAttribute;
 /**
  * Лицо глагола
  */
-public enum Face implements WAttribute {
+public enum Face {
 
     FIRST ("first"),
     SECOND ("second"),

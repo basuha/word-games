@@ -6,7 +6,7 @@ import utilities.WAttribute;
  * Вид глагола: первый или второй
  * Вид причастия: второй или NULL
  */
-public enum Kind implements WAttribute {
+public enum Kind {
 
     FIRST ("first"),
     SECOND ("second"),

@@ -2,7 +2,7 @@ package words.attributes.primary;
 
 import utilities.WAttribute;
 
-public enum Animate implements WAttribute {
+public enum Animate {
 
     /** */
     ANIMATE ("animate"),

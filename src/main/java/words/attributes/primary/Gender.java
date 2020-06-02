@@ -2,6 +2,9 @@ package words.attributes.primary;
 
 import utilities.WAttribute;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Род
  * <li>{@link #MALE} - мужской</li>
@@ -27,28 +30,37 @@ public enum Gender implements WAttribute {
     /** без рода */
     N_A ("n/a", "n/a");
 
-    private final String value;
-    private final String localizedValue;
-    private final static String localizedClassName = "пол";
+    private final String VALUE;
+    private final String LOCALIZED_VALUE;
+    private final static String LOCALIZED_ATTRIBUTE_NAME = "пол";
 
     Gender(String value, String localizedValue) {
-        this.value = value;
-        this.localizedValue = localizedValue;
+        this.VALUE = value;
+        this.LOCALIZED_VALUE = localizedValue;
     }
 
     @Override
     public String toString() {
-        return value;
+        return VALUE;
     }
+
+    public WAttribute[] getValues() {
+        return values();
+    }
+
+//        String[] values = new String[values().length];
+//        for (int i = 0; i < values.length; i++) {
+//            values[i] = values()[i].getLocalizedValue();
+//        }
+//        return values;
+
 
     @Override
-    public String getLocalizedValues() {
-        return localizedValue;
+    public String getLocalizedValue() {
+        return LOCALIZED_VALUE;
     }
 
-    @Override
-    public String getLocalizedClassName() {
-        return localizedClassName;
+    public String getLocalizedAttributeName() {
+        return LOCALIZED_ATTRIBUTE_NAME;
     }
-
 }

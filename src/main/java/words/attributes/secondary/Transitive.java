@@ -5,7 +5,7 @@ import utilities.WAttribute;
 /**
  * Признак переходности глагола/причастия/деепричастия
  */
-public enum Transitive implements WAttribute {
+public enum Transitive {
 
     TRANSITIVE ("transitive"),
     INTRANSITIVE ("intransitive"),

@@ -2,7 +2,7 @@ package words.attributes.secondary;
 
 import utilities.WAttribute;
 
-public enum ShortF implements WAttribute {
+public enum ShortF {
 
     SHORT ("short"),
     NOT_SHORT ("n/a");
