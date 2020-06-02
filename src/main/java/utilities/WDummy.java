@@ -33,127 +33,143 @@ public class WDummy extends Word {
         return adverbType;
     }
 
-    public void setAdverbType(AdverbType adverbType) {
+    public WDummy setAdverbType(AdverbType adverbType) {
         this.adverbType = adverbType;
+        return this;
     }
 
     public Animate getAnimate() {
         return animate;
     }
 
-    public void setAnimate(Animate animate) {
+    public WDummy setAnimate(Animate animate) {
         this.animate = animate;
+        return this;
     }
 
     public Comparative getComparative() {
         return comparative;
     }
 
-    public void setComparative(Comparative comparative) {
+    public WDummy setComparative(Comparative comparative) {
         this.comparative = comparative;
+        return this;
     }
 
     public Face getFace() {
         return face;
     }
 
-    public void setFace(Face face) {
+    public WDummy setFace(Face face) {
         this.face = face;
+        return this;
     }
 
     public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public WDummy setGender(Gender gender) {
         this.gender = gender;
+        return this;
     }
 
     public Infinitive getInfinitive() {
         return infinitive;
     }
 
-    public void setInfinitive(Infinitive infinitive) {
+    public WDummy setInfinitive(Infinitive infinitive) {
         this.infinitive = infinitive;
+        return this;
     }
 
     public Kind getKind() {
         return kind;
     }
 
-    public void setKind(Kind kind) {
+    public WDummy setKind(Kind kind) {
         this.kind = kind;
+        return this;
     }
 
     public Perfect getPerfect() {
         return perfect;
     }
 
-    public void setPerfect(Perfect perfect) {
+    public WDummy setPerfect(Perfect perfect) {
         this.perfect = perfect;
+        return this;
     }
 
     public Plural getPlural() {
         return plural;
     }
 
-    public void setPlural(Plural plural) {
+    public WDummy setPlural(Plural plural) {
         this.plural = plural;
+        return this;
     }
 
     public Reflexive getReflexive() {
         return reflexive;
     }
 
-    public void setReflexive(Reflexive reflexive) {
+    public WDummy setReflexive(Reflexive reflexive) {
         this.reflexive = reflexive;
+        return this;
     }
 
     public ShortF getShortF() {
         return shortF;
     }
 
-    public void setShortF(ShortF shortF) {
+    public WDummy setShortF(ShortF shortF) {
         this.shortF = shortF;
+        return this;
     }
 
     public Time getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public WDummy setTime(Time time) {
         this.time = time;
+        return this;
     }
 
     public Transitive getTransitive() {
         return transitive;
     }
 
-    public void setTransitive(Transitive transitive) {
+    public WDummy setTransitive(Transitive transitive) {
         this.transitive = transitive;
+        return this;
     }
 
     public Type getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public WDummy setType(Type type) {
         this.type = type;
+        return this;
     }
 
     public Voice getVoice() {
         return voice;
     }
 
-    public void setVoice(Voice voice) {
+    public WDummy setVoice(Voice voice) {
         this.voice = voice;
+        return this;
     }
 
     public WordCase getWordCase() {
         return wordCase;
     }
 
-    public void setWordCase(WordCase wordCase) {
+    public WDummy setWordCase(WordCase wordCase) {
         this.wordCase = wordCase;
+        return this;
     }
 }

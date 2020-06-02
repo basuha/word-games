@@ -13,29 +13,42 @@ import utilities.WAttribute;
 public enum Gender implements WAttribute {
 
     /** мужской */
-    MALE ("male"),
+    MALE ("male", "мужской"),
 
     /** женский */
-    FEMALE ("female"),
+    FEMALE ("female", "женский"),
 
     /** средний */
-    NEUTER ("neuter"),
+    NEUTER ("neuter", "средний"),
 
     /** общий */
-    COMMON ("common"),
+    COMMON ("common", "общий"),
 
     /** без рода */
-    N_A ("n/a");
+    N_A ("n/a", "n/a");
 
     private final String value;
+    private final String localizedValue;
+    private final static String localizedClassName = "пол";
 
-    Gender(String value) {
+    Gender(String value, String localizedValue) {
         this.value = value;
+        this.localizedValue = localizedValue;
     }
 
     @Override
     public String toString() {
         return value;
+    }
+
+    @Override
+    public String getLocalizedValues() {
+        return localizedValue;
+    }
+
+    @Override
+    public String getLocalizedClassName() {
+        return localizedClassName;
     }
 
 }

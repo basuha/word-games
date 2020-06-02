@@ -5,7 +5,8 @@ import utilities.WAsyncTask;
 import utilities.WDummy;
 import utilities.Word;
 import utilities.WAttribute;
-import words.attributes.primary.Gender;
+import words.attributes.primary.AdverbType;
+import words.attributes.primary.Animate;
 import words.attributes.primary.WordCase;
 
 import javax.swing.*;
@@ -32,12 +33,14 @@ public class WordSearch extends JDialog {
     private JRadioButton attribRadioButton;
     private JRadioButton wordRadioButton;
     private JList list1;
-    private JButton minusButton;
-    private JButton plusButton;
     private JPanel scrollBar;
     private JScrollPane scrollPane;
     private JPanel attributesPanel;
-    private JComboBox comboBox1;
+    private JList list2;
+    private JScrollPane scrollPane2;
+    private JButton deleteButton;
+    private JButton addButton;
+    private JButton cleanButton;
     private ButtonGroup typeChangeRadioGroup;
     private DefaultListModel<Word> listModel = new DefaultListModel<>();
     private DefaultComboBoxModel<WAttribute> comboBoxModel = new DefaultComboBoxModel<>();
@@ -47,16 +50,20 @@ public class WordSearch extends JDialog {
     public WordSearch() {
         setTitle("Поиск слов");
         setContentPane(contentPane);
-        pack();
+
+        setSize(750,400);
         setResizable(false);
         setModal(true);
         getRootPane().setDefaultButton(searchButton);
         setLocationRelativeTo(null);
         list1.setModel(listModel);
         scrollPane.setViewportView(list1);
+        scrollPane2.setViewportView(list2);
         attributesPanel.setLayout(new GridBagLayout());
 
-        attributesPanel.add(new WAttributesAdaptor());
+
+        attributesPanel.add(new WAttributesPanel(new WDummy().setWordCase(WordCase.NOMINATIVE).setAdverbType(AdverbType.PURPOSE).setAnimate(Animate.ANIMATE)));
+//        pack();
 
 
         idRadioButton.addChangeListener(new ChangeListener() {
@@ -132,7 +139,7 @@ public class WordSearch extends JDialog {
     }
 
     private void extractAttributesFromSelectedWord() {
-        attributesPanel.add(new WAttributesAdaptor());
+        attributesPanel.add(new WAttributesPanel());
     }
 
     private void idHexButtons() {
