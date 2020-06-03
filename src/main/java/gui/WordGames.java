@@ -1,10 +1,8 @@
 package gui;
 
-import gui.lookandfeel.LookAndFeelDemo;
 import utilities.Word;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class WordGames extends JFrame {
@@ -64,8 +62,8 @@ public class WordGames extends JFrame {
     }
 
     private void onSearch() {
-        WordSearch wordSearch = new WordSearch();
-        wordSearch.setVisible(true);
+        WSearchDialogue wSearchDialogue = new WSearchDialogue();
+        wSearchDialogue.setVisible(true);
     }
 
     private void onCancel() {

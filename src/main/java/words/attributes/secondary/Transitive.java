@@ -5,20 +5,45 @@ import utilities.WAttribute;
 /**
  * Признак переходности глагола/причастия/деепричастия
  */
-public enum Transitive {
+public enum Transitive implements WAttribute {
 
-    TRANSITIVE ("transitive"),
-    INTRANSITIVE ("intransitive"),
-    TRANS_INTRANS ("trans/intrans");
+    /** переходный */
+    TRANSITIVE ("transitive", "переходный"),
 
-    private final String value;
+    /** непереходный */
+    INTRANSITIVE ("intransitive", "непереходный"),
 
-    Transitive(String value) {
-        this.value = value;
+    /** пер/не */
+    TRANS_INTRANS ("trans/intrans", "пер/не");
+
+    private final String VALUE;
+    private final String LOCALIZED_VALUE;
+    private final static String LOCALIZED_ATTRIBUTE_NAME = "переходность";
+
+    Transitive (String value, String localizedValue) {
+        this.VALUE = value;
+        this.LOCALIZED_VALUE = localizedValue;
+    }
+
+    public WAttribute[] getValues() {
+        return values();
+    }
+
+    public String[] getLocalizedValueArray() {
+        return WAttribute.getLocalizedValueArray(this);
+    }
+
+    @Override
+    public String getLocalizedValue() {
+        return LOCALIZED_VALUE;
+    }
+
+    public String getLocalizedAttributeName() {
+        return LOCALIZED_ATTRIBUTE_NAME;
     }
 
     @Override
     public String toString() {
-        return value;
+        return VALUE;
     }
 }

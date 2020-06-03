@@ -18,46 +18,66 @@ import utilities.WAttribute;
  * <li>{@link #COLLECTIVE_NUMERAL} - собирательное</li>
  * <li>{@link #INDEFINITE_NUMERAL} - неопределенное</li>
  */
-public enum Type {
+public enum Type implements WAttribute {
 
     /** неизменяемое */
-    IMMUTABLE_ADJECTIVE ("immutable"),
+    IMMUTABLE_ADJECTIVE ("immutable", "неизменяемое"),
 
     /** изменяемое */
-    MUTABLE_ADJECTIVE ("mutable"),
+    MUTABLE_ADJECTIVE ("mutable", "изменяемое"),
 
 
     /** обстоятельственные */
-    EXTENSIVE_ADVERB("extensive"),
+    EXTENSIVE_ADVERB("extensive", "обстоятельственные"),
 
     /** определительные */
-    DEFINITE_ADVERB("definite"),
+    DEFINITE_ADVERB("definite", "определительные"),
 
     /** вопросительные */
-    QUESTION_ADVERB("question"),
+    QUESTION_ADVERB("question", "вопросительные"),
 
 
     /** порядковое */
-    ORDINAL_NUMERAL ("ordinal"),
+    ORDINAL_NUMERAL ("ordinal", "порядковое"),
 
     /** количественное */
-    QUANTITATIVE_NUMERAL ("quantitative"),
+    QUANTITATIVE_NUMERAL ("quantitative", "количественное"),
 
     /** собирательное */
-    COLLECTIVE_NUMERAL ("collective"),
+    COLLECTIVE_NUMERAL ("collective", "собирательное"),
 
     /** неопределенное */
-    INDEFINITE_NUMERAL ("indefinite");
+    INDEFINITE_NUMERAL ("indefinite", "неопределенное");
 
-    private final String value;
+    private final String VALUE;
+    private final String LOCALIZED_VALUE;
+    private final static String LOCALIZED_ATTRIBUTE_NAME = "тип";
 
-    Type(String value) {
-        this.value = value;
+    Type (String value, String localizedValue) {
+        this.VALUE = value;
+        this.LOCALIZED_VALUE = localizedValue;
+    }
+
+    public WAttribute[] getValues() {
+        return values();
+    }
+
+    public String[] getLocalizedValueArray() {
+        return WAttribute.getLocalizedValueArray(this);
+    }
+
+    @Override
+    public String getLocalizedValue() {
+        return LOCALIZED_VALUE;
+    }
+
+    public String getLocalizedAttributeName() {
+        return LOCALIZED_ATTRIBUTE_NAME;
     }
 
     @Override
     public String toString() {
-        return value;
+        return VALUE;
     }
 
 }

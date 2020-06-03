@@ -5,21 +5,41 @@ import utilities.WAttribute;
 /**
  * Лицо глагола
  */
-public enum Face {
+public enum Face implements WAttribute{
 
-    FIRST ("first"),
-    SECOND ("second"),
-    THIRD ("third"),
-    ANONYMOUS ("anonymous");
+    FIRST ("first", "первое"),
+    SECOND ("second", "второе"),
+    THIRD ("third", "третье"),
+    ANONYMOUS ("anonymous", "безличный");
 
-    private final String value;
+    private final String VALUE;
+    private final String LOCALIZED_VALUE;
+    private final static String LOCALIZED_ATTRIBUTE_NAME = "лицо";
 
-    Face(String value) {
-        this.value = value;
+    Face (String value, String localizedValue) {
+        this.VALUE = value;
+        this.LOCALIZED_VALUE = localizedValue;
+    }
+
+    public WAttribute[] getValues() {
+        return values();
+    }
+
+    public String[] getLocalizedValueArray() {
+        return WAttribute.getLocalizedValueArray(this);
+    }
+
+    @Override
+    public String getLocalizedValue() {
+        return LOCALIZED_VALUE;
+    }
+
+    public String getLocalizedAttributeName() {
+        return LOCALIZED_ATTRIBUTE_NAME;
     }
 
     @Override
     public String toString() {
-        return value;
+        return VALUE;
     }
 }

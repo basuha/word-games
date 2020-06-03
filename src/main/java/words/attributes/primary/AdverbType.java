@@ -13,41 +13,61 @@ import utilities.WAttribute;
  * <li>{@link #PURPOSE} - цели действия</li>
  * <li>{@link #REASON} - причины действия</li>
  */
-public enum AdverbType {
+public enum AdverbType implements WAttribute{
 
     /** качественные */
-    QUALITATIVE("qualitative"),
+    QUALITATIVE("qualitative", "качественные"),
 
     /** способа и образа действия */
-    METHOD("method"),
+    METHOD("method", "способа"),
 
     /** степени действия */
-    EXTENT("extent"),
+    EXTENT("extent", "степени"),
 
     /** места действия */
-    PLACE("place"),
+    PLACE("place", "места"),
 
     /** направление действия */
-    DIRECTION("direction"),
+    DIRECTION("direction", "направление"),
 
     /** времени действия */
-    TIMING("timing"),
+    TIMING("timing", "времени"),
 
     /** цели действия */
-    PURPOSE("purpose"),
+    PURPOSE("purpose", "цели"),
 
     /** причины действия */
-    REASON("reason");
+    REASON("reason", "причины");
 
-    private final String value;
+    private final String VALUE;
+    private final String LOCALIZED_VALUE;
+    private final static String LOCALIZED_ATTRIBUTE_NAME = "тип наречия";
 
-    AdverbType(String value) {
-        this.value = value;
+    AdverbType(String value, String localizedValue) {
+        this.VALUE = value;
+        this.LOCALIZED_VALUE = localizedValue;
+    }
+
+    public WAttribute[] getValues() {
+        return values();
+    }
+
+    public String[] getLocalizedValueArray() {
+        return WAttribute.getLocalizedValueArray(this);
+    }
+
+    @Override
+    public String getLocalizedValue() {
+        return LOCALIZED_VALUE;
+    }
+
+    public String getLocalizedAttributeName() {
+        return LOCALIZED_ATTRIBUTE_NAME;
     }
 
     @Override
     public String toString() {
-        return value;
+        return VALUE;
     }
 
 }

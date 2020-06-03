@@ -22,6 +22,8 @@ public interface WAttribute {
         return values;
     }
 
+    String[] getLocalizedValueArray();
+
     String getLocalizedAttributeName();
 
     default String getAttributeName() {

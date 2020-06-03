@@ -15,48 +15,88 @@ import utilities.WAttribute;
  * <li>{@link #LOCATIVE} - локатив </li>
  * <li>{@link #COUNTING} - счетный </li>
  */
-public enum WordCase {
+public enum WordCase implements WAttribute {
 
-    /** именитильный (кто?, что?) */
-    NOMINATIVE ("nominative"),
+    /**
+     * именитильный (кто?, что?)
+     */
+    NOMINATIVE("nominative", "именитильный"),
 
-    /** родительный (кого?, чего?) */
-    GENITIVE ("genitive"),
+    /**
+     * родительный (кого?, чего?)
+     */
+    GENITIVE("genitive", "родительный"),
 
-    /** дательный (кому?, чему?) */
-    DATIVE ("dative"),
+    /**
+     * дательный (кому?, чему?)
+     */
+    DATIVE("dative", "дательный"),
 
-    /** винительный (кого?, что?) */
-    ACCUSATIVE ("accusative"),
+    /**
+     * винительный (кого?, что?)
+     */
+    ACCUSATIVE("accusative", "винительный"),
 
-    /** творительный (кем?, чем?) */
-    INSTRUMENTAL ("instrumental"),
+    /**
+     * творительный (кем?, чем?)
+     */
+    INSTRUMENTAL("instrumental", "творительный"),
 
-    /** предложный (о ком?, о чем?) */
-    PREPOSITIONAL ("prepositional"),
+    /**
+     * предложный (о ком?, о чем?)
+     */
+    PREPOSITIONAL("prepositional", "предложный"),
 
-    /** звательный */
-    VOCATIVE ("vocative"),
+    /**
+     * звательный
+     */
+    VOCATIVE("vocative", "звательный"),
 
-    /** частичный */
-    PARTITIVE ("partitive"),
+    /**
+     * частичный
+     */
+    PARTITIVE("partitive", "частичный"),
 
-    /** локатив */
-    LOCATIVE ("locative"),
+    /**
+     * локатив
+     */
+    LOCATIVE("locative", "локатив"),
 
-    /** счетный */
-    COUNTING ("counting"),
+    /**
+     * счетный
+     */
+    COUNTING("counting", "счетный"),
 
-    N_A ("n/a");
+    N_A("n/a", "н/д");
 
-    private final String value;
+    private final String VALUE;
+    private final String LOCALIZED_VALUE;
+    private final static String LOCALIZED_ATTRIBUTE_NAME = "падеж";
 
-    WordCase(String value) {
-        this.value = value;
+    WordCase(String value, String localizedValue) {
+        this.VALUE = value;
+        this.LOCALIZED_VALUE = localizedValue;
+    }
+
+    public WAttribute[] getValues() {
+        return values();
+    }
+
+    public String[] getLocalizedValueArray() {
+        return WAttribute.getLocalizedValueArray(this);
+    }
+
+    @Override
+    public String getLocalizedValue() {
+        return LOCALIZED_VALUE;
+    }
+
+    public String getLocalizedAttributeName() {
+        return LOCALIZED_ATTRIBUTE_NAME;
     }
 
     @Override
     public String toString() {
-        return value;
+        return VALUE;
     }
 }

@@ -29,6 +29,11 @@ public class WDummy extends Word {
         this.word = word;
     }
 
+    @Override
+    public PartOfSpeech getPartOfSpeech() {
+        return partOfSpeech;
+    }
+
     public AdverbType getAdverbType() {
         return adverbType;
     }

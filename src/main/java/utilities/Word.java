@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +79,9 @@ public class Word {
 
     @Transient
     protected int hexCode;
+
+    @Transient
+    protected Field[] wAttributes;
 
     public static int getMaxID() {
         Thread thread = new Thread(new Runnable() {
@@ -223,6 +228,14 @@ public class Word {
 
     public BigDecimal getHexCode() {
         return new WordToHex(this).toHex();
+    }
+
+    public Field[] getWAttributes() {
+        wAttributes = this.getClass().getDeclaredFields();
+        for (Field f : wAttributes) {
+            f.setAccessible(true);
+        }
+        return wAttributes;
     }
 
     @Override

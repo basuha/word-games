@@ -8,24 +8,34 @@ import words.attributes.primary.WordCase;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Field;
+import java.util.Arrays;
 
 public class WAttributesPanel extends JPanel {
-    private GridLayout gridLayout = new GridLayout(8,4,10,10);
+    private GridLayout gridLayout = new GridLayout(8,4,1,1);
+    private Field[] fields;
 
     public WAttributesPanel() {
+        setLayout(gridLayout);
     }
 
     public WAttributesPanel(LayoutManager layout) {
         super(layout);
     }
 
-    public WAttributesPanel(WDummy word) {
+    public WAttributesPanel(Word word) {
         setLayout(gridLayout);
-        add(new WSingleAttributePanel(word.getGender()));
-        add(new WSingleAttributePanel(word.getGender()));
-        add(new WSingleAttributePanel(word.getGender()));
-        add(new WSingleAttributePanel(word.getGender()));
-        add(new WSingleAttributePanel(word.getGender()));
+        fields = word.getWAttributes();
+        System.out.println(Arrays.toString(fields));
+        for (int i = 0; i < fields.length; i++) {
+            try {
+                if (fields[i].get(word) instanceof Enum) {
+                    add(new WSingleAttributePanel((WAttribute) fields[i].get(word)));
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 //    public void addAttribute(WAttribute attribute) {

@@ -6,6 +6,7 @@ import utilities.WDummy;
 import utilities.Word;
 import utilities.WAttribute;
 import words.attributes.primary.Gender;
+import words.attributes.primary.PartOfSpeech;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -13,7 +14,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-public class WordSearch extends JDialog {
+public class WSearchDialogue extends JDialog {
 
     protected JPanel contentPane;
     protected JButton searchButton;
@@ -42,11 +43,11 @@ public class WordSearch extends JDialog {
 
     private Word selectedWord;
 
-    public WordSearch() {
+    public WSearchDialogue() {
         setTitle("Поиск слов");
         setContentPane(contentPane);
 
-        setSize(750,400);
+        setSize(750,450);
         setResizable(false);
         setModal(true);
         getRootPane().setDefaultButton(searchButton);
@@ -57,7 +58,13 @@ public class WordSearch extends JDialog {
         attributesPanel.setLayout(new GridBagLayout());
 
 
-        attributesPanel.add(new WAttributesPanel(new WDummy().setGender(Gender.MALE)));
+        WDummy wDummy = new WDummy("проверка");
+        wDummy.setCode(1234);
+        wDummy.setCodeParent(66666);
+        wDummy.setPartOfSpeech(PartOfSpeech.NUMERAL);
+        wDummy.setGender(Gender.FEMALE);
+
+//        attributesPanel.add(new WAttributesPanel(wDummy));
 //        pack();
 
 
@@ -67,10 +74,12 @@ public class WordSearch extends JDialog {
             public void valueChanged(ListSelectionEvent arg0) {
                 if (!arg0.getValueIsAdjusting()) {
                     selectedWord = (Word) list1.getSelectedValue();
-                    System.out.println(selectedWord.getInfo());
+                    attributesPanel.add(new WAttributesPanel(selectedWord));
                 }
             }
         });
+
+
 
         idRadioButton.addChangeListener(new ChangeListener() {
             @Override
@@ -218,6 +227,7 @@ public class WordSearch extends JDialog {
     List<Word> wordList;
 
     private void onSearch() {
+        list1.setSelectedValue(null,true);
     if (!textField1.getText().isEmpty()) {
         if(idRadioButton.isSelected()) {
             word = Word.findById(Integer.parseInt(textField1.getText()));

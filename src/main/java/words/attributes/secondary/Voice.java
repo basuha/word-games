@@ -6,22 +6,47 @@ import utilities.WAttribute;
  * Залог глагола: активный, пассивный
  * Залог причастия, деепричастия: второй, null
  */
-public enum Voice {
+public enum Voice implements WAttribute {
 
-    ACTIVE ("active"),
-    PASSIVE ("passive"),
-    N_A ("n/a");
+    /** активный */
+    ACTIVE ("active", "активный"),
 
-    private final String value;
+    /** пассивный */
+    PASSIVE ("passive", "пассивный"),
 
-    Voice (String value) {
-        this.value = value;
+    /** н/д */
+    N_A ("n/a", "н/д");
+
+    private final String VALUE;
+    private final String LOCALIZED_VALUE;
+    private final static String LOCALIZED_ATTRIBUTE_NAME = "залог";
+
+    Voice (String value, String localizedValue) {
+        this.VALUE = value;
+        this.LOCALIZED_VALUE = localizedValue;
+    }
+
+    public WAttribute[] getValues() {
+        return values();
+    }
+
+    public String[] getLocalizedValueArray() {
+        return WAttribute.getLocalizedValueArray(this);
+    }
+
+    @Override
+    public String getLocalizedValue() {
+        return LOCALIZED_VALUE;
+    }
+
+    public String getLocalizedAttributeName() {
+        return LOCALIZED_ATTRIBUTE_NAME;
     }
 
     @Override
     public String toString() {
-            return value;
-        }
+        return VALUE;
+    }
 }
 
 
