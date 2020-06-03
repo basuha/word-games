@@ -2,6 +2,7 @@ package words.secondary;
 
 import utilities.Word;
 import words.attributes.primary.Gender;
+import words.attributes.primary.PartOfSpeech;
 import words.attributes.primary.Plural;
 import words.attributes.primary.WordCase;
 
@@ -26,7 +27,7 @@ public class Pronoun extends Word {
     private WordCase wordCase;
 
     public Pronoun() {
-        partOfSpeech = PRONOUN;
+        partOfSpeech = PartOfSpeech.PRONOUN;
         changeable = false;
     }
 

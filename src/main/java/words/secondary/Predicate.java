@@ -1,6 +1,7 @@
 package words.secondary;
 
 import utilities.Word;
+import words.attributes.primary.PartOfSpeech;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.Entity;
 public class Predicate extends Word {
 
     public Predicate() {
-        partOfSpeech = PREDICATE;
+        partOfSpeech = PartOfSpeech.PREDICATE;
         changeable = false;
         super.codeParent = 0;
     }

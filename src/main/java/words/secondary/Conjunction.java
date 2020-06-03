@@ -1,6 +1,7 @@
 package words.secondary;
 
 import utilities.Word;
+import words.attributes.primary.PartOfSpeech;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ import javax.persistence.Entity;
 public class Conjunction extends Word {
 
     public Conjunction() {
-        partOfSpeech = CONJUNCTION;
+        partOfSpeech = PartOfSpeech.CONJUNCTION;
         changeable = false;
         super.codeParent = 0;
     }

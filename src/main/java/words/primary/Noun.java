@@ -1,10 +1,7 @@
 package words.primary;
 
 import utilities.Word;
-import words.attributes.primary.Animate;
-import words.attributes.primary.Gender;
-import words.attributes.primary.Plural;
-import words.attributes.primary.WordCase;
+import words.attributes.primary.*;
 
 import javax.persistence.*;
 
@@ -28,7 +25,7 @@ public class Noun extends Word {
     private Animate animate;
 
     public Noun() {
-        partOfSpeech = NOUN;
+        partOfSpeech = PartOfSpeech.NOUN;
         changeable = true;
     }
 

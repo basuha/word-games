@@ -2,6 +2,7 @@ package words.primary;
 
 import utilities.Word;
 import words.attributes.primary.AdverbType;
+import words.attributes.primary.PartOfSpeech;
 import words.attributes.secondary.Comparative;
 import words.attributes.primary.Type;
 
@@ -26,7 +27,7 @@ public class Adverb extends Word {
     private Comparative comparative;
 
     public Adverb() {
-        partOfSpeech = ADVERB;
+        partOfSpeech = PartOfSpeech.ADVERB;
         changeable = true;
     }
 

@@ -47,7 +47,7 @@ public class Participle extends Word {
     private ShortF shortF;
 
     public Participle() {
-        partOfSpeech = PARTICIPLE;
+        partOfSpeech = PartOfSpeech.PARTICIPLE;
         changeable = true;
     }
 

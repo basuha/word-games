@@ -1,6 +1,7 @@
 package words.primary;
 
 import utilities.Word;
+import words.attributes.primary.PartOfSpeech;
 import words.attributes.secondary.Perfect;
 import words.attributes.secondary.Reflexive;
 import words.attributes.primary.Time;
@@ -31,7 +32,7 @@ public class ExtraParticiple extends Word {
     private Reflexive reflexive;
 
     public ExtraParticiple() {
-        partOfSpeech = EXTRA_PARTICIPLE;
+        partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
         changeable = true;
     }
 

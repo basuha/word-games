@@ -1,6 +1,7 @@
 package words.secondary;
 
 import utilities.Word;
+import words.attributes.primary.PartOfSpeech;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.Entity;
 public class PronNoun extends Pronoun {
 
     public PronNoun() {
-        partOfSpeech = PRON_NOUN;
+        partOfSpeech = PartOfSpeech.PRON_NOUN;
         changeable = false;
     }
 

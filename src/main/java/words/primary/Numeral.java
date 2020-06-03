@@ -1,10 +1,7 @@
 package words.primary;
 
 import utilities.Word;
-import words.attributes.primary.Gender;
-import words.attributes.primary.Plural;
-import words.attributes.primary.Type;
-import words.attributes.primary.WordCase;
+import words.attributes.primary.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -30,7 +27,7 @@ public class Numeral extends Word {
     private WordCase wordCase;
 
     public Numeral() {
-        partOfSpeech = NUMERAL;
+        partOfSpeech = PartOfSpeech.NUMERAL;
         changeable = true;
     }
 

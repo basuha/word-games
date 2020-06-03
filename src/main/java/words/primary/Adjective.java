@@ -1,12 +1,9 @@
 package words.primary;
 
 import utilities.Word;
+import words.attributes.primary.*;
 import words.attributes.secondary.Comparative;
 import words.attributes.secondary.ShortF;
-import words.attributes.primary.Gender;
-import words.attributes.primary.Plural;
-import words.attributes.primary.Type;
-import words.attributes.primary.WordCase;
 
 import javax.persistence.*;
 
@@ -36,7 +33,7 @@ public class Adjective extends Word {
     private Comparative comparative;
 
     public Adjective() {
-        partOfSpeech = ADJECTIVE;
+        partOfSpeech = PartOfSpeech.ADJECTIVE;
     }
 
     public ShortF getShortF() {

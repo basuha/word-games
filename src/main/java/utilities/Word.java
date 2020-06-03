@@ -33,7 +33,7 @@ import java.util.List;
 @Entity
 @Table(name = "words")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "partOfSpeech", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "partOfSpeech")
 public class Word {
 
     @Transient public static final String ADJECTIVE = "Adjective";
@@ -63,8 +63,8 @@ public class Word {
     protected Integer codeParent;
 
     @Column(insertable = false, updatable = false, nullable = false)
-//    @Enumerated(EnumType.STRING)
-    protected String partOfSpeech;
+    @Enumerated
+    protected PartOfSpeech partOfSpeech;
 
     @Transient
     protected boolean changeable;
@@ -126,11 +126,11 @@ public class Word {
         this.code = code;
     }
 
-    public String getPartOfSpeech() {
+    public PartOfSpeech getPartOfSpeech() {
         return partOfSpeech;
     }
 
-    public void setPartOfSpeech(String partOfSpeech) {
+    public void setPartOfSpeech(PartOfSpeech partOfSpeech) {
         this.partOfSpeech = partOfSpeech;
     }
 

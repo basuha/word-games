@@ -116,20 +116,20 @@ public class WSearch extends WDummy {
 
         switch (hexCode[PART_OF_SPEECH_INDEX]){
             case 0 -> partOfSpeech = null;
-            case 1 -> partOfSpeech = ADJECTIVE;
-            case 2 -> partOfSpeech = ADVERB;
-            case 3 -> partOfSpeech = EXTRA_PARTICIPLE;
-            case 4 -> partOfSpeech = NOUN;
-            case 5 -> partOfSpeech = NUMERAL;
-            case 6 -> partOfSpeech = PARTICIPLE;
-            case 7 -> partOfSpeech = VERB;
-            case 8 -> partOfSpeech = CONJUNCTION;
-            case 9 -> partOfSpeech = INTERJECTION;
-            case 0xA -> partOfSpeech = PARENTHESIS;
-            case 0xB -> partOfSpeech = PARTICLE;
-            case 0xC -> partOfSpeech = PREDICATE;
-            case 0xD -> partOfSpeech = PRETEXT;
-            case 0xE -> partOfSpeech = PRONOUN;
+            case 1 -> partOfSpeech = PartOfSpeech.ADJECTIVE;
+            case 2 -> partOfSpeech = PartOfSpeech.ADVERB;
+            case 3 -> partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
+            case 4 -> partOfSpeech = PartOfSpeech.NOUN;
+            case 5 -> partOfSpeech = PartOfSpeech.NUMERAL;
+            case 6 -> partOfSpeech = PartOfSpeech.PARTICIPLE;
+            case 7 -> partOfSpeech = PartOfSpeech.VERB;
+            case 8 -> partOfSpeech = PartOfSpeech.CONJUNCTION;
+            case 9 -> partOfSpeech = PartOfSpeech.INTERJECTION;
+            case 0xA -> partOfSpeech = PartOfSpeech.PARENTHESIS;
+            case 0xB -> partOfSpeech = PartOfSpeech.PARTICLE;
+            case 0xC -> partOfSpeech = PartOfSpeech.PREDICATE;
+            case 0xD -> partOfSpeech = PartOfSpeech.PRETEXT;
+            case 0xE -> partOfSpeech = PartOfSpeech.PRONOUN;
         }
 
         if (hexCode[ADVERB_TYPE_INDEX] != null) {
@@ -304,7 +304,7 @@ public class WSearch extends WDummy {
         switch (word.getPartOfSpeech()) {
             case ADJECTIVE -> {
                 Adjective adjective = (Adjective) word;
-                this.partOfSpeech = ADJECTIVE;
+                this.partOfSpeech = PartOfSpeech.ADJECTIVE;
                 this.comparative = adjective.getComparative();
                 this.gender = adjective.getGender();
                 this.plural = adjective.getPlural();
@@ -315,7 +315,7 @@ public class WSearch extends WDummy {
             }
             case ADVERB -> {
                 Adverb adverb = (Adverb) word;
-                this.partOfSpeech = ADVERB;
+                this.partOfSpeech = PartOfSpeech.ADVERB;
                 this.type = adverb.getType();
                 this.adverbType = adverb.getAdverbType();
                 this.comparative = adverb.getComparative();
@@ -323,7 +323,7 @@ public class WSearch extends WDummy {
             }
             case EXTRA_PARTICIPLE -> {
                 ExtraParticiple extraParticiple = (ExtraParticiple) word;
-                this.partOfSpeech = EXTRA_PARTICIPLE;
+                this.partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
                 this.transitive = extraParticiple.getTransitive();
                 this.perfect = extraParticiple.getPerfect();
                 this.time = extraParticiple.getTime();
@@ -332,7 +332,7 @@ public class WSearch extends WDummy {
             }
             case NOUN -> {
                 Noun noun = (Noun) word;
-                this.partOfSpeech = NOUN;
+                this.partOfSpeech = PartOfSpeech.NOUN;
                 this.plural = noun.getPlural();
                 this.gender = noun.getGender();
                 this.wordCase = noun.getWordCase();
@@ -341,7 +341,7 @@ public class WSearch extends WDummy {
             }
             case NUMERAL -> {
                 Numeral numeral = (Numeral) word;
-                this.partOfSpeech = NUMERAL;
+                this.partOfSpeech = PartOfSpeech.NUMERAL;
                 this.plural = numeral.getPlural();
                 this.gender = numeral.getGender();
                 this.wordCase = numeral.getWordCase();
@@ -350,7 +350,7 @@ public class WSearch extends WDummy {
             }
             case PARTICIPLE -> {
                 Participle participle = (Participle) word;
-                this.partOfSpeech = PARTICIPLE;
+                this.partOfSpeech = PartOfSpeech.PARTICIPLE;
                 this.gender = participle.getGender();
                 this.kind = participle.getKind();
                 this.plural = participle.getPlural();
@@ -364,7 +364,7 @@ public class WSearch extends WDummy {
             }
             case VERB -> {
                 Verb verb = (Verb) word;
-                this.partOfSpeech = VERB;
+                this.partOfSpeech = PartOfSpeech.VERB;
                 this.face = verb.getFace();
                 this.gender = verb.getGender();
                 this.infinitive = verb.getInfinitive();
@@ -379,13 +379,13 @@ public class WSearch extends WDummy {
             }
             case PRETEXT -> {
                 Pretext pretext = (Pretext) word;
-                this.partOfSpeech = PRETEXT;
+                this.partOfSpeech = PartOfSpeech.PRETEXT;
                 this.wordCase = pretext.getWordCase();
                 isPrimary = false;
             }
             case PRONOUN, PRON_ADJ, PRON_ADV, PRON_NOUN -> {
                 Pronoun pronoun = (Pronoun) word;
-                this.partOfSpeech = PRONOUN;
+                this.partOfSpeech = PartOfSpeech.PRONOUN;
                 this.wordCase = pronoun.getWordCase();
                 this.gender = pronoun.getGender();
                 this.plural = pronoun.getPlural();

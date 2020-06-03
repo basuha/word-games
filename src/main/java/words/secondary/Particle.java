@@ -1,6 +1,7 @@
 package words.secondary;
 
 import utilities.Word;
+import words.attributes.primary.PartOfSpeech;
 
 import javax.persistence.*;
 
@@ -12,7 +13,7 @@ import javax.persistence.*;
 public class Particle extends Word {
 
     public Particle() {
-        partOfSpeech = PARTICLE;
+        partOfSpeech = PartOfSpeech.PARTICLE;
         changeable = false;
         super.codeParent = 0;
     }

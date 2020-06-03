@@ -1,6 +1,7 @@
 package words.secondary;
 
 import utilities.Word;
+import words.attributes.primary.PartOfSpeech;
 import words.attributes.primary.WordCase;
 
 import javax.persistence.DiscriminatorValue;
@@ -18,7 +19,7 @@ public class Pretext extends Word {
     private WordCase wordCase;
 
     public Pretext() {
-        partOfSpeech = PRETEXT;
+        partOfSpeech = PartOfSpeech.PRETEXT;
         changeable = false;
     }
 

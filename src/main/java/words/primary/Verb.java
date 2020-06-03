@@ -1,10 +1,7 @@
 package words.primary;
 
 import utilities.Word;
-import words.attributes.primary.Gender;
-import words.attributes.primary.Kind;
-import words.attributes.primary.Plural;
-import words.attributes.primary.Time;
+import words.attributes.primary.*;
 import words.attributes.secondary.*;
 
 import javax.persistence.DiscriminatorValue;
@@ -46,7 +43,7 @@ public class Verb extends Word {
     private Voice voice;
 
     public Verb() {
-        partOfSpeech = VERB;
+        partOfSpeech = PartOfSpeech.VERB;
         changeable = true;
     }
 

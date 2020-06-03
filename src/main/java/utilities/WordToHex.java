@@ -44,7 +44,7 @@ public class WordToHex extends WSearch {
         return BigDecimal.valueOf(Long.parseLong(stringBuilder.toString()));
     }
 
-    public byte attribToHex(String partOfSpeech) {
+    public byte attribToHex(PartOfSpeech partOfSpeech) {
         if (partOfSpeech != null) {
             return (byte) switch (partOfSpeech) {
                 case ADJECTIVE -> 1;
