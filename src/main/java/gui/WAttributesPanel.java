@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WAttributesPanel extends JPanel {
-    private WAttribute[] items = {Gender.FEMALE, Gender.MALE };
     private GridLayout gridLayout = new GridLayout(8,4,10,10);
 
     public WAttributesPanel() {

@@ -48,12 +48,9 @@ public enum Gender implements WAttribute {
         return values();
     }
 
-//        String[] values = new String[values().length];
-//        for (int i = 0; i < values.length; i++) {
-//            values[i] = values()[i].getLocalizedValue();
-//        }
-//        return values;
-
+    public String[] getLocalizedValueArray() {
+        return WAttribute.getLocalizedValueArray(this);
+    }
 
     @Override
     public String getLocalizedValue() {
@@ -64,3 +61,10 @@ public enum Gender implements WAttribute {
         return LOCALIZED_ATTRIBUTE_NAME;
     }
 }
+
+
+//        String[] values = new String[values().length];
+//        for (int i = 0; i < values.length; i++) {
+//            values[i] = values()[i].getLocalizedValue();
+//        }
+//        return values;

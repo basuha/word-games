@@ -1,6 +1,7 @@
 package utilities;
 
 import org.hibernate.Session;
+import words.attributes.primary.PartOfSpeech;
 import words.primary.*;
 import words.secondary.*;
 
@@ -32,30 +33,8 @@ import java.util.List;
 @Entity
 @Table(name = "words")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "partOfSpeech")
+@DiscriminatorColumn(name = "partOfSpeech", discriminatorType = DiscriminatorType.STRING)
 public class Word {
-
-    @Id
-    protected Integer IID;
-
-    protected String word;
-    protected Integer code;
-    protected Integer codeParent;
-
-    @Column(insertable = false, updatable = false, nullable = false)
-    protected String partOfSpeech;
-
-    @Transient
-    protected boolean changeable;
-
-    @Transient
-    protected static int MAX_ID;
-
-    @Transient
-    protected List<Word> cognates = new ArrayList<>();
-
-    @Transient
-    protected int hexCode;
 
     @Transient public static final String ADJECTIVE = "Adjective";
     @Transient public static final String ADVERB = "Adverb";
@@ -75,6 +54,29 @@ public class Word {
     @Transient public static final String PRON_ADV = "PronAdv";
     @Transient public static final String PRON_NOUN = "PronNoun";
     @Transient public static final String PRONOUN = "Pronoun";
+
+    @Id
+    protected Integer IID;
+
+    protected String word;
+    protected Integer code;
+    protected Integer codeParent;
+
+    @Column(insertable = false, updatable = false, nullable = false)
+//    @Enumerated(EnumType.STRING)
+    protected String partOfSpeech;
+
+    @Transient
+    protected boolean changeable;
+
+    @Transient
+    protected static int MAX_ID;
+
+    @Transient
+    protected List<Word> cognates = new ArrayList<>();
+
+    @Transient
+    protected int hexCode;
 
     public static int getMaxID() {
         Thread thread = new Thread(new Runnable() {
