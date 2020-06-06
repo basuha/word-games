@@ -1,5 +1,7 @@
 package gui;
 
+import org.apache.fontbox.ttf.TTFDataStream;
+import org.apache.poi.ss.formula.functions.T;
 import org.codehaus.plexus.util.StringUtils;
 import utilities.WAsyncTask;
 import utilities.WDummy;
@@ -21,18 +23,21 @@ public class WSearchDialogue extends JDialog {
     protected JButton buttonAdd;
     protected JTextField textField1;
     protected JProgressBar progressBar1;
+
     protected JRadioButton idRadioButton;
     protected JRadioButton hexRadioButton;
+    protected JRadioButton attribRadioButton;
+    protected JRadioButton wordRadioButton;
+
     protected JCheckBox autoSearchCheckBox;
     protected JLabel mainLabel;
-
-    private JRadioButton attribRadioButton;
-    private JRadioButton wordRadioButton;
-    private JList list1;
-    private JPanel scrollBar;
+    private JList<Word> list1;
     private JScrollPane scrollPane;
     private JPanel attributesPanel;
-    private JList list2;
+    private JList<Word> list2;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
     private JScrollPane scrollPane2;
     private JButton deleteButton;
     private JButton addButton;
@@ -47,7 +52,7 @@ public class WSearchDialogue extends JDialog {
         setTitle("Поиск слов");
         setContentPane(contentPane);
 
-        setSize(750,450);
+        setSize(850,450);
         setResizable(false);
         setModal(true);
         getRootPane().setDefaultButton(searchButton);
@@ -56,6 +61,7 @@ public class WSearchDialogue extends JDialog {
         scrollPane.setViewportView(list1);
         scrollPane2.setViewportView(list2);
         attributesPanel.setLayout(new GridBagLayout());
+        attributesPanel.setVisible(true);
 
 
         WDummy wDummy = new WDummy("проверка");
@@ -67,19 +73,7 @@ public class WSearchDialogue extends JDialog {
 //        attributesPanel.add(new WAttributesPanel(wDummy));
 //        pack();
 
-
-        list1.addListSelectionListener(new ListSelectionListener() {
-
-            @Override
-            public void valueChanged(ListSelectionEvent arg0) {
-                if (!arg0.getValueIsAdjusting()) {
-                    selectedWord = (Word) list1.getSelectedValue();
-                    attributesPanel.add(new WAttributesPanel(selectedWord));
-                }
-            }
-        });
-
-
+        addListenerToMenuList();
 
         idRadioButton.addChangeListener(new ChangeListener() {
             @Override
@@ -153,8 +147,18 @@ public class WSearchDialogue extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void extractAttributesFromSelectedWord() {
-        attributesPanel.add(new WAttributesPanel());
+    private void addListenerToMenuList() {
+        list1.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    selectedWord = (Word) list1.getSelectedValue();
+                    attribAction();
+                }
+                else {
+                    System.out.println("I think the value is adjusting");
+                }
+            }
+        });
     }
 
     private void idHexButtons() {
@@ -174,6 +178,7 @@ public class WSearchDialogue extends JDialog {
         mainLabel.setEnabled(true);
         textField1.setEnabled(true);
         mainLabel.setText("ID:");
+        autoSearchCheckBox.setSelected(true);
     }
 
     private void searchByHEXMode() {
@@ -181,12 +186,14 @@ public class WSearchDialogue extends JDialog {
         mainLabel.setEnabled(true);
         textField1.setEnabled(true);
         mainLabel.setText("HEX:");
+        autoSearchCheckBox.setSelected(false);
     }
 
     private void searchByAttribMode() {
         attribRadioButton.setSelected(true);
         mainLabel.setEnabled(false);
         textField1.setEnabled(false);
+        autoSearchCheckBox.setSelected(false);
     }
 
     private void searchByWordMode() {
@@ -194,50 +201,37 @@ public class WSearchDialogue extends JDialog {
         mainLabel.setText("Слово: ");
         mainLabel.setEnabled(true);
         textField1.setEnabled(true);
-    }
-
-    private void setVisibilityOfComboBoxes(boolean value) {
-
+        autoSearchCheckBox.setSelected(false);
     }
 
     private void textFieldAction() {
-        if (!textField1.getText().isEmpty()) {
-            if (StringUtils.isNumeric(textField1.getText())) {
-                searchButton.setEnabled(!textField1.getText().isEmpty());
+        searchButton.setEnabled(!textField1.getText().isEmpty());
+        if (StringUtils.isNumeric(textField1.getText())) {
+            if (autoSearchCheckBox.isSelected()) {
+                onSearch();
+            }
 
-                if (autoSearchCheckBox.isSelected()) {
-                    onSearch();
-                }
-
-                if (wordRadioButton.isSelected()) {
-                    searchByIDMode();
-                }
-
-            } else {
-                autoSearchCheckBox.setSelected(false);
-                searchByWordMode();
+            if (idRadioButton.isSelected()) {
+                searchByIDMode();
             }
         } else {
-            searchButton.setEnabled(false);
+            searchByWordMode();
         }
     }
 
-
-    Word word;
     List<Word> wordList;
 
     private void onSearch() {
-        list1.setSelectedValue(null,true);
     if (!textField1.getText().isEmpty()) {
         if(idRadioButton.isSelected()) {
-            word = Word.findById(Integer.parseInt(textField1.getText()));
+            selectedWord = Word.findById(Integer.parseInt(textField1.getText()));
             listModel.clear();
-            if (word == null) {
+            if (selectedWord == null) {
                 listModel.addElement(new WDummy("Cлово не найдено"));
             } else {
-                listModel.addElement(word);
+                listModel.addElement(selectedWord);
+                attribAction();
             }
-
         } else if(hexRadioButton.isSelected()){
             WAsyncTask wAsyncTask = new WAsyncTask(textField1.getText());
             wAsyncTask.run();
@@ -265,8 +259,13 @@ public class WSearchDialogue extends JDialog {
         }
     }
 
+    private void attribAction() {
+        attributesPanel.removeAll();
+        attributesPanel.add(new WAttributesPanel(selectedWord));
+    }
     private void onAdd() {
         // add your code here if necessary
         dispose();
     }
+
 }

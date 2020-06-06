@@ -19,7 +19,7 @@ public enum Comparative implements WAttribute {
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;
-    private final static String LOCALIZED_ATTRIBUTE_NAME = "форма сравнения";
+    private final static String LOCALIZED_ATTRIBUTE_NAME = "сравн.";
 
     Comparative (String value, String localizedValue) {
         this.VALUE = value;

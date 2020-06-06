@@ -12,11 +12,10 @@ public class WSingleAttributePanel extends WAttributesPanel {
     private JLabel attribLabel;
     private JComboBox<WAttribute> attribComboBox;
     private DefaultComboBoxModel<WAttribute> attribComboBoxModel;
-    private JSeparator separator;
     private static final Dimension DEFAULT_SIZE = new Dimension(200,25);
 
     public WSingleAttributePanel(WAttribute attribute) {
-        super(new FlowLayout(FlowLayout.CENTER));
+        super(new FlowLayout(FlowLayout.RIGHT));
         createAttributeComboBox(attribute);
     }
 
@@ -24,17 +23,14 @@ public class WSingleAttributePanel extends WAttributesPanel {
         setPreferredSize(DEFAULT_SIZE);
 
         attribLabel = new JLabel(attribute.getLocalizedAttributeName() + ":");
+        attribLabel.setHorizontalAlignment(SwingConstants.LEFT);
         add(attribLabel);
 
-        attribComboBoxModel = new DefaultComboBoxModel(WAttribute.getLocalizedValueArray(attribute));
+        attribComboBoxModel = new DefaultComboBoxModel(attribute.getLocalizedValueArray());
         attribComboBox = new JComboBox<>();
         attribComboBox.setModel(attribComboBoxModel);
         attribComboBox.setSelectedItem(attribute.getLocalizedValue());
 
         add(attribComboBox);
-
-        separator = new JPopupMenu.Separator();
-        separator.setOrientation(SwingConstants.HORIZONTAL);
-        add(separator);
     }
 }
