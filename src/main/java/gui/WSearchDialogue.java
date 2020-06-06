@@ -267,5 +267,4 @@ public class WSearchDialogue extends JDialog {
         // add your code here if necessary
         dispose();
     }
-
 }
