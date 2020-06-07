@@ -83,6 +83,13 @@ public class Word {
     @Transient
     protected Field[] wAttributes;
 
+    {
+        wAttributes = this.getClass().getDeclaredFields();
+        for (Field f : wAttributes) {
+            f.setAccessible(true);
+        }
+    }
+
     public static int getMaxID() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -231,10 +238,6 @@ public class Word {
     }
 
     public Field[] getWAttributes() {
-        wAttributes = this.getClass().getDeclaredFields();
-        for (Field f : wAttributes) {
-            f.setAccessible(true);
-        }
         return wAttributes;
     }
 

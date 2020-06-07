@@ -34,6 +34,7 @@ public class WSearchDialogue extends JDialog {
     private JList<Word> list1;
     private JScrollPane scrollPane;
     private JPanel attributesPanel;
+    protected WAttributesPanel wAttributesPanel;
     private JList<Word> list2;
     private JButton button1;
     private JButton button2;
@@ -64,12 +65,11 @@ public class WSearchDialogue extends JDialog {
         attributesPanel.setVisible(true);
 
 
-        WDummy wDummy = new WDummy("проверка");
-        wDummy.setCode(1234);
-        wDummy.setCodeParent(66666);
-        wDummy.setPartOfSpeech(PartOfSpeech.NUMERAL);
-        wDummy.setGender(Gender.FEMALE);
-
+//        WDummy wDummy = new WDummy("проверка");
+//        wDummy.setCode(1234);
+//        wDummy.setCodeParent(66666);
+//        wDummy.setPartOfSpeech(PartOfSpeech.NUMERAL);
+//        wDummy.setGender(Gender.FEMALE);
 //        attributesPanel.add(new WAttributesPanel(wDummy));
 //        pack();
 
@@ -151,7 +151,7 @@ public class WSearchDialogue extends JDialog {
         list1.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
-                    selectedWord = (Word) list1.getSelectedValue();
+                    selectedWord = list1.getSelectedValue();
                     attribAction();
                 }
                 else {
@@ -222,47 +222,49 @@ public class WSearchDialogue extends JDialog {
     List<Word> wordList;
 
     private void onSearch() {
-    if (!textField1.getText().isEmpty()) {
-        if(idRadioButton.isSelected()) {
-            selectedWord = Word.findById(Integer.parseInt(textField1.getText()));
-            listModel.clear();
-            if (selectedWord == null) {
-                listModel.addElement(new WDummy("Cлово не найдено"));
-            } else {
-                listModel.addElement(selectedWord);
-                attribAction();
+        if (!textField1.getText().isEmpty()) {
+            if (idRadioButton.isSelected()) {
+                selectedWord = Word.findById(Integer.parseInt(textField1.getText()));
+                listModel.clear();
+                if (selectedWord == null) {
+                    listModel.addElement(new WDummy("Cлово не найдено"));
+                } else {
+                    listModel.addElement(selectedWord);
+                    attribAction();
+                }
+            } else if (hexRadioButton.isSelected()) {
+                WAsyncTask wAsyncTask = new WAsyncTask(textField1.getText());
+                wAsyncTask.run();
+
+                listModel.clear();
+
+                int progress;
+                do {
+                    progress = wAsyncTask.getProgress(); //Должно работать
+                    progressBar1.setValue(progress);
+                } while (progress != 100);
+
+                wordList = wAsyncTask.getList();
+                if (wordList == null) {
+                    listModel.addElement(new WDummy("Cлово не найдено"));
+                } else {
+                    listModel.addAll(wordList);
+                }
             }
-        } else if(hexRadioButton.isSelected()){
-            WAsyncTask wAsyncTask = new WAsyncTask(textField1.getText());
-            wAsyncTask.run();
-
-            listModel.clear();
-
-            int progress;
-            do {
-                progress = wAsyncTask.getProgress(); //Должно работать
-                progressBar1.setValue(progress);
-            } while (progress != 100);
-
-            wordList = wAsyncTask.getList();
-            if (wordList == null) {
-                listModel.addElement(new WDummy("Cлово не найдено"));
-            } else {
-                listModel.addAll(wordList);
-            }
-
-
-        } else if(attribRadioButton.isSelected()){
-        }
-
-        } else if(wordRadioButton.isSelected()){
         }
     }
 
     private void attribAction() {
+        wAttributesPanel = new WAttributesPanel(selectedWord);
+        attributesPanel.remove(wAttributesPanel);
         attributesPanel.removeAll();
-        attributesPanel.add(new WAttributesPanel(selectedWord));
+        attributesPanel.updateUI();
+        wAttributesPanel.updateUI();
+        attributesPanel.add(wAttributesPanel);
+        attributesPanel.updateUI();
+        wAttributesPanel.updateUI();
     }
+
     private void onAdd() {
         // add your code here if necessary
         dispose();
