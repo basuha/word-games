@@ -11,7 +11,8 @@ public class WordToHex extends WSearch {
     private List<Byte> hexCode = new ArrayList<>();
 
     public WordToHex(Word word) {
-        init(word);
+        this.word = word;
+        init();
     }
 
     public BigDecimal toHex(){

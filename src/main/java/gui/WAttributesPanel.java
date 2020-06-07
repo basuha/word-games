@@ -15,10 +15,6 @@ public class WAttributesPanel extends JPanel {
     private GridLayout gridLayout = new GridLayout(8,4,1,1);
     private Field[] fields;
 
-    public WAttributesPanel() {
-        setLayout(gridLayout);
-    }
-
     public WAttributesPanel(LayoutManager layout) {
         super(layout);
     }
@@ -30,7 +26,6 @@ public class WAttributesPanel extends JPanel {
         fields = word.getWAttributes();
         System.out.println(Arrays.toString(fields));
         for (int i = 0; i < fields.length; i++) {
-
             try {
                 if (fields[i].get(word) instanceof Enum)
                     add(new WSingleAttributePanel((WAttribute) fields[i].get(word)));

@@ -13,7 +13,7 @@ public class WSingleAttributePanel extends WAttributesPanel {
     private JComboBox<WAttribute> attribComboBox;
     private DefaultComboBoxModel<WAttribute> attribComboBoxModel;
     private final static FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-    private static final Dimension DEFAULT_SIZE = new Dimension(200,25);
+    private final static Dimension DEFAULT_SIZE = new Dimension(200,25);
 
     public WSingleAttributePanel(WAttribute attribute) {
         super(flowLayout);

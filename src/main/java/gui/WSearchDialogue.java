@@ -153,6 +153,7 @@ public class WSearchDialogue extends JDialog {
                 if (!e.getValueIsAdjusting()) {
                     selectedWord = list1.getSelectedValue();
                     attribAction();
+                    list1.updateUI();
                 }
                 else {
                     System.out.println("I think the value is adjusting");
@@ -220,37 +221,46 @@ public class WSearchDialogue extends JDialog {
     }
 
     List<Word> wordList;
+    WAsyncTask wAsyncTask;
 
     private void onSearch() {
         if (!textField1.getText().isEmpty()) {
             if (idRadioButton.isSelected()) {
-                selectedWord = Word.findById(Integer.parseInt(textField1.getText()));
-                listModel.clear();
-                if (selectedWord == null) {
-                    listModel.addElement(new WDummy("Cлово не найдено"));
-                } else {
-                    listModel.addElement(selectedWord);
-                    attribAction();
-                }
+                searchByIdLogic();
             } else if (hexRadioButton.isSelected()) {
-                WAsyncTask wAsyncTask = new WAsyncTask(textField1.getText());
-                wAsyncTask.run();
-
-                listModel.clear();
-
-                int progress;
-                do {
-                    progress = wAsyncTask.getProgress(); //Должно работать
-                    progressBar1.setValue(progress);
-                } while (progress != 100);
-
-                wordList = wAsyncTask.getList();
-                if (wordList == null) {
-                    listModel.addElement(new WDummy("Cлово не найдено"));
-                } else {
-                    listModel.addAll(wordList);
-                }
+                wAsyncTask = new WAsyncTask(textField1.getText());
+                searchLogic();
+            } else if (wordRadioButton.isSelected()) {
+                wAsyncTask = new WAsyncTask(new Word(textField1.getText()));
+                searchLogic();
             }
+        }
+    }
+
+    private void searchByIdLogic() {
+        selectedWord = Word.findById(Integer.parseInt(textField1.getText()));
+        listModel.clear();
+        if (selectedWord == null) {
+            listModel.addElement(new Word("Cлово не найдено"));
+        } else {
+            listModel.addElement(selectedWord);
+            attribAction();
+        }
+    }
+    private void searchLogic() {
+        wAsyncTask.run();
+        listModel.clear();
+        int progress;
+        do {
+            progress = wAsyncTask.getProgress(); //Должно работать
+            progressBar1.setValue(progress);
+        } while (progress != 100);
+
+        wordList = wAsyncTask.getList();
+        if (wordList == null) {
+            listModel.addElement(new Word("Cлово не найдено"));
+        } else {
+            listModel.addAll(wordList);
         }
     }
 

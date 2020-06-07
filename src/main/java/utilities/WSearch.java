@@ -21,11 +21,11 @@ import java.util.concurrent.TimeUnit;
 
 public class WSearch extends WDummy {
 
-    private Word word;
     private Random random = new Random();
     protected List<Word> wordsList = new ArrayList<>();
     private List<Word> resultSet = new ArrayList<>();
     private final Byte[] hexCode = new Byte[17];
+    protected Word word;
 
     /** максимальное кол-во слов в выборке из БД */
     private final int MAX_RESULTS = 10000;
@@ -93,14 +93,13 @@ public class WSearch extends WDummy {
     }
 
     public WSearch(String hexCode) {
-        for (int i = 0; i < hexCode.length(); i++) {
-            this.hexCode[i] = toDigit(hexCode.charAt(i));
-        }
-        hexInit();
+        hexInit(hexCode);
     }
 
     public WSearch(Word word) {
-        init(word);
+        this.word = word;
+        if (word.getWord() == null)
+            init();
     }
 
     private byte toDigit(char hexChar) {
@@ -112,7 +111,10 @@ public class WSearch extends WDummy {
         return (byte) digit;
     }
 
-    private void hexInit()  {
+    private void hexInit(String hex)  {
+        for (int i = 0; i < hex.length(); i++) {
+            this.hexCode[i] = toDigit(hex.charAt(i));
+        }
 
         switch (hexCode[PART_OF_SPEECH_INDEX]){
             case 0 -> partOfSpeech = null;
@@ -299,96 +301,95 @@ public class WSearch extends WDummy {
         }
     }
 
-    protected void init(Word word){
-        this.word = word;
+    protected void init(){
         switch (word.getPartOfSpeech()) {
             case ADJECTIVE -> {
                 Adjective adjective = (Adjective) word;
-                this.partOfSpeech = PartOfSpeech.ADJECTIVE;
-                this.comparative = adjective.getComparative();
-                this.gender = adjective.getGender();
-                this.plural = adjective.getPlural();
-                this.shortF = adjective.getShortF();
-                this.type = adjective.getType();
-                this.wordCase = adjective.getWordCase();
+                partOfSpeech = PartOfSpeech.ADJECTIVE;
+                comparative = adjective.getComparative();
+                gender = adjective.getGender();
+                plural = adjective.getPlural();
+                shortF = adjective.getShortF();
+                type = adjective.getType();
+                wordCase = adjective.getWordCase();
                 isPrimary = true;
             }
             case ADVERB -> {
                 Adverb adverb = (Adverb) word;
-                this.partOfSpeech = PartOfSpeech.ADVERB;
-                this.type = adverb.getType();
-                this.adverbType = adverb.getAdverbType();
-                this.comparative = adverb.getComparative();
+                partOfSpeech = PartOfSpeech.ADVERB;
+                type = adverb.getType();
+                adverbType = adverb.getAdverbType();
+                comparative = adverb.getComparative();
                 isPrimary = true;
             }
             case EXTRA_PARTICIPLE -> {
                 ExtraParticiple extraParticiple = (ExtraParticiple) word;
-                this.partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
-                this.transitive = extraParticiple.getTransitive();
-                this.perfect = extraParticiple.getPerfect();
-                this.time = extraParticiple.getTime();
-                this.reflexive = extraParticiple.getReflexive();
+                partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
+                transitive = extraParticiple.getTransitive();
+                perfect = extraParticiple.getPerfect();
+                time = extraParticiple.getTime();
+                reflexive = extraParticiple.getReflexive();
                 isPrimary = true;
             }
             case NOUN -> {
                 Noun noun = (Noun) word;
-                this.partOfSpeech = PartOfSpeech.NOUN;
-                this.plural = noun.getPlural();
-                this.gender = noun.getGender();
-                this.wordCase = noun.getWordCase();
-                this.animate = noun.getAnimate();
+                partOfSpeech = PartOfSpeech.NOUN;
+                plural = noun.getPlural();
+                gender = noun.getGender();
+                wordCase = noun.getWordCase();
+                animate = noun.getAnimate();
                 isPrimary = true;
             }
             case NUMERAL -> {
                 Numeral numeral = (Numeral) word;
-                this.partOfSpeech = PartOfSpeech.NUMERAL;
-                this.plural = numeral.getPlural();
-                this.gender = numeral.getGender();
-                this.wordCase = numeral.getWordCase();
-                this.type = numeral.getType();
+                partOfSpeech = PartOfSpeech.NUMERAL;
+                plural = numeral.getPlural();
+                gender = numeral.getGender();
+                wordCase = numeral.getWordCase();
+                type = numeral.getType();
                 isPrimary = false;
             }
             case PARTICIPLE -> {
                 Participle participle = (Participle) word;
-                this.partOfSpeech = PartOfSpeech.PARTICIPLE;
-                this.gender = participle.getGender();
-                this.kind = participle.getKind();
-                this.plural = participle.getPlural();
-                this.reflexive = participle.getReflexive();
-                this.shortF = participle.getShortF();
-                this.time = participle.getTime();
-                this.transitive = participle.getTransitive();
-                this.voice = participle.getVoice();
-                this.wordCase = participle.getWordCase();
+                partOfSpeech = PartOfSpeech.PARTICIPLE;
+                gender = participle.getGender();
+                kind = participle.getKind();
+                plural = participle.getPlural();
+                reflexive = participle.getReflexive();
+                shortF = participle.getShortF();
+                time = participle.getTime();
+                transitive = participle.getTransitive();
+                voice = participle.getVoice();
+                wordCase = participle.getWordCase();
                 isPrimary = true;
             }
             case VERB -> {
                 Verb verb = (Verb) word;
-                this.partOfSpeech = PartOfSpeech.VERB;
-                this.face = verb.getFace();
-                this.gender = verb.getGender();
-                this.infinitive = verb.getInfinitive();
-                this.kind = verb.getKind();
-                this.perfect = verb.getPerfect();
-                this.plural = verb.getPlural();
-                this.reflexive = verb.getReflexive();
-                this.time = verb.getTime();
-                this.transitive = verb.getTransitive();
-                this.voice = verb.getVoice();
+                partOfSpeech = PartOfSpeech.VERB;
+                face = verb.getFace();
+                gender = verb.getGender();
+                infinitive = verb.getInfinitive();
+                kind = verb.getKind();
+                perfect = verb.getPerfect();
+                plural = verb.getPlural();
+                reflexive = verb.getReflexive();
+                time = verb.getTime();
+                transitive = verb.getTransitive();
+                voice = verb.getVoice();
                 isPrimary = true;
             }
             case PRETEXT -> {
                 Pretext pretext = (Pretext) word;
-                this.partOfSpeech = PartOfSpeech.PRETEXT;
-                this.wordCase = pretext.getWordCase();
+                partOfSpeech = PartOfSpeech.PRETEXT;
+                wordCase = pretext.getWordCase();
                 isPrimary = false;
             }
             case PRONOUN, PRON_ADJ, PRON_ADV, PRON_NOUN -> {
                 Pronoun pronoun = (Pronoun) word;
-                this.partOfSpeech = PartOfSpeech.PRONOUN;
-                this.wordCase = pronoun.getWordCase();
-                this.gender = pronoun.getGender();
-                this.plural = pronoun.getPlural();
+                partOfSpeech = PartOfSpeech.PRONOUN;
+                wordCase = pronoun.getWordCase();
+                gender = pronoun.getGender();
+                plural = pronoun.getPlural();
                 isPrimary = false;
             }
         }
@@ -415,7 +416,7 @@ public class WSearch extends WDummy {
         }
     }
 
-    public static Word get() {
+    public static Word getRandom() {
         return Word.findById(new Random().nextInt(Word.getMaxID()));
     }
 

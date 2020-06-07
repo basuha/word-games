@@ -15,7 +15,7 @@ public class WParser extends Sentence {
                 parsedHexes.add(parsed[i]);
                 super.sentence.add(new WSearch(parsed[i].substring(2)).getSingleWord());
             } else {
-                super.sentence.add(new WDummy(parsed[i]));
+                super.sentence.add(new Word(parsed[i]));
             }
         }
     }

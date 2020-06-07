@@ -3,6 +3,9 @@ package utilities;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.*;
 
 public class WAsyncTask extends WSearch implements Runnable {
@@ -12,14 +15,13 @@ public class WAsyncTask extends WSearch implements Runnable {
     private BlockingQueue<Word> queue = new ArrayBlockingQueue<>(10);
     private int progress;
 
-    public WAsyncTask(WSearch wRandom) {
-        super(wRandom);
-    }
-
     public WAsyncTask(String hexCode) {
         super(hexCode);
     }
 
+    public WAsyncTask(Word word) {
+        super(word);
+    }
 
     @Override
     public void run() {
@@ -35,7 +37,9 @@ public class WAsyncTask extends WSearch implements Runnable {
             executorService.submit(() -> {
                 Session session = HibernateUtil.getSessionFactory().openSession();
                 Query query = session.createQuery(buildQuery(finalInterval, finalNextInterval));
-                wordsList.addAll(query.getResultList());
+                List<Word> words = query.getResultList();
+                if (words != null)
+                    wordsList.addAll(words);
                 session.close();
             });
             progress += 100 / NUMBER_OF_THREADS;
@@ -58,11 +62,35 @@ public class WAsyncTask extends WSearch implements Runnable {
     private String buildQuery(int lowID, int hiID) {
         StringBuilder hql = new StringBuilder();
         hql.append("FROM ")
-                .append(partOfSpeech)
+                .append(partOfSpeech != null ? partOfSpeech : "Word")
                 .append(" WHERE")
                 .append(" IID > ").append(lowID)
                 .append(" AND")
                 .append(" IID < ").append(hiID);
+
+        System.out.println("запрос " + hql.toString());
+        System.out.println(Arrays.toString(wAttributes));
+        System.out.println(getInfo());
+
+//        for (Field f : word.wAttributes) {
+//            hql.append(" AND ")
+//                    .append(f.getName())
+//                    .append(" = ")
+//                    .append("'")
+//                    .append(f.get(word))
+//                    .append("'");
+//        }
+//
+        System.out.println("запрос " + hql.toString());
+
+
+        if (word != null) {
+            hql.append(" AND")
+                    .append(" word = ")
+                    .append("'")
+                    .append(word)
+                    .append("'");
+        }
 
         if (shortF != null) {
             hql.append(" AND")
@@ -191,6 +219,7 @@ public class WAsyncTask extends WSearch implements Runnable {
                     .append(voice)
                     .append("'");
         }
+
         return hql.toString();
     }
 }

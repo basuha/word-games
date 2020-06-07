@@ -45,7 +45,7 @@ public class MainDialog extends JDialog {
         if (textField1.isEnabled()) {
            word = Word.findById(Integer.parseInt(textField1.getText()));
         } else {
-           word = WSearch.get();
+           word = WSearch.getRandom();
         }
         textArea1.setText(word.getIID().toString());
     }

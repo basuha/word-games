@@ -83,11 +83,17 @@ public class Word {
     @Transient
     protected Field[] wAttributes;
 
+    public Word() {
+    }
+
+    public Word(String word) {
+        this.word = word;
+    }
+
     {
         wAttributes = this.getClass().getDeclaredFields();
-        for (Field f : wAttributes) {
+        for (Field f : wAttributes)
             f.setAccessible(true);
-        }
     }
 
     public static int getMaxID() {
