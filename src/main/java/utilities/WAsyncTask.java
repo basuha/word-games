@@ -68,9 +68,9 @@ public class WAsyncTask extends WSearch implements Runnable {
                 .append(" AND")
                 .append(" IID < ").append(hiID);
 
-        System.out.println("запрос " + hql.toString());
-        System.out.println(Arrays.toString(wAttributes));
-        System.out.println(getInfo());
+//        System.out.println("запрос " + hql.toString());
+//        System.out.println(Arrays.toString(wAttributes));
+//        System.out.println(getInfo());
 
 //        for (Field f : word.wAttributes) {
 //            hql.append(" AND ")
@@ -81,7 +81,7 @@ public class WAsyncTask extends WSearch implements Runnable {
 //                    .append("'");
 //        }
 //
-        System.out.println("запрос " + hql.toString());
+//        System.out.println("запрос " + hql.toString());
 
 
         if (word != null) {

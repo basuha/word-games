@@ -36,13 +36,16 @@ public class WSearchDialogue extends JDialog {
     private JPanel attributesPanel;
     protected WAttributesPanel wAttributesPanel;
     private JList<Word> list2;
-    private JButton button1;
-    private JButton button2;
+    private JButton createButton;
     private JButton button3;
     private JScrollPane scrollPane2;
     private JButton deleteButton;
     private JButton addButton;
     private JButton cleanButton;
+    private JTextField wordField;
+    private JTextField IDfield;
+    private JTextField HEXField;
+    private JComboBox<WAttribute> partOfSpeechComboBox;
     private ButtonGroup typeChangeRadioGroup;
     private DefaultListModel<Word> listModel = new DefaultListModel<>();
     private DefaultComboBoxModel<WAttribute> comboBoxModel = new DefaultComboBoxModel<>();
@@ -53,7 +56,10 @@ public class WSearchDialogue extends JDialog {
         setTitle("Поиск слов");
         setContentPane(contentPane);
 
-        setSize(850,450);
+        partOfSpeechComboBox.setModel(new DefaultComboBoxModel(PartOfSpeech.NOUN.getLocalizedValueArray()));
+        partOfSpeechComboBox.setSelectedItem(null);
+
+        setSize(850,500);
         setResizable(false);
         setModal(true);
         getRootPane().setDefaultButton(searchButton);
@@ -247,6 +253,7 @@ public class WSearchDialogue extends JDialog {
             attribAction();
         }
     }
+
     private void searchLogic() {
         wAsyncTask.run();
         listModel.clear();
