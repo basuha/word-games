@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 
 public class WAttributesPanel extends JPanel {
-    private GridLayout gridLayout = new GridLayout(8,4,1,1);
+    private GridLayout gridLayout = new GridLayout(6,2,1,1);
     private Field[] fields;
 
     public WAttributesPanel(LayoutManager layout) {

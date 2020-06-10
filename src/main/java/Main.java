@@ -26,9 +26,7 @@ public class Main {
 
 //        Adverb adverb = new Adverb().setAdverbType(AdverbType.PURPOSE);
 //        Word word = Word.findById(new Random().nextInt(Word.getMaxID()));
-
-//        WordToHex wordToHex = new WordToHex(adverb);
-//        int a = wordToHex.attribToHex(adverb.getAdverbType());
+//
 //        System.out.println(word.getHexCode());
 //        System.out.println(word.getInfo());
 
@@ -49,24 +47,24 @@ public class Main {
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //
-//        WRandomSentence randomSentenceBuilder = new WRandomSentence();
-//        randomSentenceBuilder
-//                            .append(new Adjective()
-//                                    .setGender(Gender.MALE)
-//                                    .setWordCase(WordCase.NOMINATIVE))
-//                            .append(new Noun()
-//                                    .setGender(Gender.MALE)
-//                                    .setPlural(Plural.SINGULAR)
-//                                    .setWordCase(WordCase.NOMINATIVE))
-//                            .append(new Adverb())
-//                            .append(new Verb()
-//                                    .setGender(Gender.MALE)
-//                                    .setPlural(Plural.SINGULAR)
-//                                    .setKind(Kind.SECOND));
-//
-//        for (Sentence s : randomSentenceBuilder.getResultList()) {
-//            System.out.println(s);
-//        }
+        WRandomSentence randomSentenceBuilder = new WRandomSentence();
+        randomSentenceBuilder
+                            .append(new Adjective()
+                                    .setGender(Gender.MALE)
+                                    .setWordCase(WordCase.NOMINATIVE))
+                            .append(new Noun()
+                                    .setGender(Gender.MALE)
+                                    .setPlural(Plural.SINGULAR)
+                                    .setWordCase(WordCase.NOMINATIVE))
+                            .append(new Adverb())
+                            .append(new Verb()
+                                    .setGender(Gender.MALE)
+                                    .setPlural(Plural.SINGULAR)
+                                    .setKind(Kind.SECOND));
+
+        for (Sentence s : randomSentenceBuilder.getResultList()) {
+            System.out.println(s);
+        }
 
 
 //        Credentials credentials = new Credentials("grajdanin233","AgAAAAAjlVJgAAZfbnHU08Ypa07fuEW8hR_0uvc");
@@ -83,28 +81,9 @@ public class Main {
 //            e.printStackTrace();
 //        }
 //
-//        Word wRandom = new WRandom(new Noun()).getSingleWord();
+//        Word wRandom = new WSearch(new Noun()).getSingleWord();
 //        System.out.println(wRandom.getWord());
 
-//        RandomSentenceBuilder randomSentenceBuilder = new RandomSentenceBuilder();
-//        randomSentenceBuilder
-//                .append(new Adjective()
-//                        .setParam(Gender.MALE)
-//                        .setParam(WordCase.NOMINATIVE))
-//                .append(new Noun()
-//                        .setParam(Gender.MALE)
-//                        .setParam(Plural.SINGULAR)
-//                        .setParam(WordCase.Noun.NOMINATIVE))
-//                .append(new Verb()
-//                        .setParam(Gender.MALE)
-//                        .setParam(Plural.SINGULAR)
-//                        .setParam(Kind.SECOND)
-//                        .setParam(Reflexive.NOT_REFLEXIVE))
-//                .append(new Noun()
-//                        .setParam(WordCase.Noun.ACCUSATIVE)
-//                        .setParam(Plural.SINGULAR));
-//
-//
 
 //
 //        System.out.println(Zodiac.CANCER);

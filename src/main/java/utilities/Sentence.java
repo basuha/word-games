@@ -20,7 +20,7 @@ public class Sentence {
     }
 
     public Sentence(String word) {
-        add(new Word(word));
+        add(new WDummy(word));
     }
 
     public Sentence add(Word word) {

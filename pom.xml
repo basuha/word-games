@@ -43,6 +43,30 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
+
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>LATEST</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots</artifactId>
+            <version>LATEST</version>
+        </dependency>
+
+
+
     </dependencies>
 
 

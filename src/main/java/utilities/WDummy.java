@@ -24,6 +24,9 @@ public class WDummy extends Word {
 
     public WDummy() {
     }
+    public WDummy(String word) {
+        this.word = word;
+    }
 
     @Override
     public PartOfSpeech getPartOfSpeech() {

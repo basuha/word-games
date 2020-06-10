@@ -85,10 +85,10 @@ public class Word {
 
     public Word() {
     }
-
-    public Word(String word) {
-        this.word = word;
-    }
+//
+//    public Word(String word) {
+//        this.word = word;
+//    }
 
     {
         wAttributes = this.getClass().getDeclaredFields();
@@ -240,7 +240,15 @@ public class Word {
     }
 
     public BigDecimal getHexCode() {
-        return new WordToHex(this).toHex();
+        WordToHex wordToHex = new WordToHex(this);
+        Thread thread = new Thread(wordToHex);
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return wordToHex.getHexOut();
     }
 
     public Field[] getWAttributes() {

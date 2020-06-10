@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import words.attributes.primary.*;
 import words.attributes.secondary.*;
 import words.primary.*;
+import words.secondary.Particle;
 import words.secondary.Pretext;
 import words.secondary.Pronoun;
 
@@ -98,8 +99,7 @@ public class WSearch extends WDummy {
 
     public WSearch(Word word) {
         this.word = word;
-        if (word.getWord() == null)
-            init();
+        init();
     }
 
     private byte toDigit(char hexChar) {
@@ -302,7 +302,7 @@ public class WSearch extends WDummy {
     }
 
     protected void init(){
-        switch (word.getPartOfSpeech()) {
+        switch (word.partOfSpeech.toString()) {
             case ADJECTIVE -> {
                 Adjective adjective = (Adjective) word;
                 partOfSpeech = PartOfSpeech.ADJECTIVE;
@@ -392,6 +392,11 @@ public class WSearch extends WDummy {
                 plural = pronoun.getPlural();
                 isPrimary = false;
             }
+            case PARTICLE -> partOfSpeech = PartOfSpeech.PARTICLE;
+            case PREDICATE -> partOfSpeech = PartOfSpeech.PREDICATE;
+            case CONJUNCTION -> partOfSpeech = PartOfSpeech.CONJUNCTION;
+            case PARENTHESIS -> partOfSpeech = PartOfSpeech.PARENTHESIS;
+            case INTERJECTION -> partOfSpeech = PartOfSpeech.INTERJECTION;
         }
     }
 

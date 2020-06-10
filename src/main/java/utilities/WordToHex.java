@@ -7,15 +7,30 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WordToHex extends WSearch {
+public class WordToHex extends WSearch implements Runnable{
     private List<Byte> hexCode = new ArrayList<>();
+    private BigDecimal hexOut;
 
     public WordToHex(Word word) {
         this.word = word;
         init();
     }
 
-    public BigDecimal toHex(){
+    public String get(){
+        toHex();
+        return hexOut.toString();
+    }
+
+    @Override
+    public void run() {
+        toHex();
+    }
+
+    public BigDecimal getHexOut() {
+        return hexOut;
+    }
+
+    public void toHex(){
         hexCode.add(PART_OF_SPEECH_INDEX, attribToHex(partOfSpeech));
         hexCode.add(WORD_CASE_INDEX, attribToHex(wordCase));
         hexCode.add(GENDER_INDEX, attribToHex(gender));
@@ -33,8 +48,7 @@ public class WordToHex extends WSearch {
         hexCode.add(FACE_INDEX, attribToHex(face));
         hexCode.add(REFLEXIVE_INDEX, attribToHex(reflexive));
         hexCode.add(SHORT_FORM_INDEX, attribToHex(shortF));
-
-        return byteArrayToNumeric(hexCode);
+        hexOut = byteArrayToNumeric(hexCode);
     }
 
     private BigDecimal byteArrayToNumeric(List<Byte> bytes) {

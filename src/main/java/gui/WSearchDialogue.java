@@ -1,12 +1,7 @@
 package gui;
 
-import org.apache.fontbox.ttf.TTFDataStream;
-import org.apache.poi.ss.formula.functions.T;
-import org.codehaus.plexus.util.StringUtils;
-import utilities.WAsyncTask;
-import utilities.WDummy;
-import utilities.Word;
-import utilities.WAttribute;
+import org.apache.commons.lang3.StringUtils;
+import utilities.*;
 import words.attributes.primary.Gender;
 import words.attributes.primary.PartOfSpeech;
 
@@ -81,43 +76,6 @@ public class WSearchDialogue extends JDialog {
 
         addListenerToMenuList();
 
-        idRadioButton.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                idHexButtons();
-            }
-        });
-        hexRadioButton.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                idHexButtons();
-            }
-        });
-        attribRadioButton.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                idHexButtons();
-            }
-        });
-        wordRadioButton.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                idHexButtons();
-            }
-        });
-
-        textField1.getDocument().addDocumentListener(new DocumentListener() {
-            public void changedUpdate(DocumentEvent e) {
-                textFieldAction();
-            }
-            public void removeUpdate(DocumentEvent e) {
-                textFieldAction();
-            }
-            public void insertUpdate(DocumentEvent e) {
-                textFieldAction();
-            }
-        });
-
         searchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onSearch();
@@ -130,9 +88,9 @@ public class WSearchDialogue extends JDialog {
             }
         });
 
-        textField1.registerKeyboardAction(new ActionListener() {
+        IDfield.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (textField1.getCaret().isVisible()) {
+                if (IDfield.getCaret().isVisible()) {
                     onSearch();
                 }
             }
@@ -168,89 +126,43 @@ public class WSearchDialogue extends JDialog {
         });
     }
 
-    private void idHexButtons() {
-        if (idRadioButton.isSelected()) {
-            searchByIDMode();
-        } else if (hexRadioButton.isSelected()){
-            searchByHEXMode();
-        } else if (attribRadioButton.isSelected()) {
-            searchByAttribMode();
-        } else if (wordRadioButton.isSelected()) {
-            searchByWordMode();
-        }
-    }
-
-    private void searchByIDMode() {
-        idRadioButton.setSelected(true);
-        mainLabel.setEnabled(true);
-        textField1.setEnabled(true);
-        mainLabel.setText("ID:");
-        autoSearchCheckBox.setSelected(true);
-    }
-
-    private void searchByHEXMode() {
-        hexRadioButton.setSelected(true);
-        mainLabel.setEnabled(true);
-        textField1.setEnabled(true);
-        mainLabel.setText("HEX:");
-        autoSearchCheckBox.setSelected(false);
-    }
-
-    private void searchByAttribMode() {
-        attribRadioButton.setSelected(true);
-        mainLabel.setEnabled(false);
-        textField1.setEnabled(false);
-        autoSearchCheckBox.setSelected(false);
-    }
-
-    private void searchByWordMode() {
-        wordRadioButton.setSelected(true);
-        mainLabel.setText("Слово: ");
-        mainLabel.setEnabled(true);
-        textField1.setEnabled(true);
-        autoSearchCheckBox.setSelected(false);
-    }
-
-    private void textFieldAction() {
-        searchButton.setEnabled(!textField1.getText().isEmpty());
-        if (StringUtils.isNumeric(textField1.getText())) {
-            if (autoSearchCheckBox.isSelected()) {
-                onSearch();
-            }
-
-            if (idRadioButton.isSelected()) {
-                searchByIDMode();
-            }
-        } else {
-            searchByWordMode();
-        }
-    }
-
     List<Word> wordList;
     WAsyncTask wAsyncTask;
 
     private void onSearch() {
-        if (!textField1.getText().isEmpty()) {
-            if (idRadioButton.isSelected()) {
-                searchByIdLogic();
-            } else if (hexRadioButton.isSelected()) {
-                wAsyncTask = new WAsyncTask(textField1.getText());
-                searchLogic();
-            } else if (wordRadioButton.isSelected()) {
-                wAsyncTask = new WAsyncTask(new Word(textField1.getText()));
-                searchLogic();
-            }
+        if (idRadioButton.isSelected()) {
+            searchByIdLogic();
+        } else if (hexRadioButton.isSelected()) {
+            wAsyncTask = new WAsyncTask(textField1.getText());
+            searchLogic();
+        } else if (wordRadioButton.isSelected()) {
+            wAsyncTask = new WAsyncTask(new WDummy(textField1.getText()));
+            searchLogic();
         }
     }
 
     private void searchByIdLogic() {
-        selectedWord = Word.findById(Integer.parseInt(textField1.getText()));
-        listModel.clear();
-        if (selectedWord == null) {
-            listModel.addElement(new Word("Cлово не найдено"));
-        } else {
-            listModel.addElement(selectedWord);
-            attribAction();
+        if(!IDfield.getText().isEmpty() && StringUtils.isNumeric(IDfield.getText())) {
+            selectedWord = Word.findById(Integer.parseInt(IDfield.getText()));
+            listModel.clear();
+            if (selectedWord == null) {
+                wordField.setText("слово не найдено");
+                attributesPanel.removeAll();
+                attributesPanel.updateUI();
+            } else {
+                wordField.setText(selectedWord.getWord());
+                WordToHex wordToHex = new WordToHex(selectedWord);
+                Thread thread = new Thread(wordToHex);
+                thread.start();
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                HEXField.setText(wordToHex.getHexOut().toString());
+                partOfSpeechComboBox.setSelectedItem(selectedWord.getPartOfSpeech());
+                attribAction();
+            }
         }
     }
 
@@ -265,7 +177,7 @@ public class WSearchDialogue extends JDialog {
 
         wordList = wAsyncTask.getList();
         if (wordList == null) {
-            listModel.addElement(new Word("Cлово не найдено"));
+            wordField.setText("слов не найдено");
         } else {
             listModel.addAll(wordList);
         }
