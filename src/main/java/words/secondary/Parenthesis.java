@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 public class Parenthesis extends Word {
 
     public Parenthesis() {
-        partOfSpeech = PartOfSpeech.PARENTHESIS;
+        partOfSpeech = PARENTHESIS;
         changeable = false;
         super.codeParent = 0;
     }

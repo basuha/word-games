@@ -14,12 +14,12 @@ public class SentenceGenerator {
     private String inputSentence;
     private final Scanner SCANNER = new Scanner(System.in);
     private ArrayList<String> separatedWords = new ArrayList<>();
-    private ArrayList<Word> wordsList = new ArrayList<>();
+    private ArrayList<IWord> wordsList = new ArrayList<>();
     private int wordCount;
     Random random = new Random();
 
-    private List<List<Word>> resultSet = new ArrayList<>();
-    private List<Word> output = new ArrayList<>();
+    private List<List<IWord>> resultSet = new ArrayList<>();
+    private List<IWord> output = new ArrayList<>();
     private StringBuilder outString = new StringBuilder();
 
     public void init() {
@@ -27,12 +27,12 @@ public class SentenceGenerator {
         inputSentence = SCANNER.nextLine();
         wordSeparator();
         find();
-        for (List<Word> l : resultSet) {
+        for (List<IWord> l : resultSet) {
 //            for (Word w : l) {
                 output.add(new WSearch(l.get(0)).getSingleWord());
 //            }
         }
-        for (Word w : output) {
+        for (IWord w : output) {
             outString.append(w).append(" ");
         }
         System.out.println(outString.toString());
@@ -53,7 +53,7 @@ public class SentenceGenerator {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query query = session.createQuery("FROM Word WHERE word = :word");
         query.setParameter("word", word);
-        List<Word> words = query.getResultList();
+        List<IWord> words = query.getResultList();
         resultSet.add(words);
         session.close();
     }

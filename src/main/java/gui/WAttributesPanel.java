@@ -1,5 +1,6 @@
 package gui;
 
+import utilities.IWord;
 import utilities.WAttribute;
 import utilities.WDummy;
 import utilities.Word;
@@ -19,7 +20,7 @@ public class WAttributesPanel extends JPanel {
         super(layout);
     }
 
-    public WAttributesPanel(Word word) {
+    public WAttributesPanel(IWord word) {
         setLayout(gridLayout);
         setPreferredSize(new Dimension(400,250));
         setMaximumSize(new Dimension(400,250));

@@ -26,11 +26,11 @@ public class WSearchDialogue extends JDialog {
 
     protected JCheckBox autoSearchCheckBox;
     protected JLabel mainLabel;
-    private JList<Word> list1;
+    private JList<IWord> list1;
     private JScrollPane scrollPane;
     private JPanel attributesPanel;
     protected WAttributesPanel wAttributesPanel;
-    private JList<Word> list2;
+    private JList<IWord> list2;
     private JButton createButton;
     private JButton button3;
     private JScrollPane scrollPane2;
@@ -42,10 +42,10 @@ public class WSearchDialogue extends JDialog {
     private JTextField HEXField;
     private JComboBox<WAttribute> partOfSpeechComboBox;
     private ButtonGroup typeChangeRadioGroup;
-    private DefaultListModel<Word> listModel = new DefaultListModel<>();
+    private DefaultListModel<IWord> listModel = new DefaultListModel<>();
     private DefaultComboBoxModel<WAttribute> comboBoxModel = new DefaultComboBoxModel<>();
 
-    private Word selectedWord;
+    private IWord selectedWord;
 
     public WSearchDialogue() {
         setTitle("Поиск слов");
@@ -126,7 +126,7 @@ public class WSearchDialogue extends JDialog {
         });
     }
 
-    List<Word> wordList;
+    List<IWord> wordList;
     WAsyncTask wAsyncTask;
 
     private void onSearch() {

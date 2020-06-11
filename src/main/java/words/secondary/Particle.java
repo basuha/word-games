@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Particle extends Word {
 
     public Particle() {
-        partOfSpeech = PartOfSpeech.PARTICLE;
+        partOfSpeech = PARTICLE;
         changeable = false;
         super.codeParent = 0;
     }

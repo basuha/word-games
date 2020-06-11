@@ -43,7 +43,7 @@ public class Verb extends Word {
     private Voice voice;
 
     public Verb() {
-        partOfSpeech = PartOfSpeech.VERB;
+        partOfSpeech = VERB;
         changeable = true;
     }
 

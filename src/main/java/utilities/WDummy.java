@@ -29,7 +29,7 @@ public class WDummy extends Word {
     }
 
     @Override
-    public PartOfSpeech getPartOfSpeech() {
+    public String getPartOfSpeech() {
         return partOfSpeech;
     }
 

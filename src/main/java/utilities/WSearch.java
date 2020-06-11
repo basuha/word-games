@@ -20,13 +20,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class WSearch extends WDummy {
+public class WSearch extends WDummy implements IWord {
 
     private Random random = new Random();
-    protected List<Word> wordsList = new ArrayList<>();
-    private List<Word> resultSet = new ArrayList<>();
+    protected List<IWord> wordsList = new ArrayList<>();
+    private List<IWord> resultSet = new ArrayList<>();
     private final Byte[] hexCode = new Byte[17];
-    protected Word word;
+    protected IWord word;
 
     /** максимальное кол-во слов в выборке из БД */
     private final int MAX_RESULTS = 10000;
@@ -97,7 +97,7 @@ public class WSearch extends WDummy {
         hexInit(hexCode);
     }
 
-    public WSearch(Word word) {
+    public WSearch(IWord word) {
         this.word = word;
         init();
     }
@@ -118,20 +118,20 @@ public class WSearch extends WDummy {
 
         switch (hexCode[PART_OF_SPEECH_INDEX]){
             case 0 -> partOfSpeech = null;
-            case 1 -> partOfSpeech = PartOfSpeech.ADJECTIVE;
-            case 2 -> partOfSpeech = PartOfSpeech.ADVERB;
-            case 3 -> partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
-            case 4 -> partOfSpeech = PartOfSpeech.NOUN;
-            case 5 -> partOfSpeech = PartOfSpeech.NUMERAL;
-            case 6 -> partOfSpeech = PartOfSpeech.PARTICIPLE;
-            case 7 -> partOfSpeech = PartOfSpeech.VERB;
-            case 8 -> partOfSpeech = PartOfSpeech.CONJUNCTION;
-            case 9 -> partOfSpeech = PartOfSpeech.INTERJECTION;
-            case 0xA -> partOfSpeech = PartOfSpeech.PARENTHESIS;
-            case 0xB -> partOfSpeech = PartOfSpeech.PARTICLE;
-            case 0xC -> partOfSpeech = PartOfSpeech.PREDICATE;
-            case 0xD -> partOfSpeech = PartOfSpeech.PRETEXT;
-            case 0xE -> partOfSpeech = PartOfSpeech.PRONOUN;
+            case 1 -> partOfSpeech = ADJECTIVE;
+            case 2 -> partOfSpeech = ADVERB;
+            case 3 -> partOfSpeech = EXTRA_PARTICIPLE;
+            case 4 -> partOfSpeech = NOUN;
+            case 5 -> partOfSpeech = NUMERAL;
+            case 6 -> partOfSpeech = PARTICIPLE;
+            case 7 -> partOfSpeech = VERB;
+            case 8 -> partOfSpeech = CONJUNCTION;
+            case 9 -> partOfSpeech = INTERJECTION;
+            case 0xA -> partOfSpeech = PARENTHESIS;
+            case 0xB -> partOfSpeech = PARTICLE;
+            case 0xC -> partOfSpeech = PREDICATE;
+            case 0xD -> partOfSpeech = PRETEXT;
+            case 0xE -> partOfSpeech = PRONOUN;
         }
 
         if (hexCode[ADVERB_TYPE_INDEX] != null) {
@@ -302,105 +302,27 @@ public class WSearch extends WDummy {
     }
 
     protected void init(){
-        switch (word.partOfSpeech.toString()) {
-            case ADJECTIVE -> {
-                Adjective adjective = (Adjective) word;
-                partOfSpeech = PartOfSpeech.ADJECTIVE;
-                comparative = adjective.getComparative();
-                gender = adjective.getGender();
-                plural = adjective.getPlural();
-                shortF = adjective.getShortF();
-                type = adjective.getType();
-                wordCase = adjective.getWordCase();
-                isPrimary = true;
-            }
-            case ADVERB -> {
-                Adverb adverb = (Adverb) word;
-                partOfSpeech = PartOfSpeech.ADVERB;
-                type = adverb.getType();
-                adverbType = adverb.getAdverbType();
-                comparative = adverb.getComparative();
-                isPrimary = true;
-            }
-            case EXTRA_PARTICIPLE -> {
-                ExtraParticiple extraParticiple = (ExtraParticiple) word;
-                partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
-                transitive = extraParticiple.getTransitive();
-                perfect = extraParticiple.getPerfect();
-                time = extraParticiple.getTime();
-                reflexive = extraParticiple.getReflexive();
-                isPrimary = true;
-            }
-            case NOUN -> {
-                Noun noun = (Noun) word;
-                partOfSpeech = PartOfSpeech.NOUN;
-                plural = noun.getPlural();
-                gender = noun.getGender();
-                wordCase = noun.getWordCase();
-                animate = noun.getAnimate();
-                isPrimary = true;
-            }
-            case NUMERAL -> {
-                Numeral numeral = (Numeral) word;
-                partOfSpeech = PartOfSpeech.NUMERAL;
-                plural = numeral.getPlural();
-                gender = numeral.getGender();
-                wordCase = numeral.getWordCase();
-                type = numeral.getType();
-                isPrimary = false;
-            }
-            case PARTICIPLE -> {
-                Participle participle = (Participle) word;
-                partOfSpeech = PartOfSpeech.PARTICIPLE;
-                gender = participle.getGender();
-                kind = participle.getKind();
-                plural = participle.getPlural();
-                reflexive = participle.getReflexive();
-                shortF = participle.getShortF();
-                time = participle.getTime();
-                transitive = participle.getTransitive();
-                voice = participle.getVoice();
-                wordCase = participle.getWordCase();
-                isPrimary = true;
-            }
-            case VERB -> {
-                Verb verb = (Verb) word;
-                partOfSpeech = PartOfSpeech.VERB;
-                face = verb.getFace();
-                gender = verb.getGender();
-                infinitive = verb.getInfinitive();
-                kind = verb.getKind();
-                perfect = verb.getPerfect();
-                plural = verb.getPlural();
-                reflexive = verb.getReflexive();
-                time = verb.getTime();
-                transitive = verb.getTransitive();
-                voice = verb.getVoice();
-                isPrimary = true;
-            }
-            case PRETEXT -> {
-                Pretext pretext = (Pretext) word;
-                partOfSpeech = PartOfSpeech.PRETEXT;
-                wordCase = pretext.getWordCase();
-                isPrimary = false;
-            }
-            case PRONOUN, PRON_ADJ, PRON_ADV, PRON_NOUN -> {
-                Pronoun pronoun = (Pronoun) word;
-                partOfSpeech = PartOfSpeech.PRONOUN;
-                wordCase = pronoun.getWordCase();
-                gender = pronoun.getGender();
-                plural = pronoun.getPlural();
-                isPrimary = false;
-            }
-            case PARTICLE -> partOfSpeech = PartOfSpeech.PARTICLE;
-            case PREDICATE -> partOfSpeech = PartOfSpeech.PREDICATE;
-            case CONJUNCTION -> partOfSpeech = PartOfSpeech.CONJUNCTION;
-            case PARENTHESIS -> partOfSpeech = PartOfSpeech.PARENTHESIS;
-            case INTERJECTION -> partOfSpeech = PartOfSpeech.INTERJECTION;
-        }
+        partOfSpeech = word.getPartOfSpeech();
+        comparative = word.getComparative();
+        gender = word.getGender();
+        plural = word.getPlural();
+        shortF = word.getShortF();
+        type = word.getType();
+        wordCase = word.getWordCase();
+        adverbType = word.getAdverbType();
+        transitive = word.getTransitive();
+        perfect = word.getPerfect();
+        time = word.getTime();
+        reflexive = word.getReflexive();
+        animate = word.getAnimate();
+        face = word.getFace();
+        infinitive = word.getInfinitive();
+        kind = word.getKind();
+        perfect = word.getPerfect();
+        voice = word.getVoice();
     }
 
-    private boolean isCommon(Word word) {
+    private boolean isCommon(IWord word) {
         String wordWord = word.getWord();
         int wordLength = wordWord.length();
         int rootLength = (int) (wordLength / ROOT_DETECT_COEF);
@@ -414,7 +336,7 @@ public class WSearch extends WDummy {
     }
 
     protected void getResultSet() {  //подмешиваем частые слова в выборку для уменьшения "экзотичности" рандомизатора
-        for (Word w : wordsList) {
+        for (IWord w : wordsList) {
             if (isCommon(w)) {
                 resultSet.add(w);
             }
@@ -425,14 +347,14 @@ public class WSearch extends WDummy {
         return Word.findById(new Random().nextInt(Word.getMaxID()));
     }
 
-    public Word getSingleWord() {
+    public IWord getSingleWord() {
         if (resultSet.size() > 0) {
             return resultSet.get(random.nextInt(resultSet.size() - 1));
         }
         return null;
     }
 
-    public List<Word> getList() {
+    public List<IWord> getList() {
         return resultSet;
     }
 

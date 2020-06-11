@@ -32,7 +32,7 @@ public class ExtraParticiple extends Word {
     private Reflexive reflexive;
 
     public ExtraParticiple() {
-        partOfSpeech = PartOfSpeech.EXTRA_PARTICIPLE;
+        partOfSpeech = EXTRA_PARTICIPLE;
         changeable = true;
     }
 

@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 public class Conjunction extends Word {
 
     public Conjunction() {
-        partOfSpeech = PartOfSpeech.CONJUNCTION;
+        partOfSpeech = CONJUNCTION;
         changeable = false;
         super.codeParent = 0;
     }

@@ -11,13 +11,19 @@ public class WordToHex extends WSearch implements Runnable{
     private List<Byte> hexCode = new ArrayList<>();
     private BigDecimal hexOut;
 
-    public WordToHex(Word word) {
+    public WordToHex(IWord word) {
         this.word = word;
         init();
     }
 
     public String get(){
-        toHex();
+        Thread thread = new Thread(this);
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return hexOut.toString();
     }
 
@@ -59,7 +65,7 @@ public class WordToHex extends WSearch implements Runnable{
         return BigDecimal.valueOf(Long.parseLong(stringBuilder.toString()));
     }
 
-    public byte attribToHex(PartOfSpeech partOfSpeech) {
+    public byte attribToHex(String partOfSpeech) {
         if (partOfSpeech != null) {
             return (byte) switch (partOfSpeech) {
                 case ADJECTIVE -> 1;

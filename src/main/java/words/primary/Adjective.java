@@ -1,5 +1,6 @@
 package words.primary;
 
+import utilities.IWord;
 import utilities.Word;
 import words.attributes.primary.*;
 import words.attributes.secondary.Comparative;
@@ -33,7 +34,7 @@ public class Adjective extends Word {
     private Comparative comparative;
 
     public Adjective() {
-        partOfSpeech = PartOfSpeech.ADJECTIVE;
+        partOfSpeech = ADJECTIVE;
     }
 
     public ShortF getShortF() {

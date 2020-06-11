@@ -19,7 +19,7 @@ public class WAsyncTask extends WSearch implements Runnable {
         super(hexCode);
     }
 
-    public WAsyncTask(Word word) {
+    public WAsyncTask(IWord word) {
         super(word);
     }
 
@@ -82,15 +82,15 @@ public class WAsyncTask extends WSearch implements Runnable {
 //        }
 //
 //        System.out.println("запрос " + hql.toString());
-
-
-        if (word != null) {
-            hql.append(" AND")
-                    .append(" word = ")
-                    .append("'")
-                    .append(word)
-                    .append("'");
-        }
+//
+//
+//        if (word != null) {
+//            hql.append(" AND")
+//                    .append(" word = ")
+//                    .append("'")
+//                    .append(word)
+//                    .append("'");
+//        }
 
         if (shortF != null) {
             hql.append(" AND")

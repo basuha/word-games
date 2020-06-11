@@ -35,8 +35,8 @@ import java.util.List;
 @Entity
 @Table(name = "words")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "partOfSpeech")
-public class Word {
+@DiscriminatorColumn(name = "partOfSpeech", discriminatorType = DiscriminatorType.STRING)
+public class Word implements IWord {
 
     @Transient public static final String ADJECTIVE = "Adjective";
     @Transient public static final String ADVERB = "Adverb";
@@ -65,8 +65,7 @@ public class Word {
     protected Integer codeParent;
 
     @Column(insertable = false, updatable = false, nullable = false)
-    @Enumerated
-    protected PartOfSpeech partOfSpeech;
+    protected String partOfSpeech;
 
     @Transient
     protected boolean changeable;
@@ -144,11 +143,11 @@ public class Word {
         this.code = code;
     }
 
-    public PartOfSpeech getPartOfSpeech() {
+    public String getPartOfSpeech() {
         return partOfSpeech;
     }
 
-    public void setPartOfSpeech(PartOfSpeech partOfSpeech) {
+    public void setPartOfSpeech(String partOfSpeech) {
         this.partOfSpeech = partOfSpeech;
     }
 

@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 public class Interjection extends Word {
 
     public Interjection() {
-        partOfSpeech = PartOfSpeech.INTERJECTION;
+        partOfSpeech = INTERJECTION;
         changeable = false;
         super.codeParent = 0;
     }

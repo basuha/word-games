@@ -1,24 +1,40 @@
 package utilities;
 
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class WChangeling {
     private String input;
     private String output;
     private List<Word> words;
-    private List<List<Word>> rawWordsList;
-    private List<Word> wordList;
-    private List<String> hexesList;
+    private List<List<Word>> rawWordsList = new ArrayList<>();
+    private List<Word> wordList = new ArrayList<>();
+    private List<String> hexesList = new ArrayList<>();
+    private WRandomSentence generator = new WRandomSentence();
+    private List<Sentence> resultSet = new ArrayList<>();
 
     public WChangeling(String input) {
-        this.input = input;
+        this.input = input.toLowerCase();
     }
 
-    public String get() {
+    public void process() {
         findWordsByQuery();
         generateWordsList();
         getHexesList();
-        return output;
+        generateRandomSentence();
+    }
+
+    public String get() {
+        return resultSet.get(new Random().nextInt(resultSet.size())).toString();
+    }
+
+    private void generateRandomSentence() {
+        for(String string : hexesList)
+            generator.append(string);
+        resultSet.addAll(generator.getResultList());
     }
 
     private void getHexesList() {
@@ -36,6 +52,7 @@ public class WChangeling {
     }
 
     private void findWordsByQuery() {
+        System.out.println(input);
         for (String s : input.split(" "))
             rawWordsList.add(Word.find(s));
     }
@@ -43,6 +60,8 @@ public class WChangeling {
 
 class Main {
     public static void main(String[] args) {
-
+        WChangeling wChangeling = new WChangeling("Мама мыла раму");
+        wChangeling.process();
+        System.out.println(wChangeling.get());
     }
 }

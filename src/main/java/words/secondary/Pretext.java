@@ -19,7 +19,7 @@ public class Pretext extends Word {
     private WordCase wordCase;
 
     public Pretext() {
-        partOfSpeech = PartOfSpeech.PRETEXT;
+        partOfSpeech = PRETEXT;
         changeable = false;
     }
 

@@ -27,7 +27,7 @@ public class Adverb extends Word {
     private Comparative comparative;
 
     public Adverb() {
-        partOfSpeech = PartOfSpeech.ADVERB;
+        partOfSpeech = ADVERB;
         changeable = true;
     }
 

@@ -27,7 +27,7 @@ public class Pronoun extends Word {
     private WordCase wordCase;
 
     public Pronoun() {
-        partOfSpeech = PartOfSpeech.PRONOUN;
+        partOfSpeech = PRONOUN;
         changeable = false;
     }
 

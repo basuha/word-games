@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 public class Predicate extends Word {
 
     public Predicate() {
-        partOfSpeech = PartOfSpeech.PREDICATE;
+        partOfSpeech = PREDICATE;
         changeable = false;
         super.codeParent = 0;
     }

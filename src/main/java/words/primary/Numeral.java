@@ -27,7 +27,7 @@ public class Numeral extends Word {
     private WordCase wordCase;
 
     public Numeral() {
-        partOfSpeech = PartOfSpeech.NUMERAL;
+        partOfSpeech = NUMERAL;
         changeable = true;
     }
 

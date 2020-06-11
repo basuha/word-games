@@ -25,7 +25,7 @@ public class Noun extends Word {
     private Animate animate;
 
     public Noun() {
-        partOfSpeech = PartOfSpeech.NOUN;
+        partOfSpeech = NOUN;
         changeable = true;
     }
 

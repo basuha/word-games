@@ -5,17 +5,17 @@ import java.util.List;
 
 public class Sentence {
     private int counter = 0;
-    protected List<Word> sentence = new ArrayList<>();
+    protected List<IWord> sentence = new ArrayList<>();
 
     public Sentence(){
 
     }
 
-    public Sentence(List<Word> word) {
+    public Sentence(List<IWord> word) {
         add(word);
     }
 
-    public Sentence(Word word) {
+    public Sentence(IWord word) {
         add(word);
     }
 
@@ -23,9 +23,9 @@ public class Sentence {
         add(new WDummy(word));
     }
 
-    public Sentence add(Word word) {
+    public Sentence add(IWord word) {
         if (counter == 0) {
-            sentence.add(word.setWord(firstUpperCase(word.getWord())));
+            sentence.add(word); //todo capitalization
         } else {
             sentence.add(word);
         }
@@ -33,8 +33,8 @@ public class Sentence {
         return this;
     }
 
-    public Sentence add(List<Word> word) {
-        for (Word w : word) {
+    public Sentence add(List<IWord> word) {
+        for (IWord w : word) {
             add(w);
         }
         return this;
