@@ -42,7 +42,6 @@ public class WChangeling {
     private void getHexesList() {
         for (Word w : wordList)
             hexesList.add(new WordToHex(w).get());
-
     }
 
     private void generateWordsList() {
