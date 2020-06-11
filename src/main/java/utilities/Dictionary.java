@@ -2,6 +2,7 @@ package utilities;
 
 import java.util.Random;
 
+@Deprecated
 public class Dictionary extends HibernateUtil {
 
     private Random random = new Random();

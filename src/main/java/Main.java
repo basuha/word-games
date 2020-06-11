@@ -47,25 +47,53 @@ public class Main {
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //        System.out.println(randomWord.get() + " " + randomWord2.get());
 //
-        WRandomSentence randomSentenceBuilder = new WRandomSentence();
-        randomSentenceBuilder
-                            .append(new Adjective()
-                                    .setGender(Gender.MALE)
-                                    .setWordCase(WordCase.NOMINATIVE))
-                            .append(new Noun()
-                                    .setGender(Gender.MALE)
-                                    .setPlural(Plural.SINGULAR)
-                                    .setWordCase(WordCase.NOMINATIVE))
-                            .append(new Adverb())
-                            .append(new Verb()
-                                    .setGender(Gender.MALE)
-                                    .setPlural(Plural.SINGULAR)
-                                    .setKind(Kind.SECOND));
 
-        for (Sentence s : randomSentenceBuilder.getResultList()) {
-            System.out.println(s);
-        }
 
+//        WRandomSentence randomSentenceBuilder = new WRandomSentence();
+//        randomSentenceBuilder
+//                            .append(new Adjective()
+//                                    .setGender(Gender.MALE)
+//                                    .setWordCase(WordCase.NOMINATIVE))
+//                            .append(new Noun()
+//                                    .setGender(Gender.MALE)
+//                                    .setPlural(Plural.SINGULAR)
+//                                    .setWordCase(WordCase.NOMINATIVE))
+//                            .append(new Adverb())
+//                            .append(new Verb()
+//                                    .setGender(Gender.MALE)
+//                                    .setPlural(Plural.SINGULAR)
+//                                    .setKind(Kind.SECOND));
+//
+//        for (Sentence s : randomSentenceBuilder.getResultList()) {
+//            System.out.println(s);
+//        }
+
+
+//        WRandSentence randomSentenceBuilder = new WRandSentence();
+//        randomSentenceBuilder
+//                .append(new Adjective()
+//                        .setGender(Gender.MALE)
+//                        .setWordCase(WordCase.NOMINATIVE))
+//                .append(new Noun()
+//                        .setGender(Gender.MALE)
+//                        .setPlural(Plural.SINGULAR)
+//                        .setWordCase(WordCase.NOMINATIVE))
+//                .append(new Adverb())
+//                .append(new Verb()
+//                        .setGender(Gender.MALE)
+//                        .setPlural(Plural.SINGULAR)
+//                        .setKind(Kind.SECOND));
+//        randomSentenceBuilder.build();
+//        for (Sentence s : randomSentenceBuilder.getResultSet()) {
+//            System.out.println(s);
+//        }
+//
+
+        WRandSentence randSentence = new WRandSentence();
+        randSentence.append("123");
+        randSentence.append("9");
+        randSentence.build();
+        System.out.println(randSentence.getResultSet());
 
 //        Credentials credentials = new Credentials("grajdanin233","AgAAAAAjlVJgAAZfbnHU08Ypa07fuEW8hR_0uvc");
 //        TransportClient tc = null;

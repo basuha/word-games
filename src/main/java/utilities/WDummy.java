@@ -3,7 +3,7 @@ package utilities;
 import words.attributes.primary.*;
 import words.attributes.secondary.*;
 
-public class WDummy extends Word {
+public class WDummy extends Word { //todo проверить надобность
 
     protected AdverbType adverbType;
     protected Animate animate;

@@ -1,5 +1,7 @@
 package utilities;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +43,15 @@ public class Sentence {
     }
 
     private static String firstUpperCase(String word){
-        if (word == null || word.isEmpty())
-            return word;
-        return word.substring(0, 1).toUpperCase() + word.substring(1);
+        return StringUtils.capitalize(word);
+    }
+
+    public boolean isEmpty() {
+        return sentence.isEmpty();
+    }
+
+    public int size() {
+        return sentence.size();
     }
 
     @Override

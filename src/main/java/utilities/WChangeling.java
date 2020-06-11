@@ -13,8 +13,8 @@ public class WChangeling {
     private List<List<Word>> rawWordsList = new ArrayList<>();
     private List<Word> wordList = new ArrayList<>();
     private List<String> hexesList = new ArrayList<>();
-    private WRandomSentence generator = new WRandomSentence();
-    private List<Sentence> resultSet = new ArrayList<>();
+    private WRandSentence generator = new WRandSentence();
+    public List<Sentence> resultSet = new ArrayList<>();
 
     public WChangeling(String input) {
         this.input = input.toLowerCase();
@@ -32,9 +32,11 @@ public class WChangeling {
     }
 
     private void generateRandomSentence() {
-        for(String string : hexesList)
-            generator.append(string);
-        resultSet.addAll(generator.getResultList());
+        for(String s : hexesList) {
+            generator.append(s);
+        }
+        generator.build();
+        resultSet.addAll(generator.getResultSet());
     }
 
     private void getHexesList() {
@@ -62,6 +64,6 @@ class Main {
     public static void main(String[] args) {
         WChangeling wChangeling = new WChangeling("Мама мыла раму");
         wChangeling.process();
-        System.out.println(wChangeling.get());
+        System.out.println(wChangeling.resultSet);
     }
 }

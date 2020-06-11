@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Deprecated
 public class SentenceGenerator {
     private String inputSentence;
     private final Scanner SCANNER = new Scanner(System.in);

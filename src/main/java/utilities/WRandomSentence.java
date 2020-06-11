@@ -5,7 +5,7 @@ import java.nio.file.Watchable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+@Deprecated
 public class WRandomSentence {
 
     private List<IWord> wordsList = new ArrayList<>();

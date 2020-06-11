@@ -3,6 +3,7 @@ package utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class WParser extends Sentence {
     private String[] parsed;
     private List<String> parsedHexes = new ArrayList<>();
