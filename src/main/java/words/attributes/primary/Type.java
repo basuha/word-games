@@ -20,6 +20,9 @@ import utilities.WAttribute;
  */
 public enum Type implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
+
     /** неизменяемое */
     IMMUTABLE_ADJECTIVE ("immutable", "неизменяемое"),
 

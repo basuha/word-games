@@ -118,185 +118,191 @@ public class WSearch extends WDummy implements IWord {
 
         switch (hexCode[PART_OF_SPEECH_INDEX]){
             case 0 -> partOfSpeech = null;
-            case 1 -> partOfSpeech = ADJECTIVE;
-            case 2 -> partOfSpeech = ADVERB;
-            case 3 -> partOfSpeech = EXTRA_PARTICIPLE;
-            case 4 -> partOfSpeech = NOUN;
-            case 5 -> partOfSpeech = NUMERAL;
-            case 6 -> partOfSpeech = PARTICIPLE;
-            case 7 -> partOfSpeech = VERB;
-            case 8 -> partOfSpeech = CONJUNCTION;
-            case 9 -> partOfSpeech = INTERJECTION;
-            case 0xA -> partOfSpeech = PARENTHESIS;
-            case 0xB -> partOfSpeech = PARTICLE;
-            case 0xC -> partOfSpeech = PREDICATE;
-            case 0xD -> partOfSpeech = PRETEXT;
-            case 0xE -> partOfSpeech = PRONOUN;
+            case 1 -> partOfSpeech = "1";
+            case 2 -> partOfSpeech = ADJECTIVE;
+            case 3 -> partOfSpeech = ADVERB;
+            case 4 -> partOfSpeech = EXTRA_PARTICIPLE;
+            case 5 -> partOfSpeech = NOUN;
+            case 6 -> partOfSpeech = NUMERAL;
+            case 7 -> partOfSpeech = PARTICIPLE;
+            case 8 -> partOfSpeech = VERB;
+            case 9 -> partOfSpeech = CONJUNCTION;
+            case 10 -> partOfSpeech = INTERJECTION;
+            case 11 -> partOfSpeech = PARENTHESIS;
+            case 12 -> partOfSpeech = PARTICLE;
+            case 13 -> partOfSpeech = PREDICATE;
+            case 14 -> partOfSpeech = PRETEXT;
+            case 15 -> partOfSpeech = PRONOUN;
         }
 
         if (hexCode[ADVERB_TYPE_INDEX] != null) {
             switch (hexCode[ADVERB_TYPE_INDEX]) {
-                case 0 -> adverbType = null;
-                case 1 -> adverbType = AdverbType.QUALITATIVE;
-                case 2 -> adverbType = AdverbType.METHOD;
-                case 3 -> adverbType = AdverbType.EXTENT;
-                case 4 -> adverbType = AdverbType.PLACE;
-                case 5 -> adverbType = AdverbType.DIRECTION;
-                case 6 -> adverbType = AdverbType.TIMING;
-                case 7 -> adverbType = AdverbType.PURPOSE;
-                case 8 -> adverbType = AdverbType.REASON;
+                case 0 -> adverbType = AdverbType.NULL;
+                case 1 -> adverbType = AdverbType.N_A;
+                case 2 -> adverbType = AdverbType.QUALITATIVE;
+                case 3 -> adverbType = AdverbType.METHOD;
+                case 4 -> adverbType = AdverbType.EXTENT;
+                case 5 -> adverbType = AdverbType.PLACE;
+                case 6 -> adverbType = AdverbType.DIRECTION;
+                case 7 -> adverbType = AdverbType.TIMING;
+                case 8 -> adverbType = AdverbType.PURPOSE;
+                case 9 -> adverbType = AdverbType.REASON;
             }
         }
 
         if (hexCode[ANIMATE_INDEX] != null) {
             switch (hexCode[ANIMATE_INDEX]) {
-                case 0 -> animate = null;
-                case 1 -> animate = Animate.ANIMATE;
-                case 2 -> animate = Animate.INANIMATE;
-                case 0xF -> animate = Animate.N_A;
+                case 0 -> animate = Animate.NULL;
+                case 1 -> animate = Animate.N_A;
+                case 2 -> animate = Animate.ANIMATE;
+                case 3 -> animate = Animate.INANIMATE;
             }
         }
 
         if (hexCode[GENDER_INDEX] != null) {
             switch (hexCode[GENDER_INDEX]) {
-                case 0 -> gender = null;
-                case 1 -> gender = Gender.MALE;
-                case 2 -> gender = Gender.FEMALE;
-                case 3 -> gender = Gender.NEUTER;
-                case 4 -> gender = Gender.COMMON;
-                case 0xF -> gender = Gender.N_A;
+                case 0 -> gender = Gender.NULL;
+                case 1 -> gender = Gender.N_A;
+                case 2 -> gender = Gender.MALE;
+                case 3 -> gender = Gender.FEMALE;
+                case 4 -> gender = Gender.NEUTER;
+                case 5 -> gender = Gender.COMMON;
             }
         }
 
         if (hexCode[KIND_INDEX] != null) {
             switch (hexCode[KIND_INDEX]) {
-                case 0 -> kind = null;
-                case 1 -> kind = Kind.FIRST;
-                case 2 -> kind = Kind.SECOND;
-                case 0xF -> kind = Kind.N_A;
+                case 0 -> kind = Kind.NULL;
+                case 1 -> kind = Kind.N_A;
+                case 2 -> kind = Kind.FIRST;
+                case 3 -> kind = Kind.SECOND;
             }
         }
 
         if (hexCode[PLURAL_INDEX] != null) {
             switch (hexCode[PLURAL_INDEX]) {
-                case 0 -> plural = null;
-                case 1 -> plural = Plural.PLURAL;
-                case 2 -> plural = Plural.SINGULAR;
-                case 0xF -> plural = Plural.N_A;
+                case 0 -> plural = Plural.NULL;
+                case 1 -> plural = Plural.N_A;
+                case 2 -> plural = Plural.PLURAL;
+                case 3 -> plural = Plural.SINGULAR;
             }
         }
 
         if (hexCode[TIME_INDEX] != null) {
             switch (hexCode[TIME_INDEX]) {
-                case 0 -> time = null;
-                case 1 -> time = Time.PAST;
-                case 2 -> time = Time.PRESENT;
-                case 3 -> time = Time.FUTURE;
+                case 0 -> time = Time.NULL;
+                case 1 -> time = Time.N_A;
+                case 2 -> time = Time.PAST;
+                case 3 -> time = Time.PRESENT;
+                case 4 -> time = Time.FUTURE;
             }
         }
 
         if (hexCode[TYPE_INDEX] != null) {
             switch (hexCode[TYPE_INDEX]) {
-                case 0 -> type = null;
-                case 1 -> type = Type.IMMUTABLE_ADJECTIVE;
-                case 2 -> type = Type.MUTABLE_ADJECTIVE;
-                case 3 -> type = Type.EXTENSIVE_ADVERB;
-                case 4 -> type = Type.DEFINITE_ADVERB;
-                case 5 -> type = Type.QUESTION_ADVERB;
-                case 6 -> type = Type.ORDINAL_NUMERAL;
-                case 7 -> type = Type.QUANTITATIVE_NUMERAL;
-                case 8 -> type = Type.COLLECTIVE_NUMERAL;
-                case 9 -> type = Type.INDEFINITE_NUMERAL;
+                case 0 -> type = Type.NULL;
+                case 1 -> type = Type.N_A;
+                case 2 -> type = Type.IMMUTABLE_ADJECTIVE;
+                case 3 -> type = Type.MUTABLE_ADJECTIVE;
+                case 4 -> type = Type.EXTENSIVE_ADVERB;
+                case 5 -> type = Type.DEFINITE_ADVERB;
+                case 6 -> type = Type.QUESTION_ADVERB;
+                case 7 -> type = Type.ORDINAL_NUMERAL;
+                case 8 -> type = Type.QUANTITATIVE_NUMERAL;
+                case 9 -> type = Type.COLLECTIVE_NUMERAL;
+                case 10 -> type = Type.INDEFINITE_NUMERAL;
             }
         }
 
         if (hexCode[WORD_CASE_INDEX] != null) {
             switch (hexCode[WORD_CASE_INDEX]) {
-                case 0 -> wordCase = null;
-                case 1 -> wordCase = WordCase.NOMINATIVE;
-                case 2 -> wordCase = WordCase.GENITIVE;
-                case 3 -> wordCase = WordCase.DATIVE;
-                case 4 -> wordCase = WordCase.ACCUSATIVE;
-                case 5 -> wordCase = WordCase.INSTRUMENTAL;
-                case 6 -> wordCase = WordCase.PREPOSITIONAL;
-                case 7 -> wordCase = WordCase.VOCATIVE;
-                case 8 -> wordCase = WordCase.PARTITIVE;
-                case 9 -> wordCase = WordCase.LOCATIVE;
-                case 0xA -> wordCase = WordCase.COUNTING;
-                case 0xF -> wordCase = WordCase.N_A;
+                case 0 -> wordCase = WordCase.NULL;
+                case 1 -> wordCase = WordCase.N_A;
+                case 2 -> wordCase = WordCase.NOMINATIVE;
+                case 3 -> wordCase = WordCase.GENITIVE;
+                case 4 -> wordCase = WordCase.DATIVE;
+                case 5 -> wordCase = WordCase.ACCUSATIVE;
+                case 6 -> wordCase = WordCase.INSTRUMENTAL;
+                case 7 -> wordCase = WordCase.PREPOSITIONAL;
+                case 8 -> wordCase = WordCase.VOCATIVE;
+                case 9 -> wordCase = WordCase.PARTITIVE;
+                case 10 -> wordCase = WordCase.LOCATIVE;
+                case 11 -> wordCase = WordCase.COUNTING;
             }
         }
 
         if (hexCode[COMPARATIVE_INDEX] != null) {
             switch (hexCode[COMPARATIVE_INDEX]) {
-                case 0 -> comparative = null;
-                case 1 -> comparative = Comparative.COMPARATIVE;
-                case 2 -> comparative = Comparative.SUPER;
-                case 0xF -> comparative = Comparative.N_A;
+                case 0 -> comparative = Comparative.NULL;
+                case 1 -> comparative = Comparative.N_A;
+                case 2 -> comparative = Comparative.COMPARATIVE;
+                case 3 -> comparative = Comparative.SUPER;
             }
         }
 
         if (hexCode[FACE_INDEX] != null) {
             switch (hexCode[FACE_INDEX]) {
-                case 0 -> face = null;
-                case 1 -> face = Face.FIRST;
-                case 2 -> face = Face.SECOND;
-                case 3 -> face = Face.THIRD;
-                case 4 -> face = Face.ANONYMOUS;
+                case 0 -> face = Face.NULL;
+                case 1 -> face = Face.N_A;
+                case 2 -> face = Face.FIRST;
+                case 3 -> face = Face.SECOND;
+                case 4 -> face = Face.THIRD;
+                case 5 -> face = Face.ANONYMOUS;
 
             }
         }
 
         if (hexCode[INFINITIVE_INDEX] != null) {
             switch (hexCode[INFINITIVE_INDEX]) {
-                case 0 -> infinitive = null;
-                case 1 -> infinitive = Infinitive.INFINITIVE;
-                case 2 -> infinitive = Infinitive.NOT;
-                case 0xF -> infinitive = Infinitive.N_A;
+                case 0 -> infinitive = Infinitive.NULL;
+                case 1 -> infinitive = Infinitive.N_A;
+                case 2 -> infinitive = Infinitive.INFINITIVE;
+                case 3 -> infinitive = Infinitive.NOT;
             }
         }
 
         if (hexCode[PERFECT_INDEX] != null) {
             switch (hexCode[PERFECT_INDEX]) {
-                case 0 -> perfect = null;
-                case 1 -> perfect = Perfect.PERFECT;
-                case 2 -> perfect = Perfect.NOT_PERFECT;
-                case 3 -> perfect = Perfect.N_A;
+                case 0 -> perfect = Perfect.NULL;
+                case 1 -> perfect = Perfect.N_A;
+                case 2 -> perfect = Perfect.PERFECT;
+                case 3 -> perfect = Perfect.NOT_PERFECT;
             }
         }
 
         if (hexCode[REFLEXIVE_INDEX] != null) {
             switch (hexCode[REFLEXIVE_INDEX]) {
-                case 0 -> reflexive = null;
-                case 1 -> reflexive = Reflexive.REFLEXIVE;
-                case 2 -> reflexive = Reflexive.NOT_REFLEXIVE;
-                case 0xF -> reflexive = Reflexive.N_A;
+                case 0 -> reflexive = Reflexive.NULL;
+                case 1 -> reflexive = Reflexive.N_A;
+                case 2 -> reflexive = Reflexive.REFLEXIVE;
+                case 3 -> reflexive = Reflexive.NOT_REFLEXIVE;
             }
         }
 
         if (hexCode[SHORT_FORM_INDEX] != null) {
             switch (hexCode[SHORT_FORM_INDEX]) {
-                case 0 -> shortF = null;
-                case 1 -> shortF = ShortF.SHORT;
-                case 2 -> shortF = ShortF.NOT_SHORT;
+                case 0 -> shortF = ShortF.NULL;
+                case 1 -> shortF = ShortF.N_A;
+                case 2 -> shortF = ShortF.SHORT;
             }
         }
 
         if (hexCode[TRANSITIVE_INDEX] != null) {
             switch (hexCode[TRANSITIVE_INDEX]) {
-                case 0 -> transitive = null;
-                case 1 -> transitive = Transitive.TRANSITIVE;
-                case 2 -> transitive = Transitive.INTRANSITIVE;
-                case 3 -> transitive = Transitive.TRANS_INTRANS;
+                case 0 -> transitive = Transitive.NULL;
+                case 1 -> transitive = Transitive.N_A;
+                case 2 -> transitive = Transitive.TRANSITIVE;
+                case 3 -> transitive = Transitive.INTRANSITIVE;
+                case 4 -> transitive = Transitive.TRANS_INTRANS;
             }
         }
 
         if (hexCode[VOICE_INDEX] != null) {
             switch (hexCode[VOICE_INDEX]) {
-                case 0 -> voice = null;
-                case 1 -> voice = Voice.ACTIVE;
-                case 2 -> voice = Voice.PASSIVE;
-                case 0xF -> voice = Voice.N_A;
+                case 0 -> voice = Voice.NULL;
+                case 1 -> voice = Voice.N_A;
+                case 2 -> voice = Voice.ACTIVE;
+                case 3 -> voice = Voice.PASSIVE;
             }
         }
     }

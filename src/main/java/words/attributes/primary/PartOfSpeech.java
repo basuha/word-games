@@ -5,23 +5,22 @@ import utilities.Word;
 
 public enum PartOfSpeech implements WAttribute{
 
-    ADJECTIVE(Word.ADJECTIVE, "прилагательное"),
-    ADVERB(Word.ADVERB, "наречие"),
-    EXTRA_PARTICIPLE(Word.EXTRA_PARTICIPLE, "деепричастие"),
-    NOUN(Word.NOUN, "существительное"),
-    NUMERAL(Word.NUMERAL, "числительное"),
-    PARTICIPLE(Word.PARTICIPLE, "причастие"),
-    VERB(Word.VERB, "глагол"),
-    CONJUNCTION(Word.CONJUNCTION, "союз"),
-    INTERJECTION(Word.INTERJECTION, "междометие"),
-    PARENTHESIS(Word.PARENTHESIS, "вводное слово"),
-    PARTICLE(Word.PARTICLE, "частица"),
-    PREDICATE(Word.PREDICATE, "предикатив"),
-    PRETEXT(Word.PRETEXT, "пердлог"),
-    PRON_ADJ(Word.PRON_ADJ, "мест-прил"),
-    PRON_ADV(Word.PRON_ADV, "мест-нар"),
-    PRON_NOUN(Word.PRON_NOUN, "мест-сущ"),
-    PRONOUN(Word.PRONOUN, "местоимение");
+    NULL (null,null),
+    N_A ("1","n/a"),
+    ADJECTIVE("Adjective", "прилагательное"),
+    ADVERB("Adverb", "наречие"),
+    EXTRA_PARTICIPLE("ExtraParticiple", "деепричастие"),
+    NOUN("Noun", "существительное"),
+    NUMERAL("Numeral", "числительное"),
+    PARTICIPLE("Participle", "причастие"),
+    VERB("Verb", "глагол"),
+    CONJUNCTION("Conjunction", "союз"),
+    INTERJECTION("Interjection", "междометие"),
+    PARENTHESIS("Parenthesis", "вводное слово"),
+    PARTICLE("Particle", "частица"),
+    PREDICATE("Predicate", "предикатив"),
+    PRETEXT("Pretext", "пердлог"),
+    PRONOUN("Pronoun", "местоимение");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

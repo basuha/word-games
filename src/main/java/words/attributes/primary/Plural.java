@@ -2,11 +2,15 @@ package words.attributes.primary;
 
 import utilities.WAttribute;
 
+import javax.management.ValueExp;
+import java.lang.reflect.Field;
+
 public enum Plural implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     PLURAL ("plural", "мн.ч"),
-    SINGULAR ("singular", "ед.ч"),
-    N_A ("n/a", "н/д");
+    SINGULAR ("singular", "ед.ч");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

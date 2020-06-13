@@ -8,14 +8,13 @@ import utilities.WAttribute;
  */
 public enum Voice implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     /** активный */
     ACTIVE ("active", "активный"),
 
     /** пассивный */
-    PASSIVE ("passive", "пассивный"),
-
-    /** н/д */
-    N_A ("n/a", "н/д");
+    PASSIVE ("passive", "пассивный");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

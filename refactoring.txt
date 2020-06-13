@@ -1,0 +1,99 @@
+UPDATE words_ordinal set adverbType = 1 where adverbType = 'n/a';
+UPDATE words_ordinal set adverbType = 2 where adverbType = 'qualitative';
+UPDATE words_ordinal set adverbType = 3 where adverbType = 'method';
+UPDATE words_ordinal set adverbType = 4 where adverbType = 'extent';
+UPDATE words_ordinal set adverbType = 5 where adverbType = 'place';
+UPDATE words_ordinal set adverbType = 6 where adverbType = 'direction';
+UPDATE words_ordinal set adverbType = 7 where adverbType = 'timing';
+UPDATE words_ordinal set adverbType = 8 where adverbType = 'purpose';
+UPDATE words_ordinal set adverbType = 9 where adverbType = 'reason';
+
+UPDATE words_ordinal set animate = 1 where animate = 'n/a';
+UPDATE words_ordinal set animate = 2 where animate = 'animate';
+UPDATE words_ordinal set animate = 3 where animate = 'inanimate';
+
+UPDATE words_ordinal set kind = 1 where kind = 'n/a';
+UPDATE words_ordinal set kind = 2 where kind = 'first';
+UPDATE words_ordinal set kind = 3 where kind = 'second';
+
+UPDATE words_ordinal set partOfSpeech = 1 where partOfSpeech = 'n/a';
+UPDATE words_ordinal set partOfSpeech = 2 where partOfSpeech = 'Adjective';
+UPDATE words_ordinal set partOfSpeech = 3 where partOfSpeech = 'Adverb';
+UPDATE words_ordinal set partOfSpeech = 4 where partOfSpeech = 'ExtraParticiple';
+UPDATE words_ordinal set partOfSpeech = 5 where partOfSpeech = 'Noun';
+UPDATE words_ordinal set partOfSpeech = 6 where partOfSpeech = 'Numeral';
+UPDATE words_ordinal set partOfSpeech = 7 where partOfSpeech = 'Participle';
+UPDATE words_ordinal set partOfSpeech = 8 where partOfSpeech = 'Verb';
+UPDATE words_ordinal set partOfSpeech = 9 where partOfSpeech = 'Conjunction';
+UPDATE words_ordinal set partOfSpeech = 10 where partOfSpeech = 'Interjection';
+UPDATE words_ordinal set partOfSpeech = 11 where partOfSpeech = 'Parenthesis';
+UPDATE words_ordinal set partOfSpeech = 12 where partOfSpeech = 'Particle';
+UPDATE words_ordinal set partOfSpeech = 13 where partOfSpeech = 'Predicate';
+UPDATE words_ordinal set partOfSpeech = 14 where partOfSpeech = 'Pretext';
+UPDATE words_ordinal set partOfSpeech = 15 where partOfSpeech = 'Pronoun' and partOfSpeech = 'PronAdj' and partOfSpeech = 'PronAdv' and partOfSpeech = 'PronNoun';
+
+UPDATE words_ordinal set plural = 1 where plural = 'n/a';
+UPDATE words_ordinal set plural = 2 where plural = 'plural';
+UPDATE words_ordinal set plural = 3 where plural = 'singular';
+
+UPDATE words_ordinal set time = 1 where time = 'n/a';
+UPDATE words_ordinal set time = 2 where time = 'past';
+UPDATE words_ordinal set time = 3 where time = 'present';
+UPDATE words_ordinal set time = 4 where time = 'future';
+
+UPDATE words_ordinal set type = 1 where type = 'n/a';
+UPDATE words_ordinal set type = 2 where type = 'immutable';
+UPDATE words_ordinal set type = 3 where type = 'mutable';
+UPDATE words_ordinal set type = 4 where type = 'extensive';
+UPDATE words_ordinal set type = 5 where type = 'definite';
+UPDATE words_ordinal set type = 6 where type = 'question';
+UPDATE words_ordinal set type = 7 where type = 'ordinal';
+UPDATE words_ordinal set type = 8 where type = 'quantitative';
+UPDATE words_ordinal set type = 9 where type = 'collective';
+UPDATE words_ordinal set type = 10 where type = 'indefinite';
+
+UPDATE words_ordinal set wordCase = 1 where wordCase = 'n/a';
+UPDATE words_ordinal set wordCase = 2 where wordCase = 'nominative';
+UPDATE words_ordinal set wordCase = 3 where wordCase = 'genitive';
+UPDATE words_ordinal set wordCase = 4 where wordCase = 'dative';
+UPDATE words_ordinal set wordCase = 5 where wordCase = 'accusative';
+UPDATE words_ordinal set wordCase = 6 where wordCase = 'instrumental';
+UPDATE words_ordinal set wordCase = 7 where wordCase = 'prepositional';
+UPDATE words_ordinal set wordCase = 8 where wordCase = 'vocative';
+UPDATE words_ordinal set wordCase = 9 where wordCase = 'partitive';
+UPDATE words_ordinal set wordCase = 10 where wordCase = 'locative';
+UPDATE words_ordinal set wordCase = 11 where wordCase = 'counting';
+
+UPDATE words_ordinal set comparative = 1 where comparative = 'n/a';
+UPDATE words_ordinal set comparative = 2 where comparative = 'comparative';
+UPDATE words_ordinal set comparative = 3 where comparative = 'super';
+
+UPDATE words_ordinal set face = 1 where face = 'n/a';
+UPDATE words_ordinal set face = 2 where face = 'first';
+UPDATE words_ordinal set face = 3 where face = 'second';
+UPDATE words_ordinal set face = 4 where face = 'third';
+UPDATE words_ordinal set face = 5 where face = 'anonymous';
+
+UPDATE words_ordinal set infinitive = 1 where infinitive = 'n/a';
+UPDATE words_ordinal set infinitive = 2 where infinitive = 'infinitive';
+UPDATE words_ordinal set infinitive = 3 where infinitive = 'not';
+
+UPDATE words_ordinal set perfect = 1 where perfect = 'n/a';
+UPDATE words_ordinal set perfect = 2 where perfect = 'perfect';
+UPDATE words_ordinal set perfect = 3 where perfect = 'imperfect';
+
+UPDATE words_ordinal set reflexive = 1 where reflexive = 'n/a';
+UPDATE words_ordinal set reflexive = 2 where reflexive = 'reflexive';
+UPDATE words_ordinal set reflexive = 3 where reflexive = 'not';
+
+UPDATE words_ordinal set shortF = 1 where shortF = 'not';
+UPDATE words_ordinal set shortF = 2 where shortF = 'short';
+
+UPDATE words_ordinal set transitive = 1 where transitive = 'n/a';
+UPDATE words_ordinal set transitive = 2 where transitive = 'transitive';
+UPDATE words_ordinal set transitive = 3 where transitive = 'intransitive';
+UPDATE words_ordinal set transitive = 4 where transitive = 'trans/intrans';
+
+UPDATE words_ordinal set voice = 1 where voice = 'n/a';
+UPDATE words_ordinal set voice = 2 where voice = 'active';
+UPDATE words_ordinal set voice = 3 where voice = 'passive';

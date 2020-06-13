@@ -7,14 +7,13 @@ import utilities.WAttribute;
  */
 public enum Reflexive implements WAttribute{
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     /** возвратный **/
     REFLEXIVE ("reflexive", "возвратный"),
 
     /** не возвратный **/
-    NOT_REFLEXIVE ("not", "не возвратный"),
-
-    /** н/д **/
-    N_A ("n_a", "н/д");
+    NOT_REFLEXIVE ("not", "не возвратный");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

@@ -8,14 +8,14 @@ import utilities.WAttribute;
  */
 public enum Comparative implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
+
     /** сравнительная форма */
     COMPARATIVE ("comparative", "сравнительная"),
 
     /** превосходная форма */
-    SUPER ("super", "превосходная"),
-
-    /** без признака сравнения */
-    N_A ("n/a", "н/д");
+    SUPER ("super", "превосходная");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

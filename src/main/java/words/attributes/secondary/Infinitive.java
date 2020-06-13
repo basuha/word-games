@@ -7,14 +7,13 @@ import utilities.WAttribute;
  */
 public enum Infinitive implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     /** инфинитив */
     INFINITIVE ("infinitive", "инфинитив"),
 
     /** нет */
-    NOT ("not", "нет"),
-
-    /** н/д */
-    N_A ("n/a", "н/д");
+    NOT ("not", "нет");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

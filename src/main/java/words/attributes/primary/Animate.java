@@ -4,14 +4,16 @@ import utilities.WAttribute;
 
 public enum Animate implements WAttribute {
 
+    NULL (null,null),
+
+    /** без рода */
+    N_A ("n/a", "n/a"),
+
     /** одушевленный */
     ANIMATE ("animate", "одушевленный"),
 
     /** неодушевленный */
-    INANIMATE ("inanimate", "неодушевленный"),
-
-    /** н/д */
-    N_A ("n/a", "н/д");
+    INANIMATE ("inanimate", "неодушевленный");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

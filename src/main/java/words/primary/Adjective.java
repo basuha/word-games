@@ -72,13 +72,14 @@ public class Adjective extends Word {
     }
 
     public Adjective setGender(Gender gender) {
-        if (gender == Gender.N_A) {
-            this.gender = gender;
-            this.plural = Plural.PLURAL;
-        } else {
-            this.gender = gender;
-            this.plural = Plural.SINGULAR;
-        }
+//        if (gender == Gender.N_A) {
+//            this.gender = gender;
+//            this.plural = Plural.PLURAL;
+//        } else {
+//            this.gender = gender;
+//            this.plural = Plural.SINGULAR;
+//        }
+        this.gender = gender;
         return this;
     }
 
@@ -88,7 +89,7 @@ public class Adjective extends Word {
             this.plural = Plural.N_A;
             this.wordCase = WordCase.N_A;
             this.comparative = Comparative.N_A;
-            this.shortF = ShortF.NOT_SHORT;
+            this.shortF = ShortF.N_A;
         } else {
             this.type = type;
         }

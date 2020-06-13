@@ -1,6 +1,8 @@
 package utilities;
 
 import org.hibernate.Session;
+import words.attributes.primary.*;
+import words.attributes.secondary.*;
 
 import javax.persistence.Query;
 import java.lang.reflect.Field;
@@ -60,9 +62,10 @@ public class WAsyncTask extends WSearch implements Runnable {
     }
 
     private String buildQuery(int lowID, int hiID) {
+        PartOfSpeech part = PartOfSpeech.values()[Integer.parseInt(partOfSpeech)];
         StringBuilder hql = new StringBuilder();
         hql.append("FROM ")
-                .append(partOfSpeech != null ? partOfSpeech : "Word")
+                .append(part != null ? part : "Word")
                 .append(" WHERE")
                 .append(" IID > ").append(lowID)
                 .append(" AND")
@@ -92,133 +95,134 @@ public class WAsyncTask extends WSearch implements Runnable {
 //                    .append("'");
 //        }
 
-        if (shortF != null) {
+        if (shortF != ShortF.NULL) {
             hql.append(" AND")
                     .append(" shortF = ")
                     .append("'")
-                    .append(shortF)
+                    .append(shortF.ordinal())
                     .append("'");
         }
 
-        if (plural != null) {
+        if (plural != Plural.NULL) {
             hql.append(" AND")
                     .append(" plural = ")
                     .append("'")
-                    .append(plural)
+                    .append(plural.ordinal())
                     .append("'");
         }
 
-        if (gender != null) {
+        if (gender != Gender.NULL) {
             hql.append(" AND")
                     .append(" gender = ")
                     .append("'")
-                    .append(gender)
+                    .append(gender.ordinal())
                     .append("'");
         }
 
-        if (type != null) {
+        if (type != Type.NULL) {
             hql.append(" AND")
                     .append(" type = ")
                     .append("'")
-                    .append(type)
+                    .append(type.ordinal())
                     .append("'");
         }
 
-        if (wordCase != null) {
+        if (wordCase != WordCase.NULL) {
             hql.append(" AND")
                     .append(" wordCase = ")
                     .append("'")
-                    .append(wordCase)
+                    .append(wordCase.ordinal())
                     .append("'");
         }
 
-        if (comparative != null) {
+        if (comparative != Comparative.NULL) {
             hql.append(" AND")
                     .append(" comparative = ")
                     .append("'")
-                    .append(comparative)
+                    .append(comparative.ordinal())
                     .append("'");
         }
 
-        if (animate != null) {
+        if (animate != Animate.NULL) {
             hql.append(" AND")
                     .append(" animate = ")
                     .append("'")
-                    .append(animate)
+                    .append(animate.ordinal())
                     .append("'");
         }
 
-        if (adverbType != null) {
+        if (adverbType != AdverbType.NULL) {
             hql.append(" AND")
                     .append(" adverbType = ")
                     .append("'")
-                    .append(adverbType)
+                    .append(adverbType.ordinal())
                     .append("'");
         }
 
-        if (face != null) {
+        if (face != Face.NULL) {
             hql.append(" AND")
                     .append(" face = ")
                     .append("'")
-                    .append(face)
+                    .append(face.ordinal())
                     .append("'");
         }
 
-        if (infinitive != null) {
+        if (infinitive != Infinitive.NULL) {
             hql.append(" AND")
                     .append(" infinitive = ")
                     .append("'")
-                    .append(infinitive)
+                    .append(infinitive.ordinal())
                     .append("'");
         }
 
-        if (kind != null) {
+        if (kind != Kind.NULL) {
             hql.append(" AND")
                     .append(" kind = ")
                     .append("'")
-                    .append(kind)
+                    .append(kind.ordinal())
                     .append("'");
         }
 
-        if (perfect != null) {
+        if (perfect != Perfect.NULL) {
             hql.append(" AND")
                     .append(" perfect = ")
                     .append("'")
-                    .append(perfect)
+                    .append(perfect.ordinal())
                     .append("'");
         }
 
-        if (reflexive != null) {
+        if (reflexive != Reflexive.NULL) {
             hql.append(" AND")
                     .append(" reflexive = ")
                     .append("'")
-                    .append(reflexive)
+                    .append(reflexive.ordinal())
                     .append("'");
         }
 
-        if (time != null) {
+        if (time != Time.NULL) {
             hql.append(" AND")
                     .append(" time = ")
                     .append("'")
-                    .append(time)
+                    .append(time.ordinal())
                     .append("'");
         }
 
-        if (transitive != null) {
+        if (transitive != Transitive.NULL) {
             hql.append(" AND")
                     .append(" transitive = ")
                     .append("'")
-                    .append(transitive)
+                    .append(transitive.ordinal())
                     .append("'");
         }
 
-        if (voice != null) {
+        if (voice != Voice.NULL) {
             hql.append(" AND")
                     .append(" voice = ")
                     .append("'")
-                    .append(voice)
+                    .append(voice.ordinal())
                     .append("'");
         }
+        System.out.println(hql.toString());
 
         return hql.toString();
     }

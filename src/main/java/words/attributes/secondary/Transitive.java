@@ -7,6 +7,8 @@ import utilities.WAttribute;
  */
 public enum Transitive implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     /** переходный */
     TRANSITIVE ("transitive", "переходный"),
 

@@ -15,6 +15,11 @@ import java.util.List;
  */
 public enum Gender implements WAttribute {
 
+    NULL (null,null),
+
+    /** без рода */
+    N_A ("n/a", "n/a"),
+
     /** мужской */
     MALE ("male", "мужской"),
 
@@ -25,10 +30,8 @@ public enum Gender implements WAttribute {
     NEUTER ("neuter", "средний"),
 
     /** общий */
-    COMMON ("common", "общий"),
+    COMMON ("common", "общий");
 
-    /** без рода */
-    N_A ("n/a", "n/a");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

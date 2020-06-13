@@ -89,11 +89,30 @@ public class Main {
 //        }
 //
 
-        WRandSentence randSentence = new WRandSentence();
-        randSentence.append("123");
-        randSentence.append("9");
-        randSentence.build();
-        System.out.println(randSentence.getResultSet());
+//        WRandSentence randSentence = new WRandSentence();
+//        randSentence.append("41");
+//        randSentence.append("41");
+//        randSentence.build();
+//        System.out.println(randSentence.getResultSet());
+
+
+        System.out.println(Plural.valueOf("PLURAL"));
+        IWord word = Word.find("мама").get(0);
+
+        System.out.println(word.getInfo());
+
+        WordToHex wordToHex = new WordToHex(word);
+        System.out.println(wordToHex.get());
+
+        WAsyncTask wAsyncTask = new WAsyncTask(wordToHex);
+        Thread thread = new Thread(wAsyncTask);
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(wAsyncTask.getSingleWord());
 
 //        Credentials credentials = new Credentials("grajdanin233","AgAAAAAjlVJgAAZfbnHU08Ypa07fuEW8hR_0uvc");
 //        TransportClient tc = null;

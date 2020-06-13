@@ -17,6 +17,9 @@ import utilities.WAttribute;
  */
 public enum WordCase implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
+
     /**
      * именитильный (кто?, что?)
      */
@@ -65,9 +68,7 @@ public enum WordCase implements WAttribute {
     /**
      * счетный
      */
-    COUNTING("counting", "счетный"),
-
-    N_A("n/a", "н/д");
+    COUNTING("counting", "счетный");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

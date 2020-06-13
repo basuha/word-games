@@ -52,13 +52,14 @@ public class Noun extends Word {
     }
 
     public Noun setGender(Gender gender) {
-        if (gender == Gender.N_A) {
-            this.gender = gender;
-            this.plural = Plural.PLURAL;
-        } else {
-            this.gender = gender;
-            this.plural = Plural.SINGULAR;
-        }
+//        if (gender == Gender.N_A) {
+//            this.gender = gender;
+//            this.plural = Plural.PLURAL;
+//        } else {
+//            this.gender = gender;
+//            this.plural = Plural.SINGULAR;
+//        }
+        this.gender = gender;
         return this;
     }
 

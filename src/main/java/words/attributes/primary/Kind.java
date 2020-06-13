@@ -8,9 +8,10 @@ import utilities.WAttribute;
  */
 public enum Kind implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     FIRST ("first", "первый"),
-    SECOND ("second", "второй"),
-    N_A("n/a", "н/д");
+    SECOND ("second", "второй");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

@@ -7,14 +7,13 @@ import utilities.WAttribute;
  */
 public enum Perfect implements WAttribute{
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     /** совершенный */
     PERFECT ("perfect", "совершенный"),
 
     /** несовершенный */
-    NOT_PERFECT ("imperfect", "несовершенный"),
-
-    /** н/д */
-    N_A ("n/a", "н/д");
+    NOT_PERFECT ("imperfect", "несовершенный");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

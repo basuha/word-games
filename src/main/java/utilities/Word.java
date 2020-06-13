@@ -38,24 +38,21 @@ import java.util.List;
 @DiscriminatorColumn(name = "partOfSpeech", discriminatorType = DiscriminatorType.STRING)
 public class Word implements IWord {
 
-    @Transient public static final String ADJECTIVE = "Adjective";
-    @Transient public static final String ADVERB = "Adverb";
-    @Transient public static final String EXTRA_PARTICIPLE = "ExtraParticiple";
-    @Transient public static final String NOUN = "Noun";
-    @Transient public static final String NUMERAL = "Numeral";
-    @Transient public static final String PARTICIPLE = "Participle";
-    @Transient public static final String VERB = "Verb";
+    @Transient public static final String ADJECTIVE = "2";
+    @Transient public static final String ADVERB = "3";
+    @Transient public static final String EXTRA_PARTICIPLE = "4";
+    @Transient public static final String NOUN = "5";
+    @Transient public static final String NUMERAL = "6";
+    @Transient public static final String PARTICIPLE = "7";
+    @Transient public static final String VERB = "8";
 
-    @Transient public static final String CONJUNCTION = "Conjunction";
-    @Transient public static final String INTERJECTION = "Interjection";
-    @Transient public static final String PARENTHESIS = "Parenthesis";
-    @Transient public static final String PARTICLE = "Particle";
-    @Transient public static final String PREDICATE = "Predicate";
-    @Transient public static final String PRETEXT = "Pretext";
-    @Transient public static final String PRON_ADJ = "PronAdj";
-    @Transient public static final String PRON_ADV = "PronAdv";
-    @Transient public static final String PRON_NOUN = "PronNoun";
-    @Transient public static final String PRONOUN = "Pronoun";
+    @Transient public static final String CONJUNCTION = "9";
+    @Transient public static final String INTERJECTION = "10";
+    @Transient public static final String PARENTHESIS = "11";
+    @Transient public static final String PARTICLE = "12";
+    @Transient public static final String PREDICATE = "13";
+    @Transient public static final String PRETEXT = "14";
+    @Transient public static final String PRONOUN = "15";
 
     @Id
     protected Integer IID;
@@ -236,18 +233,6 @@ public class Word implements IWord {
 
         session.close();
         return wordList;
-    }
-
-    public BigDecimal getHexCode() {
-        WordToHex wordToHex = new WordToHex(this);
-        Thread thread = new Thread(wordToHex);
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return wordToHex.getHexOut();
     }
 
     public Field[] getWAttributes() {

@@ -7,11 +7,10 @@ import utilities.WAttribute;
  */
 public enum ShortF implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     /** краткая форма */
-    SHORT ("short", "краткая"),
-
-    /** нет краткая форма */
-    NOT_SHORT ("n/a", "нет");
+    SHORT ("short", "краткая");
 
     private final String VALUE;
     private final String LOCALIZED_VALUE;

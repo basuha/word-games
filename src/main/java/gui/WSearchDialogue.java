@@ -152,14 +152,7 @@ public class WSearchDialogue extends JDialog {
             } else {
                 wordField.setText(selectedWord.getWord());
                 WordToHex wordToHex = new WordToHex(selectedWord);
-                Thread thread = new Thread(wordToHex);
-                thread.start();
-                try {
-                    thread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                HEXField.setText(wordToHex.getHexOut().toString());
+                HEXField.setText(wordToHex.get());
                 partOfSpeechComboBox.setSelectedItem(selectedWord.getPartOfSpeech());
                 attribAction();
             }

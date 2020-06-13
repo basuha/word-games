@@ -42,6 +42,7 @@ public class WChangeling {
     private void getHexesList() {
         for (Word w : wordList)
             hexesList.add(new WordToHex(w).get());
+        System.out.println(hexesList);
     }
 
     private void generateWordsList() {
@@ -53,7 +54,6 @@ public class WChangeling {
     }
 
     private void findWordsByQuery() {
-        System.out.println(input);
         for (String s : input.split(" "))
             rawWordsList.add(Word.find(s));
     }

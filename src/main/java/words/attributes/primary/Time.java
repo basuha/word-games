@@ -7,6 +7,8 @@ import utilities.WAttribute;
  */
 public enum Time implements WAttribute {
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     PAST ("past", "прошлое"),
     PRESENT ("present", "настоящее"),
     FUTURE ("future", "будущее");

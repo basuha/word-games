@@ -7,6 +7,8 @@ import utilities.WAttribute;
  */
 public enum Face implements WAttribute{
 
+    NULL (null,null),
+    N_A ("n/a", "n/a"),
     FIRST ("first", "первое"),
     SECOND ("second", "второе"),
     THIRD ("third", "третье"),

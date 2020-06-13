@@ -15,6 +15,11 @@ import utilities.WAttribute;
  */
 public enum AdverbType implements WAttribute{
 
+    NULL (null,null),
+
+    /** без рода */
+    N_A ("n/a", "n/a"),
+
     /** качественные */
     QUALITATIVE("qualitative", "качественные"),
 
