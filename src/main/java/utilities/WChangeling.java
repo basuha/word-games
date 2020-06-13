@@ -14,7 +14,7 @@ public class WChangeling {
     private List<Word> wordList = new ArrayList<>();
     private List<String> hexesList = new ArrayList<>();
     private WRandSentence generator = new WRandSentence();
-    public List<Sentence> resultSet = new ArrayList<>();
+    private List<Sentence> resultSet = new ArrayList<>();
 
     public WChangeling(String input) {
         this.input = input.toLowerCase();
@@ -61,8 +61,8 @@ public class WChangeling {
 
 class Main {
     public static void main(String[] args) {
-        WChangeling wChangeling = new WChangeling("Мама мыла раму");
+        WChangeling wChangeling = new WChangeling("Аркадий скандировал лозунг");
         wChangeling.process();
-        System.out.println(wChangeling.resultSet);
+        System.out.println(wChangeling.get());
     }
 }

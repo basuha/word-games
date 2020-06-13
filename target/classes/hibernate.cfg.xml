@@ -62,9 +62,6 @@
         <mapping class="words.secondary.Pretext"/>
         <mapping class="words.secondary.Parenthesis"/>
         <mapping class="words.secondary.Pronoun"/>
-        <mapping class="words.secondary.PronNoun"/>
-        <mapping class="words.secondary.PronAdj"/>
-        <mapping class="words.secondary.PronAdv"/>
 
 </session-factory>
 

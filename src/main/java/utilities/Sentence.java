@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sentence {
-    private int counter = 0;
-    protected List<IWord> sentence = new ArrayList<>();
+    protected List<String> sentence = new ArrayList<>();
 
     public Sentence(){
 
@@ -26,12 +25,7 @@ public class Sentence {
     }
 
     public Sentence add(IWord word) {
-        if (counter == 0) {
-            sentence.add(word); //todo capitalization
-        } else {
-            sentence.add(word);
-        }
-        counter++;
+        sentence.add(word.getWord());
         return this;
     }
 
@@ -40,10 +34,6 @@ public class Sentence {
             add(w);
         }
         return this;
-    }
-
-    private static String firstUpperCase(String word){
-        return StringUtils.capitalize(word);
     }
 
     public boolean isEmpty() {
@@ -56,13 +46,6 @@ public class Sentence {
 
     @Override
     public String toString() {
-        StringBuilder sentence = new StringBuilder();
-        for (int i = 0; i < this.sentence.size(); i++) {
-            sentence.append(this.sentence.get(i));
-            if (i != this.sentence.size()) {
-                sentence.append(" ");
-            }
-        }
-        return sentence.toString() + ".";
+        return StringUtils.capitalize(String.join(" ", sentence) + ". ");
     }
 }
